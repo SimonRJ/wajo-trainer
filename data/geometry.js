@@ -13,7 +13,7 @@
 <li><b>Exterior angle</b> of a triangle = sum of the two opposite interior angles.</li>
 <li>Parallel lines: alternate angles (Z) are equal, corresponding angles (F) are equal, co-interior angles (C) add to 180°.</li>
 <li><b>Isosceles triangle:</b> equal sides ⇔ equal base angles. Any time you see equal lengths, mark the equal angles.</li></ul></div>
-<svg viewBox="0 0 320 130" class="fig" role="img" aria-label="Exterior angle of a triangle"><polygon points="40,110 200,110 130,25" fill="none" stroke="currentColor" stroke-width="2"/><line x1="200" y1="110" x2="290" y2="110" stroke="currentColor" stroke-width="2"/><text x="58" y="104" class="ft">a</text><text x="124" y="50" class="ft">b</text><text x="210" y="100" class="fa">a + b</text><path d="M225 110 A25 25 0 0 0 216 91" fill="none" stroke="var(--accent)" stroke-width="2"/></svg>
+<svg viewBox="0 0 320 130" class="fig" role="img" aria-label="Exterior angle of a triangle"><polygon points="40,110 200,110 130,25" fill="none" stroke="currentColor" stroke-width="2"/><line x1="200" y1="110" x2="290" y2="110" stroke="currentColor" stroke-width="2"/><text x="58" y="104" class="fm">a</text><text x="124" y="50" class="fm">b</text><text x="210" y="100" class="fa">a + b</text><path d="M225 110 A25 25 0 0 0 216 91" fill="none" stroke="var(--accent)" stroke-width="2"/></svg>
 <div class="key"><b>Polygons with n sides</b><ul>
 <li>Interior angles add to (n − 2) × 180°. <i>(Cut it into n − 2 triangles from one corner.)</i></li>
 <li>Exterior angles always add to 360°. <i>(Walk round the shape: you make one full turn.)</i></li>
@@ -45,7 +45,7 @@
 <p>Know these whole-number triangles on sight, and their multiples:</p>
 <p class="big">3-4-5 &nbsp; 5-12-13 &nbsp; 8-15-17 &nbsp; 7-24-25 &nbsp; 20-21-29 &nbsp; 9-40-41</p>
 <p>So 15-20-25 and 10-24-26 are right-angled too. Spotting these replaces a page of arithmetic.</p></div>
-<svg viewBox="0 0 320 140" class="fig" role="img" aria-label="Right triangle with squares idea"><polygon points="60,120 220,120 220,30" fill="none" stroke="currentColor" stroke-width="2"/><rect x="208" y="108" width="12" height="12" fill="none" stroke="currentColor"/><text x="135" y="136" class="ft">a</text><text x="228" y="80" class="ft">b</text><text x="122" y="66" class="fa">c</text></svg>
+<svg viewBox="0 0 320 140" class="fig" role="img" aria-label="Right triangle with squares idea"><polygon points="60,120 220,120 220,30" fill="none" stroke="currentColor" stroke-width="2"/><rect x="208" y="108" width="12" height="12" fill="none" stroke="currentColor"/><text x="135" y="136" class="fm">a</text><text x="228" y="80" class="fm">b</text><text x="122" y="66" class="fa">c</text></svg>
 <div class="key"><b>Special triangles</b><ul><li>Half a square (45°-45°-90°): sides 1, 1, √2. The diagonal of a square is side × √2.</li>
 <li>Half an equilateral triangle (30°-60°-90°): sides 1, √3, 2.</li></ul></div>
 <div class="key"><b>Area tools</b><ul>
@@ -92,7 +92,7 @@
 <div class="ex"><b>Worked example 1 (chord).</b> A chord of length 16 lies in a circle of radius 10. How far is it from the centre?
 <p>Half the chord is 8. Right triangle with hypotenuse 10 and leg 8: the distance is <b>6</b>.</p></div>
 <div class="ex"><b>Worked example 2 (the ring).</b> A chord of the outer of two concentric circles has length 10 and just touches the inner circle. Find the area between the circles.
-<p>Let the radii be R and r. The chord is tangent to the inner circle, so r, half the chord (5) and R form a right triangle: R² − r² = 25. The ring's area is πR² − πr² = <b>25π</b>. We never found R or r!</p></div>
+<p>Let the radii be <i>R</i> and <i>r</i>. The chord is tangent to the inner circle, so r, half the chord (5) and <i>R</i> form a right triangle: R² − r² = 25. The ring's area is πR² − πr² = <b>25π</b>. We never needed either radius!</p></div>
 <div class="ex"><b>Worked example 3 (two circles on a line).</b> Circles of radius 9 and 4 touch each other and both sit on a straight line. How far apart are the points where they touch the line?
 <p>Join the centres: length 9 + 4 = 13. Draw a horizontal line from the lower centre: this makes a right triangle with vertical side 9 − 4 = 5 and hypotenuse 13. The horizontal side is <b>12</b>.</p>
 <p>In general the distance is 2√(r₁r₂). Here 2√36 = 12.</p></div>
@@ -107,7 +107,7 @@
       { id: "o7", d: 2, q: "ABCD is a quadrilateral with all four vertices on a circle. Angle A is 75°. What is angle C in degrees?", a: 105, h: "Opposite angles of a cyclic quadrilateral.", s: "180 − 75 = <b>105</b>°." },
       { id: "o8", d: 3, q: "A circle is drawn inside a triangle with sides 8, 15 and 17, touching all three sides. What is its radius?", a: 3, h: "It's a right-angled triangle. Use r = (a + b − c) ÷ 2, or area = r × half-perimeter.", s: "(8 + 15 − 17) ÷ 2 = <b>3</b>. Check: area 60 = 3 × 20 ✓." },
       { id: "o9", d: 2, q: "AB is a diameter of a circle and has length 26. C is a point on the circle with AC = 10. What is the length BC?", a: 24, h: "What is angle ACB?", s: "Angle ACB = 90° (angle in a semicircle), so BC = √(676 − 100) = <b>24</b>." },
-      { id: "o10", d: 4, q: "A quarter-circle has radius 12. A small circle fits inside it, touching both straight edges and the curved arc. Its radius can be written as a(√2 − 1). What is a?", a: 12, h: "The small circle's centre is at (r, r) from the corner, so r√2 from the corner. Then add r to reach the arc.", s: "r√2 + r = 12, so r = 12 ÷ (√2 + 1) = 12(√2 − 1). a = <b>12</b>." }
+      { id: "o10", d: 4, q: "A quarter-circle has radius 12. A small circle fits inside it, touching both straight edges and the curved arc. Its radius can be written as a(√2 − 1). What is <i>a</i>?", a: 12, h: "The small circle's centre is at (r, r) from the corner, so r√2 from the corner. Then add r to reach the arc.", s: "r√2 + r = 12, so r = 12 ÷ (√2 + 1) = 12(√2 − 1). a = <b>12</b>." }
     ]
   });
 

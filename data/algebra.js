@@ -50,7 +50,7 @@
 <div class="key"><b>Powers of 2.</b> 1 + 2 + 4 + … + 2<sup>n</sup> = 2<sup>n+1</sup> − 1. (Add 1 to the left and watch it double up the line.)</div>
 <div class="ex"><b>Worked example 2 (recurrence).</b> In how many ways can you climb 5 stairs taking 1 or 2 steps at a time?
 <p>Your last move was either a 1-step (from stair 4) or a 2-step (from stair 3). So ways(5) = ways(4) + ways(3). Starting from ways(1) = 1, ways(2) = 2: 1, 2, 3, 5, <b>8</b>. Fibonacci numbers!</p></div>
-<div class="tip">For any "find the pattern" question, write the differences between terms. Constant differences mean a linear rule (an + b). Constant <i>second</i> differences mean a quadratic rule (an² + bn + c).</div>`,
+<div class="tip">For any "find the pattern" question, write the differences between terms. Constant differences mean a linear rule (<i>a</i><i>n</i> + <i>b</i>). Constant <i>second</i> differences mean a quadratic rule (<i>a</i><i>n</i>² + <i>b</i><i>n</i> + <i>c</i>).</div>`,
     problems: [
       { id: "s1", d: 1, q: "What is the 100th term of the sequence 7, 11, 15, 19, …?", a: 403, h: "There are 99 steps of 4 from the first term.", s: "7 + 99 × 4 = <b>403</b>." },
       { id: "s2", d: 1, q: "What is 1 + 3 + 5 + … + 99?", a: 2500, h: "How many odd numbers are there from 1 to 99?", s: "There are 50 odd numbers, and the sum of the first n odd numbers is n²: <b>2500</b>." },
@@ -78,7 +78,7 @@
 <p>Same idea for 1/x + 1/y = 1/n: multiply out to get xy − nx − ny = 0, add n², and factor as (x − n)(y − n) = n².</p></div>
 <div class="ex"><b>Worked example 2 (linear integer equations).</b> Stamps cost 3c and 5c. In how many ways can you spend exactly 31c?
 <p>3x + 5y = 31. Step y through 0, 1, 2 … and keep those where 31 − 5y is a multiple of 3: y = 2 (x = 7), y = 5 (x = 2). Two ways. Notice y goes up in 3s while x goes down in 5s.</p></div>
-<div class="key"><b>Absolute value</b> |x| is distance from 0, and |x − a| is the distance from x to a on the number line.
+<div class="key"><b>Absolute value</b> |x| is distance from 0, and |x − a| is the distance from x to <i>a</i> on the number line.
 <p>So |x − 2| + |x − 8| = 10 asks: where is the total distance to 2 and to 8 equal to 10? Between 2 and 8 the total is always 6. Outside, each step away adds 2, so go 2 further out: x = 0 or x = 10.</p></div>
 <div class="key"><b>Identities to know</b><ul>
 <li>(a + b)² = a² + 2ab + b²</li><li>(a − b)² = a² − 2ab + b²</li>
@@ -111,7 +111,7 @@
 <div class="ex"><b>Worked example 1 (grid paths).</b> How many shortest routes go from the bottom-left to the top-right of a 3 × 2 grid of streets?
 <p>Every route is 3 Rights and 2 Ups in some order: choose which 2 of the 5 moves are Ups. C(5, 2) = <b>10</b>.</p></div>
 <div class="key"><b>Count the opposite.</b> "At least one" is easier as total − none. Three-digit numbers with at least one 7: 900 − (8 × 9 × 9) = 252.</div>
-<div class="key"><b>Inclusion–exclusion.</b> |A or B| = |A| + |B| − |A and B|. For three sets: add the singles, subtract the pairs, add back the triple.</div>
+<div class="key"><b>Inclusion–exclusion.</b> (number in A or B) = (number in A) + (number in B) − (number in both). For three sets: add the singles, subtract the pairs, add back the triple.</div>
 <div class="ex"><b>Worked example 2.</b> How many numbers from 1 to 60 are divisible by 2 or 3?
 <p>30 + 20 − 10 (multiples of 6, counted twice) = <b>40</b>.</p></div>
 <div class="ex"><b>Worked example 3 (stars and bars).</b> Share 5 identical lollies among 3 children.

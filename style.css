@@ -45,9 +45,20 @@ h3{font-size:1.05rem;margin:1.2em 0 .3em}
 .big{font-size:1.05rem;font-weight:700;letter-spacing:.02em}
 table{border-collapse:collapse;width:100%;margin:.5em 0}
 th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-.ol{text-decoration:overline}
+.mth,.ol,.fa,.fm{font-family:"STIX Two Text","Cambria Math",Cambria,"Times New Roman","Nimbus Roman No9 L",Times,"Noto Serif",serif}
+.mth{font-size:1.12em;line-height:1;font-variant-numeric:lining-nums}
+.mth i,.ol{font-style:italic}
+.mth sup,.mth sub{font-size:.7em;line-height:0}
+.mth b{font-weight:700}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.84em;line-height:1.2;margin:0 .14em}
+.fr>span{padding:0 .25em}
+.fr>span:first-child{border-bottom:1.2px solid currentColor}
+.fr .fr{font-size:.9em}
+.rt{white-space:nowrap}
+.rt>span{border-top:1.2px solid currentColor;padding:0 .12em 0 .08em;margin-left:-.02em}
+.ol{text-decoration:overline;font-size:1.12em}
 .fig{display:block;max-width:340px;width:100%;margin:10px auto;color:var(--ink)}
-.ft{font:14px system-ui;fill:currentColor}.fa{font:bold 14px system-ui;fill:var(--accent)}
+.ft{font:14px system-ui;fill:currentColor}.fm{font-size:17px;font-style:italic;fill:currentColor}.fa{font-size:17px;font-style:italic;font-weight:bold;fill:var(--accent)}
 .prob{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin:12px 0}
 .prob.done{border-color:var(--good)}
 .ptop{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:var(--mute);margin-bottom:4px;gap:8px}

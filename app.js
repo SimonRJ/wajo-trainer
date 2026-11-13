@@ -25,7 +25,10 @@
 
   /* ---------- helpers ---------- */
   var ALL = [], BYID = {};
-  W.modules.forEach(function (m) { m.problems.forEach(function (p) { p.mod = m; ALL.push(p); BYID[p.id] = p; }); });
+  var M = W.M || function (x) { return x; };
+  W.modules.forEach(function (m) { m.lesson = M(m.lesson); m.problems.forEach(function (p) { p.q = M(p.q); p.h = M(p.h); p.s = M(p.s); p.mod = m; ALL.push(p); BYID[p.id] = p; }); });
+  W.mocks.forEach(function (m) { m.qs.forEach(function (q) { q.q = M(q.q); q.s = M(q.s); }); });
+  W.team.forEach(function (t) { t.intro = M(t.intro); t.parts.forEach(function (p) { p.q = M(p.q); p.a = M(p.a); }); });
   function solved(id) { var r = load().p[id]; return r && r.s; }
   function modPct(m) { var n = m.problems.filter(function (p) { return solved(p.id); }).length; return Math.round(100 * n / m.problems.length); }
   function totalSolved() { return ALL.filter(function (p) { return solved(p.id); }).length; }
@@ -276,13 +279,13 @@
 
   /* ---------- tips ---------- */
   function tips() {
-    h("<h1>Exam tips</h1><p class='sub'>Knowing the maths is half of it. The other half is spending 100 minutes wisely.</p>" +
+    h("<h1>Exam tips</h1><p class='sub'>Knowing the maths is half of it. The other half is spending 100 minutes wisely.</p>" + M(
       '<div class="key"><b>Before the day</b><ul><li>Know by heart: primes to 50, squares to 25², cubes to 10³, powers of 2 to 2¹⁰, and the Pythagorean triples.</li><li>Practise mental and written arithmetic. There is no calculator.</li><li>Sit at least three full timed papers so that 100 minutes feels familiar.</li><li>Sleep well. A rested brain spots patterns.</li></ul></div>' +
       '<div class="key"><b>The marks</b><table><tr><th>Questions</th><th>Marks each</th><th>Suggested time</th></tr><tr><td>1–4</td><td>1</td><td>about 10 minutes in total</td></tr><tr><td>5–8</td><td>2</td><td>about 20 minutes</td></tr><tr><td>9–12</td><td>3</td><td>about 30 minutes</td></tr><tr><td>13–16</td><td>4</td><td>about 30 minutes</td></tr><tr><td colspan="2">Checking</td><td>the last 10 minutes</td></tr></table></div>' +
       '<div class="key"><b>During the paper</b><ol><li><b>Read every question twice.</b> Underline what is asked: "how many", "the largest", "the sum of". The commonest lost mark is answering a different question.</li><li><b>Bank the early marks.</b> Questions 1–8 are worth 12 marks and are very gettable. Do them carefully rather than quickly.</li><li><b>Three-minute rule.</b> If you have no idea how to start after three minutes, circle it and move on. Come back later: a fresh look often works.</li><li><b>Hard does not mean last.</b> Question 16 might suit you better than question 13. Read all of 13–16 before choosing where to spend your time.</li><li><b>Use the answer format.</b> Every answer is a positive whole number under 1000. If you get a fraction, a negative or 4000, something went wrong.</li><li><b>Never leave a blank.</b> There is no penalty for a wrong answer, so write your best estimate.</li><li><b>Check by a different route.</b> Substitute back, test a small case, or estimate. Re-reading your own working rarely finds the error.</li></ol></div>' +
       '<div class="key"><b>When you are stuck</b><ul><li>Try a smaller version of the problem.</li><li>Draw a diagram or make a table.</li><li>Give the unknown a letter.</li><li>Ask "what stays the same?" and "what is the extreme case?"</li><li>Work backwards from what you want.</li></ul></div>' +
       '<div class="key"><b>In the team paper</b><ul><li>One person reads everything aloud first. Then split the parts.</li><li>Early parts are usually experiments. Do them carefully: later parts depend on them.</li><li>Appoint one scribe so the answer sheet is neat and consistent.</li><li>"Explain" means reasons, not examples. Write: claim, because, therefore.</li><li>With ten minutes left, stop exploring and write up what you have.</li></ul></div>' +
-      '<div class="tip">After every practice paper keep an <b>error log</b>: the question, why you missed it, and the idea you learned. Read the log the night before the competition.</div>');
+      '<div class="tip">After every practice paper keep an <b>error log</b>: the question, why you missed it, and the idea you learned. Read the log the night before the competition.</div>'));
   }
 
   /* ---------- progress ---------- */

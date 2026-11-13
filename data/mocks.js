@@ -38,7 +38,7 @@
     { q: "How many three-digit numbers are equal to 19 times the sum of their digits?", a: 11, s: "100a + 10b + c = 19(a + b + c) simplifies to 9a = b + 2c. a = 1: (b, c) = (1,4), (3,3), (5,2), (7,1), (9,0). a = 2: (0,9), (2,8), (4,7), (6,6), (8,5). a = 3: (9,9). a ≥ 4 needs b + 2c ≥ 36, impossible. Total <b>11</b>." },
     { q: "Pens cost $7 each and books cost $11 each. Kim spends exactly $200 on pens and books. What is the largest total number of items she could have bought?", a: 28, s: "7x + 11y = 200. Working mod 7 gives y = 1, 8 or 15, with x = 27, 16, 5. The most items is 27 + 1 = <b>28</b>." },
     { q: "How many positive integers up to 1000 are perfect squares or perfect cubes (or both)?", a: 38, s: "Squares: 31. Cubes: 10. Both (sixth powers 1, 64, 729): 3. 31 + 10 − 3 = <b>38</b>." },
-    { q: "A rectangular sheet of paper measures 8 cm by 4 cm. It is folded so that two diagonally opposite corners meet exactly, making a straight crease. The crease has length √k cm. What is k?", a: 20, s: "The crease is the perpendicular bisector of the diagonal. The diagonal has length √80 and slope 1/2, so the crease has slope −2 and crosses the full 4 cm height: it runs 2 cm across and 4 cm up, length √(4 + 16) = √<b>20</b>." }
+    { q: "A rectangular sheet of paper measures 8 cm by 4 cm. It is folded so that two diagonally opposite corners meet exactly, making a straight crease. The crease has length √k cm. What is k?", a: 20, s: "The crease is the perpendicular bisector of the diagonal. The diagonal has length √80 and slope 1/2, so the crease has slope −2 and crosses the full 4 cm height: it runs 2 cm across and 4 cm up, length √(4 + 16) = <b>√20</b>, so k = <b>20</b>." }
   ]});
 
   W.mocks.push({ id: "mockC", title: "Mock Paper C", qs: [
