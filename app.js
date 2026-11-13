@@ -88,7 +88,7 @@
     ["Week 9", "count", "Counting methods. Then sit <a href='#/mocks'>Mock Paper B</a>."],
     ["Week 10", "logic,power", "Logic and invariants; algebra power tools."],
     ["Week 11", "teamskills", "Team skills and all three <a href='#/team'>team investigations</a>."],
-    ["Week 12", "", "Sit <a href='#/mocks'>Mock Paper C</a>, clear your review list, then work through real past papers from the official site."]
+    ["Week 12", "", "Sit <a href='#/mocks'>Mock Paper C</a>, clear your review list, then work through real past papers: PDFs on the official site, or on screen at <a href='https://www.problemsolvingeducation.com/wajopractise' target='_blank' rel='noopener'>WAJO Practise</a>."]
   ];
   function modById(id) { return W.modules.filter(function (m) { return m.id === id; })[0]; }
 
@@ -177,7 +177,7 @@
         return '<a class="mod" href="#/mock/' + m.id + '"><span class="ic">📝</span><h3>' + m.title + "</h3><p>" + (run ? "In progress…" : r.best != null ? "Best: " + r.best + "/40 · attempts: " + r.hist.length : "Not attempted yet") + "</p></a>";
       }).join("") + "</div>" +
       '<div class="card"><b>What is a good score?</b> These papers are meant to be hard: on the real paper very few students finish everything. As a guide for practice: 15+ is a solid start, 25+ is strong, and 32+ is excellent (these are practice guides, not official cut-offs). Aim to get every 1- and 2-mark question right first.</div>' +
-      '<div class="card"><b>Finished all three?</b> Move on to the real thing. The <a href="https://enrichedmaths.maths.uwa.edu.au/wajo/" target="_blank" rel="noopener">official WAJO site</a> has past papers with solutions going back to 2000. Sit the most recent five under timed conditions.</div>');
+      '<div class="card"><b>Finished all three?</b> Move on to the real thing. The <a href="https://enrichedmaths.maths.uwa.edu.au/wajo/" target="_blank" rel="noopener">official WAJO site</a> has past papers with solutions going back to 2000. Sit the most recent five under timed conditions. For past questions on screen, <a href="https://www.problemsolvingeducation.com/wajopractise" target="_blank" rel="noopener">WAJO Practise at ProblemSolvingEducation</a> lets you work through the 2013–2026 papers by year, topic or marks, with solutions.</div>');
   }
   function mockView(id) {
     var m = W.mocks.filter(function (x) { return x.id === id; })[0]; if (!m) return mocks();
