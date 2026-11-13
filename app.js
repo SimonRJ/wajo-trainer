@@ -88,7 +88,7 @@
     ["Week 9", "count", "Counting methods. Then sit <a href='#/mocks'>Mock Paper B</a>."],
     ["Week 10", "logic,power", "Logic and invariants; algebra power tools."],
     ["Week 11", "teamskills", "Team skills and all three <a href='#/team'>team investigations</a>."],
-    ["Week 12", "", "Sit <a href='#/mocks'>Mock Paper C</a>, clear your review list, then work through real past papers: PDFs on the official site, or on screen at <a href='https://www.problemsolvingeducation.com/wajopractise' target='_blank' rel='noopener'>WAJO Practise</a>."]
+    ["Week 12", "", "Sit <a href='#/mocks'>Mock Paper C</a>, clear your review list, then work through the <a href='#/past'>real past papers</a>, newest first."]
   ];
   function modById(id) { return W.modules.filter(function (m) { return m.id === id; })[0]; }
 
@@ -108,7 +108,7 @@
       "<li>A problem-solving competition for WA students in <b>Years 7, 8 and 9</b>, run at UWA by the WA Mathematical Olympiads Committee since 1999. Entry is through your school.</li>" +
       "<li><b>Individual paper:</b> 100 minutes, 16 questions, no calculator. Every answer is a positive whole number less than 1000. Questions 1–4 are worth 1 mark, 5–8 worth 2, 9–12 worth 3 and 13–16 worth 4: 40 marks in total.</li>" +
       "<li><b>Team paper:</b> about 50 minutes, teams of four, one long investigation in parts, some needing written explanations.</li>" +
-      "<li>Usually held in September or October. Dates and entry details change each year, so check the <a href='https://enrichedmaths.maths.uwa.edu.au/wajo/' target='_blank' rel='noopener'>official WAJO page</a>, which also has every past paper with solutions.</li></ul></div>" +
+      "<li>Usually held in September or October. Dates and entry details change each year, so check the <a href='https://enrichedmaths.maths.uwa.edu.au/wajo/' target='_blank' rel='noopener'>official WAJO page</a>, and see <a href='#/past'>Real past papers</a> for every past paper with solutions.</li></ul></div>" +
       '<h2>The 12-week plan</h2><p class="sub">About 30–40 minutes a day, five days a week. Faster is fine. The order matters more than the speed.</p>' +
       '<div class="card"><table class="plan">' + PLAN.map(function (r) {
         var mods = r[1] ? r[1].split(",").map(function (id) { var m = modById(id); return '<a href="#/m/' + id + '">' + m.title + "</a> (" + modPct(m) + "%)"; }).join(" + ") + ". " : "";
@@ -177,7 +177,7 @@
         return '<a class="mod" href="#/mock/' + m.id + '"><span class="ic">📝</span><h3>' + m.title + "</h3><p>" + (run ? "In progress…" : r.best != null ? "Best: " + r.best + "/40 · attempts: " + r.hist.length : "Not attempted yet") + "</p></a>";
       }).join("") + "</div>" +
       '<div class="card"><b>What is a good score?</b> These papers are meant to be hard: on the real paper very few students finish everything. As a guide for practice: 15+ is a solid start, 25+ is strong, and 32+ is excellent (these are practice guides, not official cut-offs). Aim to get every 1- and 2-mark question right first.</div>' +
-      '<div class="card"><b>Finished all three?</b> Move on to the real thing. The <a href="https://enrichedmaths.maths.uwa.edu.au/wajo/" target="_blank" rel="noopener">official WAJO site</a> has past papers with solutions going back to 2000. Sit the most recent five under timed conditions. For past questions on screen, <a href="https://www.problemsolvingeducation.com/wajopractise" target="_blank" rel="noopener">WAJO Practise at ProblemSolvingEducation</a> lets you work through the 2013–2026 papers by year, topic or marks, with solutions.</div>');
+      '<div class="card"><b>Finished all three?</b> Move on to the real thing: the <a href="#/past">Real past papers</a> page links every WAJO paper since 2000 with its official solutions, and tracks your scores.</div>');
   }
   function mockView(id) {
     var m = W.mocks.filter(function (x) { return x.id === id; })[0]; if (!m) return mocks();
@@ -219,6 +219,31 @@
     delete S.run; save();
     var msg = score >= 32 ? "Outstanding paper." : score >= 25 ? "Strong paper. Study the ones you missed and you're on track." : score >= 15 ? "Solid base. Lock in the 1–2 mark questions, then push into the 3s." : "Good that you sat a full paper. Go through every solution, then revisit the matching lessons.";
     h('<a class="crumb" href="#/mocks">← Mock papers</a><h1>' + m.title + ': result</h1><div class="card"><div class="score">' + score + '<span style="font-size:1.2rem;color:var(--mute)"> / 40</span></div><p>' + msg + " Time used: " + used + ' min.</p><p class="sub">For each question you missed: was it a slip, a misread question, or an idea you did not know? Slips and misreads are fixed by checking. Unknown ideas are fixed by the lessons.</p></div>' + rows);
+  }
+
+
+  /* ---------- real past papers (linked, not copied) ---------- */
+  var ARCH = "https://enrichedmaths.maths.uwa.edu.au/wajo/qnsandsolns/";
+  var PDF = { 2025: "wajo25qnsoln.pdf", 2024: "wajo24qnsoln.pdf", 2022: "wajo22qnsoln.pdf", 2018: "wajo18qnsoln.pdf", 2017: "wajo17qnsoln.pdf", 2015: "wajo15qnsoln.pdf", 2012: "wajo2012qa.pdf", 2011: "wajo11qa.pdf", 2010: "wajo10qa.pdf", 2009: "wajo09qa.pdf", 2008: "wajoq-a08.pdf", 2006: "wajoq-a_06.pdf", 2005: "wajoq-a_05.pdf", 2004: "wajoq-a_04.pdf", 2002: "wajoq-a_02.pdf" };
+  function past() {
+    var S = load(); S.past = S.past || {};
+    var rows = "", done = 0;
+    for (var y = 2026; y >= 2000; y--) {
+      var r = S.past[y] || {}; if (r.done) done++;
+      rows += "<tr><td><b>" + y + '</b></td><td><a href="' + ARCH + (PDF[y] || "") + '" target="_blank" rel="noopener">' + (PDF[y] ? "Questions &amp; solutions (PDF)" : "Find in official archive") + '</a></td><td><input class="ans ps" style="width:70px" inputmode="numeric" data-y="' + y + '" placeholder="score" value="' + (r.score != null ? r.score : "") + '"></td><td><label><input type="checkbox" class="pd" data-y="' + y + '"' + (r.done ? " checked" : "") + "> done</label></td></tr>";
+    }
+    h("<h1>Real past papers</h1><p class='sub'>Every WAJO paper since 2000, with official solutions, is published free by the WA Mathematical Olympiads Committee. Nothing prepares you better than the real thing. Source: WAJO (Western Australian Junior mathematics Olympiad).</p>" +
+      '<div class="stats"><div class="stat"><b>' + done + '/27</b><span>past papers done</span></div></div>' +
+      '<div class="card"><b>How to use them</b><ol style="margin:.4em 0 0;padding-left:1.2em"><li>Start with the most recent years: they match today\'s 16-question format. Older papers are shorter (10–12 questions) but just as good for practice.</li><li>Open the PDF, <b>stop scrolling at the end of the questions</b>, and start the timer. No calculator.</li><li>Mark yourself from the solutions, type your score in the table, and read the solution to every question you missed.</li><li>Do the team question separately: 45–50 minutes, with friends if you can.</li></ol></div>' +
+      '<div class="timer"><span id="tleft">100:00</span><button class="btn small" id="pgo">Start 100-minute timer</button></div>' +
+      '<div class="card"><b>Prefer to practise on screen?</b> <a href="https://www.problemsolvingeducation.com/wajopractise" target="_blank" rel="noopener">WAJO Practise at ProblemSolvingEducation</a> has the 2013–2026 questions and solutions, sorted by year, topic or marks.</div>' +
+      '<div class="card" style="overflow-x:auto"><table><tr><th>Year</th><th>Paper</th><th>My score</th><th></th></tr>' + rows + '</table><p class="sub" style="margin-bottom:0">Where a direct link is missing, open the <a href="' + ARCH + '" target="_blank" rel="noopener">official archive</a> and pick the year.</p></div>');
+    app.querySelectorAll(".ps").forEach(function (i) { i.oninput = function () { var r = S.past[i.dataset.y] = S.past[i.dataset.y] || {}; var v = parseAns(i.value); if (v === null) delete r.score; else r.score = v; save(); touchDay(); }; });
+    app.querySelectorAll(".pd").forEach(function (c) { c.onchange = function () { (S.past[c.dataset.y] = S.past[c.dataset.y] || {}).done = c.checked ? 1 : 0; save(); touchDay(); }; });
+    document.getElementById("pgo").onclick = function () {
+      var end = Date.now() + 6000000; this.disabled = true; clearInterval(tick);
+      tick = setInterval(function () { var el = document.getElementById("tleft"); if (!el) return clearInterval(tick); var left = (end - Date.now()) / 1000; el.textContent = "⏱ " + fmt(left) + " left"; if (left <= 0) { clearInterval(tick); el.textContent = "Time is up! Pencils down."; } }, 1000);
+    };
   }
 
   /* ---------- team round ---------- */
@@ -283,6 +308,7 @@
     else if (r === "mocks") mocks();
     else if (r === "mock") { nav = "mocks"; mockView(parts[1]); }
     else if (r === "team") { if (parts[1]) teamView(parts[1]); else team(); }
+    else if (r === "past") past();
     else if (r === "tips") tips();
     else if (r === "progress") progress();
     else { nav = "home"; home(); }

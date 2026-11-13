@@ -7,6 +7,7 @@ A free, self-contained training course for the **Western Australian Junior Mathe
 - 14 lessons (thinking tools, number theory, algebra, counting and logic, geometry, team-paper skills)
 - 130 practice problems with hints and worked solutions, checked automatically
 - 3 timed mock individual papers in the real format (16 questions, 100 minutes, 40 marks)
+- Links to every real past paper (2000–2026) with a score tracker and timer
 - 3 team-paper style investigations with model answers
 - Progress tracking, review list, daily five, backup/restore
 
