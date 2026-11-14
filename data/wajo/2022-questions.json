@@ -1,0 +1,148 @@
+[
+  {
+    "id": "wajo22_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A pentagon $A B C D E$ consists of a square $A B C E$ and a triangle $C D E$ with a right angle at $D$,<br>where $D$ is a point outside the square $A B C E$.<br>What is the area of the pentagon given that $C D=17$ and $D E=14$?"
+  },
+  {
+    "id": "wajo22_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The diagram shows the first three shapes in a sequence.<br>Each shape is composed of small shaded squares.<br>How many small shaded squares are in the tenth shape of the sequence?",
+    "image": "data/wajo/diagrams/d69bf35260e240.webp"
+  },
+  {
+    "id": "wajo22_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "If the side length of a square increases by $20 \\%$, by what percentage does the area of the square increase?"
+  },
+  {
+    "id": "wajo22_q4",
+    "number": "4",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Sophie has to choose seven different positive integers such that their mean (average) is 7.<br>What is the largest possible number that she could choose as one of the seven numbers?"
+  },
+  {
+    "id": "wajo22_q5",
+    "number": "5",
+    "marks": 2,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Before setting out on a trip, Mark's odometer and tripmeter read <br> \\begin{gather*} \\text{odometer:} &amp; 4631 \\\\ \n \\text{tripmeter:} &amp; 173.3 \\end{gather*}<br> where the odometer reads the number of kilometres driven since the car was purchased, and Mark resets the tripmeter each time he fills up with petrol.<br>After arriving at his destination without stops, Mark noticed that the digits in the odometer and tripmeter readings were exactly the same (and in the same order).<br>How many kilometres did Mark travel on this trip?"
+  },
+  {
+    "id": "wajo22_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A group of 2 girls and 24 boys sit at random around a round table.<br>If the probability that the two girls sit next to each other is $x \\%$, what is $x$ ?"
+  },
+  {
+    "id": "wajo22_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Rectangle $A B C D$ has side $A B=90$.<br>Let $X$ be the midpoint of $A B$ and<br>$Y$ be a point on $A D$ such that $A Y=30$.<br>If $\\angle X Y C$ is a right angle, what is the length of $A D$ ?"
+  },
+  {
+    "id": "wajo22_q8",
+    "number": "8",
+    "marks": 2,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The sum of a 3-digit number, whose digits are all non-zero, and the number obtained by reversing the order of its digits, is 1029.<br>What is the maximum possible difference of the two 3-digit numbers?"
+  },
+  {
+    "id": "wajo22_q9",
+    "number": "9",
+    "marks": 3,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Jocasta is going to ride her scooter on streets from home to school.<br>The diagram is a map where the straight lines are streets, with Jocasta's home at corner $A$ and her school at corner $B$.<br>The map represents a square that is 400 metres by 400 metres.<br>How many different 800-metre routes can Jocasta take?",
+    "image": "data/wajo/diagrams/8f752592fd1884.webp"
+  },
+  {
+    "id": "wajo22_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "What is the largest integer $n$ such that 2022 ! is a multiple of $5^{n}$ ?<br>Note. $m!=1 \\times 2 \\times 3 \\times \\cdots \\times m$."
+  },
+  {
+    "id": "wajo22_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A strip of copper 20 cm wide, $1710 \\pi \\mathrm{~cm}$ long and 1 mm thick is wrapped around a wooden tube whose diameter is 10 cm, so that the whole thing looks like a big roll of toilet paper. There is no space between the 1 mm layers of copper or between the copper and the wood.<br>How many centimetres is the diameter of the roll?"
+  },
+  {
+    "id": "wajo22_q12",
+    "number": "12",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Alice walks to an appointment at $5 \\mathrm{~km} / \\mathrm{h}$ for 36 minutes, but then realises that if she keeps going at that pace she will arrive 32 minutes late. So she starts running at $12 \\mathrm{~km} / \\mathrm{h}$ and ends up arriving 10 minutes early.<br>How many kilometres in total did Alice travel to her appointment?"
+  },
+  {
+    "id": "wajo22_q13",
+    "number": "13",
+    "marks": 4,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "How many 4-digit numbers $\\overline{a b c d}$ are such that $\\overline{a b}=c \\times d$ ?<br>Note. We use the notation $\\overline{x y \\ldots}$ to refer to the decimal representation of a number. For instance, $\\overline{x y z}=100 x+10 y+z$.<br>Example. 4267 satisfies the conditions of the problem since $4 \\times 10+2=\\overline{42}=6 \\times 7$."
+  },
+  {
+    "id": "wajo22_q14",
+    "number": "14",
+    "marks": 4,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Let $x$ and $y$ be real numbers such that<br>$$\n\\frac{2}{x}-\\frac{1}{y}=\\frac{1}{2 x+y}.\n$$<br>What is the value of $\\frac{x^{2}}{y^{2}}+\\frac{y^{2}}{x^{2}}$ ?"
+  },
+  {
+    "id": "wajo22_q15",
+    "number": "15",
+    "marks": 4,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "How many positive integers less than or equal to 200 have exactly 6 odd positive divisors (factors)?"
+  },
+  {
+    "id": "wajo22_q16",
+    "number": "16",
+    "marks": 4,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Triangle $A B C$ is such that $\\angle A C B=45^{\\circ}$ and $A B=22$.<br>A circle with diameter $A B$ meets side $A C$ at $M$ and side $B C$ at $N$.<br>What is the square of the length of $M N$ ?"
+  }
+]

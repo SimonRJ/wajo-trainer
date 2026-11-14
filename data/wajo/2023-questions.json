@@ -1,0 +1,149 @@
+[
+  {
+    "id": "wajo23_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The Astro-Zogarians, of planet Zog, use green and blue bank notes.<br>Three green notes and eight blue notes have a total value of 46 zogs. Eight green notes and three blue notes have a total value of 31 zogs.<br> How many zogs is the total value of two green notes and three blue notes?"
+  },
+  {
+    "id": "wajo23_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "After a game of footy, the 18 players of each team shook hands with each player from the opposing team, and with each of the 3 umpires.<br>How many handshakes occurred altogether?"
+  },
+  {
+    "id": "wajo23_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "What is the largest prime factor of 123321 ?"
+  },
+  {
+    "id": "wajo23_q4",
+    "number": "4",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Two circles with centres $C, D$, pass through each other's centre, and intersect in points $P, Q$.<br>The radius of each circle is 2.<br>Let $S$ be the area of the quadrilateral $C P D Q$.<br>What is the value of $S^{2}$ ?",
+    "image": "data/wajo/diagrams/65be000281fed3.webp"
+  },
+  {
+    "id": "wajo23_q5",
+    "number": "5",
+    "marks": 2,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "How many 3-digit numbers have an odd middle digit and are divisible by 12 ?"
+  },
+  {
+    "id": "wajo23_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Horatio keeps his porcupines in a large box in his backyard.<br>The box is a rectangular prism, which is open at the bottom so that the porcupines can graze. Rest assured that Horatio drilled lots of air-holes in the box.<br>The perimeter of the top face of the box is 36 metres, the perimeter of the front face is 38 metres, and the perimeter of the side face is 54 metres.<br>How many cubic metres is the volume of the box?"
+  },
+  {
+    "id": "wajo23_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Let $O X Y$ be a quarter of a circle as in the diagram. Let $O A B C$ be a rectangle, such that $A$ is on $O X$, $C$ is on $O Y$, and $B$ lies on the arc $X Y$.<br>If $A X=9$ and $C Y=2$, what is the radius of the circle?",
+    "image": "data/wajo/diagrams/5da2ba30308f1d.webp"
+  },
+  {
+    "id": "wajo23_q8",
+    "number": "8",
+    "marks": 2,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In a Chinese Checkers knockout tournament, there are 4321 participants.<br>In each game there is one winner and five losers; the five losers are then eliminated from the tournament and the winner goes through to the next round.<br>If the number of participants in a non-final round is not a multiple of 6, then some randomly chosen participants, at most 5, have a bye and go straight through to the next round.<br>The final round is played with at least two and at most six participants, and crowns one tournament winner.<br>How many games are played in the tournament altogether?"
+  },
+  {
+    "id": "wajo23_q9",
+    "number": "9",
+    "marks": 3,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "What is the largest integer less than 1000 that has the same remainders as 2023 when divided by each integer from 2 to 7, inclusive?"
+  },
+  {
+    "id": "wajo23_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The four sides of an isosceles trapezium are tangent to a circle.<br>The parallel sides of the trapezium have lengths 64 and 196.<br>What is the height (distance between the parallel sides) of the trapezium?<br>Note. A trapezium is isosceles if its opposite non-parallel sides have equal length."
+  },
+  {
+    "id": "wajo23_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Two trains leave Amble for Bramble, at the same time, on parallel tracks.<br>One train is a high-speed train, and is three times as fast as the other train.<br>When the high-speed train reaches Bramble, the slower train still has 320 km to travel. The slower train finally arrives at Bramble 3 h 12 min later than the high-speed train.<br>How many kilometres is the distance from Amble to Bramble?"
+  },
+  {
+    "id": "wajo23_q12",
+    "number": "12",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A 2023-digit number is made by concatenating consecutive odd numbers, starting with 5 :<br>$$\n579111315171921 \\ldots 99101 \\ldots 999 \\ldots\n$$<br>What is the number formed by the number's last 3 digits?<br><i>Note.</i> We concatenate numbers by writing numbers one after the other without spaces to form a larger number, e.g. concatenating 5, 7, 9, 11 we get 57911."
+  },
+  {
+    "id": "wajo23_q13",
+    "number": "13",
+    "marks": 4,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Let $A B C D$ be a square with area 204.<br>Let $E, F$ be the midpoints of sides $B C, C D$, respectively.<br>What is the area of the shaded region?",
+    "image": "data/wajo/diagrams/515180838bf26c.webp"
+  },
+  {
+    "id": "wajo23_q14",
+    "number": "14",
+    "marks": 4,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Mrs Bottleneck has a collection of 100 coloured balls which she keeps in her bathtub. There are red balls, white balls and pink balls.<br>Each red ball weighs 3 kg, each white ball weighs 2 kg, and each pink ball weighs 1 kg. The average weight of the red and white balls is $\\frac{7}{3} \\mathrm{~kg}$.<br>The average weight of the red and pink balls is $\\frac{10}{7} \\mathrm{~kg}$.<br>How many pink balls does Mrs Bottleneck have?"
+  },
+  {
+    "id": "wajo23_q15",
+    "number": "15",
+    "marks": 4,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Bob builds strings of letters, each containing 40 letters and made up of three blocks. The first block contains only $A \\mathrm{~s}$, the second block contains only $B \\mathrm{~s}$, and the third block contains only Cs. Each block contains at least one letter. Here is an example of one of the strings Bob built:<br>АААААААААААААААВ ВВВВВВСССССССССССССССССС.<br>Bob builds all the strings with the above properties.<br>How many strings does Bob build?"
+  },
+  {
+    "id": "wajo23_q16",
+    "number": "16",
+    "marks": 4,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Given that there is only one pair of positive integers ( $m, n$ ) satisfying<br>$$\n8^{m}=n^{3}+3 n^{2}+2 n+512,\n$$<br>what is the value of $m+n$?"
+  }
+]

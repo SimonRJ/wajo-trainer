@@ -1,0 +1,149 @@
+[
+  {
+    "id": "wajo24_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The regular hexagon $A B C D E F$ shown, has area 24. What is the area of $\\triangle A B D$ ?",
+    "image": "data/wajo/diagrams/2a41f49b29367f.webp"
+  },
+  {
+    "id": "wajo24_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "How many digits are needed to write the expression $8^{7} \\times 5^{25}$ in full?"
+  },
+  {
+    "id": "wajo24_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "After 15 women leave a party, there are 3 times as many men as women.<br>Later 40 men leave, so that then 7 times as many women as men remain.<br>How many women were there at the start of the party?"
+  },
+  {
+    "id": "wajo24_q4",
+    "number": "4",
+    "marks": 1,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Emilia wants to learn her multiplication tables up to 12.<br>She already knows her multiplication tables up to 6, and she knows that multiplication is commutative.<br>How many products will she have to memorise (on top of the ones she already knows)? Notes.<br>* By multiplication tables up to $n$ we mean all products $a \\times b$ where $a$ and $b$ are integers from 1 to $n$.<br>* To say that multiplication is commutative, means that the order of the factors of the product doesn't matter, i.e. $a \\times b=b \\times a$. So, once Emilia has learnt the value of $a \\times b$, she has effectively also learnt the value of $b \\times a$."
+  },
+  {
+    "id": "wajo24_q5",
+    "number": "5",
+    "marks": 2,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The numbers $146, a, b, c, d, 339$ form an arithmetic sequence (these numbers need not all be integers).<br>What is $a+b+c+d$ ?<br>Note. Numbers $x_{1}, x_{2}, x_{3}, \\ldots, x_{n}$ form an arithmetic sequence, if the difference between consecutive terms is some constant $\\Delta$, that is,<br>$$\n\\Delta=x_{2}-x_{1}=x_{3}-x_{2}=\\cdots=x_{n}-x_{n-1}\n$$<br>For such a sequence, $\\Delta$ is called the common difference.<br>For example, $1,3,5,7$ form an arithmetic sequence with common difference 2."
+  },
+  {
+    "id": "wajo24_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Call a positive integer <i>lightweight</i>, if the product of its digits is less than the sum of its digits.<br>How many <i>lightweight</i> positive integers less than 100 are there?"
+  },
+  {
+    "id": "wajo24_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A calculator used to sell for $\\$200$ but then the price increased by $x \\%$.\nFortunately, a sale is on now with a price reduction of $x \\%$ and the calculator is now selling for $\\$182$.\nWhat is $x$ ?"
+  },
+  {
+    "id": "wajo24_q8",
+    "number": "8",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In a rectangle $A B C D$ with length 140 and width 105, let the feet of the perpendiculars dropped from $A$ and $C$ to the diagonal $B D$ be $X$ and $Y$, respectively. Find the distance $X Y$.",
+    "image": "data/wajo/diagrams/7353905b7b3e28.webp"
+  },
+  {
+    "id": "wajo24_q9",
+    "number": "9",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Bella went for a work-out around a square park of side 400 metres.<br>Along the first side, she walked at $6 \\mathrm{~km} / \\mathrm{h}$.<br>Then she jogged along the second side at $12 \\mathrm{~km} / \\mathrm{h}$.<br>Along the third side she sprinted at $18 \\mathrm{~km} / \\mathrm{h}$.<br>Along the final side, Bella rode her bicycle at a furious $36 \\mathrm{~km} / \\mathrm{h}$.<br>How many km/h was Bella's average speed around the block?"
+  },
+  {
+    "id": "wajo24_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "How many positive integers less than or equal to 1000, have 5 as their smallest prime factor?"
+  },
+  {
+    "id": "wajo24_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A palindromic number is one that reads the same forwards and backwards, such as 6116 and 54345.<br>How many 4-digit palindromic numbers are divisible by 7 ?"
+  },
+  {
+    "id": "wajo24_q12",
+    "number": "12",
+    "marks": 3,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A line intersects two concentric circles in points $A, B, C, D$, as shown in the diagram.<br>Each of the line segments $A B$ and $C D$ has length 15, and line segment $B C$ has length 46.<br>Let $S$ be the area of the shaded region between the two circles.<br>Find $S / \\pi$.",
+    "image": "data/wajo/diagrams/7e5e9e63c16ebf.webp"
+  },
+  {
+    "id": "wajo24_q13",
+    "number": "13",
+    "marks": 4,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A mathematical contest consisted of three problems $A, B$, and $C$. The following facts are known.<br>\n(i) The 36 contestants all solved at least one of the three problems.<br>\n(ii) Of all the contestants who did not solve problem $A$, the number who solved $B$ was twice the number who solved $C$.<br>\n(iii) The number of contestants who solved only problem $A$ was one more than the number of contestants who solved $A$ and at least one other problem. <br>\n(iv) Of all contestants who solved just one problem, half did not solve problem $A$. How many contestants solved only problem $B$ ?"
+  },
+  {
+    "id": "wajo24_q14",
+    "number": "14",
+    "marks": 4,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Let $x$ and $y$ be integers satisfying<br>$$\n2024^{x}+4049=|2024-y|+y.\n$$<br>Find the remainder when $x+y$ is divided by 1000.<br>Note. $|a|$ is the absolute value of $a$, which is the distance that $a$ is from 0, on the number line; essentially, the sign of a negative number is stripped away.<br>For example, $|-5|=5$ and $|5|=5$."
+  },
+  {
+    "id": "wajo24_q15",
+    "number": "15",
+    "marks": 4,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Find the sum of all positive integers $n$ satisfying the following two conditions:<br>(i) $n$ is less than or equal to 400, and<br>(ii) $n$ has exactly 9 positive divisors."
+  },
+  {
+    "id": "wajo24_q16",
+    "number": "16",
+    "marks": 4,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Consider a quarter-circle $O A B$ of radius 92, with centre $O$, and perpendicular radii $O A$ and $O B$.<br>Inside quarter-circle $O A B$ are drawn a semicircle with diameter $O B$ and a small circle. The small circle touches:<br>the semicircle externally at one point, and the quarter-circle at a point on $O A$ and a point on arc $A B$.<br>What is the radius of the small circle?"
+  }
+]

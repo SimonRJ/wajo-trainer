@@ -4,14 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WAJO Trainer – Western Australian Junior Mathematics Olympiad training</title>
-<meta name="description" content="Free, complete training course for the WA Junior Mathematics Olympiad: lessons, 130+ practice problems, timed mock papers and team investigations.">
+<meta name="description" content="WAJO training with timed past papers, original mocks, worked solutions, maths working and lessons.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏅</text></svg>">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=exam-20261114">
+<link rel="stylesheet" href="vendor/katex/katex.min.css">
 </head>
 <body>
 <header class="top">
   <a class="brand" href="#/">🏅 <span>WAJO Trainer</span></a>
-  <nav id="nav">
+  <nav id="nav" aria-label="WAJO Trainer">
+    <a href="#/exams" data-r="exams">Exam centre</a>
     <a href="#/" data-r="home">Home</a>
     <a href="#/learn" data-r="learn">Learn</a>
     <a href="#/practice" data-r="practice">Practice</a>
@@ -24,9 +26,9 @@
 </header>
 <main id="app"><noscript>This site needs JavaScript turned on.</noscript></main>
 <footer>
-  <p>Unofficial practice site. Not affiliated with WAMOC or UWA. All questions here are original, written in the style of the competition.
-  Real past papers and solutions: <a href="https://enrichedmaths.maths.uwa.edu.au/wajo/" target="_blank" rel="noopener">official WAJO site</a>.</p>
-  <p>Your progress is saved only in this browser. Nothing is sent anywhere.</p>
+  <p>Unofficial WAJO training site. The lessons and mocks use original material.
+  Past paper questions and solutions are credited to WAJO (Western Australian Junior Mathematics Olympiad). <a href="https://enrichedmaths.maths.uwa.edu.au/wajo/" target="_blank" rel="noopener">official WAJO site</a>.</p>
+  <p>Exam responses and working are saved in this browser. Use Progress to back them up.</p>
 </footer>
 <script src="data/number.js?v=4"></script>
 <script src="data/algebra.js?v=4"></script>
@@ -34,6 +36,6 @@
 <script src="data/mocks.js?v=4"></script>
 <script src="data/team.js?v=4"></script>
 <script src="math.js?v=4"></script>
-<script src="app.js?v=4"></script>
+<script type="module" src="app.js?v=exam-20261114"></script>
 </body>
 </html>

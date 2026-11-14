@@ -1,0 +1,57 @@
+{
+  "wajo15_q1": {
+    "answer": 881,
+    "solution": "881, since the only way two primes add to an odd number is for one of them to be 2."
+  },
+  "wajo15_q2": {
+    "answer": 666,
+    "solution": "$$\n\\begin{aligned}\n&amp; \\lfloor\\pi\\rfloor \\times(\\lfloor\\pi\\rfloor \\times\\lfloor\\pi\\rfloor+\\lceil\\pi\\rceil) \\times\\left(\\lfloor\\pi\\rfloor^{\\lceil\\pi\\rceil}-\\lceil\\pi\\rceil^{\\lfloor\\pi\\rfloor}\\right)+\\lfloor\\pi\\rfloor \\\\\n \\\\\n&amp; =3 \\times(3 \\times 3+4) \\times\\left(3^{4}-4^{3}\\right)+3 \\\\\n \\\\\n&amp; =3 \\times(9+4) \\times(81-64)+3 \\\\\n \\\\\n&amp; =3 \\times 13 \\times 17+3 \\\\\n \\\\\n&amp; =663+3=666.\n\\end{aligned}\n$$"
+  },
+  "wajo15_q3": {
+    "answer": 16,
+    "solution": "Adam got $24 \\cdot 3-6=66$ points; so Eve got 44 points. Let $x$ be the number Eve got wrong. Then she got $36-x$ right, giving her $108-3x$ points, and she was penalised $x$ points, so her final score is $44=108-4x$.<br>Hence $4x=64$ or $x=16$."
+  },
+  "wajo15_q4": {
+    "answer": 648,
+    "solution": "The leading digit can be any digit except 0 (9 possibilities); then the middle digit can be any digit except what was chosen for the first digit (9 possibilities), and the units digit can be any digit except what was chosen for the first two digits (8 possibilities), i.e. there are $9 \\cdot 9 \\cdot 8=648$ 3-digit positive integers with no repeated digits."
+  },
+  "wajo15_q5": {
+    "answer": 54,
+    "solution": "The 2-digit multiples of 4 are: \\(12,16,20,24, \\ldots, 96\\), a total of 22 numbers. As they increase by the same amount, the sum of the first and the last, the second and the second-last, etc. is always 108, which implies that their mean will be \\(11 \\times 108 / 22 = 54\\).<br><br><b>Alternative 1.</b>The 2-digit multiples of 4 are: \\(12,16, \\ldots, 96\\). Observe that since they are in arithmetic progression, the means of first and last, second and second-last, etc. are all the same, which implies the overall mean is given by the mean of first and last, namely:<br>$$\n\\frac{12+96}{2}=54.\n$$<br><b>Alternative 2.</b> The total is<br>$$\n\\begin{aligned}\n12+16+\\cdots+96 &amp; =4(3+4+\\cdots+24), \\quad \\text { a total of } 22 \\text { numbers } \\\\\n&amp; =4(1+2+3+\\cdots+24-3) \\\\\n&amp; =4\\left(\\frac{24 \\cdot 25}{2}-3\\right) \\\\\n&amp; =4 \\cdot 297 \\\\\n\\therefore \\text { mean } &amp; =\\frac{4 \\cdot 297}{22} \\\\\n&amp; =\\frac{2 \\cdot 297}{11} \\\\\n&amp; =2 \\cdot 27=54.\n\\end{aligned}\n$$"
+  },
+  "wajo15_q6": {
+    "answer": 10,
+    "solution": "The digit sum of the total is $8+a+4+2+b+3=17+(a+b)$.<br>So $a+b=1$ or $10$, larger is $10$."
+  },
+  "wajo15_q7": {
+    "answer": 60,
+    "solution": "Let \\(x\\) be the radius of the circle, and hence half the side length of the square. Let \\(O\\) be the centre of the circle and square. Let \\(B\\) be the top right corner of the rectangle. Since the length of the rectangle is double the height, \\(B\\) must lie on the straight line between \\(A\\) and the middle of the right-hand side of the square, and so \\(B\\) lies at the intersection of this line and the circle. Extend the top of the rectangle from \\(B\\) to a point \\(X\\) on the vertical diameter of the circle. Then \\(B X O\\) is a right-angled triangle with sides \\(x-12, x-6\\) and \\(x\\).<br><img src=\"data/wajo/diagrams/e633a7768ab1ea.webp\" alt=\"Solution Diagram Q7\" class=\"wajo-diagram\" loading=\"lazy\"><br>Pythagoras' Theorem gives<br>$$\n\\begin{aligned}\n(x-12)^{2}+(x-6)^{2} &amp; =x^{2} \\\\\n0 &amp; =x^{2}-36 x+180 \\\\\n&amp; =(x-30)(x-6).\n\\end{aligned}\n$$<br>Hence, the solutions are \\(x=6\\) and \\(x=30\\), of which \\(x=6\\) gives a degenerate triangle with \\(B\\) on both the circle and square, contrary to the given information.<br>So the circle has radius 30 and the square has side length 60 cm."
+  },
+  "wajo15_q8": {
+    "answer": 59,
+    "solution": "Let $n$ be the number of bets Gertrude makes on the Beagles. To make a profit when the Beagles win she needs $n \\times 1.70 &gt; 100$ which means $n &gt; 100 / 1.7 \\approx 58.8$; so she'll need to make at least 59 bets on the Beagles.<br>On the other hand, if the Rockers win, she needs $(100-n) \\times 2.50 &gt; 100$, so that $n&lt;60$.<br>Hence the only solution is $n=59$."
+  },
+  "wajo15_q9": {
+    "answer": 48,
+    "solution": "$HE=50$, since in triangle $AEH$, $2(7,24,25)$ is a Pythagorean triple. Therefore $EF=50$, since $EFGH$ is a rhombus, implying $EB=40$, since in triangle $EBF$, $10(3,4,5)$ is also a Pythagorean triple.<br>$$\\therefore PQ = 48-40=8$$$$PS = 30-14=16$$$$\\therefore \\text{Perimeter}(PQRS) = 2(8+16) = 48.$$"
+  },
+  "wajo15_q10": {
+    "answer": 502,
+    "solution": "To give a zero on the end of a product, we need multiples of 5 and 2 as our inputs. There are clearly a surplus of multiples of 2 compared to the relatively scarce multiples of 5, as we examine the numbers from 1 to 2015, so we are really looking for how many multiples of 5 we have available to pair up with multiples of 2 and yield our zeros.<br>The number of 5s in 2015! is<br>$$\n\\begin{aligned}\n&amp; \\left\\lfloor\\frac{2015}{5}\\right\\rfloor+\\left\\lfloor\\frac{2015}{25}\\right\\rfloor+\\left\\lfloor\\frac{2015}{125}\\right\\rfloor+\\left\\lfloor\\frac{2015}{625}\\right\\rfloor &amp; =403+80+16+3 \\\\\n&amp;&amp; =502\n\\end{aligned}\n$$<br>So 2015! ends in 502 zeros."
+  },
+  "wajo15_q11": {
+    "answer": 200,
+    "solution": "Let \\(v\\) be Sahria's bicycle speed. Essentially, at speed \\(v / 3\\) she takes 4 minutes longer to cover 400 metres, i.e.<br>$$\n\\begin{aligned}\n4 &amp; =\\frac{400}{v / 3}-\\frac{400}{v} \\\\\n\\therefore v &amp; =300-100 \\\\\n&amp; =200\n\\end{aligned}\n$$<br>So Sahria rides her bicycle at \\(200 \\mathrm{~m} / \\mathrm{min}\\).<br><b>Alternatively,</b> say the distance to school is \\(d\\) metres and that Sahria rides her bike at \\(v\\) metres per minute. So she normally takes \\(d / v\\) minutes to get to school. On the day of the calamity she goes \\(2 d / 3\\) metres by bike, which takes \\(2 d /(3 v)\\) minutes, then \\(d / 3\\) metres at \\(v / 3\\) metres per minute which takes \\(d / v\\) minutes. The total time taken is therefore<br>$$\n\\frac{2 d}{3 v}+\\frac{d}{v} \\text { minutes }\n$$<br>which is 5 minutes longer than usual. So we have<br>$$\n\\frac{2 d}{3 v}+\\frac{d}{v}=\\frac{d}{v}+5\n$$<br>which implies \\(2 d / 3=5 v\\). If she had travelled 400 metres further by bike she would have spent<br>$$\n\\frac{2 d / 3+400}{v} \\text { minutes, }\n$$<br>riding and<br>$$\n\\frac{d-(2 d / 3+400)}{v / 3} \\text { minutes }\n$$<br>walking. She would then have arrived 1 minute later than usual. So we have<br>$$\n\\begin{aligned}\n\\frac{d}{v}+1 &amp; =\\frac{2 d / 3+400}{v}+\\frac{d-(2 d / 3+400)}{v / 3} \\\\\n&amp; =\\frac{2 d / 3+400}{v}+\\frac{3(d / 3-400)}{v} \\\\\n\\therefore d+v &amp; =\\frac{2 d}{3}+400+d-1200 \\\\\nv+800 &amp; =\\frac{2 d}{3} \\\\\n&amp; =5 v \\\\\n\\therefore 800 &amp; =4 v \\\\\nv &amp; =200.\n\\end{aligned}\n$$<br>So Sahria rides her bike at \\(200 \\mathrm{~m} / \\mathrm{min}\\)."
+  },
+  "wajo15_q12a": {
+    "answer": "144/49",
+    "solution": "(a) The horizontal distance between the centres of the larger two wheels can be represented as<br>$$\n\\sqrt{(16+9)^{2}-(16-9)^{2}}=\\sqrt{32 \\cdot 18}=24.\n$$<br>Similarly, the horizontal distance between the largest and smallest wheel centres is<br>$$\n\\sqrt{(16+x)^{2}-(16-x)^{2}}=\\sqrt{32 \\cdot 2 x}=8 \\sqrt{x}\n$$<br>and the horizontal distance between the medium and smallest wheel centres is<br>$$\n\\sqrt{(9+x)^{2}-(9-x)^{2}}=\\sqrt{18 \\cdot 2 x}=6 \\sqrt{x}.\n$$<br>But the first horizontal distance is the sum of the other two. So,<br>$$\n\\begin{aligned}\n24 &amp; =8 \\sqrt{x}+6 \\sqrt{x} \\\\\n&amp; =14 \\sqrt{x} \\\\\n12 &amp; =7 \\sqrt{x} \\\\\n\\frac{144}{49} &amp; =x.\n\\end{aligned}\n$$"
+  },
+  "wajo15_q12b": {
+    "answer": "ab/(sqrt(a)+sqrt(b))^2",
+    "solution": "(b) In general, if two wheels of radii \\(R\\) and \\(r\\) are on a plane and touching, then the horizontal distance between the centres is<br> $$\n\\begin{aligned}\nd(R, r) &amp; =\\sqrt{(R+r)^{2}-(R-r)^{2}} \\\\\n&amp; =\\sqrt{(R+r+R-r)(R+r-(R-r))} \\\\\n&amp; =\\sqrt{2 R \\cdot 2 r} \\\\\n&amp; =2 \\sqrt{R r}\n\\end{aligned}\n$$<br>So, if the radii of the larger wheels are \\(a\\) and \\(b\\), the radius \\(x\\) of the smallest wheel satisfies,<br>$$\n\\begin{aligned}\nd(a, b) &amp; =d(a, x)+d(x, b) \\\\\n\\therefore 2 \\sqrt{a b} &amp; =2 \\sqrt{a x}+2 \\sqrt{b x} \\\\\n\\sqrt{a b} &amp; =\\sqrt{a x}+\\sqrt{b x} \\\\\n&amp; =\\sqrt{x}(\\sqrt{a}+\\sqrt{b}) \\\\\n\\sqrt{x} &amp; =\\frac{\\sqrt{a b}}{\\sqrt{a}+\\sqrt{b}} \\\\\n\\therefore x &amp; =\\frac{a b}{(\\sqrt{a}+\\sqrt{b})^{2}}\n\\end{aligned}\n$$",
+    "images": [
+      "data/wajo/diagrams/f6a1e95ca02fdd.webp"
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "wajo22_q1": {
+    "answer": 604,
+    "solution": "$$\n\\begin{aligned}\n|A B C D E| &amp; =|A B C E|+|C D E| \\\\\n&amp; =C E^{2}+\\frac{1}{2} \\cdot D E \\cdot D C \\\\\n&amp; =D E^{2}+D C^{2}+\\frac{1}{2} \\cdot D E \\cdot D C \\\\\n&amp; =14^{2}+17^{2}+\\frac{1}{2} \\cdot 14 \\cdot 17 \\\\\n&amp; =196+289+7 \\cdot 17 \\\\\n&amp; =196+289+119 \\\\\n&amp; =604.\n\\end{aligned}\n$$",
+    "images": [
+      "data/wajo/diagrams/6c36180f0bcf3d.webp"
+    ]
+  },
+  "wajo22_q2": {
+    "answer": 92,
+    "solution": "Let $a_{n}$ be the number of square cells in the $n^{\\text {th }}$ pattern.<br>Observe that the $n^{\\text {th }}$ pattern may be constructed from four $2 \\times(n+2)$ rectangles (in two orientations), except that doing so overlays 4 of the squares twice. Hence,<br>$$\n\\begin{aligned}\na_{n} &amp; =4 \\cdot 2 \\cdot(n+2)-4 \\\\\n&amp; =8 n+12 \\\\\n\\therefore a_{10} &amp; =8 \\cdot 10+12 \\\\\n&amp; =92.\n\\end{aligned}\n$$<br><b>Alternatively,</b> we can calculate $a_{n}$ as the difference of a square of side $(n+4)$ and a square of side $n$, minus 4 corner squares:<br>$$\n\\begin{aligned}\na_{n} &amp; =(n+4)^{2}-n^{2}-4 \\\\\n&amp; =2 \\cdot 4 n+4^{2}-4 \\\\\n&amp; =8 n+12.\n\\end{aligned}\n$$<br>Then $a_{10}=92$ as above."
+  },
+  "wajo22_q3": {
+    "answer": 44,
+    "solution": "Take a unit square; after a $20 \\%$ increase of its sides, their lengths are 1.2. Hence the new area is $1.2^{2}=1.44$, an increase in area of $44 \\%$."
+  },
+  "wajo22_q4": {
+    "answer": 28,
+    "solution": "The largest possible number $x$ is obtained when six of the numbers are as small as they can be, namely: $1,2,3,4,5,6$, since all the positive integers are required to be different, i.e.<br>$$\n\\begin{aligned}\n7 &amp; =\\frac{1+2+3+4+5+6+x}{7} \\\\\n\\therefore x &amp; =7 \\cdot 7-(1+2+3+4+5+6) \\\\\n&amp; =7 \\cdot 7-\\frac{6}{2}(1+6) \\\\\n&amp; =7(7-3) \\\\\n&amp; =28.\n\\end{aligned}\n$$<br>And note that 28 is different from each of the other numbers $1,2, \\ldots, 6$."
+  },
+  "wajo22_q5": {
+    "answer": 322,
+    "solution": "Let the distance Mark travelled be $x \\mathrm{~km}$. Then<br>$$\n\\begin{aligned}\n4631+x &amp; =10(173.3+x) \\\\\n&amp; =1733+10 x \\\\\n9 x &amp; =4631-1733 \\\\\n&amp; =2898 \\\\\nx &amp; =322 \\mathrm{~km}\n\\end{aligned}\n$$<br>So Mark travelled 322 km, at which time the readings were:<br> \\begin{gather*} \\text{odometer:} 4953 \\\\ \n \\text{tripmeter:} 495.3 \\end{gather*}"
+  },
+  "wajo22_q6": {
+    "answer": 8,
+    "solution": "Imagine the first girl chooses a chair around the table to sit at. Now there are 25 places where the other girl can sit; 2 of those places are beside the first girl, i.e. the probability the girls sit together is $2 / 25=8 \\%$."
+  },
+  "wajo22_q7": {
+    "answer": 165,
+    "solution": "Let $x=A D=B C$. Then<br>$$\n\\begin{aligned}\n45^{2}+x^{2} &amp; =X B^{2}+B C^{2} \\\\\n&amp; =X C^{2} \\\\\n&amp; =X Y^{2}+Y C^{2} \\\\\n&amp; =A X^{2}+A Y^{2}+Y D^{2}+D C^{2} \\\\\n&amp; =45^{2}+30^{2}+(x-30)^{2}+90^{2} \\\\\n\\therefore 30^{2}+90^{2} &amp; =x^{2}-(x-30)^{2} \\\\\n&amp; =30 \\cdot(x+x-30) \\\\\n\\therefore 2 x-30 &amp; =30+3 \\cdot 90 \\\\\nx &amp; =\\frac{1}{2}(30+30+3 \\cdot 90) \\\\\n&amp; =\\frac{1}{2} \\cdot 330 \\\\\n&amp; =165 .\n\\end{aligned}\n$$<br><b>Alternatively,</b> since $\\angle X Y C=90^{\\circ}$, and triangles $A X Y, D Y C$ are right-angled,<br>$$\n\\begin{aligned}\n \\angle A Y X, &amp; \\angle D Y C \\text{ are complementary, } \\\\\n \\angle A Y X, &amp; \\angle A X Y \\text{ are complementary, and } \\\\\n \\angle D C Y, &amp; \\angle D Y C \\text{ are complementary } \\\\\n \\therefore \\angle A Y X &amp; =\\angle D C Y \\text{ and } \\\\\n \\angle A X Y &amp; =\\angle D Y C \\\\\n \\therefore \\triangle A X Y &amp; \\sim \\triangle D Y C, \\text{ by AA Rule } \\\\\n \\therefore \\frac{45}{30}=\\frac{A X}{A Y} &amp; =\\frac{D Y}{D C}=\\frac{x-30}{90} \\\\\nx-30 &amp; =90 \\cdot \\frac{45}{30} \\\\\n&amp;=3 \\cdot 45 \\\\\nx &amp; =135+30 \\\\\n&amp;=165 .\n\\end{aligned}\n$$",
+    "images": [
+      "data/wajo/diagrams/f835d64fa8ae72.webp"
+    ]
+  },
+  "wajo22_q8": {
+    "answer": 693,
+    "solution": "Let the 3-digit number be $\\overline{a b c}$. Then<br>$$\n\\begin{aligned}\n1029 &amp; =\\overline{a b c}+\\overline{c b a} \\\\\n&amp; =101(a+c)+20 b \\\\\n\\therefore 9 &amp; \\equiv a+c \\quad(\\bmod 10)\n\\end{aligned}\n$$<br>Since $2 \\leqslant a+c \\leqslant 18$, there is only one possibility for $a+c$, namely<br>$$\na+c=9,\n$$<br>in which case,<br>$$\n\\begin{aligned}\n20 b &amp; =1029-101 \\cdot 9 \\\\\n&amp; =120 \\\\\n\\therefore b &amp; =6 \\text{ (only possibility). }\n\\end{aligned}\n$$<br>Thus, the largest possible difference for $\\overline{a b c}$ and $\\overline{c b a}$ is achieved when $a$ and $c$ are 1 and 8. Therefore, the largest difference is:<br>$$\n861-168=693.\n$$"
+  },
+  "wajo22_q9": {
+    "answer": 24,
+    "solution": "The best way to count the routes is to count the number of ways Jocasta has for getting from $A$ to each intersection. These are the numbers shown on the diagram.<br>There is only 1 way of getting to $A$ so that gets a number 1, and there's only one way to get to the intersection immediately north of $A$ so that also gets a 1. The same is true for the intersection immediately to $A$'s east. There are two ways to get to the intersection north east of $A$. The general rule is that if an intersection can be reached from the south or the west its number is the sum of the numbers on the intersections to the south and west. If it can only be approached from one intersection it gets the number on that intersection. These rules allow us to systematically fill in all the intersections and find that there are 24 possible paths.",
+    "images": [
+      "data/wajo/diagrams/0719678b5289fd.webp"
+    ]
+  },
+  "wajo22_q10": {
+    "answer": 503,
+    "solution": "For each factor of 5 that occurs in the numbers $1,2, \\ldots, 2022$ that are divisible by 5 we draw a $*$ and count the $*$s:<br>$$\n\\begin{align*}\n\\text{The number of } *\\text{s in row 1 is: } &amp; \\left\\lfloor\\frac{2022}{5}\\right\\rfloor=404 \\\\\n\\text{row 2 is: } &amp; \\left\\lfloor\\frac{2022}{25}\\right\\rfloor=80 \\\\\n\\text{row 3 is: } &amp; \\left\\lfloor\\frac{2022}{125}\\right\\rfloor=16 \\\\\n\\text{row 4 is: } &amp; \\left\\lfloor\\frac{2022}{625}\\right\\rfloor=3 \\\\\n\\hline\n \\text{giving a otal number of } *\\text{s} &amp; \\hspace{1.6cm} = 503\n\\end{align*}\n$$<br>Thus $n=503$.",
+    "images": [
+      "data/wajo/diagrams/396960c70e6da9.webp"
+    ]
+  },
+  "wajo22_q11": {
+    "answer": 28,
+    "solution": "Let $R$ be the radius of the roll. Then, the cross-sectional area of the roll is,<br>$$\n\\begin{aligned}\n\\pi R^{2} &amp; =\\text{ tube_cross-sectional_area }+ \\text{ rolled_copper_cross-sectional_area } \\\\\n&amp; =\\pi(10 / 2 \\mathrm{~cm})^{2}+1710 \\pi \\mathrm{~cm} \\cdot 1 \\mathrm{~mm} \\\\\n&amp; =(25 \\pi+171 \\pi) \\mathrm{cm}^{2} \\\\\n&amp; =196 \\pi \\mathrm{~cm}^{2} \\\\\n\\therefore R &amp; =14 \\mathrm{~cm}\n\\end{aligned}\n$$<br>So the diameter of the roll is $2 R=2 \\times 14=28 \\mathrm{~cm}$."
+  },
+  "wajo22_q12": {
+    "answer": 9,
+    "solution": "Let $x \\mathrm{~km}$ be the distance remaining after having walked for 36 minutes. Then walking $x$ would have taken $32+10=42$ minutes longer to walk than run, i.e.<br>$$\n\\begin{aligned}\n\\frac{x}{5} &amp; =\\frac{x}{12}+\\frac{42}{60} \\mathrm{~h} \\\\\n\\therefore 12 x &amp; =5 x+42 \\\\\n7 x &amp; =42 \\\\\nx &amp; =6 \\mathrm{~km} \\\\\n\\therefore \\text{ total_distance } &amp; =\\text{ distance_walked }+x \\\\\n&amp; =5 \\cdot \\frac{36}{60}+6 \\\\\n&amp; =3+6 \\\\\n&amp; =9 \\mathrm{~km}\n\\end{aligned}\n$$<br>Therefore, Alice walked or ran 9 km to her appointment."
+  },
+  "wajo22_q13": {
+    "answer": 58,
+    "solution": "The condition $\\overline{a b}=c \\times d$ is equivalent to<br>$$\n10 a+b=c \\times d,\n$$<br>which essentially determines ( $a, b$ ) in terms of the parameters $c$ and $d$, subject to $c d \\geqslant 10$, since $a \\neq 0$. Thus, we need only count the number of ordered pairs $(c, d)$ that satisfy $c, d \\in\\{0,1,2, \\ldots, 9\\}$ and $c d \\geqslant 10$ :<br>For $c \\in\\{0,1\\}$, there are no possibilities for $d$.<br>$$\n\\begin{aligned}\nc=2 &amp; \\Longrightarrow d \\in\\{5,6,7,8,9\\} &amp; &amp; \\text{(5 possibilities) } \\\\\nc=3 &amp; \\Longrightarrow d \\in\\{4,5,6,7,8,9\\} &amp; &amp; (6 \\text{ possibilities) } \\\\\nc=4 &amp; \\Longrightarrow d \\in\\{3,4,5,6,7,8,9\\} &amp; &amp; (7 \\text{ possibilities) } \\\\\nc \\in\\{5, \\ldots, 9\\} &amp; \\Longrightarrow d \\in\\{2,3,4,5,6,7,8,9\\} &amp; &amp; (8 \\text{ possible } d, \\text{ for each of } 5 \\text{ possible } c \\text{ ) }\n\\end{aligned}\n$$<br>Thus, the number of possibilities is<br>$$\n5+6+7+8 \\times 5=58.\n$$<br><b>Alternatively,</b> as above, the condition $\\overline{a b}=c \\times d$ is equivalent to<br>$$\n10 a+b=c \\times d,\n$$<br>which essentially determines $(a, b)$ in terms of the parameters $c$ and $d$, subject to $c d \\geqslant 10$. Now, $c d \\geqslant 10$ implies $c, d \\geqslant 2$, i.e. $c, d \\in\\{2,3,4, \\ldots, 9\\}$. Thus we have $8 \\times 8=64$ possibilities for $(c, d)$, minus the number of such pairs for which $c d&lt;10$. There are 6 pairs for which $c, d \\geqslant 2$ but $c d&lt;10$, namely<br>$$\n(2,2),(2,3),(3,2),(2,4),(4,2),(3,3).\n$$<br>Thus, the number of 4 -digit numbers $\\overline{a b c d}$ such that $\\overline{a b}=c \\times d$, is $64-6=58$."
+  },
+  "wajo22_q14": {
+    "answer": 3,
+    "solution": "First observe that denominators cannot be 0. Hence,<br>$$\nx \\neq 0, y \\neq 0,(\\text { and hence } x y \\neq 0) \\text {, and } y \\neq-2 x.\n$$<br>Thus, we have,<br>$$\n\\begin{aligned}\n\\frac{1}{2 x+y} &amp; =\\frac{2}{x}-\\frac{1}{y} \\\\\n&amp; =\\frac{2 y-x}{x y} \\\\\nx y &amp; =(2 y-x)(2 x+y) \\\\\n&amp; =3 x y-2 x^{2}+2 y^{2} \\\\\n0 &amp; =2 x y-2 x^{2}+2 y^{2} \\\\\n0 &amp; =x y-x^{2}+y^{2} \\\\\n0 &amp; =1-\\frac{x}{y}+\\frac{y}{x}, \\text{ since } x y \\neq 0 \\\\\n\\therefore 1 &amp; =\\frac{x}{y}-\\frac{y}{x} \\\\\n\\therefore 1 &amp; =\\left(\\frac{x}{y}-\\frac{y}{x}\\right)^{2} \\\\\n&amp; =\\frac{x^{2}}{y^{2}}+\\frac{y^{2}}{x^{2}}-2 \\\\\n\\therefore \\frac{x^{2}}{y^{2}}+\\frac{y^{2}}{x^{2}} &amp; =3.\n\\end{aligned}\n$$<br><b>Alternatively,</b> let $a=x / y$ and $b=y / x$. Then $a b=1$, and the value of $a^{2}+b^{2}$ is what we are required to find:<br>$$\n\\begin{aligned}\n\\frac{2}{x}-\\frac{1}{y} &amp; =\\frac{1}{2 x+y} \\\\\n2-\\frac{x}{y} &amp; =\\frac{x}{2 x+y} \\\\\n&amp; =\\frac{1}{2+y / x} \\\\\n2-a &amp; =\\frac{1}{2+b} \\\\\n1 &amp; =(2-a)(2+b) \\\\\n&amp; =4-2 a+2 b-a b \\\\\n&amp; =4-2 a+2 b-1 \\\\\n2 a-2 b &amp; =2 \\\\\na-b &amp; =1 \\\\\n1 &amp; =(a-b)^{2} \\\\\n&amp; =a^{2}-2+b^{2} \\\\\na^{2}+b^{2} &amp; =3.\n\\end{aligned}\n$$"
+  },
+  "wajo22_q15": {
+    "answer": 14,
+    "solution": "Consider a positive integer $N$ and suppose<br>$$\nN=p_{1}^{e_{1}} p_{2}^{e_{2}} \\ldots p_{k}^{e_{k}},\n$$<br>is its prime decomposition, where $p_{1}, p_{2}, \\ldots, p_{k}$ are prime and $e_{1}, e_{2}, \\ldots, e_{k} \\geqslant 1$. Then the positive divisors of $N$ are of form<br>$$\np_{1}^{f_{1}} p_{2}^{f_{2}} \\ldots p_{k}^{f_{k}},\n$$<br>where $f_{i} \\in\\left\\{0,1, \\ldots, e_{i}\\right\\}$ for each $i$. That is, there are $e_{i}+1$ possibilities for $f_{i}$ for each $i$, and hence $N$ has<br>$$\n\\left(e_{1}+1\\right)\\left(e_{2}+1\\right) \\cdots\\left(e_{k}+1\\right)\n$$<br>positive divisors. Thus, in order to find $N$ with 6 positive divisors we must write 6 as a product of numbers of form $e_{i}+1$, where $e_{i} \\geqslant 1$. There are two ways:<br>$$\n6=5+1 \\text{ or } 6=(1+1)(2+1),\n$$<br>since $6=2 \\times 3$ (prime decomposition). Thus numbers $N$ of form $p_{1}^{5}$ or of form $p_{1}^{1} p_{2}^{2}$ have 6 positive divisors, where $p_{1}, p_{2}$ are different primes.<br>To have 6 odd positive divisors, the least number of form $p_{1}^{5}$ is $3^{5}=243&gt;200$.<br>So to have 6 odd positive divisors, and be at most $200, N=2^{a} p^{2} q$ for odd distinct primes $p, q$, and $a$ a non-negative integer.<br>First, consider the case: $a=0$. The possibilities for $N$ are:<br>$$\n3^{2} \\cdot 5,3^{2} \\cdot 7,3^{2} \\cdot 11,3^{2} \\cdot 13,3^{2} \\cdot 17,3^{2} \\cdot 19,5^{2} \\cdot 3,5^{2} \\cdot 7,7^{2} \\cdot 3.\n$$<br>With $a=1$, the possibilities for $N$ are:<br>$$\n2 \\cdot 3^{2} \\cdot 5,2 \\cdot 3^{2} \\cdot 7,2 \\cdot 3^{2} \\cdot 11,2 \\cdot 5^{2} \\cdot 3.\n$$<br>And for $a=2$, the only possibility for $N$ is:<br>$$\n2^{2} \\cdot 3^{2} \\cdot 5.\n$$<br>Hence, in all, there are 14 such positive integers less than or equal to 200 that have exactly 6 odd positive divisors."
+  },
+  "wajo22_q16": {
+    "answer": 242,
+    "solution": "Let $K$ be the midpoint of $A B$. Then<br>$$\n\\begin{aligned}\nK A &amp; =K B=K N=11 \\\\\n\\angle M K N &amp; =180^{\\circ}-\\angle A K M-\\angle B K N \\\\\n&amp; =180^{\\circ}-\\left(180^{\\circ}-2 \\angle A\\right)-\\left(180^{\\circ}-2 \\angle B\\right) \\\\\n&amp; =2 \\angle A+2 \\angle B-180^{\\circ} \\\\\n&amp; =2\\left(180^{\\circ}-\\angle C\\right)-180^{\\circ} \\\\\n&amp; =180^{\\circ}-2 \\angle C \\\\\n&amp; =90^{\\circ} \\\\\n\\therefore M N^{2} &amp; =K M^{2}+K N^{2} \\\\\n&amp; =2 \\cdot 11^{2} \\\\\n&amp; =242 .\n\\end{aligned}\n$$<br><b>Alternatively,</b><br>$$\n\\begin{aligned}\n90^{\\circ} &amp; =\\angle A N B, &amp;&amp; \\text{(angle in a semicircle)} \\\\\n&amp; =\\angle C A N+\\angle A C N, &amp;&amp; \\text{(exterior angle of } \\triangle A N C \\text{ is sum of} \\\\\n&amp; &amp;&amp; \\text{interior opposite angles)} \\\\\n&amp; =\\angle M A N+\\angle A C B, &amp;&amp; \\text{(same angles)} \\\\\n&amp; =\\angle M A N+45^{\\circ} \\\\\n45^{\\circ} &amp; =\\angle M A N \\\\\n&amp; =\\frac{1}{2} \\angle M K N, &amp;&amp; \\text{(angle at centre of circle is twice angle at} \\\\\n&amp; &amp;&amp; \\text{circumference, subtended by same arc } M N) \\\\\n\\angle M K N &amp; =90^{\\circ} \\\\\nK A &amp; =K B=K N=11 \\\\\n\\therefore M N^{2} &amp; =K M^{2}+K N^{2} \\\\\n&amp; =2 \\cdot 11^{2} \\\\\n&amp; =242 .\n\\end{aligned}\n$$",
+    "images": [
+      "data/wajo/diagrams/655b7f2c737d99.webp"
+    ]
+  }
+}

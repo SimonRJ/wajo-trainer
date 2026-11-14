@@ -1,0 +1,53 @@
+{
+  "wajo17_q1": {
+    "answer": 52,
+    "solution": "Let \\(\\angle A B D=4 x\\).<br>Then \\(\\angle A C B=x+6\\) and we want \\(\\angle A B C=180^{\\circ}-4 x\\).<br>Since for a triangle, an exterior angle is the sum of the interior opposite angles,<br>$$\n\\begin{aligned}\n4 x &amp; =x+6+90 \\\\\n3 x &amp; =96 \\\\\nx &amp; =32 \\\\\n\\therefore \\angle A B C=180^{\\circ}-4 x &amp; =180^{\\circ}-128^{\\circ} \\\\\n&amp; =52^{\\circ}\n\\end{aligned}\n$$",
+    "images": [
+      "data/wajo/diagrams/cc2296ccfba41c.webp"
+    ]
+  },
+  "wajo17_q2": {
+    "answer": 85,
+    "solution": "Let Geppetto's age now be \\(x\\). Then<br>$$\n\\begin{aligned}\n6(x+6)+7(x+7) &amp; =14 x \\\\\n36+49 &amp; =x \\\\\n\\therefore x &amp; =85.\n\\end{aligned}\n$$"
+  },
+  "wajo17_q3": {
+    "answer": 504,
+    "solution": "Let \\(n, n+1\\) be the consecutive integers. Then<br>$$\n\\begin{aligned}\n2017 &amp; =(n+1)^{2}-n^{2} \\\\\n&amp; =2 n+1 \\\\\n&amp; =n+(n+1) \\\\\n\\therefore n &amp; =2016 / 2 \\\\\n&amp; =1008\n\\end{aligned}\n$$<br>i.e. the even one of the two consecutive integers is \\(n=1008\\) and half of it is 504."
+  },
+  "wajo17_q4": {
+    "answer": 8,
+    "solution": "\\(1400=8 \\cdot 25 \\cdot 7=2^{3} \\cdot 5^{2} \\cdot 7\\) and \\(280=2^{3} \\cdot 5 \\cdot 7\\).<br>Hence \\(y=2^{a} \\cdot 5^{b} \\cdot 7^{c}\\), where we require<br>$$\n\\begin{align*}\n\\max \\{3, a\\} &amp; =3 \\Longrightarrow a=0,1,2 \\text { or } 3 &amp; \\text{(4 possibilities)} \\\\\n\\max \\{1, b\\} &amp; =2 \\Longrightarrow b=2 &amp; \\text {(1 possibility)} \\\\\n\\max \\{1, c\\} &amp; =1 \\Longrightarrow c=0 \\text { or } 1 &amp; \\text {(2 possibilities)}\n\\end{align*}\n$$<br>Thus the number of choices for the triple ( \\(a, b, c\\) ) (and hence of \\(y\\) ) is \\(4 \\times 1 \\times 2=8\\)."
+  },
+  "wajo17_q5": {
+    "answer": 220,
+    "solution": "Since $9^{2}=81$, the digits $a, b \\in \\{1,2, \\ldots, 8\\}$.<br>The larger of the 2 digits is at least 6, since $5^{2}&lt;\\frac{1}{2} \\cdot 65$.<br>Now $65-6^{2}=29$, is not a square.<br>This leaves checking whether 7 and 8 could be one of the digits. Indeed,<br>$$7^{2}+4^{2}=65=8^{2}+1^{2}.$$<br>So there are 4 good numbers: $18,47,74$, and $81$, and their sum is<br>$$18+47+74+81=220.$$"
+  },
+  "wajo17_q6": {
+    "answer": 38,
+    "solution": "Let \\(m, d, c_{1}, c_{2}, c_{3}\\) be the ages of the mother, father and three children, respectively. Then<br>$$\n\\begin{aligned}\n\\frac{1}{5}\\left(d+m+c_{1}+c_{2}+c_{3}\\right) &amp; =21 \\\\\n\\text { and } \\frac{1}{3}\\left(c_{1}+c_{2}+c_{3}\\right) &amp; =11 \\\\\n\\therefore \\frac{1}{5}(d+m+3 \\cdot 11) &amp; =21 \\\\\nd+m+33 &amp; =105 \\\\\nd+m &amp; =72 \\\\\nd+d-4 &amp; =72, \\quad \\text { since } d=m+4 \\\\\n2 d &amp; =76 \\\\\nd &amp; =38.\n\\end{aligned}\n$$<br>So the father is 38."
+  },
+  "wajo17_q7": {
+    "answer": 29,
+    "solution": "$$\n\\begin{aligned}\nx y &amp; =\\left(x^{2}+2 x y+y^{2}\\right)-\\left(x^{2}+x y+y^{2}\\right) \\\\\n&amp; =(x+y)^{2}-\\left(x^{2}+x y+y^{2}\\right) \\\\\n&amp; =11^{2}-92 \\\\\n&amp; =121-92=29.\n\\end{aligned}\n$$<br>Remark. The solutions for \\(x, y\\) are irrational, being the solutions of the quadratic equation<br>$$\n\\begin{aligned}\n&amp; u^{2}-11 u+29=0, \\\\\n&amp; \\text { namely }\\{x, y\\}=\\left\\{\\frac{1}{2}(11+\\sqrt{5}), \\frac{1}{2}(11-\\sqrt{5})\\right\\}.\n\\end{aligned}\n$$"
+  },
+  "wajo17_q8": {
+    "answer": 336,
+    "solution": "Let the length and breadth of the rectangle be $\\ell$ and $b$, respectively. Then the shaded area is the area of the rectangle minus the areas of the four unshaded triangles, i.e.<br>$$\\begin{aligned}\\text{Shaded area} &amp; =630-\\frac{1}{2} \\cdot \\frac{3}{4} \\ell \\cdot \\frac{2}{5} b-\\frac{1}{2} \\cdot \\frac{1}{2} \\ell \\cdot \\frac{3}{5} b-\\frac{1}{2} \\cdot \\frac{1}{2} \\ell \\cdot \\frac{1}{3} b-\\frac{1}{2} \\cdot \\frac{1}{4} \\ell \\cdot \\frac{2}{3} b \\\\&amp; =630\\left(1-\\frac{1}{2}\\left(\\frac{3}{4} \\cdot \\frac{2}{5}+\\frac{1}{2} \\cdot \\frac{3}{5}+\\frac{1}{2} \\cdot \\frac{1}{3}+\\frac{1}{4} \\cdot \\frac{2}{3}\\right)\\right), \\text{ since } \\ell b=630 \\\\&amp; =630\\left(1-\\frac{1}{2}\\left(\\frac{3}{10}+\\frac{3}{10}+\\frac{1}{6}+\\frac{1}{6}\\right)\\right) \\\\&amp; =630\\left(1-\\frac{1}{2}\\left(\\frac{3}{5}+\\frac{1}{3}\\right)\\right) \\\\&amp; =630\\left(1-\\frac{1}{2} \\cdot \\frac{14}{15}\\right) \\\\&amp; =630 \\cdot \\frac{8}{15} \\\\&amp; =21 \\cdot 16 \\\\&amp; =336.\\end{aligned}$$"
+  },
+  "wajo17_q9": {
+    "answer": 40,
+    "solution": "The total of their speeds is \\(15 \\mathrm{~km} / \\mathrm{h}\\).<br>So they will reduce the distance 5 km between them to zero, in \\(\\frac{1}{3} \\mathrm{~h}=20\\) minutes. Therefore they should leave home at \\(12: 40 \\mathrm{pm}\\), i.e. 40 minutes after 12 noon.<br><br><b>Alternatively,</b> suppose Ayesha cycles \\(d \\mathrm{~km}\\), so that Brian cycles \\((5-d) \\mathrm{~km}\\). Then the time \\(t\\) in hours they both travel is<br>$$\n\\begin{aligned}\nt=d / 8 &amp; =(5-d) / 7 \\\\\n7 d &amp; =8(5-d) \\\\\n&amp; =40-8 d \\\\\n15 d &amp; =40 \\\\\nd &amp; =\\frac{8}{3} \\\\\n\\therefore t=d / 8 &amp; =\\frac{1}{3} \\mathrm{~h} \\\\\n&amp; =20 \\mathrm{~min}\n\\end{aligned}\n$$<br>and so they each leave 20 minutes before 1:00 pm and hence 40 minutes after 12 noon."
+  },
+  "wajo17_q10": {
+    "answer": 322,
+    "solution": "The number of partially pink \\(1 \\mathrm{~cm}^{3}\\) cubes is the total number of cubes minus the number of cubes in the inner prism with no paint on them, i.e.<br>No. of partially pink faces<br>$$\n\\begin{aligned}\n&amp; =5 \\times 8 \\times 13-(5-2) \\times(8-2) \\times(13-2) \\\\\n&amp; =520-3 \\times 6 \\times 11 \\\\\n&amp; =520-198 \\\\\n&amp; =322\n\\end{aligned}\n$$<br><b>Alternatively,</b> the number of partially pink \\(1 \\mathrm{~cm}^{3}\\) cubes is the number in the top and bottom faces, plus the number in the front and back faces not in the top and bottom faces, plus the number in the left and right faces neither in the top or bottom, or front or back faces, i.e.<br>No. of partially pink faces<br>$$\n\\begin{aligned}\n&amp; =2 \\times 13 \\times 8+2 \\times 13 \\times(5-2)+2 \\times(8-2) \\times(5-2) \\\\\n&amp; =2 \\times(13 \\times(8+5-2)+(8-2) \\times(5-2)) \\\\\n&amp; =2 \\times(13 \\times 11+6 \\times 3) \\\\\n&amp; =2(143+18) \\\\\n&amp; =322\n\\end{aligned}\n$$"
+  },
+  "wajo17_q11": {
+    "answer": 26,
+    "solution": "The overall effect of each operation is that one ball is added to the jar; so after 36 operations there are $2+36=38$ balls in the jar.<br>(Note that 36 operations can certainly be carried out, since, firstly, $36&lt;98$ so that there are always sufficient balls in the box to carry out the operation. Secondly, since the number of balls in the jar is never more than 36, and one of the balls in the jar is initially red, at any one time at most 35 of the red balls initially in the box can have been removed; so that there are always more than 2 red balls in the box. Thirdly, the jar initially has 2 balls and hence never less than 1 ball.)<br>There are 100 balls altogether; so there are now $100-38=62$ balls in the box. Since 36 are red the remaining $62-36=26$ are green."
+  },
+  "wajo17_q12": {
+    "answer": 14,
+    "solution": "Let the third side be $c$. To form a valid triangle, we require<br>\\begin{gather} 9 + c &gt; 40 \\text{ and } 9+40&gt;c \\\\ \n \\therefore 31 &lt; c &lt; 49 \\end{gather}<br>In order for a triangle with sides $a, b$ and $\\ell$, with $\\ell$ the longest side, to be obtuse, $\\ell$ must be longer than the hypotenuse of a right angled triangle with legs $a$ and $b$, i.e.<br>$$\\ell^{2}&gt;a^{2}+b^{2}$$<br>Thus if $c&lt;40$ we require<br>$$\\begin{aligned}40^{2} &amp; &gt;9^{2}+c^{2} \\\\c^{2} &amp; &lt;40^{2}-9^{2} \\\\&amp; =1519 \\\\c &amp; \\leq 38.\\end{aligned}$$<br>And, if $c&gt;40$ we require<br>$$c^{2}&gt;9^{2}+40^{2}.$$<br>Note that $9,40,41$ is a Pythagorean triad. To see this observe that,<br>$$\\begin{aligned}9^{2} &amp; =40+41 \\\\&amp; =(41+40)(41-40) \\\\&amp; =41^{2}-40^{2} \\\\\\therefore 9^{2}+40^{2} &amp; =41^{2}\\end{aligned}$$<br>Thus, if $c&gt;40$, to have an obtuse triangle $c&gt;41$.<br>Therefore, we have $31 &lt; c \\leq 38$ or $41 &lt; c &lt; 49$. Counting the integers: $38-31=7$ possibilities for the first case (32 to 38 inclusive). For the second case, $48-41=7$ possibilities (42 to 48 inclusive). So in total there are $7+7=14$ possibilities."
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "source": "https://www.problemsolvingeducation.com/wajopractise",
+  "official": "https://enrichedmaths.maths.uwa.edu.au/wajo/qnsandsolns/",
+  "papers": [
+    {
+      "id": "wajo-2026",
+      "year": 2026,
+      "title": "WAJO 2026",
+      "entries": 16,
+      "questions": 16,
+      "marks": 41,
+      "minutes": 100,
+      "requiresWorking": false
+    },
+    {
+      "id": "wajo-2025",
+      "year": 2025,
+      "title": "WAJO 2025",
+      "entries": 16,
+      "questions": 16,
+      "marks": 40,
+      "minutes": 100,
+      "requiresWorking": false
+    },
+    {
+      "id": "wajo-2024",
+      "year": 2024,
+      "title": "WAJO 2024",
+      "entries": 16,
+      "questions": 16,
+      "marks": 40,
+      "minutes": 100,
+      "requiresWorking": false
+    },
+    {
+      "id": "wajo-2023",
+      "year": 2023,
+      "title": "WAJO 2023",
+      "entries": 16,
+      "questions": 16,
+      "marks": 40,
+      "minutes": 100,
+      "requiresWorking": false
+    },
+    {
+      "id": "wajo-2022",
+      "year": 2022,
+      "title": "WAJO 2022",
+      "entries": 16,
+      "questions": 16,
+      "marks": 40,
+      "minutes": 100,
+      "requiresWorking": false
+    },
+    {
+      "id": "wajo-2021",
+      "year": 2021,
+      "title": "WAJO 2021",
+      "entries": 16,
+      "questions": 16,
+      "marks": 40,
+      "minutes": 100,
+      "requiresWorking": false
+    },
+    {
+      "id": "wajo-2020",
+      "year": 2020,
+      "title": "WAJO 2020",
+      "entries": 16,
+      "questions": 16,
+      "marks": 40,
+      "minutes": 100,
+      "requiresWorking": false
+    },
+    {
+      "id": "wajo-2019",
+      "year": 2019,
+      "title": "WAJO 2019",
+      "entries": 12,
+      "questions": 12,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2018",
+      "year": 2018,
+      "title": "WAJO 2018",
+      "entries": 12,
+      "questions": 12,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2017",
+      "year": 2017,
+      "title": "WAJO 2017",
+      "entries": 12,
+      "questions": 12,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2016",
+      "year": 2016,
+      "title": "WAJO 2016",
+      "entries": 12,
+      "questions": 12,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2015",
+      "year": 2015,
+      "title": "WAJO 2015",
+      "entries": 13,
+      "questions": 12,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2014",
+      "year": 2014,
+      "title": "WAJO 2014",
+      "entries": 12,
+      "questions": 12,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2013",
+      "year": 2013,
+      "title": "WAJO 2013",
+      "entries": 12,
+      "questions": 12,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    }
+  ]
+}

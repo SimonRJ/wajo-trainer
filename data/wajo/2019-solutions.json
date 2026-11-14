@@ -1,0 +1,59 @@
+{
+  "wajo19_q1": {
+    "answer": 980,
+    "solution": "The numbers in the range 1 to 1000 that do contain the sequence 12 are of form $12 x$, where $x$ is any digit from 0 to 9, or of form $x 12$, where $x$ is empty (no digit) or a digit from 1 to 9. In each case, there are 10 possibilities.<br>So 980 of the numbers in the range 1 to 1000 do not contain the sequence 12, among their digits.<br><b>Alternatively,</b> the numbers that contain the sequence 12 are:<br>$$\n\\underline{12} ; \\underline{120}, \\underline{121}, \\underline{122} 2, \\ldots, \\underline{12} 9 ; 1 \\underline{12}, 2 \\underline{12}, 3 \\underline{12}, \\ldots, 9 \\underline{12}.\n$$<br>And so, there are $1+10+9=20$ such numbers and hence $1000-20=980$ numbers that do not contain the sequence 12."
+  },
+  "wajo19_q2": {
+    "answer": 21,
+    "solution": "Let $x=2021$. Then<br>$$\n\\begin{aligned}\n2019 \\times 2023-2016 \\times 2026 &amp; =(x-2)(x+2)-(x-5)(x+5) \\\\\n&amp; =x^{2}-4-(x^{2}-25) \\\\\n&amp; =21\n\\end{aligned}\n$$<br><i>Note.</i> The key idea is that big arithmetic (the multiplication of 4-digit numbers) can be avoided. There are many other ways in order to do so, and the method above achieves it with the least work."
+  },
+  "wajo19_q3": {
+    "answer": 36,
+    "solution": "Draw the line segments $E F$ and $G A$. Now observe that $G$ is a point of rotational symmetry such that three congruent quadrilaterals make up $\\triangle D E F$. In turn, the four triangles $D E F, D C E, A F E$ and $F B D$ are congruent equilateral triangles making up $\\triangle A B C$. Therefore,<br>$$\n\\begin{aligned}\n|A B C| &amp; =4|D E F| \\\\\n&amp; =4 \\times 3 \\times 3 \\mathrm{~cm}^{2} \\\\\n&amp; =36 \\mathrm{~cm}^{2}\n\\end{aligned}\n$$",
+    "images": [
+      "data/wajo/diagrams/f5b2b516636655.webp"
+    ]
+  },
+  "wajo19_q4": {
+    "answer": 12,
+    "solution": "Any common divisor of 576 and 648 must divide their greatest common divisor. First let us find their respective prime decompositions:<br>$$\n\\begin{aligned}\n576 &amp; =24^{2} \\\\\n&amp; =\\left(2^{3} \\cdot 3\\right)^{2} \\\\\n&amp; =2^{6} \\cdot 3^{2} \\\\\n648 &amp; =8 \\cdot 81 \\\\\n&amp; =2^{3} \\cdot 3^{4} \\\\\n\\operatorname{gcd}(576,648) &amp; =2^{3} \\cdot 3^{2}\n\\end{aligned}\n$$<br>Now any common positive divisor of 576 and 648 is a positive divisor of $2^{3} \\cdot 3^{2}$ which are all of form $2^{a} 3^{b}$ with $a \\in\\{0,1,2,3\\}$ ( 4 possibilities) and $b \\in\\{0,1,2\\}$ ( 3 possibilities).<br>So there are $4 \\times 3=12$ common positive divisors of 576 and 648.<br><b>Alternatively,</b> we could have discovered the gcd of 576 and 648 by the Euclidean Algorithm:<br>$$\n\\begin{aligned}\n\\operatorname{gcd}(576,648) &amp; =\\operatorname{gcd}(576,72) \\\\\n&amp; =72 \\\\\n&amp; =2^{3} \\cdot 3^{2}\n\\end{aligned}\n$$ which has $(3+1)(2+1)=12$ positive divisors."
+  },
+  "wajo19_q5": {
+    "answer": 14,
+    "solution": "Let $d$ be the distance Alice ran at each speed.<br>Then $d / 7$ and $d / 5$ are the times (in hours) running at each speed. Hence, the total time of the run in hours is,<br>$$\n\\begin{aligned}\n2+\\frac{24}{60}=2+\\frac{2}{5}=\\frac{12}{5} &amp; =\\frac{d}{7}+\\frac{d}{5} \\\\\n&amp; =d\\left(\\frac{1}{7}+\\frac{1}{5}\\right) \\\\\n&amp; =d \\cdot \\frac{5+7}{5 \\times 7} \\\\\nd &amp; =7.\n\\end{aligned}\n$$<br>Therefore, the total distance of Alice's run is $2 d=14 \\mathrm{~km}$."
+  },
+  "wajo19_q6": {
+    "answer": 806,
+    "solution": "Since $42^{2}=1764,43^{2}=1849$ (in the 19 th century) and $44^{2}=1936, x=43$ and $x^{2}=1849$.<br>So Augustus de Morgan was born in $1849-43=1806$, 806 years after 1000."
+  },
+  "wajo19_q7": {
+    "answer": 380,
+    "solution": "More generally consider the triangle shown with respective points $D, E, F$ of tangency of $K$ to sides $A B, B C, C A$. Let $I$ and $r$ be the centre and radius of $K$, respectively. Furthermore, let $x$ be the equal tangent lengths from $A$ to $D$ and $F$, and let $y$ be the equal tangent lengths from $B$ to $D$ and $E$, and note that $r$ equals the tangent lengths from $C$ to $E$ and $F$, because $C E I F$ is a square.<br>Then we have two ways of calculating the area $|A B C|$, namely, by calculating the areas of constituent triangles and square, and the \"half base by height\" way:<br>$$\n\\begin{aligned}\n|A B C| &amp; =|I D A|+|I F A|+|I D B|+|I E B|+|E I F C| \\\\\n&amp; =2 \\cdot \\frac{1}{2} r x+2 \\cdot \\frac{1}{2} r y+r^{2} \\\\\n&amp; =r(x+y+r) \\\\\n|A B C| &amp; =\\frac{1}{2}(r+x)(r+y) \\\\\n&amp; =\\frac{1}{2}(r(x+y+r)+x y) \\\\\n&amp; =\\frac{1}{2}|A B C|+\\frac{1}{2} x y \\\\\n\\therefore|A B C| &amp; =x y.\n\\end{aligned}\n$$<br>In our case $y=20$ and $x=19$. So the area of $A B C$ is $20 \\cdot 19=380$.<br><b>Alternatively,</b> by Pythagoras' Theorem we have,<br>$$\n\\begin{aligned}\n(r+20)^{2}+(r+19)^{2} &amp; =(20+19)^{2} \\\\\nr^{2}+40 r+20^{2}+r^{2}+38 r+19^{2} &amp; =20^{2}+2 \\cdot 20 \\cdot 19+19^{2} \\\\\n2 r^{2}+78 r &amp; =2 \\cdot 20 \\cdot 19 \\\\\nr^{2}+39 r &amp; =380 \\\\\n|A B C| &amp; =\\frac{1}{2}(r+20)(r+19) \\\\\n&amp; =\\frac{1}{2}\\left(r^{2}+39 r+380\\right) \\\\\n&amp; =\\frac{1}{2}(380+380) \\\\\n&amp; =380\n\\end{aligned}\n$$",
+    "images": [
+      "data/wajo/diagrams/e496a755970be7.webp"
+    ]
+  },
+  "wajo19_q8": {
+    "answer": 86,
+    "solution": "Since the starting position is red and a string of 8 coin flips should produce a green light, the number of light presses (and hence number of tails flipped) needs to be 1 more than a multiple of 3. So the sequence must contain 1 tail, 4 tails, or 7 tails. Thus, the number of such sequences is<br>$$\n\\begin{aligned}\n\\binom{8}{1}+\\binom{8}{4}+\\binom{8}{7} &amp; =\\binom{8}{1}+\\binom{8}{4}+\\binom{8}{1} \\\\\n&amp; =8+\\frac{8 \\cdot 7 \\cdot 6 \\cdot 5}{4 \\cdot 3 \\cdot 2 \\cdot 1}+8 \\\\\n&amp; =8+70+8 \\\\\n&amp; =86\n\\end{aligned}\n$$"
+  },
+  "wajo19_q9": {
+    "answer": 995,
+    "solution": "We need only keep track of the number of piles, which at each stage will all be of equal size and have doubled in number, as the remaining coins must have been discarded.<br>But then this means that after 10 operations, we will have reduced the single pile of $2019(&lt;2048=2^{11})$ to $1024=2^{10}$ piles of size 1.<br>Hence, $2019-1024=995$ coins have been discarded.<br>To see that the above does indeed solve the problem, the following table shows explicitly what occurs at each step. Observe that the total of the total numbers of discarded coins at each step is indeed 995.\n$$\n\\begin{array}{llllll}\n\\hline\n\\text{Step} &amp; \\text{No. of piles} &amp; \\text{No. in each pile} &amp; \\text{No. discarded in each pile} &amp; \\text{Total no. discarded in step} &amp; \\text{No. left in each pile} \\\\\n\\hline\n1 &amp; 1 &amp; 2019 &amp; 1 &amp; 1 &amp; 2018 \\\\\n\\hline\n2 &amp; 2 &amp; 1009 &amp; 1 &amp; 2 &amp; 1008 \\\\\n\\hline\n3 &amp; 4 &amp; 504 &amp; 0 &amp; 0 &amp; 504 \\\\\n\\hline\n4 &amp; 8 &amp; 252 &amp; 0 &amp; 0 &amp; 252 \\\\\n\\hline\n5 &amp; 16 &amp; 126 &amp; 0 &amp; 0 &amp; 126 \\\\\n\\hline\n6 &amp; 32 &amp; 63 &amp; 1 &amp; 32 &amp; 62 \\\\\n\\hline\n7 &amp; 64 &amp; 31 &amp; 1 &amp; 64 &amp; 30 \\\\\n\\hline\n8 &amp; 128 &amp; 15 &amp; 1 &amp; 128 &amp; 14 \\\\\n\\hline\n9 &amp; 256 &amp; 7 &amp; 1 &amp; 256 &amp; 6 \\\\\n\\hline\n10 &amp; 512 &amp; 3 &amp; 1 &amp; 512 &amp; 2 \\\\\n\\hline\n11 &amp; 1024 &amp; 1 &amp;  &amp;  &amp;  \\\\\n\\hline\n\\end{array}\n$$\n<b>Alternatively,</b> write 2019 in binary as $2019=a_{t} 2^{t}+\\cdots+2 a_{1}+a_{0}$, where $a_{t}=1$. After the first step we have 2 piles of $a_{t} 2^{t-1}+\\cdots+a_{2} 2+a_{1}$ coins, and one coin to discard if $a_{0}=1$ and none if $a_{0}=0$. That is, we discard $a_{0}$ coins. The process continues as follows.\n$$\n\\begin{array}{llll}\n\\hline\n\\text{Step} &amp; \\text{Number of piles} &amp; \\text{Number of coins in each pile} &amp; \\text{Number discarded} \\\\\n\\hline\n0 &amp; 1 &amp; a_{t} 2^{t}+\\cdots+2 a_{1}+a_{0} &amp; 0 \\\\\n\\hline\n1 &amp; 2 &amp; a_{t} 2^{t-1}+\\cdots+2 a_{2}+a_{1} &amp; a_{0} \\\\\n\\hline\n\\vdots &amp; \\vdots &amp; \\vdots &amp; \\vdots \\\\\n\\hline\ni &amp; 2^{i} &amp; a_{t} 2^{t-i}+\\cdots+a_{i} &amp; a_{i-1} 2^{i-1} \\\\\n\\hline\n\\vdots &amp; \\vdots &amp; \\vdots &amp; \\vdots \\\\\n\\hline\nt &amp; 2^{t} &amp; a_{t} &amp; a_{t-1} 2^{t-1} \\\\\n\\hline\n\\end{array}\n$$\nThe total number discarded is then $a_{t-1} 2^{t-1}+\\cdots+2 a_{1}+a_{0}$. This is $2019-a_{t} 2^{t}$ where $a_{t}=1$, and $2^{t}$ is the largest power of 2 which is not more than 2019, which is 1024. So the answer is $2019-1024=995$."
+  },
+  "wajo19_q10": {
+    "answer": 25,
+    "solution": "Let $A B=12$ and $A C=17$. Think of $A B$ as the base of the triangle, and let the altitude to $C$ be $C D$. Then $C D=2 \\times 90 / 12=15 \\mathrm{~cm}$. Note that for the sides $A D, C D, A C$ of right triangle $A D C,(8,15,17)$ is a Pythagorean triple, so that $A D=8$, or observe that<br>$$\n\\begin{aligned}\n17^{2}-15^{2} &amp; =(17-15)(17+15) \\\n&amp; =2 \\cdot 32 \\\n&amp; =8^{2}.\n\\end{aligned}\n$$<br>Then we have two possible configurations with $A D=8 \\mathrm{~cm}$.<br>Configuration 1:<br>$$\n\\begin{aligned}\nD B &amp; =4 \\\nB C &amp; =\\sqrt{4^{2}+15^{2}} \\\n&amp; =\\sqrt{241} \\text{ (which is not an integer) }\n\\end{aligned}\n$$<br>Configuration 2:<br>$$\n\\begin{aligned}\nD B &amp; =20 \\\nB C &amp; =\\sqrt{15^{2}+20^{2}} \\\n&amp; =5 \\sqrt{3^{2}+4^{2}} \\\n&amp; =25\n\\end{aligned}\n$$<br>So, since for the second configuration $B C$ is an integer, the length of the triangle's third side is 25 cm.<br><b>Alternatively,</b> let the third side have length $c$. By Heron's formula,<br>$$\n\\begin{aligned}\n90 &amp; =\\sqrt{\\frac{12+17+c}{2} \\cdot \\frac{-12+17+c}{2} \\cdot \\frac{12-17+c}{2} \\cdot \\frac{12+17-c}{2}} \\\\\n&amp; =\\frac{1}{4} \\sqrt{(29+c)(29-c)(c+5)(c-5)} \\\\\n360^{2} &amp; =\\left(29^{2}-c^{2}\\right)\\left(c^{2}-5^{2}\\right) \\\\\n&amp; =-c^{4}+\\left(5^{2}+29^{2}\\right) c^{2}-(5 \\cdot 29)^{2} \\\\\n0 &amp; =c^{4}-(25+841) c^{2}+5^{2}\\left(29^{2}+72^{2}\\right) \\\\\n&amp; =c^{4}-866 c^{2}+5^{2} \\cdot 6025 \\\\\n&amp; =c^{4}-(625+241) c^{2}+5^{4} \\cdot 241 \\\\\n&amp; =\\left(c^{2}-25^{2}\\right)\\left(c^{2}-241\\right)\n\\end{aligned}\n$$<br>Since $c&gt;0$, either $c=25$ or $c=\\sqrt{241}$, but we were given that $c$ is an integer.<br>Therefore, the third side has length 25 cm.",
+    "images": [
+      "data/wajo/diagrams/5e632602255183.webp"
+    ]
+  },
+  "wajo19_q11": {
+    "answer": 113,
+    "solution": "Since,<br>$$\n\\begin{aligned}\n\\frac{n^{2}-8 n+15}{n+7} &amp; =\\frac{(n+7)(n-15)+120}{n+7} \\\\\n&amp; =n-15+\\frac{120}{n+7}\n\\end{aligned}\n$$<br>the problem is equivalent to asking for the largest integer $n$ such that $n+7$ divides 120. Now, for $n=113$, we have $n+7=120$ which divides 120, and for larger $n, n+7$ does not divide 120. So the required $n$ is 113."
+  },
+  "wajo19_q12": {
+    "answer": 24,
+    "solution": "Let $d$ be the largest positive integer that divides<br>$$\nn(n+1)(n+2)(n+3),\n$$<br>for all integers $n$. Consider prime divisors of $n(n+1)(n+2)(n+3)$.<br>Of the factors $n, n+1, n+2, n+3$ exactly two are even, but for any two consecutive even numbers, one is divisible by 4 and the other divisible only by 2.<br>Also, at least one of three consecutive numbers is divisible by 3.<br>Every product is therefore divisible by $2 \\cdot 4 \\cdot 3=24$.<br>For $n=1$, we have $n(n+1)(n+2)(n+3)=1 \\cdot 2 \\cdot 3 \\cdot 4=24$.<br>Therefore $d$ divides 24.<br>So the largest integer $d$ that divides all products $n(n+1)(n+2)(n+3)$ is exactly 24."
+  }
+}

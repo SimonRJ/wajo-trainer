@@ -1,0 +1,147 @@
+[
+  {
+    "id": "wajo20_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The outer dimensions of a rectangular photo frame are 12 cm and 15 cm.<br>The frame itself has a width of 2 cm.<br>How many square centimetres is the area available for the photo?"
+  },
+  {
+    "id": "wajo20_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The product of two numbers is 84. The first of the two numbers is then divided by 3 and the second number is multiplied by 4. The product of the two new numbers is then divided by 2.<br>What is the result of this final calculation?"
+  },
+  {
+    "id": "wajo20_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The time shown on my computer clock is $5:55 \\mathrm{PM}$.<br>How many minutes will pass before the clock next shows a time for which all the digits are the same?"
+  },
+  {
+    "id": "wajo20_q4",
+    "number": "4",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "What is the largest integer $n$ such that $2^{n}$ divides $257^{2}-1$ ?"
+  },
+  {
+    "id": "wajo20_q5",
+    "number": "5",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Starting with a 2-digit number, Alice writes a 4 on its left, and then Alice triples the resulting 3-digit number. This new number is now 18 times the number Alice started with.<br>What is the number Alice started with?"
+  },
+  {
+    "id": "wajo20_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The sum of 101 consecutive integers is equal to 2020.<br>What is the largest of these integers?"
+  },
+  {
+    "id": "wajo20_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In triangle $A B C$ the angle at $A$ is $48^{\\circ}$.<br>If $I$ is the centre of the inscribed circle of $A B C$, how many degrees is $\\angle B I C$ ?"
+  },
+  {
+    "id": "wajo20_q8",
+    "number": "8",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In a café, each table has 3 legs, each chair has 4 legs and all the customers and the three members of staff have 2 legs each. There are 4 chairs at each table.<br>At a certain time, three-quarters of the chairs are occupied by customers and there are 206 legs altogether in the café.<br>How many chairs does the café have?"
+  },
+  {
+    "id": "wajo20_q9",
+    "number": "9",
+    "marks": 3,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Let $A B C D$ be a square such that vertices $A$ and $B$ lie on a circle of radius 135, and side $C D$ is tangent to the circle.<br>What length is the side of the square?"
+  },
+  {
+    "id": "wajo20_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "How many of the 3 -digit numbers (from 100 to 999 ) have three distinct digits in increasing order?"
+  },
+  {
+    "id": "wajo20_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A farmer bought some pigs, goats and sheep. Altogether she bought 100 animals and spent $\\$600$. The farmer paid $\\$21$ for each pig, $\\$8$ for each goat and $\\$3$ for each sheep. There was an even number of pigs, some of which were particularly noisy.<br>How many sheep did she buy?"
+  },
+  {
+    "id": "wajo20_q12",
+    "number": "12",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Two squares have areas that add up to 2020.<br>The product of the lengths of one diagonal of each square is 1824.<br>What is the side length of the bigger square?"
+  },
+  {
+    "id": "wajo20_q13",
+    "number": "13",
+    "marks": 4,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Let $x, y$ be non-zero real numbers such that<br>$$ \\frac{2}{x}-\\frac{1}{y}=\\frac{21}{2 x+y}. $$<br>Find the value of $\\dfrac{x^{2}}{y^{2}}+\\dfrac{y^{2}}{x^{2}}$."
+  },
+  {
+    "id": "wajo20_q14",
+    "number": "14",
+    "marks": 4,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A large square $S$ has been cut into 256 smaller squares.<br>Each of 255 of the smaller squares has area 1.<br>The side length of the remaining smaller square is an integer greater than 16 and less than 40.<br>The side length of $S$ is also an integer.<br>Find the area of $S$."
+  },
+  {
+    "id": "wajo20_q15",
+    "number": "15",
+    "marks": 4,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A cube of side length 7 cm is placed on top of a cube of side length 14 cm, which in turn is placed on top of a cube of side length 28 cm. The cubes are placed in a corner of a room, so two faces of each cube are flush against the walls of the corner.<br>The cubes are made of transparent plastic.<br>A laser light beam is shone from the point in the corner on the top face of the top cube to the point furthest from the corner of the bottom face of the bottom cube.<br>How many centimetres is that part of the light beam that is entirely within the middle cube?",
+    "image": "data/wajo/diagrams/1ca640d1a1425a.webp"
+  },
+  {
+    "id": "wajo20_q16",
+    "number": "16",
+    "marks": 4,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Given that $\\overline{51090 x 42 y 71709440000}$ is divisible by 12!, what is $\\overline{x y}$ ?<br>Note 1. $n!=1 \\times 2 \\times 3 \\times \\cdots \\times n$.<br>Note 2. We use the notation $a b \\ldots z$ to refer to the decimal representation of a number, so that, for example $\\overline{a b c}=100 a+10 b+c$."
+  }
+]
