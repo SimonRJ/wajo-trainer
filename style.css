@@ -84,6 +84,64 @@ select{font:inherit;padding:5px 8px;border-radius:8px;border:1.5px solid var(--l
 @media (max-width:560px){body{font-size:16px}h1{font-size:1.5rem}.top{padding:6px 10px;gap:6px}.timer{top:84px}}
 @media print{.top,footer,.btn,.timer{display:none}}
 
+.paper-archive {
+  list-style: none;
+  display: grid;
+  gap: .65rem;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+.paper-archive-year {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: .4rem 1rem;
+  padding: .75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--card);
+}
+.paper-archive-heading { grid-column: 1; }
+.paper-archive-heading h2 { margin: 0; }
+.paper-archive-heading span { color: var(--mute); font-size: .85rem; }
+.paper-archive-links {
+  grid-column: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem .55rem;
+}
+.paper-archive-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  min-height: 44px;
+  padding: .3rem .65rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: .9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+.paper-archive-links a:hover { border-color: var(--accent); }
+.paper-archive-links small { font-size: .7em; font-weight: 600; }
+.paper-archive-progress {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .45rem .8rem;
+  font-size: .88rem;
+}
+.paper-archive-progress label { display: flex; align-items: center; gap: .35rem; }
+.paper-archive-progress input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); }
+.paper-archive-progress .ps { width: 4.3rem; min-height: 44px; font-size: 1rem; }
+@media (max-width: 670px) {
+  .paper-archive-year { grid-template-columns: 1fr; }
+  .paper-archive-progress { grid-column: 1; grid-row: auto; }
+}
+
 /* Individual exam centre */
 .exam-centre [hidden] { display: none !important; }
 .exam-centre {

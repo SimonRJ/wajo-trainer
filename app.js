@@ -1,5 +1,5 @@
 /* WAJO Trainer — progress stays in this browser. */
-import { createExamCentre } from './exam.mjs?v=notation-2';
+import { createExamCentre } from './exam.mjs?v=local-papers';
 (function () {
   "use strict";
   var W = window.WAJO, app = document.getElementById("app"), KEY = "wajo.v1", tick = null;
@@ -127,7 +127,7 @@ import { createExamCentre } from './exam.mjs?v=notation-2';
       "<li>A problem-solving competition for WA students in <b>Years 7, 8 and 9</b>, run at UWA by the WA Mathematical Olympiads Committee since 1999. Entry is through your school.</li>" +
       "<li><b>Individual paper:</b> 100 minutes, 16 questions, no calculator. Recent papers ask for a positive whole number below 1000 for each answer. Marks and written-working rules follow the paper year.</li>" +
       "<li><b>Team paper:</b> about 50 minutes, teams of four, one long investigation in parts, some needing written explanations.</li>" +
-      "<li>Usually held in September or October. Dates and entry details change each year, so check the <a href='https://enrichedmaths.maths.uwa.edu.au/wajo/' target='_blank' rel='noopener'>official WAJO page</a>, and use the <a href='#/exams'>Exam centre</a> to sit papers on screen.</li></ul></div>" +
+      "<li>Usually held in September or October. Use the <a href='#/past'>past-paper archive</a> for PDFs or the <a href='#/exams'>Exam centre</a> to sit a paper on screen.</li></ul></div>" +
       '<h2>The 12-week plan</h2><p class="sub">About 30–40 minutes a day, five days a week. Faster is fine. The order matters more than the speed.</p>' +
       '<div class="card"><table class="plan">' + PLAN.map(function (r) {
         var mods = r[1] ? r[1].split(",").map(function (id) { var m = modById(id); return '<a href="#/m/' + id + '">' + m.title + "</a> (" + modPct(m) + "%)"; }).join(" + ") + ". " : "";
@@ -187,24 +187,41 @@ import { createExamCentre } from './exam.mjs?v=notation-2';
     if (f) f.onclick = function () { list.forEach(function (p) { S.p[p.id] = { t: 0 }; }); save(); S.review = list.map(function (p) { return p.id; }); h('<a class="crumb" href="#/practice">← Practice</a><h1>Review: fresh attempt</h1>' + list.map(function (p, k) { return probHTML(p, k + 1); }).join("")); };
   }
 
-  /* ---------- official archive and older paper tracker ---------- */
-  var ARCH = "https://enrichedmaths.maths.uwa.edu.au/wajo/qnsandsolns/";
-  var PDF = { 2026: "wajo26qnsoln.pdf", 2025: "wajo25qnsoln.pdf", 2024: "wajo24qnsoln.pdf", 2022: "wajo22qnsoln.pdf", 2018: "wajo18qnsoln.pdf", 2017: "wajo17qnsoln.pdf", 2015: "wajo15qnsoln.pdf", 2012: "wajo2012qa.pdf", 2011: "wajo11qa.pdf", 2010: "wajo10qa.pdf", 2009: "wajo09qa.pdf", 2008: "wajoq-a08.pdf", 2006: "wajoq-a_06.pdf", 2005: "wajoq-a_05.pdf", 2004: "wajoq-a_04.pdf", 2002: "wajoq-a_02.pdf" };
+  /* ---------- past-paper downloads and score tracker ---------- */
+  var REBUILT_PAPERS = {
+    2006: "Reconstructed questions · official solutions",
+    2026: "Reconstructed · individual round"
+  };
   function past() {
     var S = load(); S.past = S.past || {};
     var rows = "", done = 0;
     for (var y = 2026; y >= 2000; y--) {
       var r = S.past[y] || {}; if (r.done) done++;
-      rows += "<tr><td><b>" + y + '</b></td><td><a href="' + ARCH + (PDF[y] || "") + '" target="_blank" rel="noopener">' + (PDF[y] ? "Questions &amp; solutions (PDF)" : "Find in official archive") + '</a></td><td><input class="ans ps" style="width:70px" inputmode="numeric" data-y="' + y + '" placeholder="score" value="' + (r.score != null ? r.score : "") + '"></td><td><label><input type="checkbox" class="pd" data-y="' + y + '"' + (r.done ? " checked" : "") + "> done</label></td></tr>";
+      var path = "papers/wajo-" + y + "-";
+      var score = Number.isInteger(r.score) ? r.score : "";
+      rows += '<li class="paper-archive-year" aria-labelledby="past-' + y + '">' +
+        '<div class="paper-archive-heading"><h2 id="past-' + y + '">' + y + '</h2><span>' +
+        (REBUILT_PAPERS[y] || "Official pages · individual and team") + '</span></div>' +
+        '<div class="paper-archive-links">' +
+        '<a href="' + path + 'questions.pdf" target="_blank" rel="noopener" aria-label="WAJO ' + y + ' question paper (PDF)">Question paper <small>PDF</small></a>' +
+        '<a href="' + path + 'solutions.pdf" target="_blank" rel="noopener" aria-label="WAJO ' + y + ' worked solutions (PDF)">Worked solutions <small>PDF</small></a>' +
+        (y >= 2013 ? '<a href="#/exam/wajo-' + y + '" aria-label="Sit WAJO ' + y + ' online">Sit online</a>' : '') + '</div>' +
+        '<div class="paper-archive-progress"><label>My score <input class="ans ps" inputmode="numeric" data-y="' + y +
+        '" value="' + score + '"></label><label><input type="checkbox" class="pd" data-y="' + y + '"' +
+        (r.done ? " checked" : "") + '> Done</label></div></li>';
     }
-    h("<h1>Real past papers</h1><p class='sub'>Every WAJO paper since 2000, with official solutions, is published free by the WA Mathematical Olympiads Committee. Nothing prepares you better than the real thing. Source: WAJO (Western Australian Junior mathematics Olympiad).</p>" +
-      '<div class="stats"><div class="stat"><b>' + done + '/27</b><span>past papers done</span></div></div>' +
-      '<div class="card"><b>How to use them</b><ol style="margin:.4em 0 0;padding-left:1.2em"><li>Start with the most recent years: they match today\'s 16-question format. Older papers are shorter (10–12 questions) but just as good for practice.</li><li>Open the PDF, <b>stop scrolling at the end of the questions</b>, and start the timer. No calculator.</li><li>Mark yourself from the solutions, type your score in the table, and read the solution to every question you missed.</li><li>Do the team question separately: 45–50 minutes, with friends if you can.</li></ol></div>' +
+    h("<h1>Past papers and solutions</h1><p class='sub'>Open or save the question paper first. Use the separate worked solutions PDF to mark your answers. The original instructions give the time limit for each round.</p>" +
       '<div class="timer"><span id="tleft">100:00</span><button class="btn small" id="pgo">Start 100-minute timer</button></div>' +
-      '<div class="card"><b>Sit a paper on screen</b><p>All 14 papers from 2013 to 2026 are in the <a href="#/exams">Exam centre</a>, with answers, working and automatic marking where applicable.</p></div>' +
-      '<div class="card" style="overflow-x:auto"><table><tr><th>Year</th><th>Paper</th><th>My score</th><th></th></tr>' + rows + '</table><p class="sub" style="margin-bottom:0">Where a direct link is missing, open the <a href="' + ARCH + '" target="_blank" rel="noopener">official archive</a> and pick the year.</p></div>');
+      '<p class="sub"><span id="paper-archive-done">' + done + '</span> of 27 past papers done</p>' +
+      '<ul class="paper-archive" aria-label="WAJO papers by year">' + rows + '</ul>' +
+      '<p class="sub">Source: WAJO (Western Australian Junior Mathematics Olympiad). The 2026 individual round was reconstructed from the ProblemSolvingEducation practice compilation.</p>');
     app.querySelectorAll(".ps").forEach(function (i) { i.oninput = function () { var r = S.past[i.dataset.y] = S.past[i.dataset.y] || {}; var v = parseAns(i.value); if (v === null) delete r.score; else r.score = v; save(); touchDay(); }; });
-    app.querySelectorAll(".pd").forEach(function (c) { c.onchange = function () { (S.past[c.dataset.y] = S.past[c.dataset.y] || {}).done = c.checked ? 1 : 0; save(); touchDay(); }; });
+    app.querySelectorAll(".pd").forEach(function (c) { c.onchange = function () {
+      (S.past[c.dataset.y] = S.past[c.dataset.y] || {}).done = c.checked ? 1 : 0;
+      done += c.checked ? 1 : -1;
+      document.getElementById("paper-archive-done").textContent = done;
+      save(); touchDay();
+    }; });
     document.getElementById("pgo").onclick = function () {
       var end = Date.now() + 6000000; this.disabled = true; clearInterval(tick);
       tick = setInterval(function () { var el = document.getElementById("tleft"); if (!el) return clearInterval(tick); var left = (end - Date.now()) / 1000; el.textContent = "⏱ " + fmt(left) + " left"; if (left <= 0) { clearInterval(tick); el.textContent = "Time is up! Pencils down."; } }, 1000);
