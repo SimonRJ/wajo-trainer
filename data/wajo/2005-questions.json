@@ -1,0 +1,172 @@
+[
+  {
+    "id": "wajo05_q1",
+    "number": "1",
+    "marks": 1,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        1,
+        125,
+        279.8,
+        485,
+        487.6
+      ]
+    ],
+    "integerMax": 99
+  },
+  {
+    "id": "wajo05_q2",
+    "number": "2",
+    "marks": 1,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        1,
+        125,
+        492.2,
+        485,
+        649.1
+      ]
+    ],
+    "integerMax": 99
+  },
+  {
+    "id": "wajo05_q3",
+    "number": "3",
+    "marks": 2,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        1,
+        125,
+        653.7,
+        485,
+        738.7
+      ]
+    ],
+    "integerMax": 99
+  },
+  {
+    "id": "wajo05_q4",
+    "number": "4",
+    "marks": 2,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        2,
+        125,
+        114.7,
+        485,
+        360.8
+      ]
+    ],
+    "integerMax": 99
+  },
+  {
+    "id": "wajo05_q5",
+    "number": "5",
+    "marks": 2,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        2,
+        125,
+        371.3,
+        485,
+        436.4
+      ]
+    ],
+    "integerMax": 99
+  },
+  {
+    "id": "wajo05_q6",
+    "number": "6",
+    "marks": 3,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        2,
+        125,
+        446.9,
+        485,
+        539.8
+      ]
+    ],
+    "integerMax": 99
+  },
+  {
+    "id": "wajo05_q7",
+    "number": "7",
+    "marks": 3,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        2,
+        125,
+        550.4,
+        485,
+        629.3
+      ]
+    ],
+    "integerMax": 99
+  },
+  {
+    "id": "wajo05_q8",
+    "number": "8",
+    "marks": 3,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        2,
+        125,
+        639.9,
+        485,
+        732.8
+      ]
+    ],
+    "integerMax": 99
+  },
+  {
+    "id": "wajo05_q9",
+    "number": "9",
+    "marks": 4,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        3,
+        125,
+        114.7,
+        485,
+        347.1
+      ]
+    ],
+    "integerMax": 99
+  },
+  {
+    "id": "wajo05_q10",
+    "number": "10",
+    "marks": 4,
+    "answerFormat": "integer",
+    "workingRequired": true,
+    "pages": [
+      [
+        3,
+        125,
+        350.2,
+        485,
+        493.4
+      ]
+    ],
+    "integerMax": 99
+  }
+]

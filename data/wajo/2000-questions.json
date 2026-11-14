@@ -1,0 +1,180 @@
+[
+  {
+    "id": "wajo00_q1",
+    "number": "1",
+    "marks": 1,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        1,
+        67,
+        162.0,
+        545,
+        204.7
+      ]
+    ],
+    "integerMin": -999999,
+    "integerMax": 999999
+  },
+  {
+    "id": "wajo00_q2",
+    "number": "2",
+    "marks": 1,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        1,
+        67,
+        207.8,
+        545,
+        306.4
+      ]
+    ],
+    "integerMin": -999999,
+    "integerMax": 999999
+  },
+  {
+    "id": "wajo00_q3",
+    "number": "3",
+    "marks": 1,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        1,
+        67,
+        309.4,
+        545,
+        352.0
+      ]
+    ],
+    "integerMin": -999999,
+    "integerMax": 999999
+  },
+  {
+    "id": "wajo00_q4",
+    "number": "4",
+    "marks": 1,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        1,
+        67,
+        355.1,
+        545,
+        412.0
+      ]
+    ],
+    "integerMin": -999999,
+    "integerMax": 999999
+  },
+  {
+    "id": "wajo00_q5",
+    "number": "5",
+    "marks": 2,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        1,
+        67,
+        415.0,
+        545,
+        485.7
+      ]
+    ],
+    "integerMin": -999999,
+    "integerMax": 999999
+  },
+  {
+    "id": "wajo00_q6",
+    "number": "6",
+    "marks": 2,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        1,
+        67,
+        488.7,
+        545,
+        559.4
+      ]
+    ],
+    "integerMin": -999999,
+    "integerMax": 999999
+  },
+  {
+    "id": "wajo00_q7",
+    "number": "7",
+    "marks": 2,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        1,
+        67,
+        562.5,
+        545,
+        605.2
+      ]
+    ],
+    "integerMin": -999999,
+    "integerMax": 999999
+  },
+  {
+    "id": "wajo00_q8",
+    "number": "8",
+    "marks": 2,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        1,
+        67,
+        608.3,
+        545,
+        651.1
+      ]
+    ],
+    "integerMin": -999999,
+    "integerMax": 999999
+  },
+  {
+    "id": "wajo00_q9",
+    "number": "9",
+    "marks": 2,
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "pages": [
+      [
+        1,
+        67,
+        654.1,
+        545,
+        724.8
+      ]
+    ],
+    "integerMin": -999999,
+    "integerMax": 999999
+  },
+  {
+    "id": "wajo00_q10",
+    "number": "10",
+    "marks": 4,
+    "answerFormat": "written",
+    "workingRequired": true,
+    "pages": [
+      [
+        1,
+        67,
+        727.8,
+        545,
+        787.4
+      ]
+    ]
+  }
+]

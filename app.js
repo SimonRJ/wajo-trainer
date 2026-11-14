@@ -1,5 +1,5 @@
 /* WAJO Trainer — progress stays in this browser. */
-import { createExamCentre } from './exam.mjs?v=local-papers';
+import { createExamCentre } from './exam.mjs?v=all-years';
 (function () {
   "use strict";
   var W = window.WAJO, app = document.getElementById("app"), KEY = "wajo.v1", tick = null;
@@ -125,8 +125,8 @@ import { createExamCentre } from './exam.mjs?v=local-papers';
       '<a class="btn ghost" href="#/practice/daily">Daily five</a><a class="btn ghost" href="#/exams">Exam centre</a></div></div>' +
       '<h2>What is WAJO?</h2><div class="card"><ul style="margin:0;padding-left:1.2em">' +
       "<li>A problem-solving competition for WA students in <b>Years 7, 8 and 9</b>, run at UWA by the WA Mathematical Olympiads Committee since 1999. Entry is through your school.</li>" +
-      "<li><b>Individual paper:</b> 100 minutes, 16 questions, no calculator. Recent papers ask for a positive whole number below 1000 for each answer. Marks and written-working rules follow the paper year.</li>" +
-      "<li><b>Team paper:</b> about 50 minutes, teams of four, one long investigation in parts, some needing written explanations.</li>" +
+      "<li><b>Individual paper:</b> 100 minutes, no calculator. The question count, answer format and written-working rules follow the paper year.</li>" +
+      "<li><b>Team paper:</b> usually 45–50 minutes, teams of four, one long investigation in parts, some needing written explanations.</li>" +
       "<li>Usually held in September or October. Use the <a href='#/past'>past-paper archive</a> for PDFs or the <a href='#/exams'>Exam centre</a> to sit a paper on screen.</li></ul></div>" +
       '<h2>The 12-week plan</h2><p class="sub">About 30–40 minutes a day, five days a week. Faster is fine. The order matters more than the speed.</p>' +
       '<div class="card"><table class="plan">' + PLAN.map(function (r) {
@@ -203,9 +203,10 @@ import { createExamCentre } from './exam.mjs?v=local-papers';
         '<div class="paper-archive-heading"><h2 id="past-' + y + '">' + y + '</h2><span>' +
         (REBUILT_PAPERS[y] || "Official pages · individual and team") + '</span></div>' +
         '<div class="paper-archive-links">' +
-        '<a href="' + path + 'questions.pdf" target="_blank" rel="noopener" aria-label="WAJO ' + y + ' question paper (PDF)">Question paper <small>PDF</small></a>' +
+        '<a href="' + path + 'questions.pdf' + (y === 2026 ? '?v=2025-layout' : '') + '" target="_blank" rel="noopener" aria-label="WAJO ' + y + ' question paper (PDF)">Question paper <small>PDF</small></a>' +
         '<a href="' + path + 'solutions.pdf" target="_blank" rel="noopener" aria-label="WAJO ' + y + ' worked solutions (PDF)">Worked solutions <small>PDF</small></a>' +
-        (y >= 2013 ? '<a href="#/exam/wajo-' + y + '" aria-label="Sit WAJO ' + y + ' online">Sit online</a>' : '') + '</div>' +
+        '<a href="#/exam/wajo-' + y + '" aria-label="Sit WAJO ' + y + ' individual paper online">Sit individual</a>' +
+        (y <= 2025 ? '<a href="#/exam/wajo-' + y + '-team" aria-label="Sit WAJO ' + y + ' team paper online">Sit team</a>' : '') + '</div>' +
         '<div class="paper-archive-progress"><label>My score <input class="ans ps" inputmode="numeric" data-y="' + y +
         '" value="' + score + '"></label><label><input type="checkbox" class="pd" data-y="' + y + '"' +
         (r.done ? " checked" : "") + '> Done</label></div></li>';
@@ -231,7 +232,8 @@ import { createExamCentre } from './exam.mjs?v=local-papers';
   /* ---------- team round ---------- */
   function team() {
     var S = load();
-    h("<h1>Team round</h1><p class='sub'>The team paper is one long investigation of an unfamiliar idea, answered in parts (A, B, C …), with some parts requiring full explanations. Teams of four have about 50 minutes. These three original investigations build that skill. Work with friends if you can, or alone with a 50-minute timer.</p>" +
+    h("<h1>Team round</h1><p class='sub'>The team paper is one long investigation of an unfamiliar idea, answered in parts (A, B, C …), with some parts requiring full explanations. These three original investigations build that skill. Work with friends if you can, or alone with a 50-minute timer.</p>" +
+      '<p><a class="btn ghost" href="#/exams/team">Sit a past team paper</a></p>' +
       '<div class="grid">' + W.team.map(function (t) {
         var r = S.team[t.id] || {}, got = 0, max = 0; t.parts.forEach(function (p, i) { max += p.m; got += +(r["m" + i] || 0); });
         return '<a class="mod" href="#/team/' + t.id + '"><span class="ic">🤝</span><h3>' + t.title + "</h3><p>" + t.parts.length + " parts · " + (r.marked ? "self-marked " + got + "/" + max : max + " marks") + "</p></a>";

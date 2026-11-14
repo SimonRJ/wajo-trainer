@@ -1,5 +1,5 @@
-import { displayTime, examSeconds, gradePaper, questionGaps, remaining } from './exam-rules.mjs';
-import { createExamStore, fieldLimits } from './exam-store.mjs';
+import { displayTime, examSeconds, gradePaper, questionGaps, remaining } from './exam-rules.mjs?v=all-years';
+import { createExamStore, fieldLimits } from './exam-store.mjs?v=all-years';
 import { mountKeypad, renderArchiveMath, workingPreview } from './exam-math.mjs?v=notation-2';
 import { mountSketch, paintSketch } from './exam-sketch.mjs';
 
@@ -15,7 +15,9 @@ const responseStatus = {
   invalid: 'Final answer outside the required format',
   review: 'Final answer needs review',
 };
-const titleForYear = id => `WAJO ${id.slice(-4)}`;
+const labelFor = (paper, number) => `${paper.team ? 'Part' : 'Question'} ${number}`;
+const paperLength = paper => `${paper.questions} ${paper.team ? 'parts' : 'questions'}`;
+const paperMarkTotal = paper => paper.marks === null ? '' : ` · ${markText(paper.marks)}`;
 
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({
@@ -26,16 +28,41 @@ function escapeHtml(value) {
 function scoreText(run) {
   if (!run?.summary) return 'Submitted · view results';
   const { score, max, pending } = run.summary;
-  return `${score}/${max}${pending ? ' so far' : ''}`;
+  return max === 0 ? (pending ? 'Awaiting review' : 'Submitted · view review') : `${score}/${max}${pending ? ' so far' : ''}`;
+}
+
+function reviewStatus(row) {
+  if (row.question.answerFormat === 'written') return row.status === 'blank' ? 'No response' : 'Written response saved';
+  return responseStatus[row.status];
+}
+
+function resultMark(row) {
+  if (row.pending) return 'Awaiting review';
+  if (row.earned === null) return row.reviewed ? 'Reviewed' : 'Unanswered';
+  return `${row.earned}/${row.question.marks} marks`;
+}
+
+function resultTone(row) {
+  if (row.pending) return 'pending';
+  return (row.earned === null ? row.reviewed : row.earned === row.question.marks) ? 'correct' : 'missed';
 }
 
 function questionFigure(source, caption) {
   return source ? `<figure class="exam-figure"><img class="wajo-diagram" src="${escapeHtml(source)}" alt="${escapeHtml(caption)}"></figure>` : '';
 }
 
+function paperPages(file, regions, label) {
+  return regions.map(([page, ...crop], index) => `<div class="exam-paper-page"
+    data-paper-file="${escapeHtml(file)}" data-paper-page="${page}" data-paper-crop="${crop.join(',')}"
+    data-paper-label="${escapeHtml(`${label}, page ${index + 1}`)}"
+    aria-busy="true">Loading ${escapeHtml(label.toLowerCase())}…</div>`).join('');
+}
+
 function mathMarkup(question, paper) {
-  return `<div class="exam-maths exam-stem">${question.prompt}${questionFigure(question.image,
-    `Diagram for ${paper.title}, question ${question.number}`)}</div>`;
+  const label = labelFor(paper, question.number);
+  return `<div class="exam-maths exam-stem">${question.pages ?
+    paperPages(paper.questionFile, question.pages, label) :
+    question.prompt + questionFigure(question.image, `Diagram for ${paper.title}, ${label.toLowerCase()}`)}</div>`;
 }
 
 function editorGuide(question) {
@@ -44,7 +71,12 @@ function editorGuide(question) {
     case 'exact': return 'Enter an exact value, for example sqrt(5)/2. The keypad can insert a square root.';
     case 'expression': return 'Enter an expression using a and b. Use parentheses for grouping.';
     case 'text': return 'State your conclusion in words.';
-    default: return 'Enter a whole number from 1 to 999.';
+    case 'written': return 'Use the working area and sketchpad for your full response. Add a short answer here if needed.';
+    default:
+      if (question.integerMin === undefined && question.integerMax !== undefined) {
+        return `Enter a whole number from 1 to ${question.integerMax}.`;
+      }
+      return question.integerMin !== undefined ? 'Enter a whole number.' : 'Enter a whole number from 1 to 999.';
   }
 }
 
@@ -58,6 +90,26 @@ function activate(paper, root) {
       image.replaceWith(note);
     }, { once: true });
   });
+}
+
+function loadPaperPages(root) {
+  const pages = [...root.querySelectorAll('[data-paper-file]')];
+  if (!pages.length) return Promise.resolve();
+  return import('./exam-pdf.mjs?v=all-years')
+    .then(({ renderPaperPage }) => Promise.all(pages.map(renderPaperPage)))
+    .catch(() => pages.forEach(page => {
+      page.removeAttribute('aria-busy');
+      page.textContent = 'Could not open the paper. Refresh this page to retry.';
+    }));
+}
+
+export async function listAvailablePapers(loadJson) {
+  const [{ papers }, { papers: teams }] = await Promise.all([loadJson('papers.json'), loadJson('team-papers.json')]);
+  return [...papers, ...teams].map(paper => ({
+    ...paper, repeatable: false,
+    questionFile: `./papers/wajo-${paper.year}-questions.pdf`,
+    solutionFile: `./papers/wajo-${paper.year}-solutions.pdf`,
+  }));
 }
 
 export function createExamCentre({ app, show, mocks, onMockResult, onExamActivity, plainMath, legacyRun, discardLegacy }) {
@@ -81,7 +133,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
 
   async function loadJson(path) {
     if (!cache.has(path)) {
-      cache.set(path, fetch(`${BANK}${path}?v=local-papers`).then(response => {
+      cache.set(path, fetch(`${BANK}${path}?v=all-years`).then(response => {
         if (!response.ok) throw new Error('Could not load this paper. Check your connection and try again.');
         return response.json();
       }).catch(error => {
@@ -93,7 +145,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
   }
 
   async function catalog() {
-    return (await loadJson('papers.json')).papers.map(paper => ({ ...paper, repeatable: false }));
+    return listAvailablePapers(loadJson);
   }
 
   async function findPaper(id) {
@@ -102,11 +154,12 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
   }
 
   function questionsFor(paper) {
-    return paper.mock ? Promise.resolve(paper.content) : loadJson(`${paper.year}-questions.json`);
+    return paper.content ? Promise.resolve(paper.content) : loadJson(`${paper.year}-questions.json`);
   }
 
   function solutionsFor(paper) {
-    return paper.mock ? Promise.resolve(paper.solutions) : loadJson(`${paper.year}-solutions.json`);
+    return paper.team ? loadJson('team-solutions.json').then(solutions => solutions[paper.id]) :
+      paper.mock ? Promise.resolve(paper.solutions) : loadJson(`${paper.year}-solutions.json`);
   }
 
   function problemError(error, retry = view) {
@@ -127,7 +180,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
     const resume = run || (finished && !paper.repeatable);
     return `<a class="exam-paper-card" href="${finished && !run && !paper.repeatable ? reportLink(finished) : `#/exam/${paper.id}`}">
       <span class="exam-paper-title">${escapeHtml(paper.title)}</span>
-      <span class="exam-paper-meta">${paper.questions} questions · ${paper.marks} marks · ${paper.minutes} min</span>
+      <span class="exam-paper-meta">${paperLength(paper)} · ${paper.minutes} min${paperMarkTotal(paper)}</span>
       <span class="exam-paper-status${resume ? ' has-attempt' : ''}">${run ? 'Resume sitting' : finished ? scoreText(finished) : 'Open paper'} <span aria-hidden="true">→</span></span>
     </a>`;
   }
@@ -136,15 +189,22 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
     const state = store.current();
     const past = mocksOnly ? [] : await catalog();
     if (version !== renderVersion) return;
+    const teamsOnly = view === 'exams/team';
     show(`<div class="exam-centre">
       ${mocksOnly ? '<a class="crumb" href="#/exams">← Exam centre</a>' : ''}
       <h1>${mocksOnly ? 'Mock papers' : 'WAJO exam centre'}</h1>
       <p class="sub">${mocksOnly ? 'Original WAJO-style papers. Each timed sitting runs for 100 minutes.' :
-        'Sit a past WAJO paper on screen. Enter your final answer and keep your working with each question.'}</p>
+        'Sit a past WAJO paper on screen. Enter your answers and keep your working with each question.'}</p>
       ${attemptNotice(state.active)}
+      ${mocksOnly ? '' : `<nav class="row exam-round-links" aria-label="Past paper rounds">
+        <a href="#/exams"${teamsOnly ? '' : ' aria-current="page"'}>Individual papers</a>
+        <a href="#/exams/team"${teamsOnly ? ' aria-current="page"' : ''}>Team papers</a>
+      </nav>`}
       ${mocksOnly ? '' : `<section aria-labelledby="past-paper-title">
-        <h2 id="past-paper-title">Past individual papers</h2>
-        <div class="exam-paper-grid">${past.map(paper => paperCard(paper, state)).join('')}</div>
+        <h2 id="past-paper-title">${teamsOnly ? 'Team papers · 2000–2025' : 'Individual papers · 2000–2026'}</h2>
+        <div class="exam-paper-grid">${past.filter(paper => Boolean(paper.team) === teamsOnly)
+          .map(paper => paperCard(paper, state)).join('')}</div>
+        ${teamsOnly ? '<p class="sub">The 2026 team paper is awaiting a verified copy.</p>' : ''}
         <p class="exam-credit">Source: WAJO (Western Australian Junior Mathematics Olympiad).
           <a href="#/past">Browse question papers and solutions</a></p>
         </section>`}
@@ -153,7 +213,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
       </section>
       ${state.attempts.length ? `<section aria-labelledby="exam-history-title"><h2 id="exam-history-title">Exam history</h2>
         <ul class="exam-history">${[...state.attempts].reverse().map(run => `<li><a href="${reportLink(run)}">${escapeHtml(
-          mockPapers.find(p => p.id === run.paperId)?.title || titleForYear(run.paperId))}</a>
+          [...mockPapers, ...past].find(p => p.id === run.paperId)?.title || `WAJO ${run.paperId.slice(5, 9)}${run.paperId.endsWith('-team') ? ' Team' : ''}`)}</a>
           <span>${scoreText(run)} · ${dateText(run.submittedAt)}${run.deadline === null ? ' · untimed' : ''}</span></li>`).join('')}</ul>
       </section>` : ''}
     </div>`);
@@ -178,17 +238,21 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
   function showStart(paper, questions, state) {
     const last = state.attempts.filter(run => run.paperId === paper.id).at(-1);
     if (last && !paper.repeatable) return openReport(last.id);
+    const written = [...new Set(questions.filter(q => q.workingRequired).map(q => q.number.replace(/[ab]$/, '')))];
+    const instructions = paper.team ? 'Enter a shared response for each part. Keep your explanations and drawings with the relevant part.' :
+      written.length ? `Follow the answer format shown for each question. A reviewer marks the written solution for question ${written.join(' and ')}.` :
+        'Enter one positive whole number below 1000 for each final answer. The exam score is based on those answers.';
     show(`<div class="exam-centre">
-      <a class="crumb" href="#/exams">← Exam centre</a>
+      <a class="crumb" href="#/exams${paper.team ? '/team' : ''}">← Exam centre</a>
       <h1>${escapeHtml(paper.title)}</h1>
-      <p class="sub">${paper.questions} questions · ${paper.minutes} minutes · ${paper.marks} marks</p>
+      <p class="sub">${paperLength(paper)} · ${paper.minutes} minutes${paperMarkTotal(paper)}</p>
       ${attemptNotice(state.active)}
       <section class="card exam-start" aria-labelledby="before-start">
         <h2 id="before-start">Before you start</h2>
         <ul>
           <li>Use a pen and paper or the on-screen working area. Calculators are prohibited.</li>
-          <li>${paper.requiresWorking ? 'Questions 1–11 take a whole-number answer. Question 12 requires a written solution.' :
-            'Enter one positive whole number below 1000 for each final answer. The exam score is based on those answers.'}</li>
+          <li>${instructions}</li>
+          ${paper.team && paper.marks === null ? '<li>Review each part against the worked solutions after submitting.</li>' : ''}
           <li>Your answers and working save to this browser. The countdown continues if you leave or refresh.</li>
           <li>${paper.repeatable ? 'Submitting locks this sitting. You can start a new practice attempt afterwards.' :
             'This paper allows one sitting in this browser. After submitting you can review it.'}</li>
@@ -240,8 +304,9 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
     const question = questions[currentIndex];
     const saved = run.responses[question.id] || {};
     const integer = question.answerFormat === 'integer';
+    const label = labelFor(paper, question.number);
     show(`<div class="exam-centre exam-sitting">
-      <a class="crumb" href="#/exams">← Exam centre</a>
+      <a class="crumb" href="#/exams${paper.team ? '/team' : ''}">← Exam centre</a>
       <div class="exam-sitting-heading"><h1>${escapeHtml(paper.title)}</h1>
         <span class="exam-save" role="status" data-exam-save>Saved on this device</span></div>
       <section class="exam-toolbar" aria-label="Exam controls">
@@ -250,26 +315,30 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
             <strong class="exam-clock" role="timer" data-exam-clock></strong></div>
           <button class="btn small" type="button" data-end-exam>Review &amp; submit</button>
         </div>
-        <nav class="exam-navigator" aria-label="Questions">${questions.map((item, index) =>
+        <nav class="exam-navigator" aria-label="${paper.team ? 'Parts' : 'Questions'}">${questions.map((item, index) =>
           `<button type="button" data-question-index="${index}"${index === currentIndex ? ' aria-current="step"' : ''}>${item.number}</button>`).join('')}</nav>
         <div class="exam-nav-summary"><span data-answer-count></span><span data-flag-count></span></div>
       </section>
       <article class="card exam-question-card" aria-labelledby="exam-question-title">
         <div class="exam-question-header">
-          <div><span class="exam-question-marks">${markText(question.marks)}${question.workingRequired ? ' · Working marked' : ''}</span>
-            <h2 id="exam-question-title" tabindex="-1">Question ${question.number}</h2></div>
+          <div><span class="exam-question-marks">${question.marks === null ? 'Review against the worked solution' :
+            markText(question.marks) + (question.workingRequired ? ' · Working marked' : '')}</span>
+            <h2 id="exam-question-title" tabindex="-1">${label}</h2></div>
           <button class="btn small ghost" data-flag type="button" aria-pressed="false">Flag</button>
         </div>
+        ${paper.referencePages ? `<details class="exam-model-solution"><summary>Full team paper and any answer sheets</summary>
+          <div class="exam-maths">${paperPages(paper.questionFile, paper.referencePages, 'Team paper')}</div></details>` : ''}
         ${mathMarkup(question, paper)}
         <section class="exam-response" aria-label="Your response">
           <div class="exam-answer-wrap">
             <label for="exam-answer">Final answer</label>
-            <input class="ans" id="exam-answer" type="text" inputmode="${integer ? 'numeric' : 'text'}"
+            <input class="ans" id="exam-answer" type="text" inputmode="${integer && (question.integerMin ?? 1) >= 0 ? 'numeric' : 'text'}"
               autocomplete="off" spellcheck="false" autocapitalize="off"
               maxlength="${fieldLimits.answer}" aria-describedby="exam-answer-help">
             <small id="exam-answer-help">${editorGuide(question)}</small>
           </div>
-          <label for="exam-working">Working out <small>${question.workingRequired ? 'Required for full marks' : 'Saved for review'}</small></label>
+          <label for="exam-working">Working out <small>${question.workingRequired ?
+            (question.marks === null ? 'Saved for review' : 'Required for full marks') : 'Saved for review'}</small></label>
           <textarea id="exam-working" rows="5" maxlength="${fieldLimits.working}"
             placeholder="Write your steps or explain your reasoning…" spellcheck="false"></textarea>
           <details class="exam-keypad">
@@ -315,6 +384,9 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
     answer.value = saved.answer || '';
     working.value = saved.working || '';
     activate(paper, root.querySelector('.exam-stem'));
+    loadPaperPages(root.querySelector('.exam-stem'));
+    const reference = root.querySelector('.exam-question-card > details');
+    reference?.addEventListener('toggle', () => { if (reference.open) loadPaperPages(reference); }, { once: true });
     mountKeypad(root, answer, working, ['integer', 'text'].includes(question.answerFormat));
     const topHeight = () => {
       root.style.setProperty('--exam-top', (document.querySelector('.top')?.offsetHeight || 0) + 'px');
@@ -335,18 +407,18 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
         const r = run.responses[q.id] || {};
         const hasAnswer = Boolean(r.answer?.trim());
         const hasWorking = Boolean(r.working?.trim() || r.sketch?.length);
-        const invalid = q.answerFormat === 'integer' && hasAnswer &&
-          questionGaps([q], run.responses).invalid.length > 0;
-        if (hasAnswer && !invalid) answered++;
+        const invalid = q.answerFormat === 'integer' && hasAnswer && questionGaps([q], run.responses).invalid.length > 0;
+        const complete = !invalid && (hasAnswer || (q.answerFormat === 'written' && hasWorking));
+        if (complete) answered++;
         if (r.flag) flagged++;
-        button.classList.toggle('is-answered', hasAnswer && !invalid);
+        button.classList.toggle('is-answered', complete);
         button.classList.toggle('is-invalid', invalid);
-        button.classList.toggle('has-working', hasWorking && !hasAnswer);
+        button.classList.toggle('has-working', hasWorking && !complete);
         button.classList.toggle('is-flagged', Boolean(r.flag));
-        const label = invalid ? 'check answer format' : hasAnswer ? 'answered' : hasWorking ? 'working saved, no answer' : 'unanswered';
-        button.setAttribute('aria-label', `Question ${q.number}, ${label}${r.flag ? ', flagged' : ''}`);
+        const state = invalid ? 'check answer format' : complete ? 'answered' : hasWorking ? 'working saved, no answer' : 'unanswered';
+        button.setAttribute('aria-label', `${labelFor(paper, q.number)}, ${state}${r.flag ? ', flagged' : ''}`);
       }
-      root.querySelector('[data-answer-count]').textContent = `${answered} of ${questions.length} answers entered`;
+      root.querySelector('[data-answer-count]').textContent = `${answered} of ${questions.length} answered`;
       root.querySelector('[data-flag-count]').textContent = flagged ? `${flagged} flagged` : '';
       const isFlagged = Boolean(run.responses[question.id]?.flag);
       flag.setAttribute('aria-pressed', String(isFlagged));
@@ -468,22 +540,21 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
   }
 
   function reviewRow(paper, row, result) {
-    const { question, response, key, pending, earned, status, manuallyScored } = row;
+    const { question, response, key, status, manuallyScored } = row;
     const review = result.reviews[question.id] || {};
-    const label = pending ? 'Awaiting review' : `${earned}/${question.marks} marks`;
-    const tone = pending ? 'pending' : earned === question.marks ? 'correct' : 'missed';
+    const label = labelFor(paper, question.number);
+    const tone = resultTone(row);
     const options = values => values.map(([value, name]) =>
       `<option value="${value}"${String(value) === String(review.mark ?? '') ? ' selected' : ''}>${name}</option>`).join('');
     const hasWorking = response.working?.trim() || response.sketch?.length;
-    const questionLink = `<strong>Question ${question.number}</strong>`;
-    const answerReview = question.workingRequired && (status === 'review' || review.answerVerdict);
+    const answerReview = question.answerFormat !== 'written' && (status === 'review' || review.answerVerdict);
     return `<details class="exam-result-row" data-review-id="${question.id}" data-status="${tone}">
-      <summary>${questionLink}<span data-result-status>${responseStatus[status]}</span><span class="exam-result-status ${tone}">${label}</span></summary>
+      <summary><strong>${label}</strong><span data-result-status>${reviewStatus(row)}</span><span class="exam-result-status ${tone}">${resultMark(row)}</span></summary>
       <div class="exam-result-body">
         ${mathMarkup(question, paper)}
         <div class="exam-answer-comparison">
           <div><span>Your final answer</span><div class="exam-maths" data-result-answer></div></div>
-          <div><span>Answer key</span><div class="exam-maths" data-result-key></div></div>
+          ${key.answer === null ? '' : '<div><span>Answer key</span><div class="exam-maths" data-result-key></div></div>'}
         </div>
         <section aria-label="Submitted working">
           <h3>Your working</h3>
@@ -492,8 +563,9 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
             '<p class="sub">No working recorded.</p>'}
         </section>
         <details class="exam-model-solution"><summary>Worked solution</summary>
-          <div class="exam-maths">${key.solution}${(key.images || []).map((source, index) =>
-            questionFigure(source, `Worked solution diagram ${index + 1} for question ${question.number}`)).join('')}</div>
+          <div class="exam-maths">${key.pages ? paperPages(paper.solutionFile, key.pages, 'Worked solution') :
+            key.solution + (key.images || []).map((source, index) =>
+              questionFigure(source, `Worked solution diagram ${index + 1} for ${label.toLowerCase()}`)).join('')}</div>
         </details>
         <form class="exam-review-form">
           <h3>Review the working</h3>
@@ -532,10 +604,10 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
       // The locked responses are still in storage and can be reopened.
     }
     show(`<div class="exam-centre exam-report">
-      <a class="crumb" href="#/exams">← Exam centre</a>
+      <a class="crumb" href="#/exams${paper.team ? '/team' : ''}">← Exam centre</a>
       <h1>${escapeHtml(paper.title)} results</h1>
       <div class="card exam-report-top">
-        <div><span class="exam-clock-label">Score</span><div class="score" data-exam-score></div></div>
+        <div><span class="exam-clock-label">${grade.max ? 'Score' : 'Parts reviewed'}</span><div class="score" data-exam-score></div></div>
         <div>
           <p>${result.expired ? 'Time expired. Your responses were submitted.' : 'Your sitting has been submitted.'}
             Time used ${displayTime(examSeconds(result.submittedAt - result.startedAt))}.</p>
@@ -543,32 +615,36 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
         </div>
       </div>
       <div class="exam-report-tools"><label>Show <select data-filter-results>
-        <option value="all">All questions</option><option value="attention">Missed or pending</option><option value="correct">Full marks</option>
+        <option value="all">${paper.team ? 'All parts' : 'All questions'}</option>
+        <option value="attention">${grade.max ? 'Missed or pending' : 'Unreviewed'}</option>
+        <option value="correct">${grade.max ? 'Full marks' : 'Reviewed'}</option>
       </select></label><button type="button" class="btn small ghost" data-print-exam>Print / save PDF</button></div>
       <section class="exam-result-list" aria-label="Question results">${grade.rows.map(row => reviewRow(paper, row, result)).join('')}</section>
       <p data-empty-filter hidden>No questions match this filter.</p>
       ${paper.mock ? `<p><a href="#/exam/${paper.id}">Start a new mock sitting</a></p>` :
         `<p class="exam-credit">Source: WAJO (Western Australian Junior Mathematics Olympiad).
-          <a href="papers/wajo-${paper.year}-solutions.pdf" target="_blank" rel="noopener">Worked solutions (PDF)</a></p>`}
+          <a href="${paper.solutionFile}${paper.team ? `#page=${paper.solutionPage}` : ''}" target="_blank" rel="noopener">Worked solutions (PDF)</a></p>`}
     </div>`);
     const root = app.querySelector('.exam-report');
     const filter = root.querySelector('[data-filter-results]');
     const resultRows = [...root.querySelectorAll('.exam-result-row')];
 
     function refresh() {
-      root.querySelector('[data-exam-score]').textContent = `${grade.score} / ${grade.max}`;
+      const reviewed = grade.rows.filter(row => row.reviewed).length;
+      root.querySelector('[data-exam-score]').textContent = grade.max ? `${grade.score} / ${grade.max}` : `${reviewed} / ${questions.length}`;
+      const unit = paper.team ? 'part' : 'question';
       root.querySelector('[data-exam-report-note]').textContent = grade.pending ?
-        `${grade.pending} question${grade.pending === 1 ? ' is' : 's are'} waiting for review. The score is provisional.` :
-        `${grade.correct} final answers confirmed · ${grade.unanswered} unanswered`;
+        `${grade.pending} ${unit}${grade.pending === 1 ? ' is' : 's are'} waiting for review.${grade.max ? ' The score is provisional.' : ''}` :
+        `${paper.team ? `${reviewed} reviewed` : `${grade.correct} final answers confirmed`} · ${grade.unanswered} unanswered`;
       let visible = 0;
       for (const [index, element] of resultRows.entries()) {
         const row = grade.rows[index];
-        const tone = row.pending ? 'pending' : row.earned === row.question.marks ? 'correct' : 'missed';
+        const tone = resultTone(row);
         element.dataset.status = tone;
         const status = element.querySelector('.exam-result-status');
         status.className = `exam-result-status ${tone}`;
-        status.textContent = row.pending ? 'Awaiting review' : `${row.earned}/${row.question.marks} marks`;
-        element.querySelector('[data-result-status]').textContent = responseStatus[row.status];
+        status.textContent = resultMark(row);
+        element.querySelector('[data-result-status]').textContent = reviewStatus(row);
         element.hidden = filter.value === 'attention' ? tone === 'correct' : filter.value === 'correct' && tone !== 'correct';
         if (!element.hidden) visible++;
       }
@@ -577,19 +653,20 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
 
     for (const [index, element] of resultRows.entries()) {
       const row = grade.rows[index];
-      let populated = false;
+      let rendered;
       function populate() {
-        if (populated) return;
-        populated = true;
+        if (rendered) return rendered;
         const learner = element.querySelector('[data-result-answer]');
         workingPreview(learner, row.response.answer?.trim() || 'Unanswered', plainMath);
         const expected = element.querySelector('[data-result-key]');
-        workingPreview(expected, String(row.key.answer), plainMath);
+        if (expected) workingPreview(expected, String(row.key.answer), plainMath);
         const working = element.querySelector('[data-result-working]');
         if (working) workingPreview(working, row.response.working || '', plainMath);
         const sketch = element.querySelector('canvas');
         if (sketch) paintSketch(sketch, row.response.sketch);
         activate(paper, element.querySelector('.exam-result-body'));
+        rendered = loadPaperPages(element.querySelector('.exam-result-body'));
+        return rendered;
       }
       element.addEventListener('toggle', () => { if (element.open) populate(); });
       element.populateForPrint = populate;
@@ -617,15 +694,15 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
       };
     }
     filter.onchange = refresh;
-    root.querySelector('[data-print-exam]').onclick = () => {
+    root.querySelector('[data-print-exam]').onclick = async () => {
       const states = resultRows.map(element => ({ open: element.open, hidden: element.hidden }));
       const solutionsOpen = resultRows.map(element => element.querySelector('.exam-model-solution').open);
-      resultRows.forEach(element => {
+      await Promise.all(resultRows.map(element => {
         element.hidden = false;
         element.open = true;
         element.querySelector('.exam-model-solution').open = true;
-        element.populateForPrint();
-      });
+        return element.populateForPrint();
+      }));
       window.addEventListener('afterprint', () => {
         resultRows.forEach((element, index) => {
           element.open = states[index].open;

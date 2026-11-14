@@ -26,13 +26,14 @@ function validSketch(value) {
 
 function cleanMap(value, clean) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
-  return Object.fromEntries(Object.entries(value).filter(([key]) => /^wajo\d{2}_q\d+[ab]?$|^mock-q\d+$/.test(key))
+  return Object.fromEntries(Object.entries(value).filter(([key]) =>
+    /^(?:wajo\d{2}_q\d+[ab]?|wajo\d{2}_team_q(?:[A-Z]|\d+)|mock-q\d+)$/.test(key))
     .map(([key, entry]) => [key, clean(entry || {})]));
 }
 
 function cleanSitting(run, submitted) {
   if (!run || typeof run !== 'object' || !/^[\w-]{1,60}$/.test(run.id)
-    || !/^(?:wajo-20[12]\d|mock-[a-z0-9-]+)$/.test(run.paperId)
+    || !/^(?:wajo-20(?:[01]\d|2[0-6])(?:-team)?|mock-[a-z0-9-]+)$/.test(run.paperId)
     || !Number.isFinite(run.startedAt) || run.startedAt < 0
     || (run.deadline !== null && (!Number.isFinite(run.deadline) || run.deadline < run.startedAt))) return null;
   const clean = {

@@ -1,5 +1,5 @@
 {
-  "source": "ProblemSolvingEducation WAJO Practise compilation",
+  "source": "WAJO archives and the ProblemSolvingEducation WAJO Practise compilation",
   "papers": [
     {
       "id": "wajo-2026",
@@ -138,6 +138,136 @@
       "entries": 12,
       "questions": 12,
       "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2012",
+      "year": 2012,
+      "title": "WAJO 2012",
+      "entries": 12,
+      "questions": 12,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2011",
+      "year": 2011,
+      "title": "WAJO 2011",
+      "entries": 10,
+      "questions": 10,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2010",
+      "year": 2010,
+      "title": "WAJO 2010",
+      "entries": 10,
+      "questions": 10,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2009",
+      "year": 2009,
+      "title": "WAJO 2009",
+      "entries": 10,
+      "questions": 10,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2008",
+      "year": 2008,
+      "title": "WAJO 2008",
+      "entries": 10,
+      "questions": 10,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2007",
+      "year": 2007,
+      "title": "WAJO 2007",
+      "entries": 10,
+      "questions": 10,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2006",
+      "year": 2006,
+      "title": "WAJO 2006",
+      "entries": 10,
+      "questions": 10,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2005",
+      "year": 2005,
+      "title": "WAJO 2005",
+      "entries": 10,
+      "questions": 10,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2004",
+      "year": 2004,
+      "title": "WAJO 2004",
+      "entries": 10,
+      "questions": 10,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2003",
+      "year": 2003,
+      "title": "WAJO 2003",
+      "entries": 10,
+      "questions": 10,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2002",
+      "year": 2002,
+      "title": "WAJO 2002",
+      "entries": 10,
+      "questions": 10,
+      "marks": 25,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2001",
+      "year": 2001,
+      "title": "WAJO 2001",
+      "entries": 10,
+      "questions": 10,
+      "marks": 22,
+      "minutes": 100,
+      "requiresWorking": true
+    },
+    {
+      "id": "wajo-2000",
+      "year": 2000,
+      "title": "WAJO 2000",
+      "entries": 10,
+      "questions": 10,
+      "marks": 18,
       "minutes": 100,
       "requiresWorking": true
     }

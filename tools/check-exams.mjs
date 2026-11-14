@@ -6,7 +6,18 @@ import { createExamStore } from '../exam-store.mjs';
 const root = new URL('../', import.meta.url);
 const read = async path => JSON.parse(await readFile(new URL(path, root), 'utf8'));
 const { papers } = await read('data/wajo/papers.json');
-assert.deepEqual(papers.map(paper => paper.year), Array.from({ length: 14 }, (_, index) => 2026 - index));
+const { papers: teamPapers } = await read('data/wajo/team-papers.json');
+const teamSolutions = await read('data/wajo/team-solutions.json');
+assert.deepEqual(papers.map(paper => paper.year), Array.from({ length: 27 }, (_, index) => 2026 - index));
+assert.deepEqual(teamPapers.map(paper => paper.year), Array.from({ length: 26 }, (_, index) => 2025 - index));
+
+function checkPages(pages, id) {
+  assert(pages.length > 0, id);
+  for (const [page, left, top, right, bottom] of pages) {
+    assert(Number.isInteger(page) && page > 0 && [left, top, right, bottom].every(Number.isFinite), id);
+    assert(left >= 0 && top >= 0 && right <= 612 && bottom <= 842 && left < right && top < bottom, id);
+  }
+}
 
 const ids = new Set();
 const media = new Set();
@@ -26,10 +37,16 @@ for (const paper of papers) {
     const solution = solutions[id];
     assert(!ids.has(id), `${id} is duplicated`);
     ids.add(id);
-    assert(prompt && solution.solution && question.marks >= 1 && question.marks <= 4, id);
+    assert(question.marks >= 1 && question.marks <= 5, id);
     assert(!('answer' in question) && !('solution' in question) && !('options' in question), id);
-    assert.equal(checkAnswer(question, solution.answer, solution.answer), 'correct', id);
+    if (question.answerFormat !== 'written') assert.equal(checkAnswer(question, solution.answer, solution.answer), 'correct', id);
     if (question.workingRequired) reviewed.push(id);
+    if (question.pages) {
+      checkPages(question.pages, id);
+      checkPages(solution.pages, id);
+      continue;
+    }
+    assert(prompt && solution.solution, id);
     for (const html of [prompt, solution.solution]) {
       assert(!/<(?:script|iframe|object|link)\b|\bon\w+=/i.test(html), id);
       for (const match of html.matchAll(/\bsrc="([^"]+)"/g)) media.add(match[1]);
@@ -37,14 +54,30 @@ for (const paper of papers) {
     for (const path of [image, ...(solution.images || [])]) if (path) media.add(path);
   }
 }
-assert.equal(ids.size, 197);
+assert.equal(ids.size, 329);
 assert.equal(media.size, 73);
 for (const path of media) {
   assert(/^data\/wajo\/diagrams\/[0-9a-f]{14}\.webp$/.test(path), path);
   assert((await stat(new URL(path, root))).size > 100, path);
 }
-assert.deepEqual(reviewed, ['wajo19_q12', 'wajo18_q12', 'wajo17_q12', 'wajo16_q12',
+assert.deepEqual(reviewed.slice(0, 8), ['wajo19_q12', 'wajo18_q12', 'wajo17_q12', 'wajo16_q12',
   'wajo15_q12a', 'wajo15_q12b', 'wajo14_q12', 'wajo13_q12']);
+assert.equal(reviewed.length, 21);
+for (const paper of teamPapers) {
+  const { content, entries, id, marks, minutes, referencePages, year } = paper;
+  assert.equal(entries, content.length, id);
+  assert.equal(minutes, year >= 2021 ? 50 : 45, id);
+  assert.equal(marks ?? 0, content.reduce((sum, q) => sum + q.marks, 0), id);
+  assert.deepEqual(Object.keys(teamSolutions[id]), content.map(q => q.id));
+  checkPages(referencePages, id);
+  for (const question of content) {
+    assert(!ids.has(question.id), question.id);
+    ids.add(question.id);
+    assert.equal(question.answerFormat, 'written');
+    checkPages(question.pages, question.id);
+    checkPages(teamSolutions[id][question.id].pages, question.id);
+  }
+}
 assert.equal(byYear.get(2021).solutions.wajo21_q12.answer, 35);
 assert.equal(papers[0].marks, 41);
 
@@ -55,6 +88,23 @@ assert.equal(checkAnswer(first, '8 4', 84), 'invalid');
 assert.equal(checkAnswer(first, '84 apples', 84), 'invalid');
 assert.equal(checkAnswer(first, '84.0', 84), 'invalid');
 assert.equal(checkAnswer(first, '', 84), 'blank');
+const { questions: early, solutions: earlyKeys } = byYear.get(2001);
+assert.equal(checkAnswer(early[0], '−40', earlyKeys[early[0].id].answer), 'correct');
+assert.equal(checkAnswer(early[2], '1334', earlyKeys[early[2].id].answer), 'correct');
+assert.equal(checkAnswer(byYear.get(2011).questions[0], '100', 7), 'invalid');
+const { questions: placements, solutions: placementsKeys } = byYear.get(2002);
+assert.equal(checkAnswer(placements[2], '2nd place', placementsKeys[placements[2].id].answer), 'correct');
+assert.equal(checkAnswer(placements[2], 'equal', placementsKeys[placements[2].id].answer), 'review');
+assert.equal(checkAnswer(byYear.get(2014).questions.at(-1), 'equal', 'Neither; the two areas are equal.'), 'correct');
+
+const team = teamPapers[0];
+const part = team.content[0];
+const teamResponses = { [part.id]: { working: 'A written response.' } };
+assert(!questionGaps(team.content, teamResponses).unanswered.includes(part.number));
+assert.equal(gradePaper(team.content, teamResponses, teamSolutions[team.id]).pending, 1);
+const reviewedTeam = gradePaper(team.content, teamResponses, teamSolutions[team.id], { [part.id]: { verdict: 'sound' } });
+assert.equal(reviewedTeam.pending, 0);
+assert.equal(reviewedTeam.rows[0].reviewed, true);
 const { questions: oldQuestions, solutions: oldKeys } = byYear.get(2013);
 const last = oldQuestions.at(-1);
 assert.equal(checkAnswer(last, '√481/3', oldKeys[last.id].answer), 'correct');
@@ -106,4 +156,13 @@ assert.throws(() => store.restore({ version: 1, active: {}, attempts: [] }));
 const state = store.validateBackup(store.exportState());
 assert.equal(state.attempts.length, 2);
 assert.equal(state.attempts[0].responses[first.id].working, initial.working);
-console.log('PASS: 14 papers, 197 question entries and keys, 73 local diagrams, written marking, timer, locks and backup.');
+const rounds = createExamStore({ ...storage, getItem: key => disk.get(`rounds-${key}`) ?? null,
+  setItem: (key, value) => disk.set(`rounds-${key}`, value) }, () => now);
+const earlyRun = rounds.start(papers.at(-1));
+rounds.saveResponse(earlyRun.id, 'wajo00_q1', { answer: '100' });
+rounds.submit(earlyRun.id);
+const teamRun = rounds.start(teamPapers.at(-1));
+assert.equal(remaining(teamRun, now), 2700);
+rounds.saveResponse(teamRun.id, 'wajo00_team_q1', { working: 'Count the removed cubes.' });
+assert.equal(rounds.validateBackup(rounds.exportState()).active.responses.wajo00_team_q1.working, 'Count the removed cubes.');
+console.log(`PASS: ${papers.length} individual papers, ${teamPapers.length} team papers, ${ids.size} responses and keys, local media, marking, timer, locks and backup.`);

@@ -1,0 +1,2896 @@
+{
+  "wajo-2025-team": {
+    "wajo25_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          99.8,
+          537,
+          143.8
+        ]
+      ]
+    },
+    "wajo25_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          154.6,
+          537,
+          361.6
+        ]
+      ]
+    },
+    "wajo25_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          372.5,
+          537,
+          636.1
+        ]
+      ]
+    },
+    "wajo25_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          646.9,
+          537,
+          708.8
+        ]
+      ]
+    },
+    "wajo25_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          719.7,
+          537,
+          782.2
+        ],
+        [
+          9,
+          58,
+          48.6,
+          537,
+          148.4
+        ]
+      ]
+    },
+    "wajo25_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          160.2,
+          537,
+          258.1
+        ]
+      ]
+    },
+    "wajo25_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          269.9,
+          537,
+          782.2
+        ],
+        [
+          10,
+          58,
+          48.6,
+          537,
+          764.1
+        ]
+      ]
+    },
+    "wajo25_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          48.6,
+          537,
+          782.2
+        ],
+        [
+          12,
+          58,
+          48.6,
+          537,
+          780.4
+        ],
+        [
+          13,
+          58,
+          48.5,
+          537,
+          428.5
+        ]
+      ]
+    }
+  },
+  "wajo-2024-team": {
+    "wajo24_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          125.7,
+          537,
+          221.3
+        ]
+      ]
+    },
+    "wajo24_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          228.9,
+          537,
+          345.3
+        ]
+      ]
+    },
+    "wajo24_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          352.9,
+          537,
+          550.3
+        ]
+      ]
+    },
+    "wajo24_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          557.9,
+          537,
+          790.0
+        ]
+      ]
+    },
+    "wajo24_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          12,
+          58,
+          48.6,
+          537,
+          134.5
+        ]
+      ]
+    },
+    "wajo24_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          12,
+          58,
+          142.1,
+          537,
+          391.3
+        ]
+      ]
+    },
+    "wajo24_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          12,
+          58,
+          398.8,
+          537,
+          693.9
+        ]
+      ]
+    },
+    "wajo24_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          13,
+          58,
+          48.6,
+          537,
+          239.9
+        ]
+      ]
+    },
+    "wajo24_team_qI": {
+      "answer": null,
+      "pages": [
+        [
+          13,
+          58,
+          247.5,
+          537,
+          439.2
+        ]
+      ]
+    },
+    "wajo24_team_qJ": {
+      "answer": null,
+      "pages": [
+        [
+          13,
+          58,
+          445.2,
+          537,
+          690.3
+        ]
+      ]
+    },
+    "wajo24_team_qK": {
+      "answer": null,
+      "pages": [
+        [
+          14,
+          58,
+          48.5,
+          537,
+          780.4
+        ],
+        [
+          15,
+          58,
+          48.6,
+          537,
+          378.8
+        ]
+      ]
+    }
+  },
+  "wajo-2023-team": {
+    "wajo23_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          140.0,
+          537,
+          410.6
+        ]
+      ]
+    },
+    "wajo23_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          418.3,
+          537,
+          818.8
+        ]
+      ]
+    },
+    "wajo23_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          49.0,
+          537,
+          120.5
+        ]
+      ]
+    },
+    "wajo23_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          128.5,
+          537,
+          255.1
+        ]
+      ]
+    },
+    "wajo23_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          263.1,
+          537,
+          747.2
+        ],
+        [
+          11,
+          58,
+          49.0,
+          537,
+          227.2
+        ]
+      ]
+    },
+    "wajo23_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          230.9,
+          537,
+          538.5
+        ]
+      ]
+    },
+    "wajo23_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          544.9,
+          537,
+          819.1
+        ],
+        [
+          12,
+          58,
+          49.0,
+          537,
+          371.7
+        ]
+      ]
+    },
+    "wajo23_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          12,
+          58,
+          392.6,
+          537,
+          780.8
+        ],
+        [
+          13,
+          58,
+          49.0,
+          537,
+          776.8
+        ],
+        [
+          14,
+          58,
+          49.0,
+          537,
+          780.8
+        ],
+        [
+          15,
+          58,
+          49.0,
+          537,
+          433.9
+        ]
+      ]
+    },
+    "wajo23_team_qI": {
+      "answer": null,
+      "pages": [
+        [
+          15,
+          58,
+          447.5,
+          537,
+          776.8
+        ],
+        [
+          16,
+          58,
+          49.0,
+          537,
+          369.1
+        ]
+      ]
+    },
+    "wajo23_team_qJ": {
+      "answer": null,
+      "pages": [
+        [
+          16,
+          58,
+          382.5,
+          537,
+          706.7
+        ]
+      ]
+    },
+    "wajo23_team_qK": {
+      "answer": null,
+      "pages": [
+        [
+          16,
+          58,
+          720.1,
+          537,
+          780.8
+        ],
+        [
+          17,
+          58,
+          65.1,
+          537,
+          757.5
+        ]
+      ]
+    }
+  },
+  "wajo-2022-team": {
+    "wajo22_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          125.7,
+          537,
+          314.1
+        ]
+      ]
+    },
+    "wajo22_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          321.7,
+          537,
+          451.8
+        ]
+      ]
+    },
+    "wajo22_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          461.9,
+          537,
+          575.6
+        ]
+      ]
+    },
+    "wajo22_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          583.2,
+          537,
+          782.7
+        ]
+      ]
+    },
+    "wajo22_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          48.6,
+          537,
+          359.7
+        ]
+      ]
+    },
+    "wajo22_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          367.3,
+          537,
+          634.5
+        ]
+      ]
+    },
+    "wajo22_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          48.6,
+          537,
+          781.8
+        ],
+        [
+          12,
+          58,
+          48.6,
+          537,
+          188.1
+        ]
+      ]
+    }
+  },
+  "wajo-2021-team": {
+    "wajo21_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          125.7,
+          537,
+          155.7
+        ]
+      ]
+    },
+    "wajo21_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          163.3,
+          537,
+          193.4
+        ]
+      ]
+    },
+    "wajo21_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          201.0,
+          537,
+          548.3
+        ]
+      ]
+    },
+    "wajo21_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          554.8,
+          537,
+          687.1
+        ]
+      ]
+    },
+    "wajo21_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          694.7,
+          537,
+          792.8
+        ],
+        [
+          10,
+          58,
+          48.6,
+          537,
+          780.4
+        ],
+        [
+          11,
+          58,
+          48.6,
+          537,
+          274.8
+        ]
+      ]
+    },
+    "wajo21_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          304.1,
+          537,
+          445.4
+        ]
+      ]
+    },
+    "wajo21_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          474.7,
+          537,
+          775.7
+        ],
+        [
+          12,
+          58,
+          48.5,
+          537,
+          302.2
+        ]
+      ]
+    },
+    "wajo21_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          12,
+          58,
+          309.8,
+          537,
+          525.2
+        ]
+      ]
+    },
+    "wajo21_team_qI": {
+      "answer": null,
+      "pages": [
+        [
+          12,
+          58,
+          525.3,
+          537,
+          768.8
+        ],
+        [
+          13,
+          58,
+          41.2,
+          537,
+          340.8
+        ]
+      ]
+    },
+    "wajo21_team_qJ": {
+      "answer": null,
+      "pages": [
+        [
+          13,
+          58,
+          367.6,
+          537,
+          696.8
+        ]
+      ]
+    },
+    "wajo21_team_qK": {
+      "answer": null,
+      "pages": [
+        [
+          13,
+          58,
+          723.7,
+          537,
+          784.4
+        ],
+        [
+          14,
+          58,
+          48.5,
+          537,
+          304.2
+        ]
+      ]
+    },
+    "wajo21_team_qL": {
+      "answer": null,
+      "pages": [
+        [
+          14,
+          58,
+          311.9,
+          537,
+          486.9
+        ]
+      ]
+    }
+  },
+  "wajo-2020-team": {
+    "wajo20_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          124.1,
+          537,
+          169.8
+        ]
+      ]
+    },
+    "wajo20_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          176.1,
+          537,
+          221.4
+        ]
+      ]
+    },
+    "wajo20_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          229.0,
+          537,
+          499.3
+        ]
+      ]
+    },
+    "wajo20_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          506.9,
+          537,
+          831.4
+        ]
+      ]
+    },
+    "wajo20_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          48.6,
+          537,
+          200.0
+        ]
+      ]
+    },
+    "wajo20_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          213.0,
+          537,
+          318.3
+        ]
+      ]
+    },
+    "wajo20_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          331.3,
+          537,
+          389.2
+        ]
+      ]
+    },
+    "wajo20_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          402.2,
+          537,
+          545.9
+        ]
+      ]
+    },
+    "wajo20_team_qI": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          558.9,
+          537,
+          762.5
+        ]
+      ]
+    },
+    "wajo20_team_qJ": {
+      "answer": null,
+      "pages": [
+        [
+          12,
+          58,
+          46.0,
+          537,
+          194.4
+        ]
+      ]
+    },
+    "wajo20_team_qK": {
+      "answer": null,
+      "pages": [
+        [
+          12,
+          58,
+          202.0,
+          537,
+          439.3
+        ]
+      ]
+    }
+  },
+  "wajo-2019-team": {
+    "wajo19_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          138.0,
+          537,
+          257.5
+        ]
+      ]
+    },
+    "wajo19_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          274.6,
+          537,
+          490.0
+        ]
+      ]
+    },
+    "wajo19_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          507.0,
+          537,
+          592.7
+        ]
+      ]
+    },
+    "wajo19_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          609.7,
+          537,
+          759.6
+        ]
+      ]
+    },
+    "wajo19_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          46.8,
+          537,
+          376.8
+        ]
+      ]
+    },
+    "wajo19_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          388.7,
+          537,
+          423.7
+        ]
+      ]
+    },
+    "wajo19_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          433.5,
+          537,
+          530.0
+        ]
+      ]
+    },
+    "wajo19_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          540.1,
+          537,
+          696.8
+        ]
+      ]
+    },
+    "wajo19_team_qI": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          703.6,
+          537,
+          780.9
+        ]
+      ]
+    },
+    "wajo19_team_qJ": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          70.2,
+          537,
+          491.9
+        ]
+      ]
+    }
+  },
+  "wajo-2018-team": {
+    "wajo18_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          158.1,
+          537,
+          193.0
+        ]
+      ]
+    },
+    "wajo18_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          203.8,
+          537,
+          331.2
+        ]
+      ]
+    },
+    "wajo18_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          342.0,
+          537,
+          696.1
+        ]
+      ]
+    },
+    "wajo18_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          66.6,
+          537,
+          357.3
+        ]
+      ]
+    },
+    "wajo18_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          429.9,
+          537,
+          778.1
+        ],
+        [
+          9,
+          58,
+          67.4,
+          537,
+          618.0
+        ]
+      ]
+    },
+    "wajo18_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          66.6,
+          537,
+          223.0
+        ]
+      ]
+    },
+    "wajo18_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          233.9,
+          537,
+          412.7
+        ]
+      ]
+    },
+    "wajo18_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          423.5,
+          537,
+          654.6
+        ]
+      ]
+    },
+    "wajo18_team_qI": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          663.2,
+          537,
+          761.9
+        ],
+        [
+          11,
+          58,
+          66.6,
+          537,
+          254.2
+        ]
+      ]
+    },
+    "wajo18_team_qJ": {
+      "answer": null,
+      "pages": [
+        [
+          11,
+          58,
+          264.8,
+          537,
+          801.0
+        ],
+        [
+          12,
+          58,
+          66.6,
+          537,
+          282.0
+        ]
+      ]
+    }
+  },
+  "wajo-2017-team": {
+    "wajo17_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          58,
+          156.3,
+          537,
+          242.1
+        ]
+      ]
+    },
+    "wajo17_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          58,
+          260.0,
+          537,
+          447.6
+        ]
+      ]
+    },
+    "wajo17_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          58,
+          465.5,
+          537,
+          665.0
+        ]
+      ]
+    },
+    "wajo17_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          58,
+          682.9,
+          537,
+          754.7
+        ]
+      ]
+    },
+    "wajo17_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          68.5,
+          537,
+          540.8
+        ]
+      ]
+    },
+    "wajo17_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          68.5,
+          537,
+          777.6
+        ],
+        [
+          8,
+          58,
+          68.5,
+          537,
+          308.2
+        ]
+      ]
+    },
+    "wajo17_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          320.4,
+          537,
+          662.3
+        ]
+      ]
+    },
+    "wajo17_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          674.6,
+          537,
+          777.6
+        ],
+        [
+          9,
+          58,
+          68.5,
+          537,
+          112.5
+        ]
+      ]
+    },
+    "wajo17_team_qI": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          120.1,
+          537,
+          164.1
+        ]
+      ]
+    },
+    "wajo17_team_qJ": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          171.7,
+          537,
+          271.5
+        ]
+      ]
+    },
+    "wajo17_team_qK": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          279.1,
+          537,
+          770.8
+        ],
+        [
+          10,
+          58,
+          68.5,
+          537,
+          383.0
+        ]
+      ]
+    }
+  },
+  "wajo-2016-team": {
+    "wajo16_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          143.5,
+          537,
+          229.3
+        ]
+      ]
+    },
+    "wajo16_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          236.7,
+          537,
+          362.5
+        ]
+      ]
+    },
+    "wajo16_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          369.9,
+          537,
+          570.6
+        ]
+      ]
+    },
+    "wajo16_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          578.2,
+          537,
+          673.8
+        ]
+      ]
+    },
+    "wajo16_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          681.5,
+          537,
+          739.4
+        ]
+      ]
+    },
+    "wajo16_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          746.9,
+          537,
+          835.0
+        ],
+        [
+          7,
+          58,
+          68.5,
+          537,
+          112.5
+        ]
+      ]
+    },
+    "wajo16_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          125.6,
+          537,
+          377.6
+        ]
+      ]
+    },
+    "wajo16_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          389.1,
+          537,
+          646.6
+        ]
+      ]
+    },
+    "wajo16_team_qI": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          659.6,
+          537,
+          759.5
+        ]
+      ]
+    },
+    "wajo16_team_qJ": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          68.3,
+          537,
+          154.3
+        ]
+      ]
+    },
+    "wajo16_team_qK": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          161.9,
+          537,
+          371.0
+        ]
+      ]
+    }
+  },
+  "wajo-2015-team": {
+    "wajo15_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          143.5,
+          537,
+          217.4
+        ]
+      ]
+    },
+    "wajo15_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          225.0,
+          537,
+          326.9
+        ]
+      ]
+    },
+    "wajo15_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          334.5,
+          537,
+          422.4
+        ]
+      ]
+    },
+    "wajo15_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          430.0,
+          537,
+          531.8
+        ]
+      ]
+    },
+    "wajo15_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          539.4,
+          537,
+          613.4
+        ]
+      ]
+    },
+    "wajo15_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          621.0,
+          537,
+          766.7
+        ]
+      ]
+    },
+    "wajo15_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          68.5,
+          537,
+          170.3
+        ]
+      ]
+    },
+    "wajo15_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          177.9,
+          537,
+          414.3
+        ]
+      ]
+    }
+  },
+  "wajo-2014-team": {
+    "wajo14_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          234.2,
+          488,
+          617.9
+        ]
+      ]
+    },
+    "wajo14_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          661.1,
+          488,
+          705.1
+        ]
+      ]
+    },
+    "wajo14_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          114.7,
+          488,
+          667.5
+        ]
+      ]
+    },
+    "wajo14_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          114.7,
+          488,
+          760.1
+        ]
+      ]
+    },
+    "wajo14_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          103,
+          114.5,
+          488,
+          480.9
+        ]
+      ]
+    },
+    "wajo14_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          103,
+          488.5,
+          488,
+          546.4
+        ]
+      ]
+    },
+    "wajo14_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          103,
+          552.0,
+          488,
+          612.0
+        ]
+      ]
+    },
+    "wajo14_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          103,
+          619.6,
+          488,
+          730.7
+        ]
+      ]
+    }
+  },
+  "wajo-2013-team": {
+    "wajo13_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          143.8,
+          537,
+          301.9
+        ]
+      ]
+    },
+    "wajo13_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          301.9,
+          537,
+          466.0
+        ]
+      ]
+    },
+    "wajo13_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          466.0,
+          537,
+          625.9
+        ]
+      ]
+    },
+    "wajo13_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          58,
+          625.9,
+          537,
+          778.1
+        ],
+        [
+          7,
+          58,
+          66.6,
+          537,
+          227.6
+        ]
+      ]
+    },
+    "wajo13_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          246.9,
+          537,
+          568.0
+        ]
+      ]
+    },
+    "wajo13_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          58,
+          587.3,
+          537,
+          778.1
+        ],
+        [
+          8,
+          58,
+          66.6,
+          537,
+          246.0
+        ]
+      ]
+    },
+    "wajo13_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          58,
+          256.1,
+          537,
+          778.1
+        ],
+        [
+          9,
+          58,
+          66.6,
+          537,
+          289.5
+        ]
+      ]
+    },
+    "wajo13_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          9,
+          58,
+          300.3,
+          537,
+          798.7
+        ]
+      ]
+    },
+    "wajo13_team_qI": {
+      "answer": null,
+      "pages": [
+        [
+          10,
+          58,
+          66.6,
+          537,
+          589.7
+        ]
+      ]
+    }
+  },
+  "wajo-2012-team": {
+    "wajo12_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          191.6,
+          488,
+          221.7
+        ]
+      ]
+    },
+    "wajo12_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          230.7,
+          488,
+          274.8
+        ]
+      ]
+    },
+    "wajo12_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          279.5,
+          488,
+          328.0
+        ]
+      ]
+    },
+    "wajo12_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          332.6,
+          488,
+          482.2
+        ]
+      ]
+    },
+    "wajo12_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          491.3,
+          488,
+          750.5
+        ]
+      ]
+    },
+    "wajo12_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          114.7,
+          488,
+          158.7
+        ]
+      ]
+    },
+    "wajo12_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          162.0,
+          488,
+          213.0
+        ]
+      ]
+    }
+  },
+  "wajo-2011-team": {
+    "wajo11_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          189.7,
+          488,
+          275.5
+        ]
+      ]
+    },
+    "wajo11_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          283.1,
+          488,
+          410.8
+        ]
+      ]
+    },
+    "wajo11_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          418.4,
+          488,
+          670.2
+        ],
+        [
+          6,
+          103,
+          114.5,
+          488,
+          575.8
+        ]
+      ]
+    },
+    "wajo11_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          583.4,
+          488,
+          669.2
+        ]
+      ]
+    },
+    "wajo11_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          676.9,
+          488,
+          762.7
+        ]
+      ]
+    },
+    "wajo11_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          114.7,
+          488,
+          342.1
+        ]
+      ]
+    },
+    "wajo11_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          349.7,
+          488,
+          805.5
+        ],
+        [
+          8,
+          103,
+          114.7,
+          488,
+          420.1
+        ]
+      ]
+    },
+    "wajo11_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          103,
+          427.7,
+          488,
+          569.4
+        ]
+      ]
+    },
+    "wajo11_team_qI": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          103,
+          577.0,
+          488,
+          831.2
+        ]
+      ]
+    }
+  },
+  "wajo-2010-team": {
+    "wajo10_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          197.4,
+          488,
+          393.9
+        ]
+      ]
+    },
+    "wajo10_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          407.7,
+          488,
+          493.5
+        ]
+      ]
+    },
+    "wajo10_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          507.3,
+          488,
+          565.2
+        ]
+      ]
+    },
+    "wajo10_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          579.0,
+          488,
+          734.6
+        ]
+      ]
+    },
+    "wajo10_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          114.7,
+          488,
+          172.6
+        ]
+      ]
+    },
+    "wajo10_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          180.3,
+          488,
+          321.9
+        ]
+      ]
+    },
+    "wajo10_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          329.5,
+          488,
+          460.7
+        ]
+      ]
+    },
+    "wajo10_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          468.3,
+          488,
+          554.1
+        ]
+      ]
+    },
+    "wajo10_team_qI": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          561.7,
+          488,
+          732.9
+        ]
+      ]
+    }
+  },
+  "wajo-2009-team": {
+    "wajo09_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          194.9,
+          488,
+          258.0
+        ]
+      ]
+    },
+    "wajo09_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          269.7,
+          488,
+          420.8
+        ]
+      ]
+    },
+    "wajo09_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          432.6,
+          488,
+          753.3
+        ],
+        [
+          6,
+          103,
+          114.7,
+          488,
+          182.4
+        ]
+      ]
+    },
+    "wajo09_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          190.0,
+          488,
+          234.0
+        ]
+      ]
+    },
+    "wajo09_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          241.6,
+          488,
+          507.2
+        ]
+      ]
+    },
+    "wajo09_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          514.7,
+          488,
+          708.5
+        ]
+      ]
+    }
+  },
+  "wajo-2008-team": {
+    "wajo08_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          167.3,
+          488,
+          282.1
+        ]
+      ]
+    },
+    "wajo08_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          294.8,
+          488,
+          366.3
+        ]
+      ]
+    },
+    "wajo08_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          378.9,
+          488,
+          580.2
+        ]
+      ]
+    },
+    "wajo08_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          593.0,
+          488,
+          735.6
+        ]
+      ]
+    },
+    "wajo08_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          114.7,
+          488,
+          261.6
+        ]
+      ]
+    },
+    "wajo08_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          6,
+          103,
+          289.2,
+          488,
+          720.7
+        ]
+      ]
+    },
+    "wajo08_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          110.4,
+          488,
+          481.7
+        ]
+      ]
+    },
+    "wajo08_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          535.2,
+          488,
+          748.6
+        ],
+        [
+          8,
+          103,
+          114.7,
+          488,
+          430.4
+        ]
+      ]
+    }
+  },
+  "wajo-2007-team": {
+    "wajo07_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          103,
+          131.1,
+          488,
+          150.0
+        ]
+      ]
+    },
+    "wajo07_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          103,
+          154.8,
+          488,
+          173.7
+        ]
+      ]
+    },
+    "wajo07_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          103,
+          178.5,
+          488,
+          225.3
+        ]
+      ]
+    },
+    "wajo07_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          103,
+          230.1,
+          488,
+          318.8
+        ]
+      ]
+    },
+    "wajo07_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          103,
+          323.6,
+          488,
+          384.3
+        ]
+      ]
+    },
+    "wajo07_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          103,
+          389.1,
+          488,
+          408.0
+        ]
+      ]
+    },
+    "wajo07_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          103,
+          412.8,
+          488,
+          431.7
+        ]
+      ]
+    },
+    "wajo07_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          103,
+          436.5,
+          488,
+          497.3
+        ]
+      ]
+    }
+  },
+  "wajo-2006-team": {
+    "wajo06_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          441.4,
+          488,
+          498.4
+        ]
+      ]
+    },
+    "wajo06_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          502.0,
+          488,
+          600.7
+        ]
+      ]
+    },
+    "wajo06_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          604.3,
+          488,
+          688.1
+        ]
+      ]
+    },
+    "wajo06_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          7,
+          103,
+          691.7,
+          488,
+          747.6
+        ]
+      ]
+    },
+    "wajo06_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          103,
+          114.7,
+          488,
+          168.9
+        ]
+      ]
+    },
+    "wajo06_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          103,
+          171.0,
+          488,
+          239.7
+        ]
+      ]
+    },
+    "wajo06_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          103,
+          241.8,
+          488,
+          375.1
+        ]
+      ]
+    },
+    "wajo06_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          103,
+          377.2,
+          488,
+          548.7
+        ]
+      ]
+    },
+    "wajo06_team_qI": {
+      "answer": null,
+      "pages": [
+        [
+          8,
+          103,
+          550.7,
+          488,
+          713.9
+        ]
+      ]
+    }
+  },
+  "wajo-2005-team": {
+    "wajo05_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          4,
+          103,
+          144.2,
+          488,
+          258.8
+        ]
+      ]
+    },
+    "wajo05_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          4,
+          103,
+          260.8,
+          488,
+          333.6
+        ]
+      ]
+    },
+    "wajo05_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          4,
+          103,
+          335.7,
+          488,
+          466.0
+        ]
+      ]
+    },
+    "wajo05_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          4,
+          103,
+          468.1,
+          488,
+          606.8
+        ]
+      ]
+    },
+    "wajo05_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          4,
+          103,
+          608.9,
+          488,
+          648.6
+        ]
+      ]
+    },
+    "wajo05_team_qF": {
+      "answer": null,
+      "pages": [
+        [
+          4,
+          103,
+          650.7,
+          488,
+          690.5
+        ]
+      ]
+    },
+    "wajo05_team_qG": {
+      "answer": null,
+      "pages": [
+        [
+          4,
+          103,
+          692.5,
+          488,
+          753.3
+        ]
+      ]
+    },
+    "wajo05_team_qH": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          114.7,
+          488,
+          140.5
+        ]
+      ]
+    },
+    "wajo05_team_qI": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          142.6,
+          488,
+          367.6
+        ]
+      ]
+    }
+  },
+  "wajo-2004-team": {
+    "wajo04_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          140.9,
+          488,
+          201.6
+        ]
+      ]
+    },
+    "wajo04_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          206.4,
+          488,
+          253.2
+        ]
+      ]
+    },
+    "wajo04_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          258.0,
+          488,
+          318.8
+        ]
+      ]
+    },
+    "wajo04_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          323.6,
+          488,
+          454.1
+        ]
+      ]
+    },
+    "wajo04_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          5,
+          103,
+          458.9,
+          488,
+          645.1
+        ]
+      ]
+    }
+  },
+  "wajo-2003-team": {
+    "wajo03_team_qA": {
+      "answer": null,
+      "pages": [
+        [
+          2,
+          70,
+          590.1,
+          569,
+          724.6
+        ],
+        [
+          3,
+          70,
+          94.1,
+          569,
+          151.8
+        ]
+      ]
+    },
+    "wajo03_team_qB": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          70,
+          157.3,
+          569,
+          214.2
+        ]
+      ]
+    },
+    "wajo03_team_qC": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          70,
+          216.3,
+          569,
+          252.9
+        ]
+      ]
+    },
+    "wajo03_team_qD": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          70,
+          255.0,
+          569,
+          278.4
+        ]
+      ]
+    },
+    "wajo03_team_qE": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          70,
+          283.9,
+          569,
+          535.4
+        ]
+      ]
+    }
+  },
+  "wajo-2002-team": {
+    "wajo02_team_q1": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          70,
+          114.9,
+          569,
+          236.3
+        ]
+      ]
+    },
+    "wajo02_team_q2": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          70,
+          240.8,
+          569,
+          380.2
+        ]
+      ]
+    },
+    "wajo02_team_q3": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          70,
+          384.6,
+          569,
+          731.2
+        ]
+      ]
+    },
+    "wajo02_team_q4": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          70,
+          735.7,
+          569,
+          780.7
+        ],
+        [
+          4,
+          70,
+          65.1,
+          569,
+          760.0
+        ]
+      ]
+    }
+  },
+  "wajo-2001-team": {
+    "wajo01_team_q1": {
+      "answer": null,
+      "pages": [
+        [
+          2,
+          70,
+          105.0,
+          569,
+          122.9
+        ]
+      ]
+    },
+    "wajo01_team_q2": {
+      "answer": null,
+      "pages": [
+        [
+          2,
+          70,
+          127.5,
+          569,
+          145.4
+        ]
+      ]
+    },
+    "wajo01_team_q3": {
+      "answer": null,
+      "pages": [
+        [
+          2,
+          70,
+          150.0,
+          569,
+          167.9
+        ]
+      ]
+    },
+    "wajo01_team_q4": {
+      "answer": null,
+      "pages": [
+        [
+          2,
+          70,
+          172.5,
+          569,
+          190.4
+        ]
+      ]
+    },
+    "wajo01_team_q5": {
+      "answer": null,
+      "pages": [
+        [
+          2,
+          70,
+          195.1,
+          569,
+          226.5
+        ]
+      ]
+    },
+    "wajo01_team_q6": {
+      "answer": null,
+      "pages": [
+        [
+          2,
+          70,
+          229.5,
+          569,
+          249.0
+        ]
+      ]
+    },
+    "wajo01_team_q7": {
+      "answer": null,
+      "pages": [
+        [
+          2,
+          70,
+          253.6,
+          569,
+          477.7
+        ]
+      ]
+    }
+  },
+  "wajo-2000-team": {
+    "wajo00_team_q1": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          70,
+          146.4,
+          569,
+          179.7
+        ]
+      ]
+    },
+    "wajo00_team_q2": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          70,
+          197.2,
+          569,
+          227.0
+        ]
+      ]
+    },
+    "wajo00_team_q3": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          70,
+          229.1,
+          569,
+          478.6
+        ]
+      ]
+    },
+    "wajo00_team_q4": {
+      "answer": null,
+      "pages": [
+        [
+          3,
+          70,
+          229.1,
+          569,
+          478.6
+        ]
+      ]
+    }
+  }
+}

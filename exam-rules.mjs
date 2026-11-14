@@ -56,10 +56,15 @@ function words(value) {
 export function checkAnswer(question, raw, expected) {
   const value = String(raw ?? '').trim();
   if (!value) return 'blank';
+  if (question.answerFormat === 'written') return 'review';
   if (question.answerFormat === 'integer') {
-    const entered = value.normalize('NFKC');
-    if (!/^\d{1,6}$/.test(entered) || Number(entered) < 1 || Number(entered) > 999) return 'invalid';
-    return Number(entered) === expected ? 'correct' : 'incorrect';
+    const entered = value.normalize('NFKC').replace(/−/g, '-');
+    const answer = Number(entered);
+    const min = question.integerMin ?? 1;
+    const max = question.integerMax ?? 999;
+    const validInteger = min < 0 ? /^[+-]?\d{1,6}$/ : /^\d{1,6}$/;
+    if (!validInteger.test(entered) || answer < min || answer > max) return 'invalid';
+    return answer === expected ? 'correct' : 'incorrect';
   }
   if (question.answerFormat === 'fraction') {
     const actual = integerRatio(normaliseMath(value).replace(/cm$/, ''));
@@ -75,8 +80,8 @@ export function checkAnswer(question, raw, expected) {
       ? 'correct' : 'incorrect';
   }
   if (question.answerFormat === 'text') {
-    const acceptable = [words(expected), 'equal', 'equal areas', 'same area', 'the same area', 'neither', 'the two areas are equal', 'they are equal'];
-    return acceptable.includes(words(value)) ? 'correct' : 'review';
+    const acceptable = [expected, ...(question.acceptedAnswers || [])];
+    return acceptable.some(answer => words(answer) === words(value)) ? 'correct' : 'review';
   }
   const target = normaliseMath(expected);
   const actual = normaliseMath(value).replace(/^x=/, '')
@@ -93,9 +98,10 @@ export function questionGaps(questions, responses) {
   return questions.reduce((gaps, q) => {
     const response = responses[q.id] || {};
     const answer = typeof response.answer === 'string' ? response.answer.trim() : '';
-    if (!answer) gaps.unanswered.push(q.number);
+    const hasWorking = Boolean(response.working?.trim() || response.sketch?.length);
+    if (!answer && !(q.answerFormat === 'written' && hasWorking)) gaps.unanswered.push(q.number);
     else if (q.answerFormat === 'integer' && checkAnswer(q, answer, -1) === 'invalid') gaps.invalid.push(q.number);
-    if (q.workingRequired && !response.working?.trim() && !response.sketch?.length) gaps.missingWorking.push(q.number);
+    if (q.workingRequired && !hasWorking) gaps.missingWorking.push(q.number);
     return gaps;
   }, { unanswered: [], invalid: [], missingWorking: [] });
 }
@@ -105,16 +111,21 @@ export function gradePaper(questions, responses, solutions, reviews = {}) {
     const response = responses[question.id] || {};
     const key = solutions[question.id];
     if (!key) throw new Error(`The answer key for question ${question.number} is unavailable.`);
-    const checked = checkAnswer(question, response.answer, key.answer);
-    const decision = reviews[question.id]?.answerVerdict;
-    const status = (question.workingRequired && (decision === 'correct' || decision === 'incorrect')) ? decision : checked;
-    const needsMark = question.workingRequired && (status !== 'blank' || response.working?.trim() || response.sketch?.length);
-    const manuallyScored = question.workingRequired || status === 'review';
-    const manualMark = manuallyScored ? reviews[question.id]?.mark : null;
+    const review = reviews[question.id];
+    const written = question.answerFormat === 'written';
+    const hasWorking = Boolean(response.working?.trim() || response.sketch?.length);
+    const checked = written && hasWorking ? 'review' : checkAnswer(question, response.answer, key.answer);
+    const decision = review?.answerVerdict;
+    const status = (!written && (question.workingRequired || checked === 'review') &&
+      (decision === 'correct' || decision === 'incorrect')) ? decision : checked;
+    const needsMark = question.workingRequired && (checked !== 'blank' || hasWorking);
+    const manuallyScored = question.marks !== null && (question.workingRequired || checked === 'review');
+    const manualMark = manuallyScored ? review?.mark : null;
     const marked = Number.isInteger(manualMark) && manualMark >= 0 && manualMark <= question.marks;
-    const pending = !marked && Boolean(needsMark || status === 'review');
-    const earned = marked ? manualMark : pending ? 0 : !question.workingRequired && status === 'correct' ? question.marks : 0;
-    return { question, response, key, status, pending, earned, manuallyScored };
+    const reviewed = marked || (question.marks === null && Boolean(review?.verdict));
+    const pending = !reviewed && Boolean(needsMark || checked === 'review');
+    const earned = question.marks === null ? null : marked ? manualMark : !pending && status === 'correct' ? question.marks : 0;
+    return { question, response, key, status, pending, earned, manuallyScored, reviewed };
   });
   return {
     rows,

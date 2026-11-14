@@ -233,6 +233,14 @@ select{font:inherit;padding:5px 8px;border-radius:8px;border:1.5px solid var(--l
 .exam-stem { line-height: 1.66; }
 .exam-stem > :first-child { margin-top: 0; }
 .exam-stem > :last-child { margin-bottom: 0; }
+.exam-question-card > .exam-model-solution { margin: 0 0 .8rem; }
+.exam-round-links { gap: 1rem; margin: 1rem 0; }
+.exam-paper-page { position: relative; margin: .35rem 0; }
+.exam-paper-scroll { overflow-x: auto; }
+.exam-paper-scroll canvas { display: block; height: auto; width: 100%; max-width: 47rem; }
+.exam-paper-page.is-enlarged .exam-paper-scroll canvas { width: max(145%, 38rem); max-width: none; }
+.exam-paper-zoom { color: var(--exam-strong); background: none; border: 0; cursor: pointer; font: inherit; font-size: .82rem; padding: .25rem 0; text-decoration: underline; }
+.exam-paper-text { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); }
 .exam-maths { min-width: 0; overflow-wrap: anywhere; }
 .exam-maths .exam-display-math { display: block; overflow-x: auto; max-width: 100%; margin: .35rem 0; }
 .exam-maths .katex-display { margin: .38rem 0; min-width: max-content; text-align: left; }
@@ -338,6 +346,9 @@ select{font:inherit;padding:5px 8px;border-radius:8px;border:1.5px solid var(--l
 }
 @media print {
   .exam-centre .crumb, .exam-report-tools, .exam-review-form .btn, .exam-credit { display: none; }
+  .exam-paper-zoom { display: none; }
+  .exam-paper-page { break-inside: avoid; }
+  .exam-paper-scroll { overflow: visible; }
   .exam-result-row, .exam-report-top { box-shadow: none; }
   .exam-result-row > summary { break-after: avoid; }
   .exam-result-sketch { max-width: 25rem; }

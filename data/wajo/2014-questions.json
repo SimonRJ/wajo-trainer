@@ -105,6 +105,7 @@
     "marks": 4,
     "topic": "Geometry",
     "answerFormat": "text",
+    "acceptedAnswers": ["equal", "equal areas", "same area", "the same area", "neither", "the two areas are equal", "they are equal"],
     "workingRequired": true,
     "prompt": "A lune is a crescent shape formed by two intersecting circular arcs; it originates from the Latin word Luna which translates to \"moon\". The diagram below shows a right-angled triangle with sides of length \\(a, b\\) and \\(c\\) and two lunes whose boundaries are formed by three semicircles.<br>Consider the sum of the areas of the two lunes, and the area of the triangle. Which is larger?<br>Your answer could depend on the values of \\(a, b, c\\).<br> <i>In the original paper, full marks were only awarded with an explanation (e.g. your worked solution).</i>",
     "image": "data/wajo/diagrams/b7b1982cd6400b.webp"
