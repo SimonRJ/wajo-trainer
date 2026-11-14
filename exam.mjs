@@ -3,8 +3,6 @@ import { createExamStore, fieldLimits } from './exam-store.mjs';
 import { mountKeypad, renderArchiveMath, workingPreview } from './exam-math.mjs?v=notation-2';
 import { mountSketch, paintSketch } from './exam-sketch.mjs';
 
-const ARCHIVE = 'https://enrichedmaths.maths.uwa.edu.au/wajo/qnsandsolns/';
-const PRACTICE = 'https://www.problemsolvingeducation.com/wajopractise';
 const BANK = './data/wajo/';
 const markText = marks => `${marks} mark${marks === 1 ? '' : 's'}`;
 const sittingLink = run => `#/exam/${run.paperId}`;
@@ -83,7 +81,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
 
   async function loadJson(path) {
     if (!cache.has(path)) {
-      cache.set(path, fetch(`${BANK}${path}?v=20261114`).then(response => {
+      cache.set(path, fetch(`${BANK}${path}?v=local-papers`).then(response => {
         if (!response.ok) throw new Error('Could not load this paper. Check your connection and try again.');
         return response.json();
       }).catch(error => {
@@ -148,8 +146,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
         <h2 id="past-paper-title">Past individual papers</h2>
         <div class="exam-paper-grid">${past.map(paper => paperCard(paper, state)).join('')}</div>
         <p class="exam-credit">Source: WAJO (Western Australian Junior Mathematics Olympiad).
-          <a href="${ARCHIVE}" target="_blank" rel="noopener">Official archive</a> ·
-          <a href="${PRACTICE}" target="_blank" rel="noopener">Practice compilation</a></p>
+          <a href="#/past">Browse question papers and solutions</a></p>
         </section>`}
       <section aria-labelledby="mock-paper-title"><h2 id="mock-paper-title">Original mock papers</h2>
         <div class="exam-paper-grid">${mockPapers.map(paper => paperCard(paper, state)).join('')}</div>
@@ -551,7 +548,8 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
       <section class="exam-result-list" aria-label="Question results">${grade.rows.map(row => reviewRow(paper, row, result)).join('')}</section>
       <p data-empty-filter hidden>No questions match this filter.</p>
       ${paper.mock ? `<p><a href="#/exam/${paper.id}">Start a new mock sitting</a></p>` :
-        `<p class="exam-credit">Source: WAJO (Western Australian Junior Mathematics Olympiad). <a href="${ARCHIVE}" target="_blank" rel="noopener">Official archive</a></p>`}
+        `<p class="exam-credit">Source: WAJO (Western Australian Junior Mathematics Olympiad).
+          <a href="papers/wajo-${paper.year}-solutions.pdf" target="_blank" rel="noopener">Worked solutions (PDF)</a></p>`}
     </div>`);
     const root = app.querySelector('.exam-report');
     const filter = root.querySelector('[data-filter-results]');
