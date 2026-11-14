@@ -190,7 +190,7 @@ import { createExamCentre } from './exam.mjs?v=local-papers';
   /* ---------- past-paper downloads and score tracker ---------- */
   var REBUILT_PAPERS = {
     2006: "Reconstructed questions · official solutions",
-    2026: "Reconstructed · individual round"
+    2026: "Reconstructed individual round · team paper pending"
   };
   function past() {
     var S = load(); S.past = S.past || {};
@@ -210,7 +210,7 @@ import { createExamCentre } from './exam.mjs?v=local-papers';
         '" value="' + score + '"></label><label><input type="checkbox" class="pd" data-y="' + y + '"' +
         (r.done ? " checked" : "") + '> Done</label></div></li>';
     }
-    h("<h1>Past papers and solutions</h1><p class='sub'>Open or save the question paper first. Use the separate worked solutions PDF to mark your answers. The original instructions give the time limit for each round.</p>" +
+    h("<h1>Past papers and solutions</h1><p class='sub'>Open or save the question paper first. Use the separate worked solutions PDF to mark your answers. The paper gives the time limit for each round.</p>" +
       '<div class="timer"><span id="tleft">100:00</span><button class="btn small" id="pgo">Start 100-minute timer</button></div>' +
       '<p class="sub"><span id="paper-archive-done">' + done + '</span> of 27 past papers done</p>' +
       '<ul class="paper-archive" aria-label="WAJO papers by year">' + rows + '</ul>' +
