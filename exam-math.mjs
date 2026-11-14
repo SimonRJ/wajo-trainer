@@ -66,8 +66,8 @@ export function renderArchiveMath(container) {
 export function workingPreview(container, working, plainMath) {
   const fragment = document.createDocumentFragment();
   let last = 0;
-  for (const { index, length, tex } of texSpans(working)) {
-    fragment.append(plainFragment(working.slice(last, index), plainMath), mathNode(tex, false));
+  for (const { index, length, tex, display } of texSpans(working)) {
+    fragment.append(plainFragment(working.slice(last, index), plainMath), mathNode(tex, display));
     last = index + length;
   }
   fragment.append(plainFragment(working.slice(last), plainMath));
@@ -84,40 +84,102 @@ function plainFragment(value, plainMath) {
   return template.content;
 }
 
-const keypad = [
-  { name: 'Fraction', label: 'a⁄b', open: '\\(\\frac{', close: '}{}\\)', first: '}' },
-  { name: 'Power', label: 'xⁿ', open: '\\(', close: '^{}\\)', first: '' },
-  { name: 'Square root', label: '√', open: '\\(\\sqrt{', close: '}\\)' },
-  { name: 'Multiply', label: '×' }, { name: 'Divide', label: '÷' }, { name: 'Minus', label: '−' },
-  { name: 'Equals', label: '=' }, { name: 'Plus or minus', label: '±' },
-  { name: 'Less than or equal to', label: '≤' }, { name: 'Greater than or equal to', label: '≥' },
-  { name: 'Not equal to', label: '≠' }, { name: 'Pi', label: 'π' }, { name: 'Angle', label: '∠' },
-  { name: 'Degrees', label: '°' }, { name: 'Perpendicular', label: '⊥' }, { name: 'Implies', label: '⇒' },
-];
+const groups = {
+  Essentials: [
+    ['Fraction', 'a⁄b', '\\frac{«a»}{«b»}'], ['Power', 'xⁿ', '{«x»}^{«n»}'],
+    ['Square root', '√', '\\sqrt{«x»}'], ['Subscript', 'xₙ', '{«x»}_{«n»}'],
+    ['Multiply', '×'], ['Divide', '÷'], ['Minus', '−'], ['Plus', '+'],
+    ['Equals', '='], ['Therefore', '∴'], ['Because', '∵'], ['Implies', '⇒'],
+    ['Not equal', '≠'], ['Less than or equal', '≤'], ['Greater than or equal', '≥'],
+    ['Approximately equal', '≈'],
+  ],
+  Layout: [
+    ['Aligned equations', 'Align', '\\begin{aligned}\n«x» &= «a» \\\\\n    &= «b»\n\\end{aligned}', true],
+    ['Cases', 'Cases', '\\begin{cases}\n«a» & \\text{if «condition»} \\\\\n«b» & \\text{otherwise}\n\\end{cases}', true],
+    ['Two-column table', 'Table', '\\begin{array}{c|c}\n«x» & «y» \\\\ \\hline\n«a» & «b»\n\\end{array}', true],
+    ['Gathered lines', 'Lines', '\\begin{gathered}\n«a» \\\\\n«b»\n\\end{gathered}', true],
+    ['Equation label', '(1)', '\\tag{«1»}', true],
+    ['Underbrace', '⏟', '\\underbrace{«x»}_{\\text{«label»}}'],
+    ['Underline', 'x̲', '\\underline{«x»}'], ['Overline or digit string', 'x̅', '\\overline{«abc»}'],
+    ['Words inside maths', 'Text', '\\text{«words»}'], ['Upright units', 'Units', '\\mathrm{«cm»}'],
+    ['Name an operator', 'Op', '\\operatorname{«gcd»}'], ['Box final result', '□', '\\boxed{«x»}', true],
+    ['Maths space', 'Space', '\\quad'], ['Inline maths', 'Inline', '«x»'],
+    ['Displayed maths', 'Display', '«x»', true],
+  ],
+  Algebra: [
+    ['Nth root', 'ⁿ√', '\\sqrt[«n»]{«x»}'], ['Absolute value', '|x|', '\\left|«x»\\right|'],
+    ['Plus or minus', '±'], ['Minus or plus', '∓'], ['Less than', '<'], ['Greater than', '>'],
+    ['Equivalent', '≡'], ['If and only if', '⇔'], ['Prime', '′'], ['Double prime', '″'],
+    ['Parentheses', '( )', '\\left(«x»\\right)'], ['Brackets', '[ ]', '\\left[«x»\\right]'],
+    ['Infinity', '∞'], ['Function', 'f(x)', 'f(«x»)'], ['Maximum', 'max', '\\max(«x»)'],
+    ['Minimum', 'min', '\\min(«x»)'], ['Multiplication dot', '·'],
+  ],
+  Geometry: [
+    ['Angle', '∠'], ['Degrees', '°'], ['Triangle', '△'], ['Pi', 'π'], ['Perpendicular', '⊥'],
+    ['Parallel', '∥'], ['Congruent', '≅'], ['Similar', '∼'], ['Line segment', 'A̅B̅', '\\overline{«AB»}'],
+    ['Arc', '⌢', '\\overset{\\frown}{«AB»}'], ['Vector', '→', '\\overrightarrow{«AB»}'],
+    ['Square', '□', '\\square'], ['Alpha', 'α'], ['Beta', 'β'], ['Gamma', 'γ'], ['Delta', 'δ'],
+    ['Capital delta', 'Δ'], ['Theta', 'θ'], ['Phi', 'φ'], ['Script ell', 'ℓ'],
+  ],
+  'Number and sets': [
+    ['Divides', '∣'], ['Does not divide', '∤'], ['Modulo', 'mod', '\\pmod{«n»}'],
+    ['Binary modulo', 'bmod', '\\bmod '], ['Floor', '⌊x⌋', '\\lfloor «x» \\rfloor'],
+    ['Ceiling', '⌈x⌉', '\\lceil «x» \\rceil'], ['Set braces', '{ }', '\\{«x»\\}'],
+    ['Element of', '∈'], ['Not an element of', '∉'], ['Subset', '⊂'], ['Subset or equal', '⊆'],
+    ['Intersection', '∩'], ['Union', '∪'], ['Empty set', '∅'], ['Set difference', '∖'],
+    ['Integers', 'ℤ'], ['Natural numbers', 'ℕ'], ['Rational numbers', 'ℚ'], ['Real numbers', 'ℝ'],
+    ['For all', '∀'], ['There exists', '∃'], ['Contradiction', '↯'], ['End of proof', '∎'],
+  ],
+  Counting: [
+    ['Choose', 'nCr', '\\binom{«n»}{«r»}'], ['Factorial', '!'], ['Summation', 'Σ', '\\sum_{«i=1»}^{«n»} «a_i»'],
+    ['Product', '∏', '\\prod_{«i=1»}^{«n»} «a_i»'], ['Probability', 'P( )', 'P(«A»)'],
+    ['Conditional probability', 'P(∣)', 'P(«A» \\mid «B»)'], ['Percent', '%'],
+    ['Ellipsis', '…'], ['Centred dots', '⋯'], ['Vertical dots', '⋮'],
+    ['Ratio', ':'], ['Maps to', '↦'],
+  ],
+};
+
+const texSymbols = {
+  '×':'times','÷':'div','−':'-','∴':'therefore','∵':'because','⇒':'Rightarrow','≠':'ne',
+  '≤':'le','≥':'ge','≈':'approx','±':'pm','∓':'mp','≡':'equiv','⇔':'Leftrightarrow',
+  '′':"'",'″':"''",'∞':'infty','·':'cdot','∠':'angle','°':'^{\\circ}','△':'triangle',
+  'π':'pi','⊥':'perp','∥':'parallel','≅':'cong','∼':'sim','α':'alpha','β':'beta',
+  'γ':'gamma','δ':'delta','Δ':'Delta','θ':'theta','φ':'phi','ℓ':'ell','∣':'mid','∤':'nmid',
+  '∈':'in','∉':'notin','⊂':'subset','⊆':'subseteq','∩':'cap','∪':'cup','∅':'varnothing',
+  '∖':'setminus','ℤ':'mathbb{Z}','ℕ':'mathbb{N}','ℚ':'mathbb{Q}','ℝ':'mathbb{R}',
+  '∀':'forall','∃':'exists','↯':'text{(contradiction)}','∎':'blacksquare','%':'%',
+  '…':'ldots','⋯':'cdots','⋮':'vdots','↦':'mapsto',
+};
 
 function insert(field, key) {
+  const [, symbol, template, display] = key;
   const start = field.selectionStart ?? field.value.length;
   const end = field.selectionEnd ?? start;
   const selected = field.value.slice(start, end);
-  const surroundingMath = /\\\([^)]*$/.test(field.value.slice(0, start)) && field.value.slice(end).includes('\\)');
-  let insertion = key.label;
-  let cursor = insertion.length;
-  if (key.open) {
-    const open = surroundingMath ? key.open.replace(/^\\\(/, '') : key.open;
-    const close = surroundingMath ? key.close.replace(/\\\)$/, '') : key.close;
-    insertion = open + selected + close;
-    cursor = open.length + selected.length;
-    if (selected && key.first) cursor += 2;
-    else if (selected && key.name === 'Power') cursor += 2;
-  }
-  field.focus({ preventScroll: true });
-  if (field.value.length + insertion.length - selected.length > field.maxLength) return;
-  field.setRangeText(insertion, start, end, 'end');
-  field.setSelectionRange(start + cursor, start + cursor);
+  const before = field.value.slice(0, start);
+  const inside = [...before.matchAll(/\\[()[\]]/g)].at(-1)?.[0];
+  const inMath = inside === '\\(' || inside === '\\[';
+  const wrap = !inMath && template;
+  const prefix = wrap ? (display ? '\n\\[' : '\\(') : '';
+  const suffix = wrap ? (display ? '\\]\n' : '\\)') : '';
+  let selection = null;
+  const command = inMath && texSymbols[symbol];
+  const token = command ? (/^[A-Za-z%]/.test(command) ? '\\' + command + ' ' : command) : symbol;
+  const body = (template || token).replace(/«([^»]+)»/g, (match, example, offset) => {
+    if (selection) return example;
+    const value = selected || example;
+    selection = [prefix.length + offset, prefix.length + offset + value.length];
+    return value;
+  });
+  const value = prefix + body + suffix;
+  if (field.value.length + value.length - selected.length > field.maxLength) return;
+  field.setRangeText(value, start, end, 'end');
+  field.setSelectionRange(start + (selection?.[0] ?? value.length), start + (selection?.[1] ?? value.length));
   field.dispatchEvent(new Event('input', { bubbles: true }));
+  field.focus({ preventScroll: true });
 }
 
-export function mountKeypad(root, answer, working, integerOnly) {
+export function mountKeypad(root, answer, working, workingOnly) {
   let target = working;
   const targetLabel = root.querySelector('[data-keypad-target]');
   function use(field) {
@@ -125,16 +187,24 @@ export function mountKeypad(root, answer, working, integerOnly) {
     targetLabel.textContent = field === working ? 'Working out' : 'Final answer';
   }
   working.addEventListener('focus', () => use(working));
-  answer.addEventListener('focus', () => use(integerOnly ? working : answer));
+  answer.addEventListener('focus', () => use(workingOnly ? working : answer));
   const keys = root.querySelector('[data-keypad-keys]');
-  for (const key of keypad) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.textContent = key.label;
-    button.setAttribute('aria-label', key.name);
-    button.title = key.name;
-    button.addEventListener('pointerdown', event => event.preventDefault());
-    button.addEventListener('click', () => insert(target, key));
-    keys.append(button);
+  const select = root.querySelector('[data-keypad-category]');
+  for (const category of Object.keys(groups)) select.add(new Option(category));
+  function showKeys() {
+    keys.replaceChildren();
+    for (const key of groups[select.value]) {
+      const [name, label] = key;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = label;
+      button.setAttribute('aria-label', name);
+      button.title = name;
+      button.addEventListener('pointerdown', event => event.preventDefault());
+      button.addEventListener('click', () => insert(target, key));
+      keys.append(button);
+    }
   }
+  select.addEventListener('change', showKeys);
+  showKeys();
 }

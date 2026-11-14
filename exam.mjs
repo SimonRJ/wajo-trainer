@@ -1,6 +1,6 @@
 import { displayTime, examSeconds, gradePaper, questionGaps, remaining } from './exam-rules.mjs';
 import { createExamStore, fieldLimits } from './exam-store.mjs';
-import { mountKeypad, renderArchiveMath, workingPreview } from './exam-math.mjs';
+import { mountKeypad, renderArchiveMath, workingPreview } from './exam-math.mjs?v=notation-2';
 import { mountSketch, paintSketch } from './exam-sketch.mjs';
 
 const ARCHIVE = 'https://enrichedmaths.maths.uwa.edu.au/wajo/qnsandsolns/';
@@ -278,8 +278,9 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
           <details class="exam-keypad">
             <summary>Maths keypad</summary>
             <div class="exam-keypad-inner">
-              <div class="exam-keypad-head"><span>Inserting into <strong data-keypad-target>Working out</strong></span><span>Symbols only</span></div>
+              <div class="exam-keypad-head"><span>Inserting into <strong data-keypad-target>Working out</strong></span><label>Category <select data-keypad-category aria-label="Maths keypad category"></select></label></div>
               <div class="exam-keypad-grid" data-keypad-keys></div>
+              <small>Templates include example values. Replace them with your own and check the preview.</small>
             </div>
           </details>
           <div class="exam-working-preview" data-working-wrap hidden>

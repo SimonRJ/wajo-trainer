@@ -284,3 +284,9 @@ select{font:inherit;padding:5px 8px;border-radius:8px;border:1.5px solid var(--l
   .exam-result-row > summary { break-after: avoid; }
   .exam-result-sketch { max-width: 25rem; }
 }
+
+.exam-keypad-head { align-items: center; flex-wrap: wrap; }
+.exam-keypad-head select { font-size: 16px; max-width: 100%; }
+.exam-keypad-grid { grid-template-columns: repeat(auto-fit,minmax(49px,1fr)); }
+.exam-keypad-grid button { font-size: 1rem; }
+.exam-keypad-inner > small { display: block; color: var(--mute); margin-top: .45rem; }
