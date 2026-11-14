@@ -1,0 +1,111 @@
+[
+  {
+    "id": "wajo17_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Let \\(A B C\\) be a right-angled triangle with right angle at \\(A\\). Let \\(D\\) be on the line \\(B C\\), with \\(B\\) between \\(C\\) and \\(D\\).<br>If the angle \\(\\angle A C B\\) is 6 degrees more than a quarter of the angle \\(\\angle A B D\\), how many degrees is \\(\\angle A B C\\) ?"
+  },
+  {
+    "id": "wajo17_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "When Geppetto adds 6 times his age 6 years from now to 7 times his age 7 years from now, he gets 14 times his current age.<br>How old is Geppetto now?"
+  },
+  {
+    "id": "wajo17_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The squares of two consecutive integers differ by 2017.<br>Of the two consecutive integers, one is odd and one is even; what is half of the even one?<br>"
+  },
+  {
+    "id": "wajo17_q4",
+    "number": "4",
+    "marks": 2,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "How many positive integers \\(y\\) are there such that the least common multiple of 280 and \\(y\\) is 1400 ?<br>"
+  },
+  {
+    "id": "wajo17_q5",
+    "number": "5",
+    "marks": 2,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A two-digit number $ab$ is called good if $a^{2}+b^{2}=65$.<br>What is the sum of all good numbers?"
+  },
+  {
+    "id": "wajo17_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The average of the ages of the mother, the father and their three children is 21, whereas the children alone average 11.<br>How many years is the age of the father, given that the father is 4 years older than the mother?<br>"
+  },
+  {
+    "id": "wajo17_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "If \\(x^{2}+x y+y^{2}=92\\) and \\(x+y=11\\), what is \\(x y\\) ?<br>"
+  },
+  {
+    "id": "wajo17_q8",
+    "number": "8",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The four sides of a rectangle of area 630 are divided into halves, thirds, quarters and fifths respectively, as in the diagram. What is the area of the shaded quadrilateral? Enter 999 if you think it depends on the lengths of the sides of the rectangle.<br>",
+    "image": "data/wajo/diagrams/c806ba538f058b.webp"
+  },
+  {
+    "id": "wajo17_q9",
+    "number": "9",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Ayesha and Brian live 5 km apart and plan to meet at \\(1: 00 \\mathrm{pm}\\). They decide to leave their respective homes at the same time and cycle towards each other till they meet. Ayesha cycles at \\(8 \\mathrm{~km} / \\mathrm{h}\\) and Brian at \\(7 \\mathrm{~km} / \\mathrm{h}\\).<br>How many minutes after 12 noon should they leave home?"
+  },
+  {
+    "id": "wajo17_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A block of wood in the form of a \\(5 \\mathrm{~cm} \\times 8 \\mathrm{~cm} \\times 13 \\mathrm{~cm}\\) rectangular prism has all six of its faces painted pink.<br>If the wooden block is cut into \\(1 \\mathrm{~cm}^{3}\\) cubes, how many of these would have some pink paint on them?<br>"
+  },
+  {
+    "id": "wajo17_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Janine has a box containing 49 red balls and 49 green balls and a jar containing one red ball and one green ball.<br>She performs the following multi-step operation:<br>(i) First she closes her eyes, takes one ball from the jar, looks at it, notes its colour, and puts it in the box.<br>(ii) If the ball moved to the box was red, she closes her eyes, takes two balls from the box and puts them in the jar;<br>otherwise, if the ball moved to the box was green, she takes two red balls from the box and puts them in the jar.<br>Suppose Janine repeats this operation 36 times and finds there are 36 red balls in the box, how many green balls will there be in the box?<br>"
+  },
+  {
+    "id": "wajo17_q12",
+    "number": "12",
+    "marks": 4,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": true,
+    "prompt": "<strong>For full marks explain how you found your solution.</strong><br>Two sides of an obtuse triangle have lengths 9 and 40.<br>The length of the third side is an integer.<br>How many such triangles are possible?<br>Note. An obtuse triangle is a triangle with one obtuse angle.<br>An angle $\\theta$ is obtuse if $90^{\\circ}&lt;\\theta&lt;180^{\\circ}$."
+  }
+]

@@ -1,0 +1,149 @@
+[
+  {
+    "id": "wajo25_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A circle of radius $32\\,$cm is divided into four congruent parts, by semicircular arcs of radius $16\\,$cm, as shown.<br>If the perimeter of one of the four congruent parts is $x\\pi\\,$cm, what is $x$?",
+    "image": "data/wajo/diagrams/808ecc66a3e76f.webp"
+  },
+  {
+    "id": "wajo25_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "If $a$ and $b$ are two consecutive positive integers such that $a^2-b^2=973$, what is $a$?"
+  },
+  {
+    "id": "wajo25_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Alice has 5 T-shirts, 4 pairs of shorts, 3 hats and 4 pairs of runners.<br>She always runs wearing a T-shirt and shorts, but sometimes runs without a hat and/or runners.<br>What is the number of possible running outfit combinations Alice can wear?"
+  },
+  {
+    "id": "wajo25_q4",
+    "number": "4",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "When 1 is added to the number formed by swapping the two digits of Anna's age, the result is half Anna's age.<br>How old is Anna?"
+  },
+  {
+    "id": "wajo25_q5",
+    "number": "5",
+    "marks": 2,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The diagram shows a tiling of an equilateral triangle, by 49 congruent triangular tiles. <br>Altogether, how many ways do two adjacent tiles form a rhombus?",
+    "image": "data/wajo/diagrams/0e2c065ef80deb.webp"
+  },
+  {
+    "id": "wajo25_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Compute $$\\dfrac{5^{2025}-5^{2022}}{5^{2021}-5^{2020}}$$"
+  },
+  {
+    "id": "wajo25_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "On side $DE$ of regular pentagon $ABCDE$, we draw equilateral triangle $DEF$ to the interior of the pentagon. <br>How many degrees is $\\angle AFC$ in quadrilateral $ABCF$?"
+  },
+  {
+    "id": "wajo25_q8",
+    "number": "8",
+    "marks": 2,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "How many digits does the expanded form of the largest of the following exponentials have? $$ (2^{02})^{5},\\; (20^{2})^{5},\\; 202^{5},\\; 2^{025} $$"
+  },
+  {
+    "id": "wajo25_q9",
+    "number": "9",
+    "marks": 3,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "All the integers from $1$ to $2025$ are written on a board.<br>Amy plays a game: repeatedly, <blockquote>she chooses two numbers $a, b$ on the board, erases them, and writes the number $a + b - 1000$ on the board (the number written can be negative).</blockquote>When there is only one number written on the board, Amy stops.<br>What is the sum of the digits of the final number written on the board?"
+  },
+  {
+    "id": "wajo25_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "What is the smallest positive integer with exactly 14 positive divisors?"
+  },
+  {
+    "id": "wajo25_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Geometry/Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Two squares and two L-shaped pieces are assembled as in the diagram. The two squares have areas $72$ and $98$, and each L-shaped piece has area $318$.<br>What is the area $A$ of the square hole in the middle?",
+    "image": "data/wajo/diagrams/42019029aad373.webp"
+  },
+  {
+    "id": "wajo25_q12",
+    "number": "12",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Each of Amy, Ben, and Cass has a cube of integer length sides.<br>The sum of all $36$ edges is $204$, and the area of all $18$ faces is $630$.<br>Amy notices that her cube is twice as tall as Ben's.<br>What is the total volume of the three cubes?"
+  },
+  {
+    "id": "wajo25_q13",
+    "number": "13",
+    "marks": 4,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Alan and Bob are at either end of a long straight training track.<br>They start running at the same time, each running at a steady speed,<br>passing each other at the 3 minute mark.<br>Alan completes the whole distance 2 minutes and 30 seconds after Bob. <br>How many seconds does Bob take to run the whole distance?"
+  },
+  {
+    "id": "wajo25_q14",
+    "number": "14",
+    "marks": 4,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In $\\triangle ABC$, side $BC = 156$,<br> $M, N, P$ are midpoints of sides $AB, AC, BC$, respectively,<br> $O$ is the intersection point of $MC$ and $NP$, and<br> $K$ is the intersection point of $MN$ and $AO$. <br>Find the length of $KN$."
+  },
+  {
+    "id": "wajo25_q15",
+    "number": "15",
+    "marks": 4,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "For $A = \\{1,2,\\dots,76\\}$, find the smallest $k$ such that every subset of $A$ of size $k$ contains a pair $a,b$, with $a+b$ prime."
+  },
+  {
+    "id": "wajo25_q16",
+    "number": "16",
+    "marks": 4,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Given that $5^j+6^k+7^\\ell+11^m+19 = 2025$, where $j,k,\\ell,m$ are different non-negative integers, what is one-ninth of $\\overline{jk\\ell m}$?<br><i>Note.</i> $\\overline{jk\\ell m}$ is the number whose digits are $j,k,\\ell,m$, e.g. if $j=1, k=2, \\ell=3, m=4$ then $\\overline{jk\\ell m} =1234$."
+  }
+]

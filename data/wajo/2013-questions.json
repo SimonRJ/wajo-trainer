@@ -1,0 +1,110 @@
+[
+  {
+    "id": "wajo13_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A 40 m by 70 m rectangular piece of land is divided into 10 m by 10 m small plots by fences. There is also a fence around the whole piece of land.<br>How many metres is the total length of fencing?"
+  },
+  {
+    "id": "wajo13_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The 3-digit numbers \\(a b 4\\) and \\(4 a b\\) satisfy the property<br>$$\n400-a b 4=4 a b-400\n$$<br>What is the 2-digit number \\(a b\\)?"
+  },
+  {
+    "id": "wajo13_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Two middle-distance runners are training for the 1500 m. Jo can usually run 1500 m in 3 minutes 57 seconds, while her younger sister Pat can run 1500 m in 4 minutes 10 seconds. To run a fair race against each other, Pat will start ahead of the starting line so that both may be expected to reach the finish line at the same time.<br>How many metres ahead should Pat stand?"
+  },
+  {
+    "id": "wajo13_q4",
+    "number": "4",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "On the island Exotica \\(15 \\%\\) of inhabitants are red heads and \\(30 \\%\\) have blue eyes. Among the red heads 2 out of 5 have blue eyes.<br>What number of percent is the proportion of inhabitants that have blue eyes but not red hair?"
+  },
+  {
+    "id": "wajo13_q5",
+    "number": "5",
+    "marks": 2,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The year 2013 has digits whose values are four consecutive integers. How many years ago was the last time when the digits of the year were four consecutive integers?<br>"
+  },
+  {
+    "id": "wajo13_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A rectangle is cut into two areas by a single line from a corner, as shown with \\(a&gt;b\\). The areas are in the ratio of \\(8: 3\\) and the side length \\(a+b=132 \\mathrm{~cm}\\).<br><img src=\"data/wajo/diagrams/245963a1c30542.webp\" alt=\"Diagram for Q6\" class=\"wajo-diagram\" loading=\"lazy\"><br><br>How many cm is the value of \\(a\\)?"
+  },
+  {
+    "id": "wajo13_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A metal cube, of side 9 cm, is melted down and recast into two cylinders. These cylinders are (geometrically) similar, with their diameters being 5 cm and 10 cm, respectively.<br>If no metal is lost in the process, how many \\(\\mathrm{cm}^{3}\\) is the volume of the smaller cylinder?<br>"
+  },
+  {
+    "id": "wajo13_q8",
+    "number": "8",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The diagram shows a \"billiard\" table with dimensions \\(4 \\times 12\\).<br><img src=\"data/wajo/diagrams/b1d903e3cf9b17.webp\" alt=\"Diagram for Q8\" class=\"wajo-diagram\" loading=\"lazy\"><br>A ball initially at position 11 is struck firmly at an angle of \\(45^{\\circ}\\) to the edge of the table, to move to the right side at position 13. From here it bounces off and moves to position 19. It continues in this way forever. At what position is the ball after 2013 moves?"
+  },
+  {
+    "id": "wajo13_q9",
+    "number": "9",
+    "marks": 3,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The sequence of numbers<br>$$\n1,2,3,4,5,6,8,9,10,11,12,13,15,16, \\ldots\n$$<br>is made by removing multiples of 7 from the list of positive integers. What is the \\(99^{\\text {th }}\\) term?"
+  },
+  {
+    "id": "wajo13_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "\\(A B C\\) is an example of an isosceles (but not equilateral) triangle with integer side lengths.<br>How many such triangles can be made using the integers from 1 to 9 inclusive?<br>"
+  },
+  {
+    "id": "wajo13_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "An empty 4 km long iron ore train is travelling north along a flat plain at \\(15 \\mathrm{~km} / \\mathrm{h}\\). At the same time a fully laden iron ore train that is 3 km long, is travelling south at a speed of \\(5 \\mathrm{~km} / \\mathrm{h}\\), along a parallel track, towards the northbound train. The two tracks are a negligible distance apart. At 12 noon, when the two trains are 12 km apart, the drivers of both trains catch sight of one another.<br>How many minutes after 12 noon will the guards at the rear of each train finally lose sight of one another, given that they will do so when the rears of both trains are 12 km apart?<br>"
+  },
+  {
+    "id": "wajo13_q12",
+    "number": "12",
+    "marks": 4,
+    "topic": "Geometry",
+    "answerFormat": "exact",
+    "workingRequired": true,
+    "prompt": "<strong>For full marks explain how you found your solution.</strong><br>\\(P Q R S\\) is a trapezium with \\(P Q=6 \\mathrm{~cm}, S R=10 \\mathrm{~cm}\\), and \\(P S=Q R\\). The distance between \\(P Q\\) and \\(S R\\) is 12 cm.<br>What is the radius of the smallest circle that can cover \\(P Q R S\\)?<br>Note. An exact number is required. For instance, if the answer is \\(\\sqrt{3}\\), then give that answer, not 1.732 (or any other decimal).<br>"
+  }
+]

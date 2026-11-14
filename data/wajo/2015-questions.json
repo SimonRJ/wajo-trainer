@@ -1,0 +1,123 @@
+[
+  {
+    "id": "wajo15_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The sum of two prime numbers is the prime number 883.<br>What is the larger of the two primes (whose sum is 883)?"
+  },
+  {
+    "id": "wajo15_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The floor \\(\\lfloor a\\rfloor\\) of a real number \\(a\\) is the largest integer not greater than \\(a\\), and the ceiling \\(\\lceil a\\rceil\\) of \\(a\\) is the smallest integer not less than \\(a\\).<br>For example, \\(\\lfloor 2.7\\rfloor=2\\) and \\(\\lceil 2.7\\rceil=3\\).<br>Calculate \\(\\lfloor\\pi\\rfloor \\times(\\lfloor\\pi\\rfloor \\times\\lfloor\\pi\\rfloor+\\lceil\\pi\\rceil) \\times\\left(\\lfloor\\pi\\rfloor^{\\lceil\\pi\\rceil}-\\lceil\\pi\\rceil^{\\lfloor\\pi\\rfloor}\\right)+\\lfloor\\pi\\rfloor\\).<br>"
+  },
+  {
+    "id": "wajo15_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In a 36 item multiple choice algebra test, a correct answer earns 3 points, an incorrect answer causes a one point deduction, and there is no penalty for leaving a blank.<br>Adam left 6 questions blank and got 6 wrong, while Eve answered all the questions and got $\\frac{2}{3}$ as many marks as Adam.<br>How many questions did Eve get wrong?<br>"
+  },
+  {
+    "id": "wajo15_q4",
+    "number": "4",
+    "marks": 2,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "How many 3-digit positive integers have no repeated digits?<br>Note. The number 123 has no repeated digit, but 343 has a repeated digit, namely 3."
+  },
+  {
+    "id": "wajo15_q5",
+    "number": "5",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "What is the mean of all positive two-digit multiples of 4?"
+  },
+  {
+    "id": "wajo15_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "When the three-digit numbers $8a4$ and $2b3$ are added together, the answer is a number divisible by 9.<br>What is the largest possible value of $a+b$?<br>"
+  },
+  {
+    "id": "wajo15_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A circle is inscribed in a square as in the diagram. We draw a rectangle with horizontal length 12 cm and vertical height 6 cm, whose bottom left corner is the corner point \\(A\\) of the square and whose top right corner is on the circle but not on the square.<br>How many cm is the length of a side of the square?<br>",
+    "image": "data/wajo/diagrams/7b4e36a0c7187d.webp"
+  },
+  {
+    "id": "wajo15_q8",
+    "number": "8",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Gertrude is going to make 100 bets of $\\$1$ each, on a football game between the Beagles and the Rockers. If she bets $\\$1$ on the Beagles and they win she will get $\\$1.70$ back. If she bets $\\$1$ on the Rockers and they win she will get $\\$2.50$ back. She works out that she will be certain to make a profit if she makes a certain number of her bets on the Beagles and the rest of her bets on the Rockers.<br>How many bets should Gertrude make on the Beagles so that she makes a profit, whatever the outcome of the football game, given that a draw cannot occur? "
+  },
+  {
+    "id": "wajo15_q9",
+    "number": "9",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Rhombus $E F G H$ is inscribed in rectangle $A B C D$ as shown; $H Q$ and $S F$ are parallel to $A B$, and $P G$ and $E R$ are parallel to $A D$. Also, $A E=48, A H=14, B F=30$.<br>What is the length of the perimeter of rectangle $P Q R S$?<br>",
+    "image": "data/wajo/diagrams/ccfcd78eb966dd.webp"
+  },
+  {
+    "id": "wajo15_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "For a positive integer \\(n\\), \"\\(n\\) factorial\", written \\(n\\)!, is the product of all the positive integers less than or equal to \\(n\\).<br>For example, 10! means \\(1 \\times 2 \\times 3 \\times 4 \\times 5 \\times 6 \\times 7 \\times 8 \\times 9 \\times 10=3628800\\) and has 2 zeros on the end.<br>With how many zeros does the number 2015! end?"
+  },
+  {
+    "id": "wajo15_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Every day Sahria rides her bicycle to school. One day, when she has ridden \\(\\frac{2}{3}\\) of the distance to school, her bicycle suddenly snaps in two. She is obliged to walk the rest of the distance, at \\(\\frac{1}{3}\\) the speed she normally cycles, and arrives at school 5 minutes later than usual. She calculates that if she had ridden 400 metres further before the awful calamity occurred, she would have arrived only 1 minute later than usual.<br>How many metres per minute is Sahria's speed while riding her bicycle?"
+  },
+  {
+    "id": "wajo15_q12a",
+    "number": "12a",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "fraction",
+    "workingRequired": true,
+    "prompt": "Three wheels can be arranged on a horizontal surface so that all are touching each other and all are tangent to the horizontal surface. The radius of the largest wheel is 16 cm while the medium wheel has a radius of 9 cm. The radius of the smallest wheel is \\(x \\mathrm{~cm}\\).<br><br>(a) Find the value of \\(x\\). ",
+    "image": "data/wajo/diagrams/eb48cb6533794d.webp"
+  },
+  {
+    "id": "wajo15_q12b",
+    "number": "12b",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "expression",
+    "workingRequired": true,
+    "prompt": "Three wheels can be arranged on a horizontal surface so that all are touching each other and all are tangent to the horizontal surface. The radius of the largest wheel is 16 cm while the medium wheel has a radius of 9 cm. The radius of the smallest wheel is \\(x \\mathrm{~cm}\\).<br>Suppose the two larger wheels have radii \\(a\\) and \\(b \\mathrm{~cm}\\).<br><br>(b) Find the value of \\(x\\) in terms of \\(a\\) and \\(b\\).<br>",
+    "image": "data/wajo/diagrams/eb48cb6533794d.webp"
+  }
+]

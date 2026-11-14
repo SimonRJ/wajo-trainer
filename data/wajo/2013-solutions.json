@@ -1,0 +1,50 @@
+{
+  "wajo13_q1": {
+    "answer": 670,
+    "solution": "The total fencing is the total length of the lines in the diagram,<br><img src=\"data/wajo/diagrams/c35b46e20c249d.webp\" alt=\"Solution Diagram Q1\" class=\"wajo-diagram\" loading=\"lazy\"><br>i.e. the total fencing required is<br>$$\n5 \\times 70+8 \\times 40=350+320=670 \\mathrm{~m}\n$$"
+  },
+  "wajo13_q2": {
+    "answer": 36,
+    "solution": "Using the convention \\(\\overline{a b c}\\) to represent the 3-digit number, with digits (in order) \\(a, b, c\\).<br>Whatever \\(a\\) and \\(b\\) are,<br>$$\n\\begin{aligned}\n\\overline{4 a b}-400 &amp; =\\overline{a b} \\\\\n\\therefore 400-\\overline{a b 4} &amp; =\\overline{a b}.\n\\end{aligned}\n$$<br>So the units digit \\(b=6\\) and \\(a&lt;4\\). But \\(a=1\\) or 2 would give a 3-digit answer, so \\(a=3\\).<br><b>Alternatively,</b> let \\(\\overline{a b}=N\\). Then<br>$$\n\\begin{aligned}\n400-(N \\times 10+4) &amp; =400+N-400 \\\\\n396 &amp; =11 N \\\\\n36 &amp; =N\n\\end{aligned}\n$$<br>Hence, the 2-digit number \\(N=\\overline{a b}=36\\)."
+  },
+  "wajo13_q3": {
+    "answer": 78,
+    "solution": "Pat's average speed for the 1500 m is \\(1500 / 250=6 \\mathrm{~m} / \\mathrm{s}\\), since \\(4 \\mathrm{~min}.10 \\mathrm{~s}=250 \\mathrm{~s}\\). If Jo runs the full 1500 m, then the race will take 3 minutes 57 seconds. So Pat needs what for her is a 13 second start; in 13 seconds, Pat can run a distance of \\(d=v t=6 \\times 13=78 \\mathrm{~m}\\). So she will need a 78 m start in order to finish level with Jo."
+  },
+  "wajo13_q4": {
+    "answer": 24,
+    "solution": "We may as well assume that there are 100 people on Exotica. Then the percentages simply become numbers. Let \\(R\\) be the set of red heads, and \\(B\\) be the set of blue-eyed inhabitants. Then the \\(n(R)=15\\) red heads are distributed<br>\\(\\frac{2}{5} \\cdot 15=6\\) have blue eyes, and 9 do not have blue eyes.<br>Hence, the number of blue-eyed inhabitants without red hair is<br>$$\nn(B)-n(B \\cap R)=30-6=24\n$$<br>Hence \\(24 \\%\\) of inhabitants have blue eyes but not red hair."
+  },
+  "wajo13_q5": {
+    "answer": 581,
+    "solution": "The last time this happened was 1432, which is 581 years ago.<br>Student's probable solution: No year beginning 2 and using consecutive digits occurs before 2013. So we want the most recent year beginning 1 and using consecutive digits \\(0,1,2,3\\) or \\(1,2,3,4\\). The most recent such year begins 14 and of those beginning 14, the most recent is 1432."
+  },
+  "wajo13_q6": {
+    "answer": 72,
+    "solution": "<p>Adding an extra line, we split the lower area into an area that is congruent to the upper area and a rectangle.</p><p>And, so we see,</p>$$a \\ell: b \\ell=(3+3): 5$$<p>where \\(\\ell\\) is the length of the rectangle. Hence,</p>$$a=\\frac{6}{6+5} \\times 132=72$$"
+  },
+  "wajo13_q7": {
+    "answer": 81,
+    "solution": "The fact that the cylinders are 'similar' means that their volumes are in the ratio of the cube of their diameters, i.e. \\(5^{3}: 10^{3}=\\) \\(125: 1000\\) or \\(1: 8\\).<br>This means the smaller cylinder has a volume equal to \\(\\frac{1}{9}\\) of the original cube, i.e. the smaller has a volume of \\(\\frac{1}{9} \\times 9^{3}=81 \\mathrm{~cm}^{3}\\)."
+  },
+  "wajo13_q8": {
+    "answer": 29,
+    "solution": "By tracing out the path of the ball we find it returns to position 11 after 8 moves; 2008 is a multiple of 8 so after 2008 moves the ball will be at position 11. Tracing out its path shows that it is at position 29 after 5 more moves."
+  },
+  "wajo13_q9": {
+    "answer": 115,
+    "solution": "The number of multiples of \\(7 \\leq n\\) is \\(\\lfloor n / 7\\rfloor\\). Thus \\(n\\) must satisfy \\(99=n-\\lfloor n / 7\\rfloor\\). Since \\(\\lfloor 99 / 7\\rfloor=14, n \\geq 99+14\\). However, between 99 and \\(99+14\\) there are another two multiples of 7. Testing \\(n=115\\), we have \\(115-\\lfloor 115 / 7\\rfloor=115-16=99\\). So the \\(99^{\\text {th }}\\) term is 115."
+  },
+  "wajo13_q10": {
+    "answer": 52,
+    "solution": "If the base is of length \\(b\\), then the two equal legs \\( \\ell; \\) must be such that \\(2 \\ell; &gt; b \\), in order to form a triangle. Thus we have:<br>for (b=1, ℓ ≠ 1), leaving 8 choices;<br>for \\(b=2, ℓ ≠ 1,2\\), leaving 7 choices;<br>for \\(b=3, ℓ ≠ 1,3\\), leaving 7 choices;<br>for \\(b=4, ℓ ≠ 1,2,4\\), leaving 6 choices;<br>for \\(b=5, ℓ ≠ 1,2,5\\), leaving 6 choices;<br>for \\(b=6, ℓ ≠ 1,2,3,6\\), leaving 5 choices;<br>for \\(b=7, ℓ ≠ 1,2,3,7\\), leaving 5 choices;<br>for \\(b=8, ℓ ≠ 1,2,3,4,8\\), leaving 4 choices;<br>for \\(b=9, ℓ ≠ 1,2,3,4,9\\), leaving 4 choices.<br>Thus, in all there are \\(2 \\times(4+5+6+7)+8=52\\) such triangles."
+  },
+  "wajo13_q11": {
+    "answer": 93,
+    "solution": "The problem is equivalent to one train being stationary and the other train moving at \\((15+5) \\mathrm{km} / \\mathrm{h}\\).<br><br>After becoming visible to the other train, the 'moving' train will have to travel<br>\\((2 \\cdot 12+3+4) \\mathrm{km}=\\) (twice the visibility distance + sum of two train lengths)<br>to become invisible again, i.e. the time in minutes until one train will become invisible to the other is:<br>$$\n\\frac{2 \\cdot 12+3+4}{15+5} \\cdot 60=93 \\text { minutes }.\n$$"
+  },
+  "wajo13_q12": {
+    "answer": "\\(\\frac{1}{3} \\sqrt{481} \\mathrm{~cm}\\)",
+    "solution": "The smallest circle covering \\(P Q R S\\) is the circumcircle of \\(P Q R S\\). Locate the midpoint of \\(S R\\) at the origin. By symmetry the circumcentre of \\(P Q R S\\), is located at a point \\((0, y)\\) that is equidistant from \\(Q\\) and \\(R\\). Hence, the circumradius \\(r\\) of \\(P Q R S\\) satisfies,<br>$$\n\\begin{aligned}\nr^{2} &amp; =(12-y)^{2}+3^{2} \\\\\n&amp; =y^{2}-24 y+12^{2}+3^{2} \\\\\nr^{2} &amp; =y^{2}+5^{2} \\\\\n\\therefore 0 &amp; =-24 y+12^{2}+3^{2}-5^{2}, \\text { by } (1)-(2) \\\\\n24 y &amp; =12^{2}-16 \\\\\ny &amp; =6-\\frac{2}{3}=\\frac{16}{3} \\\\\n\\therefore r^{2} &amp; =\\left(\\frac{16}{3}\\right)^{2}+5^{2} \\\\\n&amp; =\\left(\\frac{1}{3}\\right)^{2}\\left(16^{2}+15^{2}\\right) \\\\\n&amp; =\\left(\\frac{1}{3}\\right)^{2}(256+225) \\\\\n&amp; =\\left(\\frac{1}{3}\\right)^{2} \\cdot 481 \\\\\n\\therefore r &amp; =\\frac{1}{3} \\sqrt{481}\n\\end{aligned}\n$$<br><img src=\"data/wajo/diagrams/bb9d41d354d499.webp\" alt=\"Solution Diagram 1 Q12\" class=\"wajo-diagram\" loading=\"lazy\"><br>Hence, the smallest circle covering \\(P Q R S\\) has radius \\(\\frac{1}{3} \\sqrt{481} \\mathrm{~cm}\\).<br><br><b>Alternatively,</b> locate the midpoint of \\(S R\\) at the origin, and assign coordinates to the vertices as shown in the diagram. By symmetry the circumcentre of \\(P Q R S\\), is located where the perpendicular bisector \\(\\ell\\) of \\(Q R\\) meets the \\(y\\) axis (which is the axis of symmetry of \\(P Q R S\\)). \\(Q R\\) has slope<br>$$\n\\frac{12-0}{3-5}=-6\n$$<br><img src=\"data/wajo/diagrams/91508e96439ea4.webp\" alt=\"Solution Diagram 2 Q12\" class=\"wajo-diagram\" loading=\"lazy\"><br>Hence, \\(\\ell\\) is the straight line through the midpoint<br>$$\nM=((3+5) / 2,12 / 2))=(4,6)\n$$<br>with slope \\(\\frac{1}{6}\\) (the negative reciprocal of the slope of \\(Q R\\) ), i.e.<br>$$\n\\ell: y-6=\\frac{1}{6}(x-4)\n$$<br>The circumcentre \\(X\\) of \\(P Q R S\\) is the point on \\(\\ell\\) where \\(x=0\\). Substituting, \\(x=0\\) in the equation for \\(\\ell\\), we have<br>$$\n\\begin{aligned}\ny-6 &amp; =\\frac{1}{6}(0-4) \\\\\ny &amp; =6-\\frac{2}{3}=\\frac{16}{3} \\\\\n\\therefore X &amp; =\\left(0, \\frac{16}{3}\\right)\n\\end{aligned}\n$$<br>Hence, the circumradius \\(r\\) of \\(P Q R S\\) satisfies<br>$$\n\\begin{aligned}\nr^{2} &amp; =X R^{2} \\\\\n&amp; =O X^{2}+O R^{2} \\\\\n&amp; =\\left(\\frac{16}{3}\\right)^{2}+5^{2} \\\\\n&amp; =\\left(\\frac{1}{3}\\right)^{2}\\left(16^{2}+15^{2}\\right) \\\\\n&amp; =\\left(\\frac{1}{3}\\right)^{2}(256+225) \\\\\n&amp; =\\left(\\frac{1}{3}\\right)^{2} \\cdot 481 \\\\\n\\therefore r &amp; =\\frac{1}{3} \\sqrt{481}\n\\end{aligned}\n$$<br>Hence, the smallest circle covering \\(P Q R S\\) has radius \\(\\frac{1}{3} \\sqrt{481} \\mathrm{~cm}\\)."
+  }
+}

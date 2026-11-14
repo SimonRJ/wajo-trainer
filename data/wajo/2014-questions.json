@@ -1,0 +1,112 @@
+[
+  {
+    "id": "wajo14_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A <i>palindrome</i> is a positive integer that reads the same forwards and backwards, for example 3113.<br>What is the smallest \\(x\\) for which \\(x+2014\\) is a palindrome?"
+  },
+  {
+    "id": "wajo14_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "What is the maximum number of intersection points of a rectangle and a circle?<br>"
+  },
+  {
+    "id": "wajo14_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In the diagram, \\(A B\\) and \\(A C\\) are equal, as are \\(B C\\) and \\(B D\\).<br>If \\(\\angle B A C=36^{\\circ}\\), how many degrees is \\(\\angle D C A\\) ?<br>",
+    "image": "data/wajo/diagrams/d14f2e2fa0c998.webp"
+  },
+  {
+    "id": "wajo14_q4",
+    "number": "4",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Two parallel chords in a circle lie on the same side of the centre and have lengths 40 and 48 cm. The distance between them is 8 cm.<br>How many centimetres would the distance between the chords be, if they were on opposite sides of the centre?<br>"
+  },
+  {
+    "id": "wajo14_q5",
+    "number": "5",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "If each edge of a cube is extended by \\(40 \\%\\), by how many percent has the surface area of the cube been extended?"
+  },
+  {
+    "id": "wajo14_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Stefan is driving 150 km from Perth to Australind. For the first 30 km he averages \\(40 \\mathrm{~km} / \\mathrm{h}\\). Then for the rest of the journey, the speed limit is \\(100 \\mathrm{~km} / \\mathrm{h}\\), and he'd like his average speed for the whole journey to be \\(75 \\mathrm{~km} / \\mathrm{h}\\).<br>At how many km/h does Stefan need to travel over the last 120 kilometres?"
+  },
+  {
+    "id": "wajo14_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Suppose<br>$$\n\\frac{(2 x+5)^{6}}{(x+4)^{5}}=\\frac{a_{0}+a_{1} x+a_{2} x^{2}+a_{3} x^{3}+a_{4} x^{4}+a_{5} x^{5}+a_{6} x^{6}}{b_{0}+b_{1} x+b_{2} x^{2}+b_{3} x^{3}+b_{4} x^{4}+b_{5} x^{5}}\n$$<br>for all \\(x \\neq-4\\).<br><br>What is \\(\\quad \\dfrac{a_{0}-a_{1}+a_{2}-a_{3}+a_{4}-a_{5}+a_{6}}{b_{0}-b_{1}+b_{2}-b_{3}+b_{4}-b_{5}}\\)?"
+  },
+  {
+    "id": "wajo14_q8",
+    "number": "8",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Let \\(R\\) be a rectangle of area \\(360 \\mathrm{~m}^{2}\\). If the length of \\(R\\) is increased by 10 m and its width is decreased by 6 m, this new rectangle has the same area as \\(R\\).<br>How many metres is the perimeter of the original rectangle \\(R\\)?"
+  },
+  {
+    "id": "wajo14_q9",
+    "number": "9",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The 3-digit numbers \\(acb, a79, b0c\\) and \\(bb1\\) are increasing consecutive terms of an arithmetic progression, that is<br>$$\na 79-a c b=b 0 c-a 79=b b 1-b 0 c\n$$<br>What is the number \\(abc\\)?<br><i>Note: this means the number formed by digits a, b, c in that order</i>"
+  },
+  {
+    "id": "wajo14_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Henrietta writes down all the two digit numbers and for each number she calculates the product of the two digits. She then adds all the products together and divides the total by 25.<br>What is her answer?"
+  },
+  {
+    "id": "wajo14_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Given \\(u, v, w, x, y\\) are integers such that: \\begin{gathered} u-1 &lt; v-2 &lt; w-3 &lt; x-4 &lt; y-5 \\\\\n \\\\\n \\text{and} \\\\\n \\\\\n (u-1)(v-2)(w-3)(x-4)(y-5)=2014\\end{gathered} find the largest possible value of \\begin{gathered}u+v+w+x+y\\end{gathered}"
+  },
+  {
+    "id": "wajo14_q12",
+    "number": "12",
+    "marks": 4,
+    "topic": "Geometry",
+    "answerFormat": "text",
+    "workingRequired": true,
+    "prompt": "A lune is a crescent shape formed by two intersecting circular arcs; it originates from the Latin word Luna which translates to \"moon\". The diagram below shows a right-angled triangle with sides of length \\(a, b\\) and \\(c\\) and two lunes whose boundaries are formed by three semicircles.<br>Consider the sum of the areas of the two lunes, and the area of the triangle. Which is larger?<br>Your answer could depend on the values of \\(a, b, c\\).<br> <i>In the original paper, full marks were only awarded with an explanation (e.g. your worked solution).</i>",
+    "image": "data/wajo/diagrams/b7b1982cd6400b.webp"
+  }
+]

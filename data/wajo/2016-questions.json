@@ -1,0 +1,112 @@
+[
+  {
+    "id": "wajo16_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Find the value of \\(x\\) in the following diagram.<br>",
+    "image": "data/wajo/diagrams/c2c87a0ca478e2.webp"
+  },
+  {
+    "id": "wajo16_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "An icecream dessert is made up of a cone and a scoop of icecream such that the scoop of icecream is a perfect hemisphere placed atop the cone.<br>If the wafer biscuit which makes up the cone is 100 mm along the outside (slant edge) from the top of the wafer to its tip and the radius of the hemisphere is 28 mm, how many millimetres tall is the icecream dessert from the top of the icecream scoop to the tip at the base?<br>"
+  },
+  {
+    "id": "wajo16_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "I am thinking of two numbers between 1 and 20. The first is one less than a perfect square and is not prime. The second is one more than a perfect square and is prime. The sum of the two numbers is divisible by 4 but not by 8.<br>What is the product of the two numbers?"
+  },
+  {
+    "id": "wajo16_q4",
+    "number": "4",
+    "marks": 1,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A jigsaw puzzle is $8 \\times 6$, making 48 pieces altogether in a rectangular pattern. Each corner piece is connected to two other pieces, each edge piece which is not on a corner is connected to three other pieces and each of the remaining pieces is connected to four other pieces.<br>How many connections are there altogether? Be careful not to count the connections twice: if two pieces are connected to each other that's only one connection."
+  },
+  {
+    "id": "wajo16_q5",
+    "number": "5",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A school bus has 45 bench seats. Each bench seat can take two children or one child with their backpack.<br>If \\(\\dfrac{2}{3}\\) of the children have backpacks, how many children can be seated on the bus?<br>"
+  },
+  {
+    "id": "wajo16_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Mr Throttlebottom pays a bill using internet banking. The bill is for a two digit whole number of dollars, say \\(\\$ a b\\). He accidentally inserts an extra digit after the \\(b\\). Later he is annoyed to discover that he has overpaid the bill by \\(\\$ 647\\).<br>How many dollars should he have paid?"
+  },
+  {
+    "id": "wajo16_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "\\(W X Y Z\\) is a square with \\(P V \\perp X Y\\) and \\(P W=P Z=P V=10 \\mathrm{~cm}\\).<br>How many \\(\\mathrm{cm}^{2}\\) is the area of \\(W X Y Z\\) ?<br>",
+    "image": "data/wajo/diagrams/e8754fea95c303.webp"
+  },
+  {
+    "id": "wajo16_q8",
+    "number": "8",
+    "marks": 2,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "How many positive integers less than 300,000 are there that have the digits 5,6 and 7 next to each other and in that order?"
+  },
+  {
+    "id": "wajo16_q9",
+    "number": "9",
+    "marks": 3,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In a right-angled triangle \\(A B C\\), a point \\(M\\) on the hypotenuse \\(B C\\) is such that \\(A M \\perp B C\\). Also, \\(M C\\) is 8 cm longer than \\(B M\\), and the ratio \\(A B: A C=3: 5\\).<br>How many centimetres is the length of the hypotenuse?<br>"
+  },
+  {
+    "id": "wajo16_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In a 5000m race, the winner finishes 200 m ahead of second and 600 m ahead of third. Assuming the runners run at a constant speed, to the nearest integer how many metres ahead of third will second finish?"
+  },
+  {
+    "id": "wajo16_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Two numbers \\(x\\) and \\(y\\) satisfy three of the following equations<br>$$\nx+y=63, \\quad x-y=47, \\quad x y=392, \\quad \\frac{x}{y}=8\n$$<br>but do not satisfy the remaining one.<br>What is the value of \\(x\\) ?"
+  },
+  {
+    "id": "wajo16_q12",
+    "number": "12",
+    "marks": 4,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": true,
+    "prompt": "<i>In the original paper, this question required working for full marks (an explanation to how you found your solution).</i><br>Wilberforce walks 1 metre east from his initial position, then 2 metres north, then 3 metres west, then 4 metres south, then 5 metres east, then 6 metres north, and so on, (so that he walks one metre further each time before turning \\(90^{\\circ}\\) to his left), until he finally walks 41 metres east.<br>How many metres in a straight line path is Wilberforce's final position from his initial position?<br>"
+  }
+]

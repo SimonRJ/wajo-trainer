@@ -1,0 +1,112 @@
+[
+  {
+    "id": "wajo19_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "How many integers in the range 1 to 1000 do not contain the sequence 12, among their digits?<br>Note. An integer contains the sequence 12, if the digit 1 is immediately followed by the digit 2. So 123 contains the sequence 12, but 132 does not."
+  },
+  {
+    "id": "wajo19_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Determine the value of: $2019 \\times 2023-2016 \\times 2026$."
+  },
+  {
+    "id": "wajo19_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In the diagram, $\\triangle A B C$ is equilateral and $G$ is its centre. Points $D, E$ and $F$ are the midpoints of $B C, C A$ and $A B$, respectively.<br>If the area of the shaded quadrilateral is $3 \\mathrm{~cm}^{2}$, how many square centimetres is the area of $\\triangle A B C$ ?",
+    "image": "data/wajo/diagrams/248da53a3f45e5.webp"
+  },
+  {
+    "id": "wajo19_q4",
+    "number": "4",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "How many positive divisors do 576 and 648 have in common?"
+  },
+  {
+    "id": "wajo19_q5",
+    "number": "5",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Alice went for a jog. She started running at $7 \\mathrm{~km} / \\mathrm{h}$. Then she turned round and ran the same distance again but at $5 \\mathrm{~km} / \\mathrm{h}$, because she was tired. Her total time running was 2 hours and 24 minutes.<br>How many kilometres did she run in that time?"
+  },
+  {
+    "id": "wajo19_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Augustus de Morgan, a nineteenth-century mathematician, stated: I turned $x$ years old in the year $x^{2}$.<br>How many years after the year 1000 was he born?<br>Note. The $19^{\\text {th }}$ century is the period from 1801 to 1900."
+  },
+  {
+    "id": "wajo19_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Let $A B C$ be a right triangle with right angle at $C$, with incircle $K$. Let $K$ be tangent to $A B$ at $D$, with $B D=20$ and $D A=19$. Find the area of triangle $A B C$.",
+    "image": "data/wajo/diagrams/f3e31ac33d00d1.webp"
+  },
+  {
+    "id": "wajo19_q8",
+    "number": "8",
+    "marks": 2,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "An LED light can have 3 colours, red, green and blue, and a switch makes the light cycle between the 3 colours, in that order (red then green then blue then back to red etc.). Starting with a red light, we flip a coin 8 times. Whenever a head $(H)$ is tossed we do nothing, and when a tail $(T)$ is tossed we press the light switch.<br>How many of the different possible coin toss sequences end up with a green light?<br>For example, HTTHTTHH is one sequence that leaves the light green, since, as the diagram below shows, after starting at red the sequence ends with the light green.<br>$$\n\\begin{array}{c}\n\\text{red } \\xrightarrow{H} \\text{ red } \\xrightarrow{T} \\text{ green } \\xrightarrow{T} \\text{ blue } \\xrightarrow{H} \\text{ blue } \\xrightarrow{T} \\text{ red } \\xrightarrow{T} \\text{ green } \\xrightarrow{H} \\text{ green } \\xrightarrow{H} \\text{ green } \\\n\\text{(start)} \\hspace{10em} \\text{(end)}\n\\end{array}\n$$"
+  },
+  {
+    "id": "wajo19_q9",
+    "number": "9",
+    "marks": 3,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In a game, we start with a pile of 2019 coins. At each turn, if the number in a pile is even, we split the pile into two equal piles, and if the number in a pile is odd with more than one coin, we discard a coin and split the remaining pile into two equal piles.<br>How many coins will have been discarded when we are left only with piles that each contain one coin?"
+  },
+  {
+    "id": "wajo19_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A triangle has area $90 \\mathrm{~cm}^{2}$. The lengths of two of the sides of the triangle are 12 cm and 17 cm.<br>How many centimetres is the third side, given that it is an integer."
+  },
+  {
+    "id": "wajo19_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "What is the largest integer $n$ for which $\\frac{n^{2}-8 n+15}{n+7}$ is an integer?"
+  },
+  {
+    "id": "wajo19_q12",
+    "number": "12",
+    "marks": 4,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": true,
+    "prompt": "What is the largest positive integer that divides the product $n(n+1)(n+2)(n+3)$ for all positive integers $n$ ?"
+  }
+]

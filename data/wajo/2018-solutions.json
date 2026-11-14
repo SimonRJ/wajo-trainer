@@ -1,0 +1,53 @@
+{
+  "wajo18_q1": {
+    "answer": 90,
+    "solution": "The board has \\(15^{2}=225\\) squares. Let \\(x\\) be the number of calamity squares. Then<br>$$\n\\begin{aligned}\n225 &amp; =x+1.5 x \\\\\n&amp; =2.5 x \\\\\n\\therefore x &amp; =\\frac{225}{2.5} \\\\\n&amp; =\\frac{2 \\times 225}{5} \\\\\n&amp; =90.\n\\end{aligned}\n$$<br>So Jane chose 90 of the squares to be calamity squares."
+  },
+  "wajo18_q2": {
+    "answer": 10,
+    "solution": "Let \\(x\\) be the number of friends that went with Alice to the restaurant. Then<br>$$\n\\begin{aligned}\n30(x+1) &amp; =33 x \\\\\n30 &amp; =3 x \\\\\nx &amp; =10.\n\\end{aligned}\n$$"
+  },
+  "wajo18_q3": {
+    "answer": 117,
+    "solution": "Each game eliminates 1 player; 117 players need to be eliminated. So 117 games are required."
+  },
+  "wajo18_q4": {
+    "answer": 110,
+    "solution": "The required difference is \\(2112-2002=110\\)."
+  },
+  "wajo18_q5": {
+    "answer": 55,
+    "solution": "Assume there are 100 people on the island.<br>Among the 20 redheads, \\(\\frac{1}{4}\\) of them have green eyes.<br>So 5 people are redheads and have green eyes.<br>In all, 30 people have green eyes.<br>So 25 have green eyes, but are not redheads.<br>Overall, \\(80=100-20\\) are non-redheads. So,<br>$$\n80-25=55\n$$<br>are neither redheaded nor green-eyed.<br>Thus, the proportion of islanders who are neither redheads nor have green eyes is \\(55\\%\\)."
+  },
+  "wajo18_q6": {
+    "answer": 75,
+    "solution": "From vertices of the original and new hexagons on one half-side of the original hexagon, draw a circumradius of each of the original and new hexagons. The circumradii and the half-side form a half equilateral triangle with the ratio of the new hexagon circumradius to the original circumradius being \\(\\sqrt{3}: 2\\).<br>Since the length measures of the two hexagons are in the ratio \\(\\sqrt{3}: 2\\), their area measures are in the ratio \\(3: 4\\).<br>Hence, the area of the new hexagon is \\(\\frac{3}{4} \\cdot 100=75\\).<br>",
+    "images": [
+      "data/wajo/diagrams/5fc7103d61ef0a.webp"
+    ]
+  },
+  "wajo18_q7": {
+    "answer": 546,
+    "solution": "Let the dimensions of the prism be $\\ell, b, h$. Then we have<br>$$\\ell b=36, \\ell h=49, b h=169.$$<br>Now the volume is $\\ell b h$, and observe that<br>$$\\begin{aligned}(\\ell b h)^{2} &amp; =\\ell b \\cdot \\ell h \\cdot b h \\\\&amp; =36 \\cdot 49 \\cdot 169 \\\\&amp; =(6 \\cdot 7 \\cdot 13)^{2} \\\\&amp; =546^{2} \\\\\\ell b h &amp; =546.\\end{aligned}$$<br>So the required volume is 546."
+  },
+  "wajo18_q8": {
+    "answer": 34,
+    "solution": "Let the legs of the right-angle triangle be \\(2 x\\) and \\(2 y\\). Then we are given that<br>$$\n\\begin{aligned}\n&amp; x^{2}+(2 y)^{2}=22^{2} \\\\\n&amp; (2 x)^{2}+y^{2}=31^{2}\n\\end{aligned}\n$$<br>and we need to find \\(\\sqrt{(2 x)^{2}+(2 y)^{2}}\\). Adding the two equations, we have<br>$$\n\\begin{aligned}\n5 x^{2}+5 y^{2} &amp; =22^{2}+31^{2} \\\\\n4 x^{2}+4 y^{2} &amp; =\\frac{4}{5}\\left(22^{2}+31^{2}\\right) \\\\\n&amp; =\\frac{4}{5}(484+961) \\\\\n&amp; =\\frac{4}{5} \\cdot 1445 \\\\\n&amp; =4 \\cdot 289 \\\\\n&amp; =2^{2} \\cdot 17^{2} \\\\\n\\sqrt{(2 x)^{2}+(2 y)^{2}} &amp; =2 \\cdot 17=34.\n\\end{aligned}\n$$"
+  },
+  "wajo18_q9": {
+    "answer": 991,
+    "solution": "The key observation is that since we have the 4 consecutive special numbers,<br>$$\n\\begin{aligned}\n&amp; 18=1 \\times 4+2 \\times 7 \\\\\n&amp; 19=3 \\times 4+1 \\times 7 \\\\\n&amp; 20=5 \\times 4+0 \\times 7 \\\\\n&amp; 21=0 \\times 4+3 \\times 7\n\\end{aligned}\n$$<br>all larger numbers are special, because they can be obtained by adding a multiple of 4 to one of \\(18,19,20\\) or 21.<br>This leaves determining which numbers less than 18 are special. The restriction,<br>$$\nn \\times 4+m \\times 7&lt;18\n$$<br>implies \\(m \\leq 2\\). Checking, we find the special numbers less than 18 are:<br>$$\n\\begin{aligned}\n&amp; \\text { for } m=0: 4,8,12 \\text { and } 16, \\\\\n&amp; \\text { for } m=1: 7,11 \\text { and } 15, \\\\\n&amp; \\text { for } m=2: 14.\n\\end{aligned}\n$$<br>Since, in this search, we did not encounter \\(1,2,3,5,6,9,10,13\\) or 17 (9 of them), these numbers are not special, and they are the only non-special numbers less than 1000.<br>Thus, in all, there are \\(1000-9=991\\) special numbers in the interval 1 to 1000."
+  },
+  "wajo18_q10": {
+    "answer": 666,
+    "solution": "Since any of the factorials from 16! on, have among their factors \\(4,5,10\\) and 15, whose product is 3000, all the factorials from 16! on, end in three zeros.<br>So, we need only consider the sum,<br>$$\n\\begin{array}{rlr}\n2!+4!+6!+8!+10!+12!+14! &amp; = &amp; 2 \\\\\n&amp; + &amp; 24 \\\\\n&amp; + &amp; 720 \\\\\n&amp; + &amp; \\ldots 320 \\\\\n&amp; + &amp; \\ldots 800 \\\\\n&amp; + &amp; \\ldots 600 \\\\\n&amp; + &amp; \\ldots 200 \\\\\n&amp; = &amp; \\ldots 666\n\\end{array}\n$$<br>So the number formed by the last three digits of \\(2!+4!+6!+\\cdots+2018\\)! is 666."
+  },
+  "wajo18_q11": {
+    "answer": 25,
+    "solution": "The minimum score for a team is \\(1+2+\\cdots+7\\) and the maximum score for a team is \\(8+9+\\cdots+14\\). To see that all scores between these two scores are possible, we need only exhibit one possible 7-tuple that sums to each score:<br>$$\n\\begin{align*}\n(1,2,3,4,5,6, \\underline{7}), &amp; (1,2,3,4,5,6, \\underline{8}), &amp; \\ldots,(1,2,3,4,5,6, \\underline{14}), \\\\\n&amp;(1,2,3,4,5, \\underline{7}, 14), &amp;  \\ldots,(1,2,3,4,5, \\underline{13}, 14),\\\\\n&amp;(1,2,3,4, \\underline{6}, 13,14),&amp; \\ldots,(1,2,3,4, \\underline{12}, 13, 14),\\\\\n&amp;(1,2,3, \\underline{5}, 12,13,14), &amp; \\ldots,(1,2,3, \\underline{11}, 12,13,14), \\\\\n&amp;(1,2, \\underline{4}, 11,12,13,14), &amp;  \\ldots,(1,2, \\underline{10}, 11,12,13,14),\\\\\n&amp;(1, \\underline{3}, 10,11,12,13,14), &amp; \\ldots,(1,\\underline{9}, 10, 11,12,13,14), \\\\\n&amp;(\\underline{2}, 9,10,11,12,13,14), &amp; \\ldots,(\\underline{8}, 9,10,11,12,13,14).\n\\end{align*}\n$$<br>Observe that for any pair that are adjacent sequentially, just one entry differs by 1 (the entry changing on each row is underlined). There are \\(1+7 \\times 7=50\\) possible scores, and by symmetry half of these, i.e. 25 are winning scores.<br>Note. Since \\(1+2+\\cdots+14\\) is odd (being a sum of 7 consecutive pairs whose sum is odd), the teams cannot draw.<br>Alternative method. The total of all individual scores is<br>$$\n1+2+\\cdots+14=(14 \\times 15) / 2=105\n$$<br>So if one team score is \\(x\\), then the other team score is \\(105-x\\). If \\(x\\) is the winning score, then<br>$$\n\\begin{aligned}\nx &amp; &lt;105-x \\\\\n2 x &amp; &lt;105 \\\\\nx &amp; &lt;52.5.\n\\end{aligned}\n$$<br>Thus, the minimum winning score is \\(1+2+\\cdots+7=28\\) and the maximum winning score is 52, if it is attainable. Indeed, the argument in the previous method shows that all scores from 28 to 52 are attainable. So the number of possible winning scores is<br>$$\n52-27=25\n$$"
+  },
+  "wajo18_q12": {
+    "answer": 8,
+    "solution": "We have<br>$$2^{6}3^{2}=24^{2}=576=x^{2}-y^{2}=(x+y)(x-y).$$We essentially need to discover the number of ways we can partition the factors of $2^{6}3^{2}$ between $x+y$ and $x-y$.<br>Now $x+y$ and $x-y$ have the same parity, and since $2^{6}3^{2}$ is even, at least one and hence both $x+y$ and $x-y$ are even.<br>So two of the 2s are allocated, and we are left to find the number of ways we can partition the factors of $2^{4}3^{2}$ between $\\frac{1}{2}(x+y)$ and $\\frac{1}{2}(x-y)$.<br>The number of positive integer divisors of $2^{4}3^{2}$, is $(4+1)(2+1)=15$, since those divisors are $2^{k}3^{l}$, where $k \\in \\{0,1,2,3,4\\}$ ($(4+1)$ possibilities) and $l \\in \\{0,1,2\\}$ ($(2+1)$ possibilities).<br>Each divisor of $2^{4}3^{2}$, leads to a way of writing<br>$$2^{4}3^{2}=2^{k}3^{l}\\cdot2^{4-k}3^{2-l}$$as the product of two factors. Most of these factorisations are written twice. But $12=2^{2}3$ is partnered with itself in one factorisation, leading to the solution,<br>$$\\frac{1}{2}(x-y)=\\frac{1}{2}(x+y)=12,$$in which case $(x, y)=(24,0)$. The remaining 14 divisors lead to 7 pairs of non-equal factors of $2^{4}3^{2}$, the smaller being $a=\\frac{1}{2}(x-y)$ and the larger being $b=\\frac{1}{2}(x+y)$. Since $a, b$ are positive integers and $a \\le b$, each leads to a solution for $(x, y)$, where $x=a+b$ and $y=b-a$. So, in all, there are 8 solutions.<br><i>Note.</i> Since, it may be of some interest, we explicitly list the solutions for $(x,y)$ in the following table, where $2^k 3^l \\le 12$, since $a \\le 12 \\le b$.<br>\\[\n\\begin{array}{cc|c|c|c|c}\nk &amp; l &amp; a=2^{k}3^{l} &amp; b=2^{4-k}3^{2-l} &amp; x=a+b &amp; y=b-a \\\\ \\hline\n0 &amp; 0 &amp; 1 &amp; 144 &amp; 145 &amp; 143 \\\\\n1 &amp; 0 &amp; 2 &amp; 72 &amp; 74 &amp; 70 \\\\\n2 &amp; 0 &amp; 4 &amp; 36 &amp; 40 &amp; 32 \\\\\n3 &amp; 0 &amp; 8 &amp; 18 &amp; 26 &amp; 10 \\\\\n0 &amp; 1 &amp; 3 &amp; 48 &amp; 51 &amp; 45 \\\\\n1 &amp; 1 &amp; 6 &amp; 24 &amp; 30 &amp; 18 \\\\\n2 &amp; 1 &amp; 12 &amp; 12 &amp; 24 &amp; 0 \\\\\n0 &amp; 2 &amp; 9 &amp; 16 &amp; 25 &amp; 7 \\\\ \\hline\n\\end{array}\n\\]<br><br><b>Alternative method.</b> We have<br>$$2^6 3^2=24^2=576=x^2-y^2=(x+y)(x-y)$$<br>We essentially need to discover the number of ways we can partition the factors of $2^6 3^2$ between $x+y$ and $x-y$.<br>Now $x+y$ and $x-y$ have the same parity, and since $2^6 3^2$ is even, at least one and hence both $x+y$ and $x-y$ are even.<br>Now $2^6 3^2$ has $(6+1)(2+1)=21$ positive integer divisors. Removing the odd divisors $1,3,9$ and their respective partners $576,192,64$, leaves 15 divisors. There are an odd number of divisors since 576 is a perfect square. Each of the 7 even divisors less than 24 is partnered with an even divisor greater than 24, and 24 is partnered with itself. Thus, there are 8 possibilities for the factor pairs $(x-y, x+y)$ of 576.<br>Let $A=x-y$ and $B=x+y$. Then since $A$ and $B$ are even, $x=\\frac{1}{2}(A+B)$ and $y=\\frac{1}{2}(B-A)$ are integers, and hence the 8 possibilities for $(A, B)$ each lead to a solution pair $(x, y)$. So, in all, there are 8 solutions."
+  }
+}

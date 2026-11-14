@@ -1,0 +1,82 @@
+{
+  "wajo21_q1": {
+    "answer": 603,
+    "solution": "Let $N=\\overline{a b c}$. Firstly, $N$ and hence $c$ is odd, since $N$ is not divisible by 2, and since $a$ and $c$ differ by 3 (odd), $a$ is even. Thus,<br>$$\n\\begin{align*}\n b &amp; =a-6 \\geqslant 0 \\\\ \n\\therefore a &amp; \\geqslant 6 \\\\\n\\therefore a &amp; \\in\\{6,8\\}, \\text{ since } a \\text{ is even } \\\\\n c &amp; =a-3 \\\\\n\\therefore N &amp; \\in\\{603,825\\} \\\\\n\\therefore N &amp; =603, \\text{ being the possibility not divisible by } 5.\n\\end{align*}$$"
+  },
+  "wajo21_q2": {
+    "answer": 36,
+    "solution": "We are given that the $\\frac{1}{3}-\\frac{1}{4}=\\frac{1}{12}$ of the tank is 3 L. Hence the whole tank has volume $12 \\cdot 3=36 \\mathrm{~L}$."
+  },
+  "wajo21_q3": {
+    "answer": 72,
+    "solution": "Since the smaller square has area $36 \\mathrm{~cm}^{2}$, its side length is 6 cm. Observe that two vertices of the smaller square lie on a diameter of the circle.<br>Thus the diameter of the circle is the hypotenuse of an isosceles right triangle whose legs are each 6 cm. Hence, the diameter of the circle is by Pythagoras' Theorem,<br>$$\n\\sqrt{6^{2}+6^{2}}=\\sqrt{6^{2} \\cdot 2}=6 \\sqrt{2} \\mathrm{~cm}.\n$$<br>Since the side length of the the larger square is equal to the diameter of the circle, the area of the larger square is<br>$$\n(6 \\sqrt{2})^{2}=72 \\mathrm{~cm}^{2}.\n$$<br><b>Alternatively,</b> rotate the smaller square so that its vertices coincide with the points where the larger square is tangent to the circle, which by symmetry are the midpoints of the sides of the larger square.<br>By folding the vertices of the larger square to the centre of the circle, we see the larger square has exactly twice the area of the smaller square.<br>So the area of the larger square is $2 \\cdot 36=72 \\mathrm{~cm}^{2}$.",
+    "images": [
+      "data/wajo/diagrams/d4264e023d2064.webp"
+    ]
+  },
+  "wajo21_q4": {
+    "answer": 336,
+    "solution": "Since order is important, there are 8 choices for the first city of a tour, leaving 7 choices for the second city, and 6 choices for the third city, i.e. there are<br>$$\n8 \\cdot 7 \\cdot 6=336\n$$different possible tours."
+  },
+  "wajo21_q5": {
+    "answer": 81,
+    "solution": "Let the three consecutive integers be $x-1, x, x+1$.<br>Then their sum $S=3 x$ and $50&lt;3 x&lt;100$.<br>Hence $17 \\leqslant x \\leqslant 33$.<br>Also, $x$ is a multiple of 3 and lies between two even numbers.<br>So $x$ is an odd multiple of 3.<br>Hence $x \\in\\{21,27,33\\}$. But 22 and 34 are not multiples of 4.<br>Therefore $x=27$ (and $x-1=26$ and $x+1=28$ ) and $S=3 x=81$.<br><b>Alternatively,</b> since $\\operatorname{lcm}(2,3,4)=12$, the three consecutive integers are<br>$$\n12 k+2,12 k+3,12 k+4,\n$$<br>for some integer $k$. Hence,<br>$$\n\\begin{aligned}\nS &amp; =(12 k+2)+(12 k+3)+(12 k+4) \\\\\n&amp; =36 k+9 \\text{ lying in the interval }(50,100).\n\\end{aligned}\n$$<br>Therefore, $k=2$ and $S=36 \\cdot 2+9=81$."
+  },
+  "wajo21_q6": {
+    "answer": 8,
+    "solution": "Since the number of \\$50 notes is fewest, we consider cases according to how many of them we use.<br>In each case, we then need only determine the number of ways, that adding \\$10 notes to the \\$50 notes used results in a multiple of \\$100, since there are plenty of \\$100 notes to make up the rest.<br>Case 1: 0 or 2 \\$50 notes used. Then we can use 0, 10, or 20 \\$10 notes (3 ways, for each number of \\$50 notes used).<br>Case 2: 1 \\$50 note used. Then we can use 5 or 15 \\$10 notes (2 ways).<br>So in all there are $2 \\cdot 3+2=8$ ways for Alice to repay Greg.<br><b>Alternatively,</b> let $a, b, c$ be the numbers of \\$10, \\$50 and \\$100$ notes used to repay Greg, respectively. Then, we require$$10a+50b+100c=500$$where $0 \\leqslant a \\leqslant 20, 0 \\leqslant b \\leqslant 2$ and $0 \\leqslant c \\leqslant 10$. Reducing the equation we have$$a+5b+10c=50$$from which we see that $a$ is necessarily divisible by 5. So write $a=5A$. Then we have$$\\begin{array}{c}5A+5b+10c=50 \\\\A+b+2c=10\\end{array}$$where $0 \\leqslant A \\leqslant 4, 0 \\leqslant b \\leqslant 2$ and $0 \\leqslant c \\leqslant 10$. Since $A+b \\leqslant 6, c \\geqslant 2$. Enumerating the possibilities, we have\n$$\\begin{array}{|c|c|c|c|}\\hline c &amp; b &amp; A &amp; \\text{No. of ways} \\\\ \\hline 2 &amp; 2 &amp; 4 &amp; 1 \\\\ 3 &amp; 0,1,2 &amp; 4-b &amp; 3 \\\\ 4 &amp; 0,1,2 &amp; 2-b &amp; 3 \\\\ 5 &amp; 0 &amp; 0 &amp; 1 \\\\ \\hline \\end{array}$$\nSo there are $1+3+3+1=8$ ways for Alice to pay back Greg.\n<b>For a second alternative,</b> having defined $a, b, c$ as in the first alternative method above, and determined that$$a+5b+10c=50,$$where $0 \\leqslant a \\leqslant 20, 0 \\leqslant b \\leqslant 2$ and $0 \\leqslant c \\leqslant 10$, we could directly list all the possibilities for $(a,b,c)$ and count:\n$$\\begin{array}{|c|c|c|}\\hline c &amp; b &amp; a \\\\ \\hline 5 &amp; 0 &amp; 0 \\\\ 4 &amp; 2 &amp; 0 \\\\ 4 &amp; 1 &amp; 5 \\\\ 4 &amp; 0 &amp; 10 \\\\ 3 &amp; 2 &amp; 10 \\\\ 3 &amp; 1 &amp; 15 \\\\ 3 &amp; 0 &amp; 20 \\\\ 2 &amp; 2 &amp; 20 \\\\ \\hline \\end{array}$$We see there are 8 rows in the body of the table, and so there are 8 ways for Alice to repay Greg."
+  },
+  "wajo21_q7": {
+    "answer": 27,
+    "solution": "Since each poor person gets 2 vegetables, the number of poor people is half the total number of vegetables. So there are<br>$$\n(86+47+93) / 2=113 \\text{ poor people. }\n$$<br>Of these people, 86 get a potato and something else.<br>Hence, the remaining $113-86=27$ people each get a carrot and a parsnip."
+  },
+  "wajo21_q8": {
+    "answer": 84,
+    "solution": "In $\\triangle A C B$,<br>$$\n\\begin{aligned}\n&amp; \\angle C A B=180^{\\circ}-\\angle A C B-\\angle A B C \\\\\n&amp;=180^{\\circ}-110^{\\circ}-35^{\\circ} \\\\\n&amp;=35^{\\circ} \\\\\n&amp;=\\angle A B C \\\\\n&amp; \\therefore \\triangle A C B \\text{ is isosceles } \\\\\n&amp; \\therefore A C=B C \\\\\n&amp;=A D \\\\\n&amp; \\therefore \\triangle C A D \\text{ is isosceles } \\\\\n&amp; \\therefore \\angle A D C=\\angle C A D \\\\\n&amp;=48^{\\circ} \\\\\n&amp; \\therefore \\angle C A D=180^{\\circ}-\\angle A D C-\\angle C A D \\\\\n&amp;=180^{\\circ}-2 \\cdot 48^{\\circ} \\\\\n&amp;=84^{\\circ}\n\\end{aligned}\n$$",
+    "images": [
+      "data/wajo/diagrams/a8e4fccb41f5dd.webp"
+    ]
+  },
+  "wajo21_q9": {
+    "answer": 240,
+    "solution": "A number with prime decomposition<br>$$\np_{1}^{e_{1}} p_{2}^{e_{2}} \\cdots p_{k}^{e_{k}}\n$$<br>has $\\left(e_{1}+1\\right)\\left(e_{2}+1\\right) \\cdots\\left(e_{k}+1\\right)$ positive divisors.<br>So we must write 20 as the product of numbers of form $e+1$, where $e$ is a positive integer; we can do so, in the following ways:<br>$$\n\\begin{aligned}20 &amp; =19+1 \\\\\n&amp; =(9+1)(1+1) \\\\\n&amp; =(4+1)(3+1) \\\\\n&amp; =(4+1)(1+1)(1+1).\n\\end{aligned}\n$$<br>Hence numbers of form $p^{19}, p^{9} q, p^{4} q^{3}, p^{4} q r$ where $p, q, r$ are distinct primes, have 20 positive divisors. The smallest number of each form are $2^{19}, 2^{9} \\times 3, 2^{4} \\times 3^{3}$, and $2^{4} \\times 3 \\times 5$.<br>These numbers have a common factor of $2^{4}$, and since<br>$$\n2^{15}=32 \\cdot 1024&gt;2^{5} \\cdot 3=96&gt;3^{3}=27&gt;3 \\cdot 5=15\n$$<br>they are already in decreasing order; so the smallest is $2^{4} \\times 3 \\times 5=240$.<br>So, the smallest positive integer with exactly 20 positive divisors is 240."
+  },
+  "wajo21_q10": {
+    "answer": 35,
+    "solution": "Let $t$ hours be the time Matt walks. Then<br>$$\n\\begin{align*}\\text{ distance cycled } &amp; =5-3 t \\mathrm{~km} \\\\\n\\text{ time cycled } &amp; =\\frac{5-3 t}{15} \\mathrm{~h} \\\\\n\\therefore 48 \\mathrm{~min}=\\frac{4}{5} \\mathrm{~h} &amp; =t+\\frac{5-3 t}{15} \\mathrm{~h} \\\\\n\\therefore 12 &amp; =15 t+5-3 t \\\\\n12 t &amp; =7 \\\\\nt &amp; =\\frac{7}{12} \\mathrm{~h} \\\\\n&amp; =35 \\text{ min.}\\end{align*}\n$$"
+  },
+  "wajo21_q11": {
+    "answer": 432,
+    "solution": "We observe that after stripping off the painted unit cubes, we have a cube whose side length is reduced by 2 (this is the dashed cube shown in the centre of the diagram). The red square in the side face shows $(x-2)^{2}$ unit cubes that are painted on one face; similarly, there are such unit cubes in each of the 5 other faces. At the top front of the large cube is shown $(x-2)$ unit cubes that are painted on 2 faces; similarly there are such unit cubes in each of the 11 other edges.<br>Hence,<br>$$\n\\begin{aligned}\n\\text{ 'no. of non-painted unit cubes'} &amp; =(x-2)^{3} \\\\\n&amp; =6 \\cdot \\text{ 'no. of unit cubes painted on one face'} \\\\\n&amp; =6 \\cdot 6(x-2)^{2} \\\\\n\\therefore x-2 &amp; =36 \\\\\n\\text{ 'no. of unit cubes painted on 2 faces' } &amp; =12(x-2) \\\\\n&amp; =12 \\cdot 36 \\\\\n&amp; =432.\n\\end{aligned}\n$$",
+    "images": [
+      "data/wajo/diagrams/d7453ea451ce5d.webp"
+    ]
+  },
+  "wajo21_q12": {
+    "answer": 35,
+    "solution": "Draw $B P$. Then<br>$$ \\begin{aligned} |A P M B| &amp; =|A B C|-|P C M| \\\\ &amp; =|D B C|-|P C M| \\\\ &amp; =2|D M C|-|P C M|, \\text{ since } B C=2 \\cdot M C \\\\ &amp; =2|D P C|+|P C M|, \\text{ since }|D M C|=|D P C|+|P C M| \\\\ &amp; =2|D P C|+\\frac{1}{2}|P C B|, \\text{ since } C M=\\frac{1}{2} C B \\\\ &amp; =2|D P C|+\\frac{1}{2}|P C D|, \\text{ since } D \\text{ is reflection of } B \\text{ in } A C \\\\ &amp; =\\frac{5}{2}|D P C| \\\\ &amp; =\\frac{5}{2} \\cdot 14 \\\\ &amp; =35 \\mathrm{~cm}^{2} \\end{aligned} $$<br><b>Alternatively,</b> let $|P M C|=x$. Then<br>$$ \\begin{aligned} |A P M| &amp; =|A M C|-|P M C| \\\\ &amp; =|D M C|-|P M C| \\\\ &amp; =|D P C|=14 \\\\ |A D M| &amp; =2|M C D|, \\quad \\text{ since they share altitude } D C \\\\ |P D A| &amp; =|A D M|-|A P M| \\\\ &amp; =2|M C D|-|A P M| \\\\ &amp; =2(14+x)-14 = 14+2 x \\\\ \\triangle P D A &amp; \\sim \\triangle P M C, \\quad \\text{ by the AA Rule } \\\\ \\therefore \\frac{14+2 x}{x} &amp; =\\frac{|P D A|}{|P M C|} =(D A / M C)^{2}=4 \\\\ 14+2 x &amp; =4 x \\\\ x &amp; =7 \\\\ \\therefore|A P M B| &amp; =|A B C|-|P M C| \\\\ &amp; =|A D C|-|P M C| \\\\ &amp; =|P D A|+|D P C|-|P M C| \\\\ &amp; =14+2 x+14-x =28+x=35 \\mathrm{~cm}^{2} \\end{aligned} $$",
+    "images": [
+      "data/wajo/diagrams/0fb7498a6a965e.webp",
+      "data/wajo/diagrams/9bd0ede8525a0b.webp"
+    ]
+  },
+  "wajo21_q13": {
+    "answer": 67,
+    "solution": "$$\n\\begin{aligned}\n16 x^{2}-56 x y+54 y^{2}+20 y+87 &amp; =(4 x-7 y)^{2}+5 y^{2}+20 y+87 \\\\\n&amp; =(4 x-7 y)^{2}+5\\left(y^{2}+4 y+4\\right)+67 \\\\\n&amp; =(4 x-7 y)^{2}+5(y+2)^{2}+67 \\\\\n&amp; \\geqslant 67\n\\end{aligned}\n$$<br>with equality when $4 x-7 y=0$ and $y+2=0$, i.e. when $x=-\\frac{7}{2}, y=-2$. So the minimum value is 67."
+  },
+  "wajo21_q14": {
+    "answer": 96,
+    "solution": "First observe that since the circumcentre of a right triangle is the midpoint of its hypotenuse, $M$ is the circumcentre of both $\\triangle C D B$ and $\\triangle B K C$. Therefore,<br>$$\n\\begin{aligned}\nM K &amp; =M C \\\\\n&amp; =M D\n\\end{aligned}\n$$<br>$\\therefore \\triangle C M K, \\triangle K M D$ and $\\triangle D M B$ are isosceles.<br>$$\n\\begin{aligned}\n\\angle K C M=\\angle A C B &amp; =\\frac{5}{4+3+5} \\cdot 180^{\\circ} \\\\\n&amp; =75^{\\circ} \\\\\n\\angle C M K &amp; =180^{\\circ}-2 \\cdot \\angle K C M \\\\\n&amp; =180^{\\circ}-2 \\cdot 75^{\\circ} \\\\\n&amp; =30^{\\circ} \\\\\n\\angle M B D=\\angle A B C &amp; =\\frac{3}{4+3+5} \\cdot 180^{\\circ} \\\\\n&amp; =45^{\\circ} \\\\\n\\angle D M B &amp; =180^{\\circ}-2 \\cdot \\angle M B D \\\\\n&amp; =180^{\\circ}-2 \\cdot 45^{\\circ} \\\\\n&amp; =90^{\\circ}\n\n\\therefore \\angle K M D \\\\\n &amp; =180^{\\circ}-\\angle C M K-\\angle D M B \\\\\n &amp; =180^{\\circ}-30^{\\circ}-90^{\\circ} \\\\\n&amp; =60^{\\circ}\n\\end{aligned} \n$$<br> \\therefore \\triangle K M D is equilateral, since isosceles with one $60^{\\circ}$ angle.<br> $$\\begin{align*}\\therefore \\operatorname{perimeter}(B M D) &amp; =3 \\cdot M K \\\\\n&amp; =3 \\cdot M C \\\\\n&amp; =\\frac{3}{2} \\cdot B C \\\\\n&amp; =\\frac{3}{2} \\cdot 64 \\\\\n&amp; =96 .\n\\end{align*}\n$$",
+    "images": [
+      "data/wajo/diagrams/4ea3d99aafd0e5.webp"
+    ]
+  },
+  "wajo21_q15": {
+    "answer": 64,
+    "solution": "The first number in row $n$ is the $(n-1)^{\\text {st }}$ triangular number, namely $n(n-1) / 2$ (with 0 being the zeroth triangular number). Thus, we require $n$ such that<br>$$\n\\frac{n(n-1)}{2} \\leqslant 2021&lt;\\frac{(n+1) n}{2}.\n$$<br>Since $n(n-1) \\approx n^{2}$, a reasonable estimate for $n$ is<br>$$\nn \\approx \\sqrt{2 \\times 2021}=\\sqrt{4042} \\approx \\sqrt{4096}=\\sqrt{2^{12}}=2^{6}=64,\n$$<br>and checking we see that<br>$$\n64 \\times 63=4096-64=4032&lt;4042&lt;4096+64=64 \\times 65.\n$$<br>So 2021 is in row 64."
+  },
+  "wajo21_q16": {
+    "answer": 992,
+    "solution": "We note that 2 divides every second integer, an extra 2 divides every $4^{\\text {th }}=\\left(2^{2}\\right)^{\\text {th }}$ integer, yet one more 2 divided each $8^{\\text {th }}=\\left(2^{3}\\right)^{\\text {th }}$ integer, and so on. So the power $k$ of 2 that divides $N$ ! is<br>$$\n\\left\\lfloor\\frac{N}{2}\\right\\rfloor+\\left\\lfloor\\frac{N}{4}\\right\\rfloor+\\left\\lfloor\\frac{N}{8}\\right\\rfloor+\\cdots\n$$<br>where $\\lfloor x\\rfloor$ (the floor of $x$ ) is the largest integer $m$ such that $m \\leqslant x$. (For example, the floor of $\\pi$ is 3.)<br><br>Let $P(n)$ be the power of 2 that divides $n!$. Then<br>$$\n\\begin{aligned}\nP(2021) &amp; =\\sum_{i=1}^{10}\\left\\lfloor\\frac{2021}{2^{i}}\\right\\rfloor=1010+505+\\cdots+1 \\\\\nP(1010) &amp; =\\sum_{i=1}^{9}\\left\\lfloor\\frac{1010}{2^{i}}\\right\\rfloor=505+252+\\cdots+1 \\\\\n\\therefore \\text{The power of 2 in } \\frac{2021!}{1010!} &amp; = P(2021) - P(1010) = 1010 \\\\\nP(21) &amp; =\\sum_{i=1}^{4}\\left\\lfloor\\frac{21}{2^{i}}\\right\\rfloor=10+5+2+1=18 \\\\\n\\therefore \\text{The power } m \\text{ in } \\frac{2021!}{1010!\\times 21!} &amp; = 1010 - 18 \\\\\n&amp; = 992\n\\end{aligned}\n$$"
+  }
+}

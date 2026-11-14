@@ -1,8 +1,8 @@
-/* WAJO Trainer – single-page app. No dependencies, no server, progress kept in localStorage. */
+/* WAJO Trainer — progress stays in this browser. */
+import { createExamCentre } from './exam.mjs?v=20261114';
 (function () {
   "use strict";
   var W = window.WAJO, app = document.getElementById("app"), KEY = "wajo.v1", tick = null;
-  var MARKS = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4];
 
   /* ---------- storage ---------- */
   var mem = null;
@@ -13,6 +13,16 @@
     return mem;
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(mem)); } catch (e) { /* private mode: keep in memory */ } }
+  function saveMockResult(id, result) {
+    var S = load(), record = S.mocks[id] = S.mocks[id] || { hist: [] };
+    var prior = record.hist.findIndex(function (entry) { return entry.examId === result.id; });
+    var entry = { examId: result.id, score: result.summary.score, d: new Date(result.submittedAt).toLocaleDateString("en-AU"),
+      min: Math.round((result.submittedAt - result.startedAt) / 60000), timed: result.deadline !== null };
+    if (prior < 0) record.hist.push(entry);
+    else record.hist[prior] = entry;
+    record.best = Math.max(0, ...record.hist.map(function (item) { return item.score || 0; }));
+    save();
+  }
   function today() { var d = new Date(); return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
   function touchDay() { var S = load(), t = today(); if (S.days.indexOf(t) < 0) { S.days.push(t); save(); } }
   function streak() {
@@ -37,6 +47,12 @@
   function lvl(d) { return "★★★★".slice(0, d) + "☆☆☆☆".slice(0, 4 - d); }
   function fmt(sec) { sec = Math.max(0, Math.floor(sec)); return Math.floor(sec / 60) + ":" + ("0" + (sec % 60)).slice(-2); }
   function parseAns(v) { v = String(v).replace(/[\s,]/g, ""); return /^-?\d+$/.test(v) ? parseInt(v, 10) : null; }
+  var exams = createExamCentre({
+    app: app, show: h, mocks: W.mocks, plainMath: M,
+    onMockResult: saveMockResult, onExamActivity: touchDay,
+    legacyRun: function () { return load().run; },
+    discardLegacy: function () { delete load().run; save(); }
+  });
 
   /* ---------- problem card ---------- */
   function probHTML(p, n) {
@@ -106,12 +122,12 @@
       '<div class="stat"><b>' + Object.keys(S.read).length + "/" + W.modules.length + '</b><span>lessons read</span></div></div>' +
       '<div class="card"><h3 style="margin-top:0">Today</h3><div class="row">' +
       (next ? '<a class="btn" href="#/m/' + next.id + '">' + (ts ? "Continue: " : "Start: ") + next.title + "</a>" : '<a class="btn" href="#/mocks">All modules done. Sit a mock paper</a>') +
-      '<a class="btn ghost" href="#/practice/daily">Daily five</a></div></div>' +
+      '<a class="btn ghost" href="#/practice/daily">Daily five</a><a class="btn ghost" href="#/exams">Exam centre</a></div></div>' +
       '<h2>What is WAJO?</h2><div class="card"><ul style="margin:0;padding-left:1.2em">' +
       "<li>A problem-solving competition for WA students in <b>Years 7, 8 and 9</b>, run at UWA by the WA Mathematical Olympiads Committee since 1999. Entry is through your school.</li>" +
-      "<li><b>Individual paper:</b> 100 minutes, 16 questions, no calculator. Every answer is a positive whole number less than 1000. Questions 1–4 are worth 1 mark, 5–8 worth 2, 9–12 worth 3 and 13–16 worth 4: 40 marks in total.</li>" +
+      "<li><b>Individual paper:</b> 100 minutes, 16 questions, no calculator. Recent papers ask for a positive whole number below 1000 for each answer. Marks and written-working rules follow the paper year.</li>" +
       "<li><b>Team paper:</b> about 50 minutes, teams of four, one long investigation in parts, some needing written explanations.</li>" +
-      "<li>Usually held in September or October. Dates and entry details change each year, so check the <a href='https://enrichedmaths.maths.uwa.edu.au/wajo/' target='_blank' rel='noopener'>official WAJO page</a>, and see <a href='#/past'>Real past papers</a> for every past paper with solutions.</li></ul></div>" +
+      "<li>Usually held in September or October. Dates and entry details change each year, so check the <a href='https://enrichedmaths.maths.uwa.edu.au/wajo/' target='_blank' rel='noopener'>official WAJO page</a>, and use the <a href='#/exams'>Exam centre</a> to sit papers on screen.</li></ul></div>" +
       '<h2>The 12-week plan</h2><p class="sub">About 30–40 minutes a day, five days a week. Faster is fine. The order matters more than the speed.</p>' +
       '<div class="card"><table class="plan">' + PLAN.map(function (r) {
         var mods = r[1] ? r[1].split(",").map(function (id) { var m = modById(id); return '<a href="#/m/' + id + '">' + m.title + "</a> (" + modPct(m) + "%)"; }).join(" + ") + ". " : "";
@@ -171,63 +187,9 @@
     if (f) f.onclick = function () { list.forEach(function (p) { S.p[p.id] = { t: 0 }; }); save(); S.review = list.map(function (p) { return p.id; }); h('<a class="crumb" href="#/practice">← Practice</a><h1>Review: fresh attempt</h1>' + list.map(function (p, k) { return probHTML(p, k + 1); }).join("")); };
   }
 
-  /* ---------- mock papers ---------- */
-  function mocks() {
-    var S = load();
-    h("<h1>Mock papers</h1><p class='sub'>Three full individual papers in the real format: 16 questions, 100 minutes, 40 marks, no calculator. Every answer is a positive whole number less than 1000.</p>" +
-      '<div class="grid">' + W.mocks.map(function (m) {
-        var r = S.mocks[m.id] || {}, run = S.run && S.run.id === m.id;
-        return '<a class="mod" href="#/mock/' + m.id + '"><span class="ic">📝</span><h3>' + m.title + "</h3><p>" + (run ? "In progress…" : r.best != null ? "Best: " + r.best + "/40 · attempts: " + r.hist.length : "Not attempted yet") + "</p></a>";
-      }).join("") + "</div>" +
-      '<div class="card"><b>What is a good score?</b> These papers are meant to be hard: on the real paper very few students finish everything. As a guide for practice: 15+ is a solid start, 25+ is strong, and 32+ is excellent (these are practice guides, not official cut-offs). Aim to get every 1- and 2-mark question right first.</div>' +
-      '<div class="card"><b>Finished all three?</b> Move on to the real thing: the <a href="#/past">Real past papers</a> page links every WAJO paper since 2000 with its official solutions, and tracks your scores.</div>');
-  }
-  function mockView(id) {
-    var m = W.mocks.filter(function (x) { return x.id === id; })[0]; if (!m) return mocks();
-    var S = load(), run = S.run && S.run.id === id ? S.run : null;
-    if (!run) {
-      var r = S.mocks[id];
-      h('<a class="crumb" href="#/mocks">← Mock papers</a><h1>' + m.title + "</h1>" +
-        '<div class="card"><p><b>Instructions.</b> There are 16 questions. Each answer is a positive integer less than 1000. Calculators are not permitted. Diagrams, if you draw them, need not be to scale. You have 100 minutes.</p><p>Have paper and a pencil ready, and sit somewhere quiet. Questions 1–4 are worth 1 mark each, 5–8 are worth 2, 9–12 are worth 3 and 13–16 are worth 4.</p>' +
-        '<div class="row"><button class="btn" id="go">Start the 100-minute timer</button><button class="btn ghost" id="go2">Practise untimed</button></div></div>' +
-        (r ? '<div class="card"><b>Previous attempts:</b> ' + r.hist.map(function (x) { return x.score + "/40 (" + x.d + ")"; }).join(", ") + "</div>" : ""));
-      document.getElementById("go").onclick = function () { S.run = { id: id, start: Date.now(), timed: 1, ans: {} }; save(); touchDay(); mockView(id); };
-      document.getElementById("go2").onclick = function () { S.run = { id: id, start: Date.now(), timed: 0, ans: {} }; save(); touchDay(); mockView(id); };
-      return;
-    }
-    h('<h1>' + m.title + '</h1><div class="timer" id="tm"><span id="tleft"></span><button class="btn small warn" id="sub">Hand in</button></div>' +
-      m.qs.map(function (q, i) {
-        return '<div class="prob"><div class="ptop"><span>Question ' + (i + 1) + "</span><span>[" + MARKS[i] + " mark" + (MARKS[i] > 1 ? "s" : "") + ']</span></div><p class="pq">' + q.q + '</p><input class="ans mk" data-i="' + i + '" inputmode="numeric" autocomplete="off" placeholder="Answer" value="' + (run.ans[i] != null ? run.ans[i] : "") + '"></div>';
-      }).join("") + '<div class="row"><button class="btn warn" id="sub2">Hand in paper</button><button class="btn ghost" id="quit">Abandon attempt</button></div>');
-    app.querySelectorAll(".mk").forEach(function (inp) { inp.oninput = function () { run.ans[inp.dataset.i] = inp.value; save(); }; });
-    function finish() { clearInterval(tick); grade(m, run); }
-    document.getElementById("sub").onclick = document.getElementById("sub2").onclick = function () { if (confirm("Hand in your paper now?")) finish(); };
-    document.getElementById("quit").onclick = function () { if (confirm("Abandon this attempt? Your answers will be discarded.")) { clearInterval(tick); delete S.run; save(); mocks(); } };
-    function upd() {
-      var el = document.getElementById("tleft"); if (!el) return clearInterval(tick);
-      var used = (Date.now() - run.start) / 1000;
-      if (run.timed) { var left = 6000 - used; el.textContent = "⏱ " + fmt(left) + " left"; document.getElementById("tm").classList.toggle("low", left < 600); if (left <= 0) { alert("Time is up! Pencils down."); finish(); } }
-      else el.textContent = "Untimed · " + fmt(used) + " so far";
-    }
-    upd(); tick = setInterval(upd, 1000);
-  }
-  function grade(m, run) {
-    var S = load(), score = 0, used = Math.round((Date.now() - run.start) / 60000);
-    var rows = m.qs.map(function (q, i) {
-      var v = parseAns(run.ans[i] == null ? "" : run.ans[i]), ok = v === q.a; if (ok) score += MARKS[i];
-      return '<div class="prob' + (ok ? " done" : "") + '"><div class="ptop"><span>Question ' + (i + 1) + " [" + MARKS[i] + ']</span><span class="' + (ok ? "right" : "wrong") + '">' + (ok ? "✓ +" + MARKS[i] : "✗ 0") + '</span></div><p class="pq">' + q.q + "</p><p>Your answer: <b>" + (run.ans[i] || "–") + "</b> · Correct answer: <b>" + q.a + '</b></p><div class="sol"><b>Solution:</b> ' + q.s + "</div></div>";
-    }).join("");
-    var r = S.mocks[m.id] = S.mocks[m.id] || { hist: [] };
-    r.hist.push({ score: score, d: today(), min: used, timed: run.timed }); r.best = Math.max(r.best == null ? 0 : r.best, score);
-    delete S.run; save();
-    var msg = score >= 32 ? "Outstanding paper." : score >= 25 ? "Strong paper. Study the ones you missed and you're on track." : score >= 15 ? "Solid base. Lock in the 1–2 mark questions, then push into the 3s." : "Good that you sat a full paper. Go through every solution, then revisit the matching lessons.";
-    h('<a class="crumb" href="#/mocks">← Mock papers</a><h1>' + m.title + ': result</h1><div class="card"><div class="score">' + score + '<span style="font-size:1.2rem;color:var(--mute)"> / 40</span></div><p>' + msg + " Time used: " + used + ' min.</p><p class="sub">For each question you missed: was it a slip, a misread question, or an idea you did not know? Slips and misreads are fixed by checking. Unknown ideas are fixed by the lessons.</p></div>' + rows);
-  }
-
-
-  /* ---------- real past papers (linked, not copied) ---------- */
+  /* ---------- official archive and older paper tracker ---------- */
   var ARCH = "https://enrichedmaths.maths.uwa.edu.au/wajo/qnsandsolns/";
-  var PDF = { 2025: "wajo25qnsoln.pdf", 2024: "wajo24qnsoln.pdf", 2022: "wajo22qnsoln.pdf", 2018: "wajo18qnsoln.pdf", 2017: "wajo17qnsoln.pdf", 2015: "wajo15qnsoln.pdf", 2012: "wajo2012qa.pdf", 2011: "wajo11qa.pdf", 2010: "wajo10qa.pdf", 2009: "wajo09qa.pdf", 2008: "wajoq-a08.pdf", 2006: "wajoq-a_06.pdf", 2005: "wajoq-a_05.pdf", 2004: "wajoq-a_04.pdf", 2002: "wajoq-a_02.pdf" };
+  var PDF = { 2026: "wajo26qnsoln.pdf", 2025: "wajo25qnsoln.pdf", 2024: "wajo24qnsoln.pdf", 2022: "wajo22qnsoln.pdf", 2018: "wajo18qnsoln.pdf", 2017: "wajo17qnsoln.pdf", 2015: "wajo15qnsoln.pdf", 2012: "wajo2012qa.pdf", 2011: "wajo11qa.pdf", 2010: "wajo10qa.pdf", 2009: "wajo09qa.pdf", 2008: "wajoq-a08.pdf", 2006: "wajoq-a_06.pdf", 2005: "wajoq-a_05.pdf", 2004: "wajoq-a_04.pdf", 2002: "wajoq-a_02.pdf" };
   function past() {
     var S = load(); S.past = S.past || {};
     var rows = "", done = 0;
@@ -239,7 +201,7 @@
       '<div class="stats"><div class="stat"><b>' + done + '/27</b><span>past papers done</span></div></div>' +
       '<div class="card"><b>How to use them</b><ol style="margin:.4em 0 0;padding-left:1.2em"><li>Start with the most recent years: they match today\'s 16-question format. Older papers are shorter (10–12 questions) but just as good for practice.</li><li>Open the PDF, <b>stop scrolling at the end of the questions</b>, and start the timer. No calculator.</li><li>Mark yourself from the solutions, type your score in the table, and read the solution to every question you missed.</li><li>Do the team question separately: 45–50 minutes, with friends if you can.</li></ol></div>' +
       '<div class="timer"><span id="tleft">100:00</span><button class="btn small" id="pgo">Start 100-minute timer</button></div>' +
-      '<div class="card"><b>Prefer to practise on screen?</b> <a href="https://www.problemsolvingeducation.com/wajopractise" target="_blank" rel="noopener">WAJO Practise at ProblemSolvingEducation</a> has the 2013–2026 questions and solutions, sorted by year, topic or marks.</div>' +
+      '<div class="card"><b>Sit a paper on screen</b><p>All 14 papers from 2013 to 2026 are in the <a href="#/exams">Exam centre</a>, with answers, working and automatic marking where applicable.</p></div>' +
       '<div class="card" style="overflow-x:auto"><table><tr><th>Year</th><th>Paper</th><th>My score</th><th></th></tr>' + rows + '</table><p class="sub" style="margin-bottom:0">Where a direct link is missing, open the <a href="' + ARCH + '" target="_blank" rel="noopener">official archive</a> and pick the year.</p></div>');
     app.querySelectorAll(".ps").forEach(function (i) { i.oninput = function () { var r = S.past[i.dataset.y] = S.past[i.dataset.y] || {}; var v = parseAns(i.value); if (v === null) delete r.score; else r.score = v; save(); touchDay(); }; });
     app.querySelectorAll(".pd").forEach(function (c) { c.onchange = function () { (S.past[c.dataset.y] = S.past[c.dataset.y] || {}).done = c.checked ? 1 : 0; save(); touchDay(); }; });
@@ -294,28 +256,78 @@
     h("<h1>Progress</h1>" +
       '<div class="stats"><div class="stat"><b>' + totalSolved() + "/" + ALL.length + '</b><span>problems solved</span></div><div class="stat"><b>' + ALL.filter(function (p) { var r = S.p[p.id]; return r && r.s && !r.r && !r.h; }).length + '</b><span>solved with no help</span></div><div class="stat"><b>' + S.days.length + '</b><span>days practised</span></div><div class="stat"><b>' + streak() + '</b><span>current streak</span></div></div>' +
       '<div class="card"><table><tr><th>Module</th><th>Solved</th><th></th></tr>' + W.modules.map(function (m) { var pc = modPct(m), n = m.problems.filter(function (p) { return solved(p.id); }).length; return '<tr><td><a href="#/m/' + m.id + '">' + m.title + "</a></td><td>" + n + "/" + m.problems.length + '</td><td style="width:35%"><div class="bar" style="margin-top:8px"><i style="width:' + pc + '%"></i></div></td></tr>'; }).join("") + "</table></div>" +
-      '<div class="card"><b>Mock papers</b><table>' + W.mocks.map(function (m) { var r = S.mocks[m.id]; return "<tr><td>" + m.title + "</td><td>" + (r ? r.hist.map(function (x) { return x.score + "/40" + (x.timed ? "" : " (untimed)"); }).join(", ") : "not attempted") + "</td></tr>"; }).join("") + "</table></div>" +
-      '<div class="card"><b>Backup</b><p class="sub">Progress lives only in this browser on this device. Download a backup to move it to another device or keep it safe.</p><div class="row"><button class="btn small" id="exp">Download backup</button><label class="btn ghost small">Restore backup<input type="file" id="imp" accept="application/json,.json" hidden></label><button class="btn ghost small" id="rst">Reset everything</button></div></div>');
-    document.getElementById("exp").onclick = function () { var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([JSON.stringify(S)], { type: "application/json" })); a.download = "wajo-progress-" + today() + ".json"; a.click(); };
-    document.getElementById("imp").onchange = function (e) { var f = e.target.files[0]; if (!f) return; var rd = new FileReader(); rd.onload = function () { try { var o = JSON.parse(rd.result); if (!o || typeof o !== "object" || !o.p) throw 0; mem = null; localStorage.setItem(KEY, JSON.stringify(o)); progress(); } catch (x) { alert("That file is not a WAJO Trainer backup."); } }; rd.readAsText(f); };
-    document.getElementById("rst").onclick = function () { if (confirm("Erase all progress on this device?")) { mem = null; try { localStorage.removeItem(KEY); } catch (x) {} progress(); } };
+      '<div class="card"><b>Exam history</b><p>Reopen a submitted paper and review the working from the <a href="#/exams">Exam centre</a>.</p></div>' +
+      '<div class="card"><b>Mock papers</b><table>'  + W.mocks.map(function (m) { var r = S.mocks[m.id]; return "<tr><td>" + m.title + "</td><td>" + (r ? r.hist.map(function (x) { return x.score + "/40" + (x.timed ? "" : " (untimed)"); }).join(", ") : "not attempted") + "</td></tr>"; }).join("") + "</table></div>" +
+      '<div class="card"><b>Backup</b><p class="sub">Download your progress, exam sittings, working and reviews. Restore the backup on another device to move them.</p><div class="row"><button class="btn small" id="exp">Download backup</button><label class="btn ghost small">Restore backup<input type="file" id="imp" accept="application/json,.json" hidden></label><button class="btn ghost small" id="rst">Reset everything</button></div></div>');
+    document.getElementById("exp").onclick = function () {
+      try {
+        var contents = { ...S, examCentre: exams.exportState() };
+        var url = URL.createObjectURL(new Blob([JSON.stringify(contents)], { type: "application/json" }));
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = "wajo-progress-" + today() + ".json";
+        a.click();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      } catch (error) { alert("Couldn’t create the backup. Check browser storage."); }
+    };
+    document.getElementById("imp").onchange = function (event) {
+      var file = event.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function () {
+        try {
+          var { examCentre, ...progressData } = JSON.parse(reader.result);
+          if (!progressData.p || typeof progressData.p !== "object") throw new Error();
+          var savedExams = examCentre == null ? null : exams.validateBackup(examCentre);
+          var oldProgress = localStorage.getItem(KEY);
+          localStorage.setItem(KEY, JSON.stringify(progressData));
+          try {
+            if (savedExams) exams.restore(savedExams);
+          } catch (error) {
+            if (oldProgress === null) localStorage.removeItem(KEY);
+            else localStorage.setItem(KEY, oldProgress);
+            throw error;
+          }
+          mem = null;
+          progress();
+        } catch (error) { alert("Couldn’t restore this backup. Check the file and available browser storage."); }
+      };
+      reader.readAsText(file);
+    };
+    document.getElementById("rst").onclick = function () {
+      if (!confirm("Erase all progress and exam sittings on this device?")) return;
+      try {
+        exams.reset();
+        localStorage.removeItem(KEY);
+        mem = null;
+        progress();
+      } catch (error) { alert("Couldn’t reset browser storage."); }
+    };
   }
 
   /* ---------- router ---------- */
   function route() {
     clearInterval(tick);
     var parts = location.hash.replace(/^#\/?/, "").split("/"), r = parts[0] || "home", nav = r;
-    if (r === "m") { nav = "learn"; moduleView(parts[1]); }
+    exams.leave();
+    if (r === "exams" || r === "exam" || r === "exam-result" || r === "mocks" || r === "mock") {
+      nav = r === "mocks" || r === "mock" || parts[1]?.startsWith("mock-") ? "mocks" : "exams";
+      exams.render(r === "mock" ? "exam/" + parts[1] : parts.join("/"));
+    }
+    else if (r === "m") { nav = "learn"; moduleView(parts[1]); }
     else if (r === "learn") learn();
     else if (r === "practice") practice(parts[1], parts[2]);
-    else if (r === "mocks") mocks();
-    else if (r === "mock") { nav = "mocks"; mockView(parts[1]); }
     else if (r === "team") { if (parts[1]) teamView(parts[1]); else team(); }
     else if (r === "past") past();
     else if (r === "tips") tips();
     else if (r === "progress") progress();
     else { nav = "home"; home(); }
-    document.querySelectorAll("#nav a").forEach(function (a) { a.classList.toggle("on", a.dataset.r === nav); });
+    document.querySelectorAll("#nav a").forEach(function (a) {
+      var selected = a.dataset.r === nav;
+      a.classList.toggle("on", selected);
+      if (selected) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
   }
   window.addEventListener("hashchange", route);
   route();

@@ -1,0 +1,148 @@
+[
+  {
+    "id": "wajo26_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Statistics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Class Red and Class Blue sit the same test marked out of 100.<br>The 20 students of Class Red averaged 78, whereas the 24 students of Class Blue averaged 89.<br>What is the overall average of the two classes?"
+  },
+  {
+    "id": "wajo26_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A palm tree was 32 metres tall. A storm snapped the tree in two so that the top of the tree has landed 8 metres from its base.<br>(In the diagram, the dashed portion $XY$ of the tree has fallen to become the hypotenuse $XY^{\\prime}$ of a right triangle.)<br>How many metres is the height of the trunk of the palm still standing?",
+    "image": "data/wajo/diagrams/7d3aaa9f0cbfc6.webp"
+  },
+  {
+    "id": "wajo26_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Suppose $n$ is an integer such that $n / 20$ is a fraction in lowest terms, where<br>$$\n\\frac{3}{5} &lt; \\frac{n}{20} &lt; \\frac{3}{2} .\n$$<br>How many possible such values of $n$ are there?"
+  },
+  {
+    "id": "wajo26_q4",
+    "number": "4",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Greg counts the total number of digits used to number the pages of his book (which starts at page 1), and finds 1011 digits.<br>How many pages does Greg's book have?"
+  },
+  {
+    "id": "wajo26_q5",
+    "number": "5",
+    "marks": 2,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Let $N$ be the second smallest positive integer whose digits sum to 2026.<br>What is the sum of the digits of $N+1$?"
+  },
+  {
+    "id": "wajo26_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A lab sink has two taps with different flow rates.<br>If the two taps are on, the sink fills in 12 minutes.<br>If only the left tap is on, the sink fills in 20 minutes.<br>If only the right tap is on, how many minutes will it take to fill the sink?"
+  },
+  {
+    "id": "wajo26_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Five friends Amy, Beatrice, Cheryl, Danielle, and Elena line up for a swimming race.<br>To prevent arguments they line up according to the following rules:<br>Amy must be to the left of Cheryl, and<br>Danielle must be to the right of Elena.<br>How many possible line-ups are there?"
+  },
+  {
+    "id": "wajo26_q8",
+    "number": "8",
+    "marks": 3,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Find the area of the rectangle $ABCD$, given $M$ and $N$ are the midpoints of sides $BC$ and $CD$, respectively, and the area of triangle $AMN$ is 321.",
+    "image": "data/wajo/diagrams/3ce7cfb0b99ba6.webp"
+  },
+  {
+    "id": "wajo26_q9",
+    "number": "9",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Eccentric billionaire Professor Prompt Pather builds an escalator next to Jacob's Ladder in Kings Park. To test the escalator, the professor uses a robot.<br>When the robot stands still on the escalator, it takes 75 seconds to ascend.<br>When the robot walks at 1m/s on the escalator, the ascent takes 50 seconds.<br>Setting the robot to jog at 3m/s on the escalator, how many seconds will its ascent take?"
+  },
+  {
+    "id": "wajo26_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In a certain role-playing game, the strength score of my character is decided by rolling four fair 6-sided dice and taking the sum of the highest three.<br>For instance, if I roll 2, 4, 2, 6 the score will be $2+4+6=12$.<br>Given the probability of getting the score of 17 is $x / 6^{4}$, what is the value of $x$?"
+  },
+  {
+    "id": "wajo26_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Triangle $ABC$ is right-angled at $C$. Point $L$ on side $BC$ is such that $AL$ bisects $\\angle BAC$; $M$ is the midpoint of $AL$, line $CM$ meets side $AB$ at $P$, and $CP=CB$.<br>How many degrees is $\\angle BAC$?"
+  },
+  {
+    "id": "wajo26_q12",
+    "number": "12",
+    "marks": 3,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "What is the largest two-digit number $\\overline{xy}$, given that<br>$$\n\\overline{x 02 y}-\\overline{2 x y 6}\n$$<br>is divisible by 66?<br>Note. We use the notation $\\overline{x y \\ldots}$ to refer to the decimal digit representation of a number.<br>For instance, $\\overline{x y z}=100 x+10 y+z$."
+  },
+  {
+    "id": "wajo26_q13",
+    "number": "13",
+    "marks": 4,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Let $a, b$ be positive real numbers such that $a+b+a b=45^{2}$, and let<br>$$\nM=\\frac{\\left(45^{2}+a^{2}\\right)\\left(45^{2}+b^{2}\\right)}{(a+b)^{2}} .\n$$<br>Find the remainder when $M$ is divided by 1000."
+  },
+  {
+    "id": "wajo26_q14",
+    "number": "14",
+    "marks": 4,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Consider a square $ABCD$.<br>Point $E$ is on line $AB$ and $F$ is on line $CD$.<br>Segment $EF$ intersects side $AD$ at $G$ and side $BC$ at $H$.<br>If $EG=2, GH=15$, and $HF=3$, what is the area of the square $ABCD$?"
+  },
+  {
+    "id": "wajo26_q15",
+    "number": "15",
+    "marks": 4,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The following facts summarise a school survey, that asked the students whether they could swim or ride a bicycle.<br>(i) Several students answered that they could neither swim nor ride a bicycle; of the remaining students $\\frac{5}{7}$ answered that they could ride.<br>(ii) Only $\\frac{2}{9}$ of those that could ride, could swim.<br>(iii) Students who could swim are $\\frac{5}{12}$ of those surveyed.<br>What is the least possible number of students that were surveyed?"
+  },
+  {
+    "id": "wajo26_q16",
+    "number": "16",
+    "marks": 4,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Let $S$ be the sum of all positive integers $n$ such that $n(n+2026)$ is a perfect square.<br>What is the remainder when $S$ is divided by 1000?"
+  }
+]

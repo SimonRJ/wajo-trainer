@@ -1,0 +1,110 @@
+[
+  {
+    "id": "wajo18_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Jane was designing a board game for her younger brother Sebastian, on a \\(15 \\times 15\\) board. She decided that the number of non-calamity squares should be 150 per cent of the number of calamity squares.<br>How many of the squares did Jane choose to be calamity squares?"
+  },
+  {
+    "id": "wajo18_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Alice went to a restaurant with some friends. The total bill divided equally among everybody is 30 dollars per person. But it is Alice's birthday; so her friends insist she doesn't pay. Instead, each of Alice's friends pays 33 dollars, which exactly covers the total bill.<br>How many friends are with Alice at the restaurant?"
+  },
+  {
+    "id": "wajo18_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In a scrabble tournament, each game eliminates the losing player.<br>If there are 118 players at the start, how many games will need to be organised, in order that there is just one winner at the end?"
+  },
+  {
+    "id": "wajo18_q4",
+    "number": "4",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A palindromic number is a number that is the same when read from left to right or from right to left. For instance 23432 is palindromic.<br>What is the difference of the smallest palindromic number greater than 2018 and the largest palindromic number less than 2018 ?<br>"
+  },
+  {
+    "id": "wajo18_q5",
+    "number": "5",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "On an island, \\(20\\%\\) of people are redheads and \\(30\\%\\) have green eyes. Among redheads 1 out of 4 has green eyes.<br>How many percent of the people on the island are neither redheads nor have green eyes?<br>"
+  },
+  {
+    "id": "wajo18_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Consider a regular hexagon of area 100. Construct a new hexagon all of whose vertices are the midpoints of the edges of the original hexagon.<br>What is the area of this new hexagon?<br>"
+  },
+  {
+    "id": "wajo18_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A rectangular prism has 2 faces of area 36, 2 faces of area 49 and 2 faces of area 169.<br>What is the volume of the rectangular prism?<br>"
+  },
+  {
+    "id": "wajo18_q8",
+    "number": "8",
+    "marks": 3,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The two medians from the acute angles in a right-angle triangle have length 22 and 31.<br>What is the length of the hypotenuse?<br>Note. A median is a line segment that joins a vertex of a triangle with the midpoint of the opposite side.<br>"
+  },
+  {
+    "id": "wajo18_q9",
+    "number": "9",
+    "marks": 3,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A number is called special if it is the sum of a non-negative multiple of 4 and a non-negative multiple of 7.<br>So 11 and 12 are special since \\(11=1 \\times 4+1 \\times 7\\) and \\(12=3 \\times 4+0 \\times 7\\), but 13 is not special.<br>How many special numbers are there in the interval 1 to 1000 ? "
+  },
+  {
+    "id": "wajo18_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Find the number formed by the last three digits of the sum<br>$$\n2!+4!+6!+\\cdots+2018!\n$$<br>where for a positive integer \\(n, n\\)! is \"\\(n\\) factorial\" which is the product of the integers from 1 to \\(n\\), i.e. \\(n!=1 \\times 2 \\times \\cdots \\times n\\).<br>"
+  },
+  {
+    "id": "wajo18_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A race is organised for two teams of 7 runners each. The runner who arrives first scores 1 point for their team, the runner who arrives second scores 2 points for their team, and so on, so that finally, the runner who arrives last scores 14 points for their team. Two runners never arrive at exactly the same time. The winning team is the team with the lower total score.<br>How many different winning scores are possible?"
+  },
+  {
+    "id": "wajo18_q12",
+    "number": "12",
+    "marks": 4,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": true,
+    "prompt": "How many pairs $(x, y)$ of non-negative integers are solutions of the following equation?<br>\\[x^{2}-y^{2}=576\\]"
+  }
+]

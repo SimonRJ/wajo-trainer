@@ -1,0 +1,59 @@
+{
+  "wajo16_q1": {
+    "answer": 88,
+    "solution": "Drawing in another parallel through the angle with value \\(x^{\\circ}\\), we see that \\(x^{\\circ}\\) is the sum of an alternate angle and a cointerior angle, i.e.<br>$$\nx=36+(180-128)=88.\n$$"
+  },
+  "wajo16_q2": {
+    "answer": 124,
+    "solution": "The vertical height of the cone is<br>$$\n\\begin{aligned}\n\\sqrt{100^{2}-28^{2}} &amp; =\\sqrt{4^{2}\\left(25^{2}-7^{2}\\right)} \\\\\n&amp; =\\sqrt{4^{2} \\cdot 24^{2}}, \\text { using the Pythagorean Triple: 7, 24, 25} \\\\\n&amp; =4 \\cdot 24 \\\\\n&amp; =96.\n\\end{aligned}\n$$<br>Hence the total height is \\(96+28=124 \\mathrm{~mm}\\).<br><b>Alternatively,</b> the square of the vertical height of the cone is <br> \\begin{aligned}\n100^{2}-28^{2} &amp; =(100-28)(100+28) \\\\\n&amp; =72 \\cdot 128 \\\\\n&amp; =2^{3} \\cdot 3^{2} \\cdot 2^{7} \\\\\n&amp; =\\left(2^{5} \\cdot 3\\right)^{2} \\\\\n\\therefore \\sqrt{100^{2}-28^{2}} &amp; =2^{5} \\cdot 3 \\\\\n&amp; =96.\n\\end{aligned}<br>Hence the total height is \\(96+28=124 \\mathrm{~mm}\\).",
+    "images": [
+      "data/wajo/diagrams/f56b8e14332d90.webp"
+    ]
+  },
+  "wajo16_q3": {
+    "answer": 75,
+    "solution": "Answer: 75. The first number must be 8 or 15. The second must be 2,5 or 17. The possible sums are $8+2=10,8+5=13,8+17=25,15+2=17,15+5=20$ and $15+17=32$; of these sums, only 20 is divisible by 4 but not by 8. So the numbers are 15 and 5 and their product is 75."
+  },
+  "wajo16_q4": {
+    "answer": 82,
+    "solution": "Answer: 82. We have columns of 6 pieces vertically and rows of 8 pieces horizontally. Counting vertical connections, we have 7 columns of 6 connections, giving 42 connections. Counting horizontal connections, we have 5 rows of 8 connections, giving 40 more connections. Hence the total number of connections is $40+42=82$.<br><b>Generally,</b> for an $x \\times y$ jigsaw we'll get $(x-1)y+(y-1)x$ connections. <br><b>Alternatively,</b> the four corner pieces contribute $4 \\times 2=8$ connections. The pieces on the four sides contribute $(4+4+6+6) \\cdot 3=60$ connections. There are $4 \\times 6=24$ other pieces and these will contribute $4 \\times 24=96$ connections. Adding these up gives a total of $8+60+96=164$ connections. However, in this calculation we've counted each connection twice so we need to divide by 2. So the answer is $164 / 2=82$."
+  },
+  "wajo16_q5": {
+    "answer": 54,
+    "solution": "Let the number of children be \\(x\\). Then \\(2 x / 3\\) have backpacks and \\(x / 3\\) are without backpacks.<br>These \\(x\\) children need \\(2 x / 3+x / 6=5 x / 6\\) bench seats. Since there are 45 seats,<br>$$\n\\begin{aligned}\n\\frac{5 x}{6} &amp; =45 \\\\\nx &amp; =\\frac{6}{5} \\cdot 45 \\\\\n&amp; =54.\n\\end{aligned}\n$$<br>So 54 children are seated on the bus."
+  },
+  "wajo16_q6": {
+    "answer": 71,
+    "solution": "Let the extra digit be denoted by \\(c\\). Then he's paid \\(\\$ (100 a+10 b+c)\\) instead of \\(\\$ (10 a+b)\\), so<br>$$\n\\begin{aligned}\n647 &amp; =(100 a+10 b+c)-(10 a+b) \\\\\n&amp; =9(10 a+b)+c.\n\\end{aligned}\n$$<br>This means that \\(c\\) is the remainder when 647 is divided by 9, so \\(c=8\\), then<br>$$\n10 a+b=\\frac{647-8}{9}=\\frac{639}{9}=71.\n$$<br>So he should only have paid \\(\\$ 71\\)."
+  },
+  "wajo16_q7": {
+    "answer": 256,
+    "solution": "Let \\(s\\) be the side length of the square. Then we want \\(s^{2}\\) where<br>$$\n\\begin{aligned}\n(s-10)^{2}+(s / 2)^{2} &amp; =10^{2} \\\\\n\\frac{5}{4} s^{2}-20 s &amp; =0 \\\\\n\\frac{5}{4} s &amp; =20 \\\\\ns^{2} &amp; =\\left(\\frac{4}{5} \\cdot 20\\right)^{2} \\\\\n&amp; =16^{2}=256.\n\\end{aligned}\n$$"
+  },
+  "wajo16_q8": {
+    "answer": 900,
+    "solution": "Answer: 900. The numbers can be of the form: <br>\\begin{gather} x567yz \\quad \\text{ or } \\quad xy567z \\quad \\text{ or } \\quad xyz567,\\end{gather}<br> where in each case, $x$ is empty (i.e. 0), or 1 or 2, and each of $y$ and $z$ can be any digit, giving $3 \\times 10 \\times 10$ choices for $xyz$.<br>Hence there are $3 \\times 3 \\times 10 \\times 10=900$ possibilities."
+  },
+  "wajo16_q9": {
+    "answer": 17,
+    "solution": "Let \\(x\\) be the length of \\(A M\\) and \\(y\\) the length of \\(B M\\). The three triangles \\(A B C, B M A\\) and \\(A M C\\) are similar. So<br>$$\n\\frac{x}{y}=\\frac{y+8}{x}=\\frac{5}{3},\n$$<br>and the length we are after is \\(B C=2 y+8\\). Hence<br>$$\n\\begin{aligned}\nx=\\frac{5 y}{3} \\text { and } y+8 &amp; =\\frac{5 x}{3} \\\\\n&amp; =\\frac{25 y}{9} \\\\\n25 y &amp; =9 y+72 \\\\\n16 y &amp; =72 \\\\\n2 y &amp; =9 \\\\\nB C=2 y+8 &amp; =17.\n\\end{aligned}\n$$",
+    "images": [
+      "data/wajo/diagrams/8734c361aa497e.webp"
+    ]
+  },
+  "wajo16_q10": {
+    "answer": 417,
+    "solution": "Let \\(u, v\\) and \\(w\\) be the speeds of the first, second and third places, and let \\(t_{1}\\) be the time taken by first place. Then, since<br>$$\n\\begin{aligned}\n\\text { time } &amp; =\\frac{\\text { distance }}{\\text { speed }} \\\\\n\\left(t_{1}=\\right) \\frac{5000}{u} &amp; =\\frac{5000-200}{v}=\\frac{5000-600}{w} \\\\\n\\therefore v &amp; =\\frac{4800}{5000} u=\\frac{24}{25} u \\\\\nw &amp; =\\frac{4400}{5000} u=\\frac{22}{25} u\n\\end{aligned}\n$$<br>Now let \\(d\\) be the distance between second and third at the time \\(t_{2}\\) when second place crosses the finish line. Then<br>$$\n\\begin{aligned}\n\\left(t_{2}=\\right) \\frac{5000}{v} &amp; =\\frac{5000-d}{w} \\\\\n5000 \\cdot \\frac{25}{24} \\cdot \\frac{1}{u} &amp; =(5000-d) \\cdot \\frac{25}{22} \\cdot \\frac{1}{u} \\\\\n5000 \\cdot \\frac{22}{24} &amp; =5000-d \\\\\nd &amp; =5000\\left(1-\\frac{22}{24}\\right)=5000 \\cdot \\frac{2}{24}=\\frac{1250}{3}=416 \\frac{2}{3} \\mathrm{~m},\n\\end{aligned}\n$$<br>which rounds to 417 m.<br><b>Alternatively,</b> let \\(t_{1}, u, v\\) and \\(w\\) be as above. Then, as before<br>$$\n\\begin{aligned}\nt_{1} &amp; =\\frac{5000}{u}=\\frac{4800}{v}=\\frac{4400}{w} \\\\\n\\therefore v &amp; =\\frac{4800}{t_{1}}, w=\\frac{4400}{t_{1}}.\n\\end{aligned}\n$$<br>To run 200 m, the second runner needs time<br>$$\n\\frac{200}{v}=200 \\cdot \\frac{t_{1}}{4800}=\\frac{t_{1}}{24}.\n$$<br>In that time, the third runner will run a distance of<br>$$\nw \\cdot \\frac{t_{1}}{24}=\\frac{4400}{t_{1}} \\cdot \\frac{t_{1}}{24}=\\frac{4400}{24}=\\frac{550}{3}=183 \\frac{1}{3} \\mathrm{~m}\n$$<br>so that in the time the second runner runs the last 200 m, the third runner runs \\(183 \\frac{1}{3} \\mathrm{~m}\\). Before running those respective final distances the second and third runners were 400 m apart. So when the second runner crosses the finish line, the second and third runners are<br>$$\n400+200-183 \\frac{1}{3}=416 \\frac{2}{3} \\approx 417 \\mathrm{~m}\n$$<br>apart."
+  },
+  "wajo16_q11": {
+    "answer": 56,
+    "solution": "Listing the equations in order to label them:<br>$$\n\\begin{aligned}\nx+y &amp; =63 &amp;&amp;(1) \\\\\nx-y &amp; =47 &amp;&amp;(2) \\\\\nx y &amp; =392 &amp;&amp;(3) \\\\\n\\frac{x}{y} &amp; =8 &amp;&amp;(4)\n\\end{aligned}\n$$<br>Suppose both (1) and (2) are satisfied. Then<br>$$\n\\begin{array}{rl}\n(1)+(2): &amp; 2 x=110 \\\\\n\\therefore x=55, y=8.\n\\end{array}\n$$<br>But then \\(x y=440 \\neq 392\\) and \\(x / y=55 / 8 \\neq 8\\), so that neither (3) nor (4) is satisfied. So one of (1) and (2) is not satisfied, but both of (3) and (4) must be satisfied.<br>Hence,<br>$$\n\\begin{aligned}\n(3) \\cdot(4): \\quad x^{2} &amp; =392 \\cdot 8 \\\\\n&amp; =14^{2} \\cdot 2 \\cdot 8 \\\\\n&amp; =(14 \\cdot 4)^{2} \\\\\nx &amp; = \\pm 56\n\\end{aligned}\n$$<br>If \\(x=-56\\) then by (4), \\(y=-7\\), so that<br>$$\nx+y=-63 \\text { and } x-y=-49\n$$<br>meaning neither (1) nor (2) is satisfied. Hence \\(x=56\\), and so by (4), \\(y=7\\) and (1) is satisfied, but not (2)."
+  },
+  "wajo16_q12": {
+    "answer": 29,
+    "solution": "The net distance Wilberforce walks eastwards is<br>$$\n\\begin{aligned}\n1-3 &amp; +5-7+\\cdots+41 \\\\\n&amp; =(1-3)+(5-7)+\\cdots+(37-39)+41 \\\\\n&amp; =10 \\times(-2)+41 \\\\\n&amp; =21 \\mathrm{~m}\n\\end{aligned}\n$$<br>The net distance Wilberforce walks northwards is<br>$$\n\\begin{aligned}\n2-4 &amp; +6-8+\\cdots+38-40 \\\\\n&amp; =(2-4)+(6-8)+\\cdots+(38-40) \\\\\n&amp; =10 \\times(-2) \\\\\n&amp; =-20 \\mathrm{~m}\n\\end{aligned}$$<br>So he finishes 20 m south of his original position. His distance from his initial position is therefore, using Pythagoras' Theorem,<br>$$\n\\sqrt{21^{2}+(-20)^{2}}=\\sqrt{441+400}=\\sqrt{841}=29.\n$$<br><b>Remark.</b> Here we have an integer Pythagorean triple ( \\(a, b, c\\) ) with \\(b=a+1\\), so that<br>$$\n\\begin{aligned}\na^{2}+(a+1)^{2} &amp; =c^{2} \\\\\n2 a^{2}+2 a+1 &amp; =c^{2} \\\\\n2 a(a+1) &amp; =c^{2}-1 \\\\\n&amp; =(c-1)(c+1)\n\\end{aligned}\n$$<br>Since the left hand side of the last equation is even, so is the right hand side, and hence at least one of the factors \\(c-1\\) and \\(c+1\\) is even. But \\(c-1\\) and \\(c+1\\) differ by 2, and so must be of the same parity, and hence are both even. Looking again at the lefthand side, we see \\(a\\) and \\(a+1\\) are of opposite parity. So one is odd and the other even. So the left hand side is in fact divisible by 4. Thus the last equation reduces to:<br>$$\n\\frac{a(a+1)}{2}=\\frac{c-1}{2} \\cdot \\frac{c+1}{2},\n$$<br>where the left hand side is a triangular number and the right hand side is the product of consecutive integers. For the numbers in our problem, we have<br>$$\nT_{20}=\\frac{20 \\cdot 21}{2}=14 \\cdot 15, \\text { and } c=29.\n$$<br>So a natural question to ask is:<br>How frequently does an integer Pythagorean triple of the form \\((a, a+1, c)\\) happen?<br>The answer is that it's rare. The following are the triples for \\(c&lt;10000\\) :<br>$$\n(3,4,5),(20,21,29),(119,120,169),(696,697,985),(4059,4060,5741).\n$$",
+    "images": [
+      "data/wajo/diagrams/e48dba607edfbd.webp"
+    ]
+  }
+}

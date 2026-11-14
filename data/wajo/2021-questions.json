@@ -1,0 +1,146 @@
+[
+  {
+    "id": "wajo21_q1",
+    "number": "1",
+    "marks": 1,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A positive integer $N$ has three digits.<br>The second digit is 6 less than the first digit.<br>The third digit is 3 less than the first.<br>If $N$ is neither divisible by 5 nor by 2, what is $N$ ?"
+  },
+  {
+    "id": "wajo21_q2",
+    "number": "2",
+    "marks": 1,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A fuel tank is initially at $1 / 4$ capacity.<br>After 3 litres of fuel is added, the tank is at $1 / 3$ capacity.<br>How many litres is the full capacity of the tank?"
+  },
+  {
+    "id": "wajo21_q3",
+    "number": "3",
+    "marks": 1,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A square is inscribed in a circle, while a larger square is circumscribed about the same circle.<br>If the smaller square has area $36 \\mathrm{~cm}^{2}$, how many square centimetres is the area of the larger square?\\<br>Note. A square is inscribed in a circle, if its vertices lie on the circle.<br>A square is circumscribed about a circle, if its sides are tangent to the circle."
+  },
+  {
+    "id": "wajo21_q4",
+    "number": "4",
+    "marks": 1,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "A travel agency offers personalised tours.<br>A client chooses 3 cities from 8 that are offered, and also the order in which the three cities are visited.<br>Given that tours to the same 3 cities in different orders count as different tours, how many tours are possible?"
+  },
+  {
+    "id": "wajo21_q5",
+    "number": "5",
+    "marks": 2,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Consider three consecutive integers that, in increasing order, are a multiple of 2, a multiple of 3, and a multiple of 4.<br>If the sum of the three numbers is $S$, and $50&lt;S&lt;100$, what is $S$ ?"
+  },
+  {
+    "id": "wajo21_q6",
+    "number": "6",
+    "marks": 2,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Alice owes Greg 500 dollars. She has in her wallet twenty 10-dollar notes, two 50-dollar notes, and ten 100-dollar notes.<br>How many different ways are there for Alice to repay Greg?"
+  },
+  {
+    "id": "wajo21_q7",
+    "number": "7",
+    "marks": 2,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Kind Mr Postlethwaite has decided to give Christmas presents to all the poor people in his town. He has 86 potatoes, 47 carrots and 93 parsnips, which is just enough for two vegetables per person. To make Christmas especially exciting, each person will get two different vegetables.<br>How many people will get one carrot and one parsnip?"
+  },
+  {
+    "id": "wajo21_q8",
+    "number": "8",
+    "marks": 2,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Let $A B C D$ be a quadrilateral such that $\\angle A C B=110^{\\circ}, \\angle A B C=35^{\\circ}, \\angle A C D=48^{\\circ}$ and $A D=B C$.<br>How many degrees is $\\angle C A D$ ?"
+  },
+  {
+    "id": "wajo21_q9",
+    "number": "9",
+    "marks": 3,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "What is the smallest positive integer with exactly 20 positive divisors?"
+  },
+  {
+    "id": "wajo21_q10",
+    "number": "10",
+    "marks": 3,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Inspired by the Tour de France, Matt embarked on a challenging hill climb on his bike. The distance of 5 kilometres took Matt 48 minutes.<br>Initially, Matt was riding his bike, but then he got tired and continued on foot. Matt's speed was $15 \\mathrm{~km} / \\mathrm{h}$ while he was riding his bike, and $3 \\mathrm{~km} / \\mathrm{h}$ while he was walking. For how many minutes did Matt walk?"
+  },
+  {
+    "id": "wajo21_q11",
+    "number": "11",
+    "marks": 3,
+    "topic": "Combinatorics",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "Using $x^{3}$ unpainted unit cubes, where $x&gt;2$, we build a large cube. We then paint all faces of the large cube red.<br>If there are 6 times as many unpainted unit cubes as unit cubes painted on a single face, how many unit cubes are painted on exactly two faces?"
+  },
+  {
+    "id": "wajo21_q12",
+    "number": "12",
+    "marks": 3,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "For square $A B C D, M$ is the midpoint of side $B C$, and diagonal $A C$ intersects $D M$ at $P$.<br>If triangle $D P C$ has area $14 \\mathrm{cm}^{2}$, how many square centimetres is the area of the quadrilateral $A P M B$ ?"
+  },
+  {
+    "id": "wajo21_q13",
+    "number": "13",
+    "marks": 4,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "What is the least possible value of<br>$$\n16 x^{2}-56 x y+54 y^{2}+20 y+87,\n$$<br>where $x, y$ are real numbers?"
+  },
+  {
+    "id": "wajo21_q14",
+    "number": "14",
+    "marks": 4,
+    "topic": "Geometry",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "In triangle $A B C$, the ratio $\\angle C A B: \\angle A B C: \\angle B C A$ is $4: 3: 5$, and $B C=64$. Also, $C D$ and $B K$ are altitudes, and $M$ is the midpoint of $B C$.<br>What is the perimeter of triangle MKD?"
+  },
+  {
+    "id": "wajo21_q15",
+    "number": "15",
+    "marks": 4,
+    "topic": "Algebra",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "The integers from 0 up are written in a triangular array as shown below,<br>$$\n\\begin{array}{ccccccccccc} &amp; &amp; &amp; &amp; &amp; 0 &amp; &amp; &amp; &amp; &amp; \\\\&amp; &amp; &amp; &amp; 1 &amp; &amp; 2 &amp; &amp; &amp; &amp; \\\\&amp; &amp; &amp; 3 &amp; &amp; 4 &amp; &amp; 5 &amp; &amp; &amp; \\\\&amp; &amp; 6 &amp; &amp; 7 &amp; &amp; 8 &amp; &amp; 9 &amp; &amp; \\\\&amp; 10 &amp; &amp; 11 &amp; &amp; 12 &amp; &amp; 13 &amp; &amp; 14 &amp; \\\\ \\ldots &amp; \\ldots &amp; \\ldots &amp; \\ldots &amp; \\ldots &amp; \\ldots &amp; \\ldots &amp; \\ldots &amp; \\ldots &amp; \\ldots &amp; \\ldots\\end{array}\n$$<br>where row $n$ contains $n$ numbers, so that 0 is in row 1,1 and 2 are in row 2, and so on. What is the number of the row that contains 2021?"
+  },
+  {
+    "id": "wajo21_q16",
+    "number": "16",
+    "marks": 4,
+    "topic": "Number Theory",
+    "answerFormat": "integer",
+    "workingRequired": false,
+    "prompt": "What is the largest integer $m$ such that $\\frac{2021!}{1010!\\times 21!}$ is divisible by $2^{m}$ ?<br>Note. $n!=1 \\times 2 \\times \\cdots \\times n$."
+  }
+]

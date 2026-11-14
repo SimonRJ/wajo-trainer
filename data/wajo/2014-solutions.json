@@ -1,0 +1,56 @@
+{
+  "wajo14_q1": {
+    "answer": 98,
+    "solution": "The least palindrome greater than 2014 is 2112, and \\(2112-2014=98\\)."
+  },
+  "wajo14_q2": {
+    "answer": 8,
+    "solution": "The maximum number occurs in the configuration shown in the diagram.",
+    "images": [
+      "data/wajo/diagrams/e62aa8e649c96d.webp"
+    ]
+  },
+  "wajo14_q3": {
+    "answer": 18,
+    "solution": "Since \\(A B=A C\\), triangle \\(A B C\\) is isosceles with \\(\\angle A B C=\\angle A C B\\). Hence \\(\\angle A B C=\\frac{1}{2}(180-36)^{\\circ}=72^{\\circ}\\).<br>Since \\(B C=B D\\), triangle \\(B C D\\) is isosceles with \\(\\angle B D C=\\angle B C D\\).<br>Hence \\(\\angle B C D=\\frac{1}{2}(180-72)^{\\circ}=54^{\\circ}\\).<br>Since \\(\\angle A C B=72^{\\circ}, \\angle D C A=(72-54)^{\\circ}=18^{\\circ}\\)."
+  },
+  "wajo14_q4": {
+    "answer": 22,
+    "solution": "Let the radius of the circle be \\(r\\), and the distance from the centre of the circle to the longer chord be \\(x\\). Then by Pythagoras' Theorem,<br>$$\n\\begin{aligned}\nx^{2}+24^{2} &amp; =r^{2} \\\\\n&amp; =(x+8)^{2}+20^{2} \\\\\n&amp; =x^{2}+16 x+8^{2}+20^{2} \\\\\n\\therefore 24^{2} &amp; =16 x+8^{2}+20^{2} \\\\\n6^{2} &amp; =x+2^{2}+5^{2} \\\\\n\\therefore x &amp; =36-25-4 \\\\\n&amp; =7.\n\\end{aligned}\n$$<br>Hence when either the short or the long chord is shifted to the other side of the centre, the distance between them is<br>$$\n8+7+7=22 \\mathrm{~cm}.\n$$",
+    "images": [
+      "data/wajo/diagrams/ecbd1ea161f5fc.webp"
+    ]
+  },
+  "wajo14_q5": {
+    "answer": 96,
+    "solution": "If length is scaled by \\(1.4(100 \\%+40 \\%)\\), then area is scaled by a factor of \\(1.4^{2}=1.96=100 \\%+96 \\%\\), i.e. the surface area increases by \\(96 \\%\\)."
+  },
+  "wajo14_q6": {
+    "answer": 96,
+    "solution": "The whole journey must take<br>$$\n\\frac{150 \\mathrm{~km}}{75 \\mathrm{~km} / \\mathrm{h}}=2 \\mathrm{~h}.\n$$<br>The first part took<br>$$\n\\frac{30 \\mathrm{~km}}{40 \\mathrm{~km} / \\mathrm{h}}=\\frac{3}{4} \\mathrm{~h}.\n$$<br>So Stefan must do the remaining 120 km in \\(\\frac{5}{4} \\mathrm{~h}\\). This requires a speed of<br>$$\n\\begin{aligned}\n\\frac{120 \\mathrm{~km}}{\\frac{5}{4} \\mathrm{~h}} &amp; =120 \\times \\frac{4}{5} \\mathrm{~km} / \\mathrm{h} \\\\\n&amp; =96 \\mathrm{~km} / \\mathrm{h}.\n\\end{aligned}\n$$"
+  },
+  "wajo14_q7": {
+    "answer": 3,
+    "solution": "The expression is obtained by replacing \\(x\\) by -1 in the right hand side. Hence it is also equal to<br>$$\n\\frac{(2(-1)+5)^{6}}{(-1+4)^{5}}=\\frac{3^{6}}{3^{5}}=3.\n$$"
+  },
+  "wajo14_q8": {
+    "answer": 76,
+    "solution": "Answer: 76. Let the length and width of $R$ by $ell$ and $w$, respectively. Then <br>$$\\begin{aligned}\\ell w &amp; =360 &amp; &amp; \\\\&amp; =(\\ell+10)(w-6) &amp; &amp; \\\\&amp; =\\ell w+10 w-6 \\ell-60 &amp; &amp; \\\\ \\therefore 0 &amp; =10 w-6 \\ell-60 &amp; &amp; \\\\ 6 \\ell &amp; =10 w-60 &amp; &amp; \\\\ \\ell &amp; =\\frac{5}{3} w-10 &amp; &amp; \\text { substituting }(2) \\text { in }(1) \\\\ \\cdot\\left(\\frac{5}{3} w-10\\right) w &amp; =360, &amp; &amp; \\text { multiplying both sides by } \\frac{3}{5} \\\\ (w-6) w &amp; =216, &amp; &amp; \\\\ \\therefore 0 &amp; =w^2-6 w-216 &amp; &amp; \\\\ &amp; =(w+12)(w-18) &amp; &amp; \\end{aligned}$$ So either $w=-12$ or 18 . Since $w$ is a distance, it cannot be negative.<br>Thus $w=18$, whence $ell=20$, and the perimeter is $2(w+ell)=76$."
+  },
+  "wajo14_q9": {
+    "answer": 235,
+    "solution": "Answer: 235. To avoid ambiguity, we write digit representations with an overline; otherwise, numbers are written fully expanded in base ten.The common difference is a 2-digit number, say $\\overline{t u}$ (for $t$ ens and units). The first difference yields $79-10 c-b=10 t+u$. Since $u+b$ cannot reach 19, $$ u+b=9 \\text { and } c+t=7.$$ The third difference yields $10 b+1-c=10 t+u$. So, either$$c+u=1(\\Longrightarrow b=t) \\text { or } c+u=11(\\Longrightarrow b=t+1)$$The difference between $\\overline{b b 1}$ and $\\overline{a 79}$ is twice $\\overline{t u}$. So$$ 100 b+10 b+1-100 a-70-9=20 t+2 u.$$Hence $9+2 u$ has units digit 1 , so $u=1$ or 6 . Suppose $u=1$, then $c=0$ by (4), $b=9$ and $t=7$ by (3), but this contradicts (4). <br>Hence $u=6$. So $b=8$ by (3), $c=5$ by (4), $t=7$ by (3). Substituting into (5) we get $252-100 a=52$, so that $a=2$. <br>Thus, finally we get $\\overline{a b c}=235$."
+  },
+  "wajo14_q10": {
+    "answer": 81,
+    "solution": "The products of the numbers with 1 as the first digit are \\(1 \\times 1,1 \\times 2, \\ldots, 1 \\times 9\\). The sum of these is<br>$$\n1 \\times(1+2+\\cdots+9)=1 \\times 45\n$$<br>Similarly the sum of the numbers with 2 as the first digit is \\(2 \\times 45\\), and so on. The grand total is therefore<br>$$\n(1+2+\\cdots+9) \\times 45=45 \\times 45=2025\n$$<br>Dividing this by 25 gives 81."
+  },
+  "wajo14_q11": {
+    "answer": 85,
+    "solution": "Answer: 85. Let $U=u-1, V=v-2, W=w-3, X=x-4$, $Y=y-5$. Then <br>$$U &lt; V &lt; W &lt; X &lt; Y$$so that, in particular, $U, V, W, X, Y$ are distinct and<br>$$ U V W X Y=2014=2 \\cdot 19 \\cdot 53$$We can write 2014 as the product of five positive integers, with at most two equal only as $1 \\cdot 1 \\cdot 2 \\cdot 19 \\cdot 53$, and, since at most two of $U, V, W, X, Y$ can have the same absolute value, (otherwise they cannot be distinct), $|U|,|V|,|W|,|X|,|Y|$ in some order must be 1 , $1,2,19,53$, which means two of $U, V, W, X, Y$ must be 1 and -1i.e. there must be at least one other of $U, V, W, X, Y$ that's negative, since their product is positive. Now <br>$$u+v+w+x+y=U+V+W+X+Y+15$$So maximising $U+V+W+X+Y$, maximises $u+v+w+x+y$, and this occurs when$$(U, V, W, X, Y)=(-2,-1,1,19,53).$$Thus the maximum value of $u+v+w+x+y$ is$$-2-1+1+19+53+15=85.$$"
+  },
+  "wajo14_q12": {
+    "answer": "Neither; the two areas are equal.",
+    "solution": "Since a triangle in a semicircle is right-angled, the area of the triangle (striped) is<br>$$\n\\frac{1}{2} \\times a \\times b=\\frac{a b}{2}\n$$<br>The total area of the lunes (grey) is the area of the semi-circle of diameter \\(a\\) (unshaded plus grey) plus the area of the semi-circle of diameter \\(b\\) (unshaded plus grey) plus the area of the triangle (striped) minus the area of the semicircle of diameter \\(c\\) (unshaded plus striped), that is<br>$$\n\\begin{aligned}\n&amp; \\frac{1}{2} \\times \\pi \\times\\left(\\frac{a}{2}\\right)^{2} +\\frac{1}{2} \\times \\pi \\times\\left(\\frac{b}{2}\\right)^{2}+\\frac{1}{2} \\times a \\times b-\\frac{1}{2} \\times \\pi \\times\\left(\\frac{c}{2}\\right)^{2} \\\\\n&amp; =\\frac{\\pi}{8}\\left(a^{2}+b^{2}-c^{2}\\right)+\\frac{a b}{2} \\\\\n&amp; =\\frac{a b}{2}\n\\end{aligned}\n$$<br>since \\(a^{2}+b^{2}=c^{2}\\) by Pythagoras' Theorem.<br>Therefore the total area of the two lunes is equal to the area of the right-angled triangle."
+  }
+}

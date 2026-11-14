@@ -1,0 +1,75 @@
+{
+  "wajo25_q1": {
+    "answer": 48,
+    "solution": "Solution. Answer: 48. Call the perimeter of one of the four congruent parts $p$. Then $p$ is made up of a quarter-circle of radius 32 cm and two semicircles of radius 16 cm , i.e.<br>$$\n\\begin{aligned}\np &amp; =\\frac{1}{4} \\cdot 2 \\pi \\cdot 32+2 \\cdot \\frac{1}{2} \\cdot 2 \\pi \\cdot 16 \\\\\n&amp; =16 \\pi+32 \\pi \\\\\n&amp; =48 \\pi \\mathrm{~cm} \\\\\n\\therefore x &amp; =48\n\\end{aligned}\n$$"
+  },
+  "wajo25_q2": {
+    "answer": 487,
+    "solution": "Solution. Answer: 487. Since 973 is positive, $a$ must be the larger integer.<br>$$\n\\begin{aligned}\n\\therefore b &amp; =a-1 \\\\\n\\therefore 973 &amp; =a^{2}-b^{2} \\\\\n&amp; =(a+b)(a-b) \\\\\n&amp; =(a+b) \\cdot 1 \\\\\n&amp; =a+a-1 \\\\\n\\therefore 974 &amp; =2 a \\\\\na &amp; =487 .\n\\end{aligned}\n$$<br><b>Alternative 1.</b> Since $a$ must be larger, $b=a-1$. So,<br>$$\n\\begin{aligned}\n973 &amp; =a^{2}-(a-1)^{2} \\\\\n&amp; =2 a-1 \\\\\n\\therefore 974 &amp; =2 a \\\\\na &amp; =487 .\n\\end{aligned}\n$$<br><b>Alternative 2.</b> Working with $b$ which must be the smaller (fewer minus signs), $a=b+1$.<br>$$\n\\begin{aligned}\n\\therefore 973 &amp; =(b+1)^{2}-b^{2} \\\\\n&amp; =2 b+1 \\\\\n\\therefore 972 &amp; =2 b \\\\\nb &amp; =486 \\\\\na &amp; =b+1 \\\\\n&amp; =487 .\n\\end{aligned}\n$$"
+  },
+  "wajo25_q3": {
+    "answer": 400,
+    "solution": "Solution. Answer: 400. \"No hat\" can be counted as a $4^{\\text {th }}$ hat, and \"no runners\" can be counted as a $5^{\\text {th }}$ pair of runners. Thus the number of outfit combinations (and hence the number of days to try them all out) is:<br>\"no. of T-shirts\" $\\cdot$ \"no. of shorts\" $\\cdot$ \"no. of hats\" $\\cdot$ \"no. of runners\"<br>$$\n\\begin{aligned}\n&amp; =5 \\cdot 4 \\cdot 4 \\cdot 5 \\\\\n&amp; =400\n\\end{aligned}\n$$<br>Note. Without counting \"no hat\" as a $4^{\\text {th }}$ hat, and \"no runners\" as a $5^{\\text {th }}$ pair of runners, we would have 4 cases to count separately. Below we show the equivalence of the approaches.<br>$$\n\\begin{aligned}\n5 \\cdot 4 \\cdot 4 \\cdot 5= &amp; 5 \\cdot 4 \\cdot(3+1) \\cdot(4+1) \\\\\n= &amp; 5 \\cdot 4 \\cdot 3 \\cdot 4+ \\\\\n&amp; 5 \\cdot 4 \\cdot 3 \\cdot 1+ \\\\\n&amp; 5 \\cdot 4 \\cdot 1 \\cdot 4+ \\\\\n&amp; 5 \\cdot 4 \\cdot 1 \\cdot 1\n\\end{aligned}\n$$<br>The three last lines are the counts for: \"no runners\", \"no hat\" and \"no hat and no runners\", respectively."
+  },
+  "wajo25_q4": {
+    "answer": 52,
+    "solution": "Solution. Answer: 52. Let $\\overline{a b}$ be the decimal digit representation of Anna's current age.<br>Then<br>$$\n\\begin{aligned}\n\\overline{b a}+1 &amp; =\\frac{1}{2} \\cdot \\overline{a b} \\\\\n\\text { i.e. } 10 b+a+1 &amp; =\\frac{1}{2}(10 a+b) \\\\\n20 b+2 a+2 &amp; =10 a+b \\\\\n19 b &amp; =8 a-2\n\\end{aligned}\n$$<br>Since RHS(*) is even, $b$ is even.<br>Also, $a$ is a leading digit which implies<br>$$\n\\begin{aligned}\n&amp; 1 \\leqslant a \\quad \\leqslant 9 \\\\\n\\Longrightarrow &amp; 6 \\leqslant 8 a-2 \\leqslant 70 \\\\\n\\Longrightarrow &amp; 0&lt;b \\quad&lt;4 \\\\\n\\Longrightarrow &amp; b=2, \\quad \\text { is the only possibility, since } b \\text { is even. }\n\\end{aligned}\n$$<br>Checking with $b=2$, we have $a=5$; i.e. $b=2$ works.<br>Hence Anna's age $\\overline{a b}=52$.<br><b>Alternatively,</b> after ( * ) above, and observing $b$ is even, we make $a$ the subject:<br>$$\n\\begin{aligned}\n8 a &amp; =19 b+2 \\\\\na &amp; =\\frac{1}{8}(19 b+2)\n\\end{aligned}\n$$<br>And try cases for $b$ :<br><br>$b=0 \\implies a = 2/8$<br>$b=2 \\implies a = 40/8 = 5$<br>$b=4 \\implies a = 78/8$<br>$b=6 \\implies a = 116/8$<br>$b=8 \\implies a = 148/8$<br><br>Only $b=2$ leads to $a$ being an integer, namely $a=5$.<br>So Anna's age $\\overline{a b}=52$."
+  },
+  "wajo25_q5": {
+    "answer": 63,
+    "solution": "Solution. Answer: 63.<br>Each shaded tile (21 of them) lies in a rhombus in 3 orientations, and all required rhombi have a shaded tile.<br>Hence there are altogether $3 \\cdot 21=63$ rhombi made up of two tiles.",
+    "images": [
+      "data/wajo/diagrams/121b8d49e7192a.webp"
+    ]
+  },
+  "wajo25_q6": {
+    "answer": 775,
+    "solution": "Solution. Answer: 775.<br>$$\n\\begin{aligned}\n\\frac{5^{2025}-5^{2022}}{5^{2021}-5^{2020}} &amp; =\\frac{5^{2022}\\left(5^{3}-1\\right)}{5^{2020}(5-1)} \\\\\n&amp; =\\frac{5^{2} \\cdot 124}{4} \\\\\n&amp; =25 \\cdot 31 \\\\\n&amp; =775\n\\end{aligned}\n$$"
+  },
+  "wajo25_q7": {
+    "answer": 168,
+    "solution": "Solution. Answer: 168. The interior angle sum of an $n$-gon is $(n-2) 180^{\\circ}$.<br>So each angle of a regular 5-gon is $3 \\cdot 180 / 5=108^{\\circ}$.<br>$$\n\\begin{aligned}\n\\angle A E F &amp; =\\angle A E D-\\angle F E D \\\\\n&amp; =108^{\\circ}-60^{\\circ} \\\\\n&amp; =48^{\\circ} \\\\\n\\therefore \\angle A F E &amp; =\\frac{1}{2}\\left(180^{\\circ}-\\angle A E F\\right), \\text { since } \\triangle A E F \\text { isos. } \\\\\n&amp; =\\angle C F D, \\text { by symmetry } \\\\\n\\therefore \\angle A F C &amp; =360^{\\circ}-(\\angle A F E+\\angle C F D+\\angle E F D) \\\\\n&amp; =360^{\\circ}-\\left(180^{\\circ}-48^{\\circ}+60^{\\circ}\\right) \\\\\n&amp; =168^{\\circ}\n\\end{aligned}\n$$",
+    "images": [
+      "data/wajo/diagrams/5b78068e668ffc.webp"
+    ]
+  },
+  "wajo25_q8": {
+    "answer": 14,
+    "solution": "Solution. Answer: 14. It's easiest to compare the numbers as $5^{\\text {th }}$ powers:<br>$$\n\\begin{array}{rlrl}\n\\left(2^{02}\\right)^{5}&lt; &amp; 2^{025}&lt;202^{5}&lt; &amp; \\left(20^{2}\\right)^{5} \\\\\n=4^{5} &amp; &amp; =2^{5 \\cdot 5} &amp; &amp; \\\\\n&amp; &amp; =\\left(2^{5}\\right)^{5} &amp; &amp; =400^{5} \\\\\n&amp; &amp; =32^{5} &amp; &amp; \n\\end{array}\n$$<br>So $\\left(20^{2}\\right)^{5}$ is the largest. Now observe that:<br>$$\n\\begin{aligned}\n\\left(20^{2}\\right)^{5} &amp; =20^{10} \\\\\n&amp; =(2 \\cdot 10)^{10} \\\\\n&amp; =2^{10} \\cdot 10^{10} \\\\\n&amp; =1024 \\cdot 10^{10}\n\\end{aligned}\n$$<br>the 4-digit number 1024 followed by 10 zeros, i.e. a 14-digit number."
+  },
+  "wajo25_q9": {
+    "answer": 19,
+    "solution": "Solution. Answer: 19. Observe that the sum $S$ of the numbers on the board is a monovariant; that is, $S$ reduces by 1000 each turn.<br>Furthermore, each turn reduces the number of numbers by exactly 1.<br>So it will take 2024 \"moves\" for the game to halt.<br>Thus, the final number on the board must be,<br>$$\n\\begin{aligned}\n(1+2+3+\\cdots+2025)-1000 \\cdot 2024 &amp; =\\frac{(1+2025)}{2} \\cdot 2025-1000 \\cdot 2024 \\\\\n&amp; =1013 \\cdot 2025-1000 \\cdot 2024 \\\\\n&amp; =1000 \\cdot(2025-2024)+13 \\cdot 2025 \\\\\n&amp; =1000+26325 \\\\\n&amp; =27325\n\\end{aligned}\n$$<br>which has digit sum $2+7+3+2+5=19$."
+  },
+  "wajo25_q10": {
+    "answer": 192,
+    "solution": "Solution. Answer: 192. Let the required positive integer be $N$ and suppose<br>$$N=p_{1}^{e_{1}} p_{2}^{e_{2}} \\ldots p_{k}^{e_{k}}$$<br>is its prime decomposition, where $p_{1}, p_{2}, \\ldots, p_{k}$ are prime and $e_{1}, e_{2}, \\ldots, e_{k} \\geqslant 1$. Then the positive divisors of $N$ are of form<br>$$p_{1}^{f_{1}} p_{2}^{f_{2}} \\ldots p_{k}^{f_{k}}$$<br>where $f_{i} \\in\\left\\{0,1, \\ldots, e_{i}\\right\\}$ for each $i$. That is, there are $e_{i}+1$ possibilities for $f_{i}$ for each $i$, and hence $N$ has<br>$$\n\\left(e_{1}+1\\right)\\left(e_{2}+1\\right) \\cdots\\left(e_{k}+1\\right)\n$$<br>positive divisors. Thus we need to find how to write 14 as a product of numbers of form $e_{i}+1$, where $e_{i} \\geqslant 1$. There are two ways:<br>$$14=13+1 \\text { or } 14=(1+1)(6+1),$$<br>since $14=2 \\times 7$ (prime decomposition). Thus numbers of form $p_{1}^{13}$ or of form $p_{1}^{1} p_{2}^{6}$ have 14 positive divisors, where $p_{1}, p_{2}$ are different primes, and the least positive integers of each form are $2^{13}$ and $2^{6} \\cdot 3$, respectively.<br>Since, $2^{6} \\cdot 3&lt;2^{13}, N=2^{6} \\cdot 3=64 \\cdot 3=192$."
+  },
+  "wajo25_q11": {
+    "answer": 162,
+    "solution": "Solution. Answer: 162. For convenience, let the sides of the smaller squares be $a, x, b$, respectively, so that $a^{2}=72, x^{2}=A, b^{2}=98$. Firstly,<br>$$\n\\begin{aligned}\na^{2} &amp; =72=6^{2} \\cdot 2 \\\\\n\\therefore a &amp; =6 \\sqrt{2} \\\\\nb^{2} &amp; =98=7^{2} \\cdot 2 \\\\\n\\therefore b &amp; =7 \\sqrt{2}\n\\end{aligned}\n$$<br>So,<br>$$\n\\begin{aligned}\n318 &amp; =a x+a b+b x \\\\\n&amp; =x(a+b)+a b \\\\\n\\therefore x &amp; =\\frac{318-a b}{a+b} \\\\\n&amp; =\\frac{318-6 \\sqrt{2} \\cdot 7 \\sqrt{2}}{6 \\sqrt{2}+7 \\sqrt{2}} \\\\\n&amp; =\\frac{318-84}{13 \\sqrt{2}} \\\\\n&amp; =\\frac{234}{13 \\sqrt{2}} \\\\\n&amp; =9 \\sqrt{2} \\\\\nA=x^{2} &amp; =81 \\cdot 2 \\\\\n&amp; =162\n\\end{aligned}\n$$"
+  },
+  "wajo25_q12": {
+    "answer": 701,
+    "solution": "Solution. Answer: 701. Let $a, b, c$ be the side lengths of Amy's, Ben's, and Cass's cubes, respectively. We have<br>$$\n\\begin{aligned}\n204 &amp; =12(a+b+c) &amp; &amp; \\\\\n630 &amp; =6\\left(a^{2}+b^{2}+c^{2}\\right) &amp; &amp; \\\\\na &amp; =2 b &amp; &amp; \\\\\n17 &amp; =3 b+c, &amp; &amp; \\text { substituting }(3) \\text { in } \\frac{1}{12}(1) \\\\\n105 &amp; =5 b^{2}+c^{2}, &amp; &amp; \\text { substituting }(3) \\text { in } \\frac{1}{6}(2) \\\\\n&amp; =5 b^{2}+(17-3 b)^{2}, &amp; &amp; \\text { substituting for } c, \\text { using }(4) \\\\\n&amp; =14 b^{2}-102 b+289 &amp; &amp; \\\\\n\\therefore 0 &amp; =14 b^{2}-102 b+184 &amp; &amp; \\\\\n0 &amp; =7 b^{2}-51 b+92 &amp; &amp; \\\\\n&amp; =(7 b-23)(b-4) &amp; &amp; \\text { since } b \\in \\mathbb{Z} \\Longrightarrow b \\neq \\frac{23}{7} \\\\\n\\therefore b &amp; =4, &amp; &amp; \\text { by }(3) \\\\\na &amp; =8, &amp; &amp; \\text { by }(4) \\\\\nc &amp; =17-3 \\cdot 4, &amp; &amp; \\\\\n&amp; =5 &amp; &amp; \\\\\n\\therefore V &amp; =a^{3}+b^{3}+c^{3} \\\\\n&amp; =8^{3}+4^{3}+5^{3} \\\\\n&amp; =512+64+125 \\\\\n&amp; =701\n\\end{aligned}\n$$<br>Therefore, the total volume of the three cubes is 701."
+  },
+  "wajo25_q13": {
+    "answer": 300,
+    "solution": "Solution. Answer: 300. For convenience let the distance Alan and Bob run be 1 unit, and let the speeds that Alan and Bob run be $a$ and $b$ (in units per min.), respectively. Then, noting that the time in minutes that Bob took to run the whole distance is $1 / b$,<br>$$\n\\begin{aligned}\n3 a+3 b &amp; =1, \\quad \\begin{array}{l} \\text { since between them Alan and Bob } \\\\ \\text { cover the whole track in } 3 \\text { min. } \\end{array} \\\\\n\\therefore 3 a &amp; =1-3 b \\\\\n\\frac{1}{a}-\\frac{1}{b} &amp; =\\frac{5}{2} \\text { min. } \\\\\n\\therefore \\frac{1}{a} &amp; =\\frac{1}{b}+\\frac{5}{2} \\\\\n\\therefore \\frac{2 b}{a} &amp; =2+5 b\n\\end{aligned}\n$$<br>$\\therefore(1) \\cdot(2): 6 b=(1-3 b)(2+5 b)$<br>$$\n\\begin{aligned}\n&amp; =2-b-15 b^{2} \\\\\n\\therefore 0 &amp; =15 b^{2}+7 b-2 \\\\\n&amp; =(5 b-1)(3 b+2) \\\\\n\\therefore \\frac{1}{b} &amp; =5 \\text { min., since } \\frac{1}{b}&gt;0, \\text { and hence } \\frac{1}{b} \\neq-\\frac{3}{2} \\\\\n&amp; =300 \\mathrm{~s}\n\\end{aligned}\n$$<br>So Bob took 300 seconds to cover the distance."
+  },
+  "wajo25_q14": {
+    "answer": 26,
+    "solution": "Solution. Answer: 26. Since $M N$ is a midline of $\\triangle A B C$, and $P=\\operatorname{midpt}(B C)$,<br>$$M N \\| P C \\text { and } P C=\\frac{1}{2} B C=M N$$<br>$\\therefore M N C P$ is a parallelogram<br>$$\n\\begin{aligned}\n\\therefore O &amp; =\\operatorname{midpt}(M C)=\\operatorname{midpt}(N P) \\\\\nK &amp; =A O \\cap M N, \\text { where } A O, M N \\text { are medians of } \\triangle A M C \\\\\n\\therefore K &amp; =\\operatorname{centroid}(A M C) \\\\\n\\therefore K N &amp; =\\frac{1}{3} M N \\\\\n&amp; =\\frac{1}{3} \\cdot \\frac{1}{2} B C \\\\\n&amp; =\\frac{1}{3} \\cdot \\frac{1}{2} \\cdot 156 \\\\\n&amp; =26 .\n\\end{aligned}\n$$",
+    "images": [
+      "data/wajo/diagrams/b50f51024a3105.webp"
+    ]
+  },
+  "wajo25_q15": {
+    "answer": 39,
+    "solution": "Solution. Answer: 39. This is a discrete optimisation problem. Essentially, we will deduce $\\min (k)=B$, for some integer $B$, by showing:<br>(i) $k \\geqslant B$, ( $B$ is a lower bound for $k$ ), and<br>(ii) $k=B$ is attainable via an example.<br><br>Consider 2 cases.<br>Case 1: $k \\leqslant 38$. Then choosing $k$ even numbers, all sums are even and larger than 2, and hence not prime, contrary to the required condition. Therefore, $k \\geqslant 39$.<br>Case 2: $k=39$. Partition $A$ into 38 pairs: $\\{1,2\\},\\{3,76\\},\\{4,75\\}, \\ldots,\\{39,40\\}$. (There are 38, since the first numbers of the pairs are all the numbers from 1 to 39, except for 2.) Observe that each pair sums to 3 or 79 (prime), so that if we choose 39 numbers from $A$, then by the Pigeon Hole Principle, necessarily both numbers of one of the listed pairs must be chosen, guaranteeing that a pair of numbers whose sum is prime is chosen.<br>So from Case 1., we have $k \\geqslant 39$, and by Case 2., $k=39$ is attainable.<br>Hence $\\min (k)=39$."
+  },
+  "wajo25_q16": {
+    "answer": 447,
+    "solution": "Solution. Answer: 447. First observe that each of $5^{j}, 7^{\\ell}, 11^{m}, 19$ and 2025 is odd.<br>So $6^{k}$ must also be odd, which since 6 is even, only occurs if $k=0$.<br>So our problem reduces to finding non-negative integers $j, \\ell, m$ such that:<br>$$\n\\begin{aligned}\n5^{j}+7^{\\ell}+11^{m} &amp; =2025-19-6^{0} \\\\\n&amp; =2005\n\\end{aligned}\n$$<br>Observe that $5^{5}=5 \\cdot 625&gt;2005$, and $11^{4}&gt;7^{4}=7 \\cdot 343&gt;2005$. So $j \\leqslant 4$ and $\\ell, m \\leqslant 3$. Now reducing (*) modulo 5, we get<br>$$\n\\begin{aligned}\n2005 \\equiv 0 &amp; \\equiv 5^{j}+7^{\\ell}+11^{m} \\quad(\\bmod 5) \\\\\n&amp; \\equiv 0+2^{\\ell}+1 \\quad(\\bmod 5)\n\\end{aligned}\n$$<br>The only $\\ell \\in\\{0,1,2,3\\}$ such that $2^{\\ell}+1$ is a multiple of 5 , is $\\ell=2$, and so our problem is now reduced to finding $j, m$ such that:<br>$$\n\\begin{aligned}\n5^{j}+11^{m} &amp; =2005-7^{2} \\\\\n&amp; =1956\n\\end{aligned}\n$$<br>Now reducing (**) modulo 11, we get<br>$$\n\\begin{aligned}\n1956 \\equiv 6-5+9-1 \\equiv 9 &amp; \\equiv 5^{j}+11^{m} \\quad(\\bmod 11) \\\\\n&amp; \\equiv 5^{j} \\quad(\\bmod 11)\n\\end{aligned}\n$$<br>and $5^{j} \\bmod 11$ for $j=0,1,2,3,4$ gives $1,5,3,4,9$, respectively.<br>So $j=4$ giving<br>$$\n\\begin{aligned}\n11^{m} &amp; =1956-5^{4} \\\\\n&amp; =1331 \\\\\n&amp; =11^{3}\n\\end{aligned}\n$$<br>So uniquely we have $j=4, k=0, \\ell=2, m=3$ and hence<br>$$\n\\begin{aligned}\n\\overline{j k \\ell m} / 9 &amp; =4023 / 9 \\\\\n&amp; =447 .\n\\end{aligned}\n$$"
+  }
+}
