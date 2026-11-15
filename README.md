@@ -41,6 +41,10 @@ The [2025 individual instructions](papers/wajo-2025-questions.pdf) use integer a
 
 WAJO Trainer is an independent practice site. KaTeX is bundled locally for mathematical typesetting under its [MIT licence](vendor/katex/LICENSE). The exam centre uses PDF.js 5.6.205 to display archive pages under the [Apache 2.0 licence](vendor/pdfjs/LICENSE).
 
+## Video narration
+
+The [approved narration profile](tools/narration/) is the default for every new WAJO Trainer video.
+
 ## Run locally
 
 ```sh
