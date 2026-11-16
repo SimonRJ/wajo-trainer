@@ -14,6 +14,8 @@ A free training course for the Western Australian Junior Mathematics Olympiad.
 
 ## Exam centre
 
+The practice sitting follows the layout of the [official WAJO competition quiz](https://github.com/codersforcauses/wajo/blob/1c4b7e2/client/src/components/ui/Quiz/comp-start.tsx). The numbered question buttons sit below the answer field. Practice working tools and the submission review are available within the sitting.
+
 - All 27 WAJO individual papers from 2000 to 2026 are available as 100-minute sittings, with 329 response entries and worked solutions. The two parts of 2015 Question 12 have separate entries.
 - The [Team papers](https://simonrj.github.io/wajo-trainer/#/exams/team) section has all 26 available rounds from 2000 to 2025, with 45- or 50-minute sittings. Each part has space for a response, working and a sketch. The full team paper includes its original answer sheets where available.
 - The timer continues across reloads and submits saved responses at zero. Navigation shows answered and flagged parts. Before submitting, the student can jump to an unanswered item, an answer with the wrong format or missing written working.

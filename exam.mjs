@@ -258,7 +258,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
             'This paper allows one sitting in this browser. After submitting you can review it.'}</li>
         </ul>
         <div class="row">
-          <button class="btn" data-start="timed" type="button"${state.active ? ' disabled' : ''}>Start ${paper.minutes}-minute exam</button>
+          <button class="btn" data-start="timed" type="button"${state.active ? ' disabled' : ''}>Start</button>
           ${paper.mock ? `<button class="btn ghost" data-start="untimed" type="button"${state.active ? ' disabled' : ''}>Practise untimed</button>` : ''}
         </div>
         ${last ? `<p><a href="${reportLink(last)}">Review your last sitting</a></p>` : ''}
@@ -306,37 +306,33 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
     const integer = question.answerFormat === 'integer';
     const label = labelFor(paper, question.number);
     show(`<div class="exam-centre exam-sitting">
-      <a class="crumb" href="#/exams${paper.team ? '/team' : ''}">← Exam centre</a>
-      <div class="exam-sitting-heading"><h1>${escapeHtml(paper.title)}</h1>
-        <span class="exam-save" role="status" data-exam-save>Saved on this device</span></div>
-      <section class="exam-toolbar" aria-label="Exam controls">
-        <div class="exam-toolbar-top">
-          <div><span class="exam-clock-label">${run.deadline === null ? 'Time used' : 'Time left'}</span>
-            <strong class="exam-clock" role="timer" data-exam-clock></strong></div>
-          <button class="btn small" type="button" data-end-exam>Review &amp; submit</button>
-        </div>
-        <nav class="exam-navigator" aria-label="${paper.team ? 'Parts' : 'Questions'}">${questions.map((item, index) =>
-          `<button type="button" data-question-index="${index}"${index === currentIndex ? ' aria-current="step"' : ''}>${item.number}</button>`).join('')}</nav>
-        <div class="exam-nav-summary"><span data-answer-count></span><span data-flag-count></span></div>
-      </section>
+      <header class="exam-competition-header">
+        <a class="exam-wordmark" href="#/exams${paper.team ? '/team' : ''}"><strong>WAJO</strong><span>Trainer · Practice</span></a>
+        <div class="exam-clock-pill"><span>${run.deadline === null ? 'Time Used' : 'Time Left'}:</span>
+          <strong class="exam-clock" role="timer" data-exam-clock></strong></div>
+      </header>
+      <h1 class="exam-competition-progress">${escapeHtml(paper.title)} · ${currentIndex + 1}/${questions.length}</h1>
       <article class="card exam-question-card" aria-labelledby="exam-question-title">
         <div class="exam-question-header">
-          <div><span class="exam-question-marks">${question.marks === null ? 'Review against the worked solution' :
+          <div><h2 id="exam-question-title" tabindex="-1">${label}</h2><span class="exam-question-marks">${question.marks === null ? 'Review against the worked solution' :
             markText(question.marks) + (question.workingRequired ? ' · Working marked' : '')}</span>
-            <h2 id="exam-question-title" tabindex="-1">${label}</h2></div>
-          <button class="btn small ghost" data-flag type="button" aria-pressed="false">Flag</button>
+          </div>
+          <div class="exam-save-stats"><span class="exam-save" role="status" data-exam-save>Saved</span>
+            <span data-answer-count></span></div>
         </div>
         ${paper.referencePages ? `<details class="exam-model-solution"><summary>Full team paper and any answer sheets</summary>
           <div class="exam-maths">${paperPages(paper.questionFile, paper.referencePages, 'Team paper')}</div></details>` : ''}
         ${mathMarkup(question, paper)}
         <section class="exam-response" aria-label="Your response">
           <div class="exam-answer-wrap">
-            <label for="exam-answer">Final answer</label>
+            <label for="exam-answer">Your answer</label>
             <input class="ans" id="exam-answer" type="text" inputmode="${integer && (question.integerMin ?? 1) >= 0 ? 'numeric' : 'text'}"
               autocomplete="off" spellcheck="false" autocapitalize="off"
-              maxlength="${fieldLimits.answer}" aria-describedby="exam-answer-help">
+              maxlength="${fieldLimits.answer}" aria-describedby="exam-answer-help" placeholder="${integer ? `Enter a whole number from ${question.integerMin ?? 1} to ${question.integerMax ?? 999}` : 'Enter your answer'}">
             <small id="exam-answer-help">${editorGuide(question)}</small>
           </div>
+          <details class="exam-practice-tools"${question.workingRequired || saved.working || saved.sketch?.length ? ' open' : ''}>
+            <summary>Working and maths tools</summary>
           <label for="exam-working">Working out <small>${question.workingRequired ?
             (question.marks === null ? 'Saved for review' : 'Required for full marks') : 'Saved for review'}</small></label>
           <textarea id="exam-working" rows="5" maxlength="${fieldLimits.working}"
@@ -361,11 +357,19 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
                 <span data-sketch-status role="status"></span></div>
             </div>
           </details>
+          </details>
         </section>
+        <nav class="exam-navigator" aria-label="${paper.team ? 'Parts' : 'Questions'}">${questions.map((item, index) =>
+          `<button type="button" data-question-index="${index}"${index === currentIndex ? ' aria-current="step"' : ''}>${item.number}</button>`).join('')}</nav>
+        <div class="exam-question-controls">
+          <button class="btn ghost" type="button" data-previous${currentIndex === 0 ? ' disabled' : ''}>Previous</button>
+          <button class="btn" type="button" data-next>${currentIndex < questions.length - 1 ? 'Next' : 'Submit'}</button>
+        </div>
       </article>
-      <div class="exam-question-controls">
-        <button class="btn ghost" type="button" data-previous${currentIndex === 0 ? ' disabled' : ''}>← Previous</button>
-        <button class="btn" type="button" data-next>${currentIndex < questions.length - 1 ? 'Next question →' : 'Review &amp; submit'}</button>
+      <div class="exam-practice-controls">
+        <button class="btn small ghost" data-flag type="button" aria-pressed="false">Flag</button>
+        <span data-flag-count></span>
+        <button class="btn small ghost" type="button" data-end-exam>Review &amp; submit</button>
       </div>
       <dialog class="exam-dialog" aria-labelledby="exam-submit-title"></dialog>
     </div>`);
@@ -388,11 +392,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
     const reference = root.querySelector('.exam-question-card > details');
     reference?.addEventListener('toggle', () => { if (reference.open) loadPaperPages(reference); }, { once: true });
     mountKeypad(root, answer, working, ['integer', 'text'].includes(question.answerFormat));
-    const topHeight = () => {
-      root.style.setProperty('--exam-top', (document.querySelector('.top')?.offsetHeight || 0) + 'px');
-    };
-    topHeight();
-    hiddenSync = () => { topHeight(); updateClock(); };
+    hiddenSync = updateClock;
     function previewWorking() {
       previewWrapper.hidden = !working.value.trim();
       if (!previewWrapper.hidden) workingPreview(preview, working.value, plainMath);
@@ -418,8 +418,12 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
         const state = invalid ? 'check answer format' : complete ? 'answered' : hasWorking ? 'working saved, no answer' : 'unanswered';
         button.setAttribute('aria-label', `${labelFor(paper, q.number)}, ${state}${r.flag ? ', flagged' : ''}`);
       }
-      root.querySelector('[data-answer-count]').textContent = `${answered} of ${questions.length} answered`;
+      root.querySelector('[data-answer-count]').textContent = `Answered: ${answered}/${questions.length}`;
       root.querySelector('[data-flag-count]').textContent = flagged ? `${flagged} flagged` : '';
+      const invalid = integer && questionGaps([question], run.responses).invalid.length > 0;
+      answer.setAttribute('aria-invalid', String(invalid));
+      root.querySelector('[data-next]').disabled = integer &&
+        (invalid || !run.responses[question.id]?.answer?.trim());
       const isFlagged = Boolean(run.responses[question.id]?.flag);
       flag.setAttribute('aria-pressed', String(isFlagged));
       flag.textContent = isFlagged ? 'Flagged' : 'Flag';
@@ -433,7 +437,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
           return false;
         }
         run = next;
-        saveText.textContent = 'Saved on this device';
+        saveText.textContent = 'Saved';
         updateNavigation();
         return true;
       } catch {
@@ -503,10 +507,10 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
     root.querySelector('[data-end-exam]').onclick = confirmSubmit;
     function updateClock() {
       const seconds = run.deadline === null ? Math.floor(Math.max(0, Date.now() - run.startedAt) / 1000) : remaining(run);
-      const text = displayTime(seconds);
+      const text = [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60]
+        .map(part => String(part).padStart(2, '0')).join(':');
       if (timer.textContent !== text) timer.textContent = text;
-      timer.classList.toggle('exam-clock-soon', run.deadline !== null && seconds <= 180);
-      timer.classList.toggle('exam-clock-low', run.deadline !== null && seconds <= 60);
+      timer.parentElement.classList.toggle('exam-clock-warning', run.deadline !== null && seconds <= 300);
       const dialogClock = dialog.querySelector('[data-dialog-clock]');
       if (dialogClock) dialogClock.textContent = timer.textContent;
       if (run.deadline !== null && seconds === 0) finish(true);
@@ -536,7 +540,10 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
     };
     interval = setInterval(updateClock, 250);
     updateClock();
-    if (focusQuestion) root.querySelector('#exam-question-title').focus({ preventScroll: true });
+    if (focusQuestion) {
+      window.scrollTo(0, 0);
+      root.querySelector('#exam-question-title').focus({ preventScroll: true });
+    }
   }
 
   function reviewRow(paper, row, result) {

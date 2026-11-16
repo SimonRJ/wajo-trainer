@@ -1,5 +1,5 @@
 /* WAJO Trainer — progress stays in this browser. */
-import { createExamCentre } from './exam.mjs?v=all-years';
+import { createExamCentre } from './exam.mjs?v=competition-layout';
 (function () {
   "use strict";
   var W = window.WAJO, app = document.getElementById("app"), KEY = "wajo.v1", tick = null;
