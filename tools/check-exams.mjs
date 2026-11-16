@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
-import { readFile, stat } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { readFile, readdir, stat } from 'node:fs/promises';
 import { runInNewContext } from 'node:vm';
 import { checkAnswer, gradePaper, questionGaps, remaining } from '../exam-rules.mjs';
 import { createExamStore } from '../exam-store.mjs';
 import { examInsights, questionTopic, retryQuestions, studyTopics } from '../exam-training.mjs';
+import { validateProgressBackup } from '../practice-progress.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = async path => JSON.parse(await readFile(new URL(path, root), 'utf8'));
@@ -12,6 +14,22 @@ const { papers: teamPapers } = await read('data/wajo/team-papers.json');
 const teamSolutions = await read('data/wajo/team-solutions.json');
 assert.deepEqual(papers.map(paper => paper.year), Array.from({ length: 27 }, (_, index) => 2026 - index));
 assert.deepEqual(teamPapers.map(paper => paper.year), Array.from({ length: 26 }, (_, index) => 2025 - index));
+
+const pdfPaths = papers.flatMap(paper => ['questions', 'solutions'].map(kind => `papers/wajo-${paper.year}-${kind}.pdf`)).sort();
+const archiveFiles = await readdir(new URL('papers/', root), { withFileTypes: true });
+assert.deepEqual(archiveFiles.filter(file => file.isFile() && file.name.endsWith('.pdf'))
+  .map(file => `papers/${file.name}`).sort(), pdfPaths, 'The archive must contain both PDFs for every year.');
+const manifest = (await readFile(new URL('papers/SHA256SUMS', root), 'utf8')).trim().split('\n').map(line => {
+  const match = /^([0-9a-f]{64})  (papers\/wajo-20\d{2}-(?:questions|solutions)\.pdf)$/.exec(line);
+  assert(match, 'Invalid archive checksum entry.');
+  return [match[2], match[1]];
+});
+assert.deepEqual(manifest.map(([path]) => path), pdfPaths, 'The checksum manifest must list every PDF once.');
+for (const [path, hash] of manifest) {
+  const bytes = await readFile(new URL(path, root));
+  assert.equal(bytes.subarray(0, 5).toString('ascii'), '%PDF-', path);
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), hash, `Unexpected archive bytes: ${path}`);
+}
 
 function checkPages(pages, id) {
   assert(pages.length > 0, id);
@@ -92,7 +110,7 @@ assert.equal(checkAnswer(first, '84 apples', 84), 'invalid');
 assert.equal(checkAnswer(first, '84.0', 84), 'invalid');
 assert.equal(checkAnswer(first, '', 84), 'blank');
 const course = { window: {} };
-for (const path of ['number', 'algebra', 'geometry', 'mocks']) {
+for (const path of ['number', 'algebra', 'geometry', 'mocks', 'team']) {
   runInNewContext(await readFile(new URL(`data/${path}.js`, root), 'utf8'), course);
 }
 const { modules, mocks } = course.window.WAJO;
@@ -106,6 +124,22 @@ for (const mock of mocks) {
 }
 const practiceIds = modules.flatMap(module => module.problems.map(question => question.id));
 assert.equal(practiceIds.length, new Set(practiceIds).size);
+const restored = validateProgressBackup({
+  p: { t1: { t: 2, s: 1 }, unexpected: { s: 1 } },
+  redos: { t1: { t: 0, s: 1, solvedBefore: true } },
+  mocks: { mockA: { best: 'invalid score', hist: [{ score: 24, timed: 1 }, { score: '25' }, null] } },
+  team: { teamA: { a0: 'a < b and b & c', m0: 2, m1: 100 } },
+  days: ['2026-11-16', 'invalid date'],
+  run: { id: 'mockB', start: 1_800_000_000_000, timed: 1, ans: { 0: '10' } },
+}, course.window.WAJO);
+assert.deepEqual(restored.p.t1, { t: 2, s: 1 });
+assert.equal(restored.p.unexpected, undefined);
+assert.equal(restored.redos.t1.solvedBefore, true);
+assert.deepEqual(restored.mocks.mockA, { best: 24, hist: [{ score: 24, timed: true }] });
+assert.deepEqual(restored.team.teamA, { a0: 'a < b and b & c', m0: 2 });
+assert.deepEqual(restored.days, ['2026-11-16']);
+assert.deepEqual(restored.run, { id: 'mockB', start: 1_800_000_000_000, timed: true, ans: { 0: '10' } });
+assert.throws(() => validateProgressBackup({ p: [] }, course.window.WAJO), /Invalid practice backup/);
 const { questions: early, solutions: earlyKeys } = byYear.get(2001);
 assert.equal(checkAnswer(early[0], '−40', earlyKeys[early[0].id].answer), 'correct');
 assert.equal(checkAnswer(early[2], '1334', earlyKeys[early[2].id].answer), 'correct');
@@ -206,4 +240,4 @@ const teamRun = rounds.start(teamPapers.at(-1));
 assert.equal(remaining(teamRun, now), 2700);
 rounds.saveResponse(teamRun.id, 'wajo00_team_q1', { working: 'Count the removed cubes.' });
 assert.equal(rounds.validateBackup(rounds.exportState()).active.responses.wajo00_team_q1.working, 'Count the removed cubes.');
-console.log(`PASS: ${papers.length} individual papers, ${teamPapers.length} team papers, ${ids.size} responses and keys, ${modules.length} lessons, ${practiceIds.length} practice problems, mocks, media, marking, timer, retries and backup.`);
+console.log(`PASS: ${pdfPaths.length} PDF checksums, ${papers.length} individual papers, ${teamPapers.length} team papers, ${ids.size} responses and keys, ${modules.length} lessons, ${practiceIds.length} practice problems, mocks, media, marking, timer, retries and backup.`);

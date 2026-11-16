@@ -1,6 +1,7 @@
 /* WAJO Trainer — progress stays in this browser. */
-import { createExamCentre } from './exam.mjs?v=training';
+import { createExamCentre } from './exam.mjs?v=security';
 import { studyTopics } from './exam-training.mjs';
+import { cleanProgress, validateProgressBackup } from './practice-progress.mjs';
 (function () {
   "use strict";
   var W = window.WAJO, app = document.getElementById("app"), KEY = "wajo.v1", tick = null;
@@ -9,9 +10,9 @@ import { studyTopics } from './exam-training.mjs';
   var mem = null;
   function load() {
     if (mem) return mem;
-    try { mem = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { mem = {}; }
-    mem.p = mem.p || {}; mem.redos = mem.redos || {}; mem.mocks = mem.mocks || {}; mem.team = mem.team || {};
-    mem.days = mem.days || []; mem.read = mem.read || {};
+    var stored;
+    try { stored = JSON.parse(localStorage.getItem(KEY)); } catch { /* Invalid saved JSON. */ }
+    mem = cleanProgress(stored, W);
     return mem;
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(mem)); } catch (e) { /* private mode: keep in memory */ } }
@@ -22,7 +23,7 @@ import { studyTopics } from './exam-training.mjs';
       min: Math.round((result.submittedAt - result.startedAt) / 60000), timed: result.deadline !== null };
     if (prior < 0) record.hist.push(entry);
     else record.hist[prior] = entry;
-    record.best = Math.max(0, ...record.hist.map(function (item) { return item.score || 0; }));
+    record.best = record.hist.reduce(function (best, item) { return Math.max(best, item.score); }, 0);
     save();
   }
   function today() { var d = new Date(); return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
@@ -316,11 +317,14 @@ import { studyTopics } from './exam-training.mjs';
     h('<a class="crumb" href="#/team">← Team round</a><h1>' + t.title + '</h1><div class="timer"><span id="tleft" role="timer">50:00</span><button class="btn small" id="practice-timer">Start 50-minute timer</button></div><div class="card">' + t.intro + "</div>" +
       t.parts.map(function (p, i) {
         var opts = ""; for (var k = 0; k <= p.m; k++) opts += "<option" + (+(r["m" + i] || 0) === k ? " selected" : "") + ">" + k + "</option>";
-        return '<div class="prob"><div class="ptop"><span>Part ' + L[i] + "</span><span>[" + p.m + ' marks]</span></div><p class="pq">' + p.q + '</p><textarea data-i="' + i + '" placeholder="Write your answer and reasoning here (or on paper)…">' + (r["a" + i] || "").replace(/</g, "&lt;") + '</textarea><div class="row" style="margin-top:8px"><button class="btn ghost small" data-show="' + i + '">Show model answer</button><label>My mark: <select data-m="' + i + '">' + opts + "</select> / " + p.m + '</label></div><div class="sol" id="ma' + i + '" hidden><b>Model answer:</b> ' + p.a + "</div></div>";
+        return '<div class="prob"><div class="ptop"><span>Part ' + L[i] + "</span><span>[" + p.m + ' marks]</span></div><p class="pq">' + p.q + '</p><textarea data-i="' + i + '" placeholder="Write your answer and reasoning here (or on paper)…"></textarea><div class="row" style="margin-top:8px"><button class="btn ghost small" data-show="' + i + '">Show model answer</button><label>My mark: <select data-m="' + i + '">' + opts + "</select> / " + p.m + '</label></div><div class="sol" id="ma' + i + '" hidden><b>Model answer:</b> ' + p.a + "</div></div>";
       }).join("") + '<div class="card" id="ttotal"></div>');
     function total() { var got = 0, max = 0; t.parts.forEach(function (p, i) { max += p.m; got += +(r["m" + i] || 0); }); document.getElementById("ttotal").innerHTML = "<b>Self-marked total: " + got + " / " + max + "</b>"; }
     total();
-    app.querySelectorAll("textarea").forEach(function (a) { a.oninput = function () { r["a" + a.dataset.i] = a.value; save(); }; });
+    app.querySelectorAll("textarea").forEach(function (a) {
+      a.value = r["a" + a.dataset.i] || "";
+      a.oninput = function () { r["a" + a.dataset.i] = a.value; save(); };
+    });
     app.querySelectorAll("[data-show]").forEach(function (b) { b.onclick = function () { document.getElementById("ma" + b.dataset.show).hidden = false; touchDay(); }; });
     app.querySelectorAll("[data-m]").forEach(function (s) { s.onchange = function () { r["m" + s.dataset.m] = +s.value; r.marked = 1; save(); total(); }; });
     mountPracticeTimer(50, r);
@@ -363,8 +367,8 @@ import { studyTopics } from './exam-training.mjs';
       var reader = new FileReader();
       reader.onload = function () {
         try {
-          var { examCentre, ...progressData } = JSON.parse(reader.result);
-          if (!progressData.p || typeof progressData.p !== "object") throw new Error();
+          var { examCentre, ...backup } = JSON.parse(reader.result);
+          var progressData = validateProgressBackup(backup, W);
           var savedExams = examCentre == null ? null : exams.validateBackup(examCentre);
           var oldProgress = localStorage.getItem(KEY);
           localStorage.setItem(KEY, JSON.stringify(progressData));

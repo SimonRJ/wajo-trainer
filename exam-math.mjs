@@ -1,4 +1,4 @@
-import './vendor/katex/katex.min.js';
+import './vendor/katex/katex.min.js?v=0.19.1';
 
 const katex = globalThis.katex;
 const delimiters = /\$\$([\s\S]+?)\$\$|\\\[([\s\S]+?)\\\]|\\\(([\s\S]+?)\\\)|(?<!\\)\$((?:\\[^\n]|[^$\\\n])+?)\$|\\begin\{(align\*?|gather\*?|equation\*?|aligned|gathered|array)\}([\s\S]+?)\\end\{\5\}/g;

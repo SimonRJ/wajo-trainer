@@ -1,9 +1,12 @@
-import { getDocument, GlobalWorkerOptions, Util } from './vendor/pdfjs/pdf.min.mjs';
+import { getDocument, GlobalWorkerOptions, Util } from './vendor/pdfjs/pdf.min.mjs?v=6.5.438';
 
-GlobalWorkerOptions.workerSrc = new URL('./vendor/pdfjs/pdf.worker.min.mjs', import.meta.url).href;
+GlobalWorkerOptions.workerSrc = new URL('./vendor/pdfjs/pdf.worker.min.mjs?v=6.5.438', import.meta.url).href;
 const documents = new Map();
 
 function openPdf(file) {
+  if (!/^\.\/papers\/wajo-20\d{2}-(?:questions|solutions)\.pdf$/.test(file)) {
+    throw new Error('Unknown archive PDF.');
+  }
   if (!documents.has(file)) {
     const loading = getDocument({ url: file, isEvalSupported: false, enableXfa: false }).promise;
     documents.set(file, loading);

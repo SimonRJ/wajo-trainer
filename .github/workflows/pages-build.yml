@@ -1,21 +1,34 @@
 name: Verify and publish WAJO Trainer
 on:
   push:
-    branches: [gh-pages]
+    branches: [main, gh-pages]
+  pull_request:
+    branches: [main, gh-pages]
   workflow_dispatch:
-permissions:
-  contents: read
-  pages: write
+permissions: {}
 concurrency:
-  group: wajo-pages
+  group: wajo-verify-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  publish:
+  verify:
+    name: Check archive integrity
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
       - name: Verify the exam archive
         run: node tools/check-exams.mjs
+  publish:
+    name: Request Pages build
+    if: github.ref == 'refs/heads/gh-pages' && github.event_name != 'pull_request'
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+    steps:
       - name: Request a GitHub Pages build
         env:
           GH_TOKEN: ${{ github.token }}

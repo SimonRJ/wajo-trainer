@@ -32,8 +32,8 @@ function cleanMap(value, clean) {
 }
 
 function cleanSitting(run, submitted) {
-  if (!run || typeof run !== 'object' || !/^[\w-]{1,60}$/.test(run.id)
-    || !/^(?:wajo-20(?:[01]\d|2[0-6])(?:-team)?|mock-[a-z0-9-]+)$/.test(run.paperId)
+  if (!run || typeof run !== 'object' || typeof run.id !== 'string' || !/^[\w-]{1,60}$/.test(run.id)
+    || typeof run.paperId !== 'string' || !/^(?:wajo-20(?:[01]\d|2[0-6])(?:-team)?|mock-[a-z0-9-]+)$/.test(run.paperId)
     || !Number.isFinite(run.startedAt) || run.startedAt < 0
     || (run.deadline !== null && (!Number.isFinite(run.deadline) || run.deadline < run.startedAt))) return null;
   const clean = {

@@ -1,7 +1,7 @@
 import { checkAnswer, displayTime, examSeconds, gradePaper, questionGaps, remaining } from './exam-rules.mjs?v=all-years';
-import { createExamStore, fieldLimits } from './exam-store.mjs?v=training';
+import { createExamStore, fieldLimits } from './exam-store.mjs?v=security';
 import { examInsights, retryQuestions, studyTopics } from './exam-training.mjs';
-import { mountKeypad, renderArchiveMath, workingPreview } from './exam-math.mjs?v=notation-2';
+import { mountKeypad, renderArchiveMath, workingPreview } from './exam-math.mjs?v=security';
 import { mountSketch, paintSketch } from './exam-sketch.mjs';
 
 const BANK = './data/wajo/';
@@ -168,7 +168,7 @@ function activate(paper, root) {
 function loadPaperPages(root) {
   const pages = [...root.querySelectorAll('[data-paper-file]')];
   if (!pages.length) return Promise.resolve();
-  return import('./exam-pdf.mjs?v=all-years')
+  return import('./exam-pdf.mjs?v=security')
     .then(({ renderPaperPage }) => Promise.all(pages.map(renderPaperPage)))
     .catch(() => pages.forEach(page => {
       page.removeAttribute('aria-busy');

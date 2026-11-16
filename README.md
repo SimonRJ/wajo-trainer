@@ -43,7 +43,7 @@ The 2000–2012 individual sitting and 2000–2025 team sitting displays use the
 
 The [2025 individual instructions](papers/wajo-2025-questions.pdf) use integer answers. The [2019 individual instructions](papers/wajo-2019-questions.pdf) also require a solution to the final question. Reviewers can confirm alternate valid methods and assign marks for the written questions.
 
-WAJO Trainer is an independent practice site. KaTeX is bundled locally for mathematical typesetting under its [MIT licence](vendor/katex/LICENSE). The exam centre uses PDF.js 5.6.205 to display archive pages under the [Apache 2.0 licence](vendor/pdfjs/LICENSE).
+WAJO Trainer is an independent practice site. [KaTeX 0.19.1](https://github.com/KaTeX/KaTeX/releases/tag/v0.19.1) is bundled locally for mathematical typesetting under its [MIT licence](vendor/katex/LICENSE). The exam centre uses [PDF.js 6.5.438](https://github.com/mozilla/pdf.js/releases/tag/v6.5.438) to display archive pages under the [Apache 2.0 licence](vendor/pdfjs/LICENSE).
 
 ## Video narration
 
@@ -56,4 +56,6 @@ python -m http.server 8000
 node tools/check-exams.mjs
 ```
 
-GitHub Pages publishes from `gh-pages`. Move that branch to the tested release to publish it. The Pages workflow checks the papers, marking and practice data before requesting the build.
+GitHub Pages publishes from `gh-pages`. Wait for the **Check archive integrity** job on `main` before fast-forwarding `gh-pages` to that commit. GitHub can start a Pages build automatically when the publishing branch changes.
+
+The check requires all 54 archive PDFs and compares their bytes with [the SHA-256 manifest](papers/SHA256SUMS). For an intentional paper update, verify the new PDF against its source and update its manifest entry. From the repository root, run `sha256sum -c papers/SHA256SUMS` to verify the archive independently.
