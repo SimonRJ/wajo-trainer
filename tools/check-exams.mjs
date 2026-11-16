@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
+import { runInNewContext } from 'node:vm';
 import { checkAnswer, gradePaper, questionGaps, remaining } from '../exam-rules.mjs';
 import { createExamStore } from '../exam-store.mjs';
+import { examInsights, questionTopic, retryQuestions, studyTopics } from '../exam-training.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = async path => JSON.parse(await readFile(new URL(path, root), 'utf8'));
@@ -38,6 +40,7 @@ for (const paper of papers) {
     assert(!ids.has(id), `${id} is duplicated`);
     ids.add(id);
     assert(question.marks >= 1 && question.marks <= 5, id);
+    assert(questionTopic(question), `${id} needs a practice topic`);
     assert(!('answer' in question) && !('solution' in question) && !('options' in question), id);
     if (question.answerFormat !== 'written') assert.equal(checkAnswer(question, solution.answer, solution.answer), 'correct', id);
     if (question.workingRequired) reviewed.push(id);
@@ -88,6 +91,21 @@ assert.equal(checkAnswer(first, '8 4', 84), 'invalid');
 assert.equal(checkAnswer(first, '84 apples', 84), 'invalid');
 assert.equal(checkAnswer(first, '84.0', 84), 'invalid');
 assert.equal(checkAnswer(first, '', 84), 'blank');
+const course = { window: {} };
+for (const path of ['number', 'algebra', 'geometry', 'mocks']) {
+  runInNewContext(await readFile(new URL(`data/${path}.js`, root), 'utf8'), course);
+}
+const { modules, mocks } = course.window.WAJO;
+const lessonIds = new Set(modules.map(module => module.id));
+for (const topic of Object.values(studyTopics)) {
+  for (const id of topic.modules) assert(lessonIds.has(id), `Missing lesson ${id}`);
+}
+for (const mock of mocks) {
+  assert.equal(mock.qs.length, 16, mock.id);
+  for (const question of mock.qs) assert(questionTopic(question), `${mock.id}: ${question.q} needs a practice topic`);
+}
+const practiceIds = modules.flatMap(module => module.problems.map(question => question.id));
+assert.equal(practiceIds.length, new Set(practiceIds).size);
 const { questions: early, solutions: earlyKeys } = byYear.get(2001);
 assert.equal(checkAnswer(early[0], '−40', earlyKeys[early[0].id].answer), 'correct');
 assert.equal(checkAnswer(early[2], '1334', earlyKeys[early[2].id].answer), 'correct');
@@ -105,6 +123,11 @@ assert.equal(gradePaper(team.content, teamResponses, teamSolutions[team.id]).pen
 const reviewedTeam = gradePaper(team.content, teamResponses, teamSolutions[team.id], { [part.id]: { verdict: 'sound' } });
 assert.equal(reviewedTeam.pending, 0);
 assert.equal(reviewedTeam.rows[0].reviewed, true);
+const teamReviews = { [part.id]: { verdict: 'partial' } };
+const partiallyReviewed = gradePaper(team.content, teamResponses, teamSolutions[team.id], teamReviews);
+assert(!retryQuestions(reviewedTeam.rows, { [part.id]: { verdict: 'sound' } }).some(row => row.question.id === part.id));
+assert.equal(retryQuestions(partiallyReviewed.rows, teamReviews)[0].question.id, part.id);
+assert.deepEqual(examInsights(partiallyReviewed.rows), { topics: [], markBands: [], untagged: 0 });
 const { questions: oldQuestions, solutions: oldKeys } = byYear.get(2013);
 const last = oldQuestions.at(-1);
 assert.equal(checkAnswer(last, '√481/3', oldKeys[last.id].answer), 'correct');
@@ -115,11 +138,23 @@ const fraction = byYear.get(2015).questions.at(-2);
 assert.equal(checkAnswer(fraction, String.raw`\(\frac{288}{98}\)`, '144/49'), 'correct');
 assert.equal(checkAnswer(fraction, '144/00', '144/49'), 'review');
 const responses = { [last.id]: { answer: '√481/3', working: 'Show why the circle is smallest.' } };
-assert.equal(gradePaper(oldQuestions, responses, oldKeys).pending, 1);
+const provisionalGrade = gradePaper(oldQuestions, responses, oldKeys);
+assert.equal(provisionalGrade.pending, 1);
+assert.equal(retryQuestions(provisionalGrade.rows, {}).length, oldQuestions.length - 1);
+const partialMarks = { [last.id]: { mark: 3 } };
+const partialGrade = gradePaper(oldQuestions, responses, oldKeys, partialMarks);
+assert.equal(retryQuestions(partialGrade.rows, partialMarks).at(-1).question.id, last.id);
+assert.equal(examInsights(partialGrade.rows).markBands.reduce((sum, band) => sum + band.max, 0), partialGrade.max);
 assert.equal(gradePaper(oldQuestions, responses, oldKeys).score, 0);
 assert.equal(gradePaper(oldQuestions, responses, oldKeys, { [last.id]: { mark: 3 } }).score, 3);
 assert.equal(gradePaper(oldQuestions, responses, oldKeys, { [last.id]: { mark: 5 } }).pending, 1);
 assert.equal(gradePaper(modern.questions, { [first.id]: { answer: '84' } }, modern.solutions).score, 1);
+const sampleGrade = gradePaper(modern.questions, { [first.id]: { answer: '84' } }, modern.solutions);
+assert.equal(retryQuestions(sampleGrade.rows, {}).length, 15);
+const { topics, markBands, untagged } = examInsights(sampleGrade.rows);
+assert.equal(untagged, 0);
+assert.equal(topics.reduce((sum, topic) => sum + topic.questions, 0), 16);
+assert.deepEqual(markBands[0], { key: 1, questions: 4, full: 1, earned: 1, max: 4 });
 assert.deepEqual(questionGaps([last], {}), { unanswered: ['12'], invalid: [], missingWorking: ['12'] });
 
 const disk = new Map();
@@ -147,6 +182,12 @@ assert.equal(store.saveResponse(run.id, first.id, { answer: '83' }), null);
 assert.equal(store.submit(run.id).id, run.id);
 assert.equal(store.current().attempts.length, 1);
 assert.equal(store.start(papers[0]), null);
+assert.equal(store.validateBackup(store.exportState()).attempts[0].retries, undefined);
+const retry = { answer: '85', working: 'Tried a new method.', sketch: [], checked: true };
+const afterRetry = store.saveRetry(run.id, first.id, retry);
+assert.deepEqual(afterRetry.responses[first.id], initial);
+assert.deepEqual(afterRetry.retries[first.id], retry);
+assert.deepEqual(store.validateBackup(store.exportState()).attempts[0].retries[first.id], retry);
 const mock = { id: 'mock-mocka', repeatable: true, minutes: 100 };
 const mockRun = store.start(mock, false);
 assert.equal(mockRun.deadline, null);
@@ -165,4 +206,4 @@ const teamRun = rounds.start(teamPapers.at(-1));
 assert.equal(remaining(teamRun, now), 2700);
 rounds.saveResponse(teamRun.id, 'wajo00_team_q1', { working: 'Count the removed cubes.' });
 assert.equal(rounds.validateBackup(rounds.exportState()).active.responses.wajo00_team_q1.working, 'Count the removed cubes.');
-console.log(`PASS: ${papers.length} individual papers, ${teamPapers.length} team papers, ${ids.size} responses and keys, local media, marking, timer, locks and backup.`);
+console.log(`PASS: ${papers.length} individual papers, ${teamPapers.length} team papers, ${ids.size} responses and keys, ${modules.length} lessons, ${practiceIds.length} practice problems, mocks, media, marking, timer, retries and backup.`);

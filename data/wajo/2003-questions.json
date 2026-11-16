@@ -15,7 +15,8 @@
       ]
     ],
     "integerMin": -999999,
-    "integerMax": 999999
+    "integerMax": 999999,
+    "topic": "Algebra"
   },
   {
     "id": "wajo03_q2",
@@ -33,7 +34,8 @@
       ]
     ],
     "integerMin": -999999,
-    "integerMax": 999999
+    "integerMax": 999999,
+    "topic": "Combinatorics"
   },
   {
     "id": "wajo03_q3",
@@ -51,7 +53,8 @@
       ]
     ],
     "integerMin": -999999,
-    "integerMax": 999999
+    "integerMax": 999999,
+    "topic": "Number Theory"
   },
   {
     "id": "wajo03_q4",
@@ -69,7 +72,8 @@
       ]
     ],
     "integerMin": -999999,
-    "integerMax": 999999
+    "integerMax": 999999,
+    "topic": "Number Theory"
   },
   {
     "id": "wajo03_q5",
@@ -87,7 +91,8 @@
       ]
     ],
     "integerMin": -999999,
-    "integerMax": 999999
+    "integerMax": 999999,
+    "topic": "Number Theory"
   },
   {
     "id": "wajo03_q6",
@@ -105,7 +110,8 @@
       ]
     ],
     "integerMin": -999999,
-    "integerMax": 999999
+    "integerMax": 999999,
+    "topic": "Algebra"
   },
   {
     "id": "wajo03_q7",
@@ -123,7 +129,8 @@
       ]
     ],
     "integerMin": -999999,
-    "integerMax": 999999
+    "integerMax": 999999,
+    "topic": "Geometry"
   },
   {
     "id": "wajo03_q8",
@@ -141,7 +148,8 @@
       ]
     ],
     "integerMin": -999999,
-    "integerMax": 999999
+    "integerMax": 999999,
+    "topic": "Algebra"
   },
   {
     "id": "wajo03_q9",
@@ -159,7 +167,8 @@
       ]
     ],
     "integerMin": -999999,
-    "integerMax": 999999
+    "integerMax": 999999,
+    "topic": "Number Theory"
   },
   {
     "id": "wajo03_q10",
@@ -177,6 +186,7 @@
       ]
     ],
     "integerMin": -999999,
-    "integerMax": 999999
+    "integerMax": 999999,
+    "topic": "Geometry"
   }
 ]

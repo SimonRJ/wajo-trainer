@@ -56,6 +56,14 @@ function cleanSitting(run, submitted) {
       note: savedText(review.note, MAX_NOTE),
       answerVerdict: ['correct', 'incorrect'].includes(review.answerVerdict) ? review.answerVerdict : '',
     }));
+    if (run.retries) {
+      clean.retries = cleanMap(run.retries, response => ({
+        answer: savedText(response.answer, MAX_ANSWER),
+        working: savedText(response.working, MAX_WORKING),
+        sketch: validSketch(response.sketch),
+        checked: response.checked === true,
+      }));
+    }
     if (run.summary && Number.isInteger(run.summary.score) && Number.isInteger(run.summary.max) &&
       Number.isInteger(run.summary.pending) && run.summary.score >= 0 && run.summary.score <= run.summary.max &&
       run.summary.max <= 200 && run.summary.pending >= 0) {
@@ -164,6 +172,10 @@ export function createExamStore(storage, clock = () => Date.now()) {
   return {
     storageKey: STORE_KEY,
     current, start, submit, saveResponse, editResult,
+    saveRetry: (id, questionId, patch) => editResult(id, run => ({
+      ...run,
+      retries: { ...run.retries, [questionId]: { ...run.retries?.[questionId], ...patch } },
+    })),
     select: (id, index) => update(id, run => ({ ...run, current: index })),
     exportState: read,
     validateBackup: cleanState,

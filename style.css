@@ -409,3 +409,43 @@ main:has(.exam-sitting) { max-width: 76rem; padding: 1rem 1rem 2rem; }
 .exam-start .btn { background: #0f172a; color: white; }
 .exam-start .btn.ghost { background: transparent; color: #0f172a; border-color: currentColor; }
 .exam-start a { color: #0f172a; }
+
+.training-start {
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 1rem clamp(1rem, 3vw, 1.4rem);
+}
+.training-start h2 { margin-top: 0; }
+.training-topic-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .65rem 1.15rem;
+  margin: 1rem 0;
+}
+.training-topic-tools label { font-weight: 650; }
+.training-topic-tools select {
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+  padding: .3rem .45rem;
+}
+.exam-next-practice h2, .exam-retry .exam-question-card h2, .exam-retry-feedback h3 { margin-top: 0; }
+.exam-next-practice .sub { margin: .7rem 0 0; font-size: .91rem; }
+.exam-insight-table { margin: .95rem 0 .3rem; font-size: .9rem; }
+.exam-insight-table caption { text-align: left; font-weight: 750; margin-bottom: .35rem; }
+.exam-insight-table td { font-variant-numeric: tabular-nums; }
+.exam-insight-table th[scope="row"] { font-weight: 650; }
+.exam-mark-bands { margin-top: .8rem; }
+.exam-mark-bands summary, .exam-retry-feedback summary { cursor: pointer; }
+.exam-retry [data-retry-form] > .btn, .exam-retry-feedback > .btn { margin-top: 1rem; }
+.exam-retry-feedback { border-top: 1px solid var(--line); margin-top: 1rem; padding-top: 1rem; }
+.exam-retry #exam-answer[aria-invalid="true"] { border-color: var(--bad); }
+.exam-retry [data-retry-save]:empty { display: none; }
+.exam-retry .exam-navigator { grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); margin-bottom: .7rem; }
+@media print {
+  .exam-next-practice .row { display: none; }
+}

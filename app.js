@@ -1,5 +1,6 @@
 /* WAJO Trainer — progress stays in this browser. */
-import { createExamCentre } from './exam.mjs?v=competition-layout';
+import { createExamCentre } from './exam.mjs?v=training';
+import { studyTopics } from './exam-training.mjs';
 (function () {
   "use strict";
   var W = window.WAJO, app = document.getElementById("app"), KEY = "wajo.v1", tick = null;
@@ -9,7 +10,8 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
   function load() {
     if (mem) return mem;
     try { mem = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { mem = {}; }
-    mem.p = mem.p || {}; mem.mocks = mem.mocks || {}; mem.team = mem.team || {}; mem.days = mem.days || []; mem.read = mem.read || {};
+    mem.p = mem.p || {}; mem.redos = mem.redos || {}; mem.mocks = mem.mocks || {}; mem.team = mem.team || {};
+    mem.days = mem.days || []; mem.read = mem.read || {};
     return mem;
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(mem)); } catch (e) { /* private mode: keep in memory */ } }
@@ -39,14 +41,47 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
   W.modules.forEach(function (m) { m.lesson = M(m.lesson); m.problems.forEach(function (p) { p.q = M(p.q); p.h = M(p.h); p.s = M(p.s); p.mod = m; ALL.push(p); BYID[p.id] = p; }); });
   W.mocks.forEach(function (m) { m.qs.forEach(function (q) { q.q = M(q.q); q.s = M(q.s); }); });
   W.team.forEach(function (t) { t.intro = M(t.intro); t.parts.forEach(function (p) { p.q = M(p.q); p.a = M(p.a); }); });
-  function solved(id) { var r = load().p[id]; return r && r.s; }
+  function solved(id) {
+    var S = load(), redo = S.redos[id];
+    return Boolean(S.p[id]?.s || redo?.s || redo?.solvedBefore);
+  }
+  function solvedAlone(record) { return Boolean(record?.s && !record.h && !record.r); }
+  function needsReview(p) {
+    var S = load(), record = S.p[p.id];
+    return Boolean(record && (record.h || record.r || record.t >= 2) && !solvedAlone(S.redos[p.id]));
+  }
   function modPct(m) { var n = m.problems.filter(function (p) { return solved(p.id); }).length; return Math.round(100 * n / m.problems.length); }
   function totalSolved() { return ALL.filter(function (p) { return solved(p.id); }).length; }
   function bestMock() { var S = load(), b = null; W.mocks.forEach(function (m) { var r = S.mocks[m.id]; if (r && r.best != null && (b == null || r.best > b)) b = r.best; }); return b; }
   function h(html) { app.innerHTML = html; window.scrollTo(0, 0); }
   function lvl(d) { return "★★★★".slice(0, d) + "☆☆☆☆".slice(0, 4 - d); }
   function fmt(sec) { sec = Math.max(0, Math.floor(sec)); return Math.floor(sec / 60) + ":" + ("0" + (sec % 60)).slice(-2); }
-  function parseAns(v) { v = String(v).replace(/[\s,]/g, ""); return /^-?\d+$/.test(v) ? parseInt(v, 10) : null; }
+  function mountPracticeTimer(minutes, record) {
+    var clock = document.getElementById("tleft"), button = document.getElementById("practice-timer");
+    function update() {
+      var running = Number.isFinite(record.timerEnds) && record.timerEnds > Date.now();
+      var text = running ? fmt(Math.ceil((record.timerEnds - Date.now()) / 1000)) + " left" :
+        record.timerEnds ? "Time is up" : fmt(minutes * 60);
+      if (clock.textContent !== text) clock.textContent = text;
+      button.disabled = running;
+      if (!running) clearInterval(tick);
+    }
+    button.onclick = function () {
+      record.timerEnds = Date.now() + minutes * 60000;
+      save();
+      clearInterval(tick);
+      tick = setInterval(update, 250);
+      update();
+    };
+    if (Number.isFinite(record.timerEnds) && record.timerEnds > Date.now()) tick = setInterval(update, 250);
+    update();
+  }
+  function parseAns(v) {
+    v = String(v).trim().normalize("NFKC").replace(/−/g, "-");
+    if (!/^-?(?:\d+|\d{1,3}(?:,\d{3})+)$/.test(v)) return null;
+    var value = Number(v.replace(/,/g, ""));
+    return Number.isSafeInteger(value) ? value : null;
+  }
   var exams = createExamCentre({
     app: app, show: h, mocks: W.mocks, plainMath: M,
     onMockResult: saveMockResult, onExamActivity: touchDay,
@@ -55,23 +90,25 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
   });
 
   /* ---------- problem card ---------- */
-  function probHTML(p, n) {
-    var r = load().p[p.id] || {};
-    return '<div class="prob' + (r.s ? " done" : "") + '" data-id="' + p.id + '">' +
+  function probHTML(p, n, redo = false) {
+    var S = load(), r = (redo ? S.redos : S.p)[p.id] || {};
+    return '<div class="prob' + (r.s ? " done" : "") + '" data-id="' + p.id + '"' + (redo ? ' data-practice-redo' : '') + '>' +
       '<div class="ptop"><span>' + (n ? "Problem " + n + " · " : "") + p.mod.title + '</span><span class="lvl" title="Level ' + p.d + ' of 4">' + lvl(p.d) + "</span></div>" +
       '<p class="pq">' + p.q + "</p>" +
-      '<div class="row"><input class="ans" inputmode="numeric" autocomplete="off" placeholder="Answer" aria-label="Your answer"' + (r.s ? ' value="' + p.a + '"' : "") + ">" +
+      '<div class="row"><input class="ans" inputmode="' + (p.a < 0 ? 'text' : 'numeric') + '" autocomplete="off" placeholder="Answer" aria-label="Your answer"' + (r.s ? ' value="' + p.a + '"' : "") + ">" +
       '<button class="btn small" data-act="check">Check</button>' +
       '<button class="btn ghost small" data-act="hint">Hint</button>' +
       '<button class="btn ghost small" data-act="sol">Solution</button></div>' +
-      '<div class="out">' + (r.s ? '<p class="fb ok">✓ Solved' + (r.r ? " (with help)" : "") + "</p>" : "") + "</div></div>";
+      '<div class="out" aria-live="polite">' + (r.s ? '<p class="fb ok">✓ Solved' + (r.r || r.h ? " (with help)" : "") + "</p>" : "") + "</div></div>";
   }
   app.addEventListener("click", function (e) {
     var b = e.target.closest("[data-act]"); if (!b) return;
     var card = b.closest(".prob"); if (!card) return;
-    var p = BYID[card.dataset.id], S = load(), r = S.p[p.id] = S.p[p.id] || { t: 0 }, out = card.querySelector(".out"), act = b.dataset.act;
+    var p = BYID[card.dataset.id], S = load(), redo = card.hasAttribute("data-practice-redo");
+    var records = redo ? S.redos : S.p, r = records[p.id] = records[p.id] || { t: 0 };
+    var out = card.querySelector(".out"), act = b.dataset.act;
     touchDay();
-    if (act === "hint") { r.h = 1; if (!out.querySelector(".hint")) out.insertAdjacentHTML("beforeend", '<div class="hint"><b>Hint:</b> ' + p.h + "</div>"); }
+    if (act === "hint") { if (!r.s) r.h = 1; if (!out.querySelector(".hint")) out.insertAdjacentHTML("beforeend", '<div class="hint"><b>Hint:</b> ' + p.h + "</div>"); }
     if (act === "sol") { if (!r.s) r.r = 1; if (!out.querySelector(".sol")) out.insertAdjacentHTML("beforeend", '<div class="sol"><b>Solution:</b> ' + p.s + "</div>"); }
     if (act === "check") {
       var v = parseAns(card.querySelector(".ans").value), fb = out.querySelector(".fb");
@@ -80,7 +117,7 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
       else if (v === p.a) {
         if (!r.s) { r.s = 1; r.ts = Date.now(); }
         card.classList.add("done");
-        out.insertAdjacentHTML("afterbegin", '<p class="fb ok">✓ Correct!' + (r.t === 0 && !r.r && !r.h ? " First go, no help." : "") + "</p>");
+        out.insertAdjacentHTML("afterbegin", '<p class="fb ok">✓ Correct!' + (!redo && r.t === 0 && !r.r && !r.h ? " First go, no help." : "") + "</p>");
         if (!out.querySelector(".sol")) out.insertAdjacentHTML("beforeend", '<div class="sol"><b>Solution:</b> ' + p.s + "</div>");
       } else {
         if (!r.s) r.t++;
@@ -99,7 +136,7 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
     ["Week 1", "tools", "Learn the eight moves. Finish every toolkit problem."],
     ["Week 2", "divis", "Divisibility tests and primes until they are automatic."],
     ["Week 3", "factors", "Divisor counting, GCD and LCM."],
-    ["Week 4", "words", "Word problems: quick, safe marks."],
+    ["Week 4", "words,stats", "Practise rates, word problems and weighted averages."],
     ["Week 5", "mod,digits", "Remainders and digit puzzles."],
     ["Week 6", "seq", "Sequences and sums. Then sit <a href='#/mocks'>Mock Paper A</a> under exam conditions."],
     ["Week 7", "angles,area", "Angle chasing, Pythagoras and similar triangles."],
@@ -114,15 +151,21 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
   function home() {
     var S = load(), ts = totalSolved(), bm = bestMock();
     var next = W.modules.filter(function (m) { return modPct(m) < 80; })[0];
+    var examData;
+    try { examData = exams.exportState(); } catch { /* Other training is still available. */ }
+    var lastExam = examData?.attempts.at(-1);
     h('<h1>Train for the WA Junior Mathematics Olympiad</h1>' +
-      '<p class="sub">A complete course for keen students in Years 7–9: 14 lessons, ' + ALL.length + ' practice problems with hints and full solutions, 3 timed mock papers and 3 team investigations.</p>' +
+      '<p class="sub">Build skills for Years 7–9 with ' + W.modules.length + ' lessons, ' + ALL.length + ' practice problems, timed past papers and original mocks.</p>' +
+      '<section class="training-start" aria-labelledby="training-start"><h2 id="training-start">What would you like to work on?</h2><div class="row">' +
+      '<a class="btn" href="#/practice/daily">Do the Daily Five</a>' +
+      (examData?.active ? '<a class="btn ghost" href="#/exam/' + examData.active.paperId + '">Resume exam</a>' : '<a class="btn ghost" href="#/exams">Sit a timed paper</a>') +
+      (lastExam ? '<a class="btn ghost" href="#/exam-result/' + lastExam.id + '">Review last exam</a>' : '<a class="btn ghost" href="#/practice">Practise by topic</a>') +
+      '</div></section>' +
       '<div class="stats"><div class="stat"><b>' + ts + "/" + ALL.length + '</b><span>problems solved</span></div>' +
       '<div class="stat"><b>' + streak() + '</b><span>day streak</span></div>' +
       '<div class="stat"><b>' + (bm == null ? "–" : bm + "/40") + '</b><span>best mock score</span></div>' +
       '<div class="stat"><b>' + Object.keys(S.read).length + "/" + W.modules.length + '</b><span>lessons read</span></div></div>' +
-      '<div class="card"><h3 style="margin-top:0">Today</h3><div class="row">' +
-      (next ? '<a class="btn" href="#/m/' + next.id + '">' + (ts ? "Continue: " : "Start: ") + next.title + "</a>" : '<a class="btn" href="#/mocks">All modules done. Sit a mock paper</a>') +
-      '<a class="btn ghost" href="#/practice/daily">Daily five</a><a class="btn ghost" href="#/exams">Exam centre</a></div></div>' +
+      (next ? '<p><a href="#/m/' + next.id + '">' + (ts ? 'Continue learning · ' : 'Start learning · ') + next.title + '</a></p>' : '') +
       '<h2>What is WAJO?</h2><div class="card"><ul style="margin:0;padding-left:1.2em">' +
       "<li>A problem-solving competition for WA students in <b>Years 7, 8 and 9</b>, run at UWA by the WA Mathematical Olympiads Committee since 1999. Entry is through your school.</li>" +
       "<li><b>Individual paper:</b> 100 minutes, no calculator. The question count, answer format and written-working rules follow the paper year.</li>" +
@@ -139,7 +182,7 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
   function learn() {
     var strands = [];
     W.modules.forEach(function (m) { if (strands.indexOf(m.strand) < 0) strands.push(m.strand); });
-    h("<h1>Learn</h1><p class='sub'>Fourteen modules covering everything WAJO tests. Follow the 12-week plan on the home page, or pick what you need.</p>" +
+    h("<h1>Learn</h1><p class='sub'>Learn the main problem-solving techniques. Follow the 12-week plan on the home page, or pick a topic to strengthen.</p>" +
       strands.map(function (s) {
         return "<h2>" + s + '</h2><div class="grid">' + W.modules.filter(function (m) { return m.strand === s; }).map(function (m) {
           var pc = modPct(m);
@@ -159,8 +202,8 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
   }
 
   function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
-  function practice(mode, arg) {
-    var S = load(), list, title, sub;
+  function practice(mode, arg, level) {
+    var S = load(), list, title, sub, tools = '';
     if (mode === "daily") {
       if (!S.daily || S.daily.d !== today()) {
         var un = shuffle(ALL.filter(function (p) { return !solved(p.id); })), seen = {}, pick = [];
@@ -168,23 +211,53 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
         un.forEach(function (p) { if (pick.length < 5 && pick.indexOf(p.id) < 0) pick.push(p.id); });
         S.daily = { d: today(), ids: pick }; save();
       }
-      list = S.daily.ids.map(function (i) { return BYID[i]; }).filter(Boolean); title = "Daily five"; sub = "Five unsolved problems from different topics. A new set appears each day.";
+      list = S.daily.ids.map(function (i) { return BYID[i]; }).filter(Boolean);
+      title = "Daily Five"; sub = "Up to five unsolved problems from different topics.";
     } else if (mode === "review") {
-      list = ALL.filter(function (p) { var r = S.p[p.id]; return r && (r.r || r.t >= 2); }); title = "Review list"; sub = "Problems where you needed the solution or several tries. Press 'Start fresh' and solve them again without help.";
+      list = ALL.filter(needsReview);
+      title = "Review list"; sub = "Try again without help. Your original work and progress stay recorded.";
+    } else if (mode === "topic" && Object.hasOwn(studyTopics, arg)) {
+      var topic = studyTopics[arg], selected = /^[1-4]$/.test(level || '') ? Number(level) : 0;
+      list = ALL.filter(function (p) { return topic.modules.includes(p.mod.id) && (!selected || p.d === selected); })
+        .sort(function (a, b) { return Number(solved(a.id)) - Number(solved(b.id)) || a.d - b.d; });
+      title = topic.label; sub = "Start with an unsolved question. Change level to practise a particular difficulty.";
+      tools = '<div class="training-topic-tools"><label>Level <select id="topic-level"><option value="">All levels</option>' +
+        [1, 2, 3, 4].map(function (d) { return '<option value="' + d + '"' + (d === selected ? ' selected' : '') + '>Level ' + d + '</option>'; }).join('') +
+        '</select></label><div class="row">' + topic.modules.map(function (id) {
+          return '<a href="#/m/' + id + '">' + modById(id).title + '</a>';
+        }).join('') + '</div></div>';
     } else if (mode === "level") {
       var d = parseInt(arg, 10) || 1; list = ALL.filter(function (p) { return p.d === d; }); title = "Level " + d + " problems"; sub = lvl(d) + " – like the " + d + "-mark questions on the individual paper.";
     } else {
-      var rev = ALL.filter(function (p) { var r = S.p[p.id]; return r && (r.r || r.t >= 2); }).length;
+      var rev = ALL.filter(needsReview).length;
       return h("<h1>Practice</h1><p class='sub'>Mixed practice keeps old topics fresh. In the real paper nobody tells you which topic a question belongs to.</p>" +
         '<div class="grid"><a class="mod" href="#/practice/daily"><span class="ic">📅</span><h3>Daily five</h3><p>Five unsolved problems from different topics.</p></a>' +
-        '<a class="mod" href="#/practice/review"><span class="ic">🔁</span><h3>Review list</h3><p>' + rev + " problem" + (rev === 1 ? "" : "s") + " to redo without help.</p></a>" +
+        '<a class="mod" href="#/practice/review"><span class="ic">🔁</span><h3>Review list</h3><p>' + rev + " problem" + (rev === 1 ? "" : "s") + " to redo without help.</p></a></div>" +
+        '<h2>Practise by topic</h2><div class="grid">' +
+        Object.entries(studyTopics).map(function ([key, topic]) {
+          var problems = ALL.filter(function (p) { return topic.modules.includes(p.mod.id); });
+          return '<a class="mod" href="#/practice/topic/' + key + '"><h3>' + topic.label + '</h3><p>' +
+            problems.filter(function (p) { return solved(p.id); }).length + ' of ' + problems.length + ' solved</p></a>';
+        }).join('') + '</div><h2>Practise by level</h2><div class="grid">' +
         [1, 2, 3, 4].map(function (d) { var L = ALL.filter(function (p) { return p.d === d; }), n = L.filter(function (p) { return solved(p.id); }).length; return '<a class="mod" href="#/practice/level/' + d + '"><span class="ic lvl">' + lvl(d) + "</span><h3>Level " + d + "</h3><p>" + n + " of " + L.length + " solved.</p></a>"; }).join("") + "</div>");
     }
-    h('<a class="crumb" href="#/practice">← Practice</a><h1>' + title + '</h1><p class="sub">' + sub + "</p>" +
-      (mode === "review" && list.length ? '<p><button class="btn small" id="fresh">Start fresh</button></p>' : "") +
-      (list.length ? list.map(function (p, k) { return probHTML(p, k + 1); }).join("") : '<div class="card">Nothing here right now. 🎉</div>'));
+    h('<a class="crumb" href="#/practice">← Practice</a><h1>' + title + '</h1><p class="sub">' + sub + "</p>" + tools +
+      (mode === "review" && list.length ? '<p><button class="btn ghost small" id="fresh">Start fresh review</button></p>' : "") +
+      (list.length ? list.map(function (p, k) { return probHTML(p, k + 1, mode === "review"); }).join("") :
+        '<div class="card"><p>No problems in this set.</p><a href="#/practice">Choose another practice set</a></div>'));
     var f = document.getElementById("fresh");
-    if (f) f.onclick = function () { list.forEach(function (p) { S.p[p.id] = { t: 0 }; }); save(); S.review = list.map(function (p) { return p.id; }); h('<a class="crumb" href="#/practice">← Practice</a><h1>Review: fresh attempt</h1>' + list.map(function (p, k) { return probHTML(p, k + 1); }).join("")); };
+    if (f) f.onclick = function () {
+      list.forEach(function (p) {
+        var prior = S.redos[p.id];
+        S.redos[p.id] = { t: 0, solvedBefore: Boolean(prior?.s || prior?.solvedBefore) };
+      });
+      save();
+      practice("review");
+    };
+    var levelSelect = document.getElementById("topic-level");
+    if (levelSelect) levelSelect.onchange = function () {
+      location.hash = '#/practice/topic/' + arg + (levelSelect.value ? '/' + levelSelect.value : '');
+    };
   }
 
   /* ---------- past-paper downloads and score tracker ---------- */
@@ -194,6 +267,7 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
   };
   function past() {
     var S = load(); S.past = S.past || {};
+    S.archiveTimer = S.archiveTimer || {};
     var rows = "", done = 0;
     for (var y = 2026; y >= 2000; y--) {
       var r = S.past[y] || {}; if (r.done) done++;
@@ -212,7 +286,7 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
         (r.done ? " checked" : "") + '> Done</label></div></li>';
     }
     h("<h1>Past papers and solutions</h1><p class='sub'>Open or save the question paper first. Use the separate worked solutions PDF to mark your answers. The paper gives the time limit for each round.</p>" +
-      '<div class="timer"><span id="tleft">100:00</span><button class="btn small" id="pgo">Start 100-minute timer</button></div>' +
+      '<div class="timer"><span id="tleft" role="timer">100:00</span><button class="btn small" id="practice-timer">Start 100-minute individual timer</button></div>' +
       '<p class="sub"><span id="paper-archive-done">' + done + '</span> of 27 past papers done</p>' +
       '<ul class="paper-archive" aria-label="WAJO papers by year">' + rows + '</ul>' +
       '<p class="sub">Source: WAJO (Western Australian Junior Mathematics Olympiad). The 2026 individual round was reconstructed from the ProblemSolvingEducation practice compilation.</p>');
@@ -223,10 +297,7 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
       document.getElementById("paper-archive-done").textContent = done;
       save(); touchDay();
     }; });
-    document.getElementById("pgo").onclick = function () {
-      var end = Date.now() + 6000000; this.disabled = true; clearInterval(tick);
-      tick = setInterval(function () { var el = document.getElementById("tleft"); if (!el) return clearInterval(tick); var left = (end - Date.now()) / 1000; el.textContent = "⏱ " + fmt(left) + " left"; if (left <= 0) { clearInterval(tick); el.textContent = "Time is up! Pencils down."; } }, 1000);
-    };
+    mountPracticeTimer(100, S.archiveTimer);
   }
 
   /* ---------- team round ---------- */
@@ -242,7 +313,7 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
   function teamView(id) {
     var t = W.team.filter(function (x) { return x.id === id; })[0]; if (!t) return team();
     var S = load(), r = S.team[id] = S.team[id] || {}, L = "ABCDEFGHIJKL";
-    h('<a class="crumb" href="#/team">← Team round</a><h1>' + t.title + '</h1><div class="timer"><span id="tleft">50:00</span><button class="btn small" id="tgo">Start 50-minute timer</button></div><div class="card">' + t.intro + "</div>" +
+    h('<a class="crumb" href="#/team">← Team round</a><h1>' + t.title + '</h1><div class="timer"><span id="tleft" role="timer">50:00</span><button class="btn small" id="practice-timer">Start 50-minute timer</button></div><div class="card">' + t.intro + "</div>" +
       t.parts.map(function (p, i) {
         var opts = ""; for (var k = 0; k <= p.m; k++) opts += "<option" + (+(r["m" + i] || 0) === k ? " selected" : "") + ">" + k + "</option>";
         return '<div class="prob"><div class="ptop"><span>Part ' + L[i] + "</span><span>[" + p.m + ' marks]</span></div><p class="pq">' + p.q + '</p><textarea data-i="' + i + '" placeholder="Write your answer and reasoning here (or on paper)…">' + (r["a" + i] || "").replace(/</g, "&lt;") + '</textarea><div class="row" style="margin-top:8px"><button class="btn ghost small" data-show="' + i + '">Show model answer</button><label>My mark: <select data-m="' + i + '">' + opts + "</select> / " + p.m + '</label></div><div class="sol" id="ma' + i + '" hidden><b>Model answer:</b> ' + p.a + "</div></div>";
@@ -252,18 +323,15 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
     app.querySelectorAll("textarea").forEach(function (a) { a.oninput = function () { r["a" + a.dataset.i] = a.value; save(); }; });
     app.querySelectorAll("[data-show]").forEach(function (b) { b.onclick = function () { document.getElementById("ma" + b.dataset.show).hidden = false; touchDay(); }; });
     app.querySelectorAll("[data-m]").forEach(function (s) { s.onchange = function () { r["m" + s.dataset.m] = +s.value; r.marked = 1; save(); total(); }; });
-    document.getElementById("tgo").onclick = function () {
-      var end = Date.now() + 3000000; this.disabled = true; clearInterval(tick);
-      tick = setInterval(function () { var el = document.getElementById("tleft"); if (!el) return clearInterval(tick); var left = (end - Date.now()) / 1000; el.textContent = "⏱ " + fmt(left) + " left"; if (left <= 0) { clearInterval(tick); el.textContent = "Time is up!"; } }, 1000);
-    };
+    mountPracticeTimer(50, r);
   }
 
   /* ---------- tips ---------- */
   function tips() {
     h("<h1>Exam tips</h1><p class='sub'>Knowing the maths is half of it. The other half is spending 100 minutes wisely.</p>" + M(
       '<div class="key"><b>Before the day</b><ul><li>Know by heart: primes to 50, squares to 25², cubes to 10³, powers of 2 to 2¹⁰, and the Pythagorean triples.</li><li>Practise mental and written arithmetic. There is no calculator.</li><li>Sit at least three full timed papers so that 100 minutes feels familiar.</li><li>Sleep well. A rested brain spots patterns.</li></ul></div>' +
-      '<div class="key"><b>The marks</b><table><tr><th>Questions</th><th>Marks each</th><th>Suggested time</th></tr><tr><td>1–4</td><td>1</td><td>about 10 minutes in total</td></tr><tr><td>5–8</td><td>2</td><td>about 20 minutes</td></tr><tr><td>9–12</td><td>3</td><td>about 30 minutes</td></tr><tr><td>13–16</td><td>4</td><td>about 30 minutes</td></tr><tr><td colspan="2">Checking</td><td>the last 10 minutes</td></tr></table></div>' +
-      '<div class="key"><b>During the paper</b><ol><li><b>Read every question twice.</b> Underline what is asked: "how many", "the largest", "the sum of". The commonest lost mark is answering a different question.</li><li><b>Bank the early marks.</b> Questions 1–8 are worth 12 marks and are very gettable. Do them carefully rather than quickly.</li><li><b>Three-minute rule.</b> If you have no idea how to start after three minutes, circle it and move on. Come back later: a fresh look often works.</li><li><b>Hard does not mean last.</b> Question 16 might suit you better than question 13. Read all of 13–16 before choosing where to spend your time.</li><li><b>Use the answer format.</b> Every answer is a positive whole number under 1000. If you get a fraction, a negative or 4000, something went wrong.</li><li><b>Never leave a blank.</b> There is no penalty for a wrong answer, so write your best estimate.</li><li><b>Check by a different route.</b> Substitute back, test a small case, or estimate. Re-reading your own working rarely finds the error.</li></ol></div>' +
+      '<div class="key"><b>Example pacing for the 2025 individual paper</b><table><tr><th>Questions</th><th>Marks each</th><th>Suggested time</th></tr><tr><td>1–4</td><td>1</td><td>about 10 minutes in total</td></tr><tr><td>5–8</td><td>2</td><td>about 20 minutes</td></tr><tr><td>9–12</td><td>3</td><td>about 30 minutes</td></tr><tr><td>13–16</td><td>4</td><td>about 30 minutes</td></tr><tr><td colspan="2">Checking</td><td>the last 10 minutes</td></tr></table></div>' +
+      '<div class="key"><b>During the paper</b><ol><li><b>Read the question twice.</b> Identify exactly what it asks for, such as the largest value, the number of ways or a sum.</li><li><b>Secure the questions you know.</b> Start with questions where you can see an approach. Check the marks shown on the paper.</li><li><b>Flag and move on.</b> If you have made little progress after a few minutes, flag the question and return after completing others.</li><li><b>Choose where to spend time.</b> Read the higher-mark questions before deciding which one to try first.</li><li><b>Follow each question’s answer instructions.</b> Recent individual rounds use positive whole numbers below 1000. Some older questions accept other formats or require a written solution.</li><li><b>Check by a different route.</b> Substitute your answer back into the question, test a small case or estimate its size.</li></ol></div>' +
       '<div class="key"><b>When you are stuck</b><ul><li>Try a smaller version of the problem.</li><li>Draw a diagram or make a table.</li><li>Give the unknown a letter.</li><li>Ask "what stays the same?" and "what is the extreme case?"</li><li>Work backwards from what you want.</li></ul></div>' +
       '<div class="key"><b>In the team paper</b><ul><li>One person reads everything aloud first. Then split the parts.</li><li>Early parts are usually experiments. Do them carefully: later parts depend on them.</li><li>Appoint one scribe so the answer sheet is neat and consistent.</li><li>"Explain" means reasons, not examples. Write: claim, because, therefore.</li><li>With ten minutes left, stop exploring and write up what you have.</li></ul></div>' +
       '<div class="tip">After every practice paper keep an <b>error log</b>: the question, why you missed it, and the idea you learned. Read the log the night before the competition.</div>'));
@@ -273,7 +341,7 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
   function progress() {
     var S = load();
     h("<h1>Progress</h1>" +
-      '<div class="stats"><div class="stat"><b>' + totalSolved() + "/" + ALL.length + '</b><span>problems solved</span></div><div class="stat"><b>' + ALL.filter(function (p) { var r = S.p[p.id]; return r && r.s && !r.r && !r.h; }).length + '</b><span>solved with no help</span></div><div class="stat"><b>' + S.days.length + '</b><span>days practised</span></div><div class="stat"><b>' + streak() + '</b><span>current streak</span></div></div>' +
+      '<div class="stats"><div class="stat"><b>' + totalSolved() + "/" + ALL.length + '</b><span>problems solved</span></div><div class="stat"><b>' + ALL.filter(function (p) { return solvedAlone(S.p[p.id]) || solvedAlone(S.redos[p.id]); }).length + '</b><span>solved with no help</span></div><div class="stat"><b>' + S.days.length + '</b><span>days practised</span></div><div class="stat"><b>' + streak() + '</b><span>current streak</span></div></div>' +
       '<div class="card"><table><tr><th>Module</th><th>Solved</th><th></th></tr>' + W.modules.map(function (m) { var pc = modPct(m), n = m.problems.filter(function (p) { return solved(p.id); }).length; return '<tr><td><a href="#/m/' + m.id + '">' + m.title + "</a></td><td>" + n + "/" + m.problems.length + '</td><td style="width:35%"><div class="bar" style="margin-top:8px"><i style="width:' + pc + '%"></i></div></td></tr>'; }).join("") + "</table></div>" +
       '<div class="card"><b>Exam history</b><p>Reopen a submitted paper and review the working from the <a href="#/exams">Exam centre</a>.</p></div>' +
       '<div class="card"><b>Mock papers</b><table>'  + W.mocks.map(function (m) { var r = S.mocks[m.id]; return "<tr><td>" + m.title + "</td><td>" + (r ? r.hist.map(function (x) { return x.score + "/40" + (x.timed ? "" : " (untimed)"); }).join(", ") : "not attempted") + "</td></tr>"; }).join("") + "</table></div>" +
@@ -329,13 +397,13 @@ import { createExamCentre } from './exam.mjs?v=competition-layout';
     clearInterval(tick);
     var parts = location.hash.replace(/^#\/?/, "").split("/"), r = parts[0] || "home", nav = r;
     exams.leave();
-    if (r === "exams" || r === "exam" || r === "exam-result" || r === "mocks" || r === "mock") {
+    if (r === "exams" || r === "exam" || r === "exam-result" || r === "exam-retry" || r === "mocks" || r === "mock") {
       nav = r === "mocks" || r === "mock" || parts[1]?.startsWith("mock-") ? "mocks" : "exams";
       exams.render(r === "mock" ? "exam/" + parts[1] : parts.join("/"));
     }
     else if (r === "m") { nav = "learn"; moduleView(parts[1]); }
     else if (r === "learn") learn();
-    else if (r === "practice") practice(parts[1], parts[2]);
+    else if (r === "practice") practice(parts[1], parts[2], parts[3]);
     else if (r === "team") { if (parts[1]) teamView(parts[1]); else team(); }
     else if (r === "past") past();
     else if (r === "tips") tips();

@@ -52,7 +52,7 @@
 <p>Your last move was either a 1-step (from stair 4) or a 2-step (from stair 3). So ways(5) = ways(4) + ways(3). Starting from ways(1) = 1, ways(2) = 2: 1, 2, 3, 5, <b>8</b>. Fibonacci numbers!</p></div>
 <div class="tip">For any "find the pattern" question, write the differences between terms. Constant differences mean a linear rule (<i>a</i><i>n</i> + <i>b</i>). Constant <i>second</i> differences mean a quadratic rule (<i>a</i><i>n</i>² + <i>b</i><i>n</i> + <i>c</i>).</div>`,
     problems: [
-      { id: "s1", d: 1, q: "What is the 100th term of the sequence 7, 11, 15, 19, …?", a: 403, h: "There are 99 steps of 4 from the first term.", s: "7 + 99 × 4 = <b>403</b>." },
+      { id: "s1", d: 1, q: "An arithmetic sequence begins 7, 11, 15, 19, …. What is its 100th term?", a: 403, h: "There are 99 steps of 4 from the first term.", s: "7 + 99 × 4 = <b>403</b>." },
       { id: "s2", d: 1, q: "What is 1 + 3 + 5 + … + 99?", a: 2500, h: "How many odd numbers are there from 1 to 99?", s: "There are 50 odd numbers, and the sum of the first n odd numbers is n²: <b>2500</b>." },
       { id: "s3", d: 2, q: "What is the sum of all the multiples of 3 from 3 to 300?", a: 15150, h: "Factor out the 3.", s: "3(1 + 2 + … + 100) = 3 × 5050 = <b>15150</b>." },
       { id: "s4", d: 2, q: "The triangular numbers are 1, 3, 6, 10, … where the n-th is 1 + 2 + … + n. For which n does the n-th triangular number first exceed 1000?", a: 45, h: "n(n + 1)/2 > 1000 means n(n + 1) > 2000. What is √2000 roughly?", s: "44 × 45 ÷ 2 = 990 and 45 × 46 ÷ 2 = 1035, so n = <b>45</b>." },
@@ -153,10 +153,29 @@
       { id: "l3", d: 3, q: "What is the smallest number of integers you must choose from 1 to 20 to be certain that two of them differ by exactly 10?", a: 11, h: "Pair the numbers: (1, 11), (2, 12), …", s: "There are 10 pairs {k, k + 10}. You can choose 10 numbers with one from each pair, but an 11th must complete a pair: <b>11</b>." },
       { id: "l4", d: 3, q: "Ann says 'Bob is lying.' Bob says 'Cal is lying.' Cal says 'Ann and Bob are both lying.' Each person is either truthful or lying. How many of them are telling the truth?", a: 1, h: "Assume Ann is truthful and follow the chain.", s: "Ann truthful ⇒ Bob lies ⇒ Cal truthful ⇒ Ann lies: contradiction. So Ann lies, Bob is truthful, Cal lies. <b>1</b>." },
       { id: "l5", d: 2, q: "A bag holds 3 red and 2 blue marbles. Two are drawn without replacement. The probability both are red is m/n in lowest terms. What is m + n?", a: 13, h: "3/5 for the first, then 2/4 for the second.", s: "3/5 × 2/4 = 3/10. m + n = <b>13</b>." },
-      { id: "l6", d: 3, q: "Two opposite corner squares are removed from an 8×8 chessboard. Dominoes each cover two adjacent squares and may not overlap. What is the largest number of dominoes that can be placed on the board?", a: 30, h: "Colour matters: what colours are the removed corners?", s: "The removed corners are the same colour, leaving 30 squares of that colour and 32 of the other. Each domino needs one of each, so at most <b>30</b> (and 30 can be done)." },
+      { id: "l6", d: 3, q: "Two opposite corner squares are removed from an 8×8 chessboard. Dominoes each cover two squares that share an edge and may not overlap. What is the largest number of dominoes that can be placed on the board?", a: 30, h: "What colours are the removed corners? How many dominoes fit in each row?", s: "The removed corners have the same colour. There are 30 squares of that colour left, and each domino needs one, so at most 30 dominoes fit. Place four horizontal dominoes in each of the six complete rows and three in each of the two shortened rows. That fits 6 × 4 + 2 × 3 = <b>30</b> dominoes." },
       { id: "l7", d: 2, q: "100 players enter a knockout tennis tournament (the loser of each match is eliminated; players get a bye when numbers are odd). How many matches are played to find the champion?", a: 99, h: "How many players must be eliminated?", s: "Each match eliminates one player and 99 must go: <b>99</b> matches." },
       { id: "l8", d: 4, q: "Among 80 identical-looking coins, one is heavier than the rest. Using a two-pan balance, what is the smallest number of weighings that guarantees finding it?", a: 4, h: "One weighing has three outcomes: left heavy, right heavy, balanced. So split into three groups.", s: "Each weighing can cut the possibilities to a third. 3³ = 27 < 80 ≤ 81 = 3⁴, so <b>4</b> weighings (split 27/27/26, and so on)." },
       { id: "l9", d: 2, q: "Three fair coins are tossed. The probability of getting exactly two heads is m/n in lowest terms. What is m + n?", a: 11, h: "There are 8 equally likely outcomes.", s: "HHT, HTH, THH: 3/8. m + n = <b>11</b>." }
+    ]
+  });
+  W.modules.push({
+    id: "stats", title: "Averages & Data", icon: "📊", strand: "Statistics",
+    blurb: "Recover totals, combine unequal groups and work backwards from a mean.",
+    lesson: `
+<p>The mean tells you what each value would be if the total were shared equally. Use <b>total = mean × number of values</b> to move between the total and the mean.</p>
+<div class="ex"><b>Combine two groups.</b> Three runners average 64 points and two runners average 79. Find the mean for all five.
+<p>The groups scored 3 × 64 = 192 and 2 × 79 = 158. The combined mean is (192 + 158) ÷ 5 = <b>70</b>.</p></div>
+<div class="ex"><b>Work backwards.</b> Five games average 18 points. A sixth lifts the mean to 21.
+<p>The total rises from 5 × 18 = 90 to 6 × 21 = 126. The sixth game's score is <b>36</b>.</p></div>
+<div class="tip">If groups have different sizes, multiply each mean by its group size first. Average speed uses total distance and total time.</div>`,
+    problems: [
+      { id: "avg1", d: 1, q: "Six puzzle scores have a mean of 18. What is their total?", a: 108, h: "Think of the total as six equal shares.", s: "Six shares of 18 give 6 × 18 = <b>108</b>." },
+      { id: "avg2", d: 2, q: "Four measurements average 23. One measurement of 14 is removed. What is the new mean?", a: 26, h: "Find the old total and remove 14. How many values are left?", s: "The remaining three sum to 4 × 23 − 14 = 78. Their mean is 78 ÷ 3 = <b>26</b>." },
+      { id: "avg3", d: 2, q: "Eight students average 68 on a quiz. Four other students average 80. What is the mean of all twelve scores?", a: 72, h: "Find each group's total before combining them.", s: "The combined total is 8 × 68 + 4 × 80 = 864. Divide by 12 to get <b>72</b>." },
+      { id: "avg4", d: 3, q: "The mean of ten values is 70. Six of the values have a mean of 66. What is the mean of the remaining four?", a: 76, h: "The six known values account for part of the total of 700.", s: "The remaining total is 10 × 70 − 6 × 66 = 304. The remaining mean is 304 ÷ 4 = <b>76</b>." },
+      { id: "avg5", d: 3, q: "Two groups have means of 60 and 80. Together their 35 values have a mean of 68. How many values are in the group with mean 60?", a: 21, h: "Each member of the first group is 8 below the combined mean on average. The other group is 12 above.", s: "The deviations balance. Eight times the first group's size equals twelve times the second group's size. The sizes are in ratio 3:2, so the first group has 35 × 3/5 = <b>21</b> values." },
+      { id: "avg6", d: 4, q: "Seven players in Group A average 18 points. Five players in Group B average 30. A player moves from B to A and the two groups then have equal means. How many points did that player score?", a: 58, h: "Moving a player keeps the total for both groups together fixed.", s: "The combined mean is (7 × 18 + 5 × 30) ÷ 12 = 23. After the move both groups must average 23. Group A's total grows from 126 to 8 × 23 = 184, so the moving player scored <b>58</b>." }
     ]
   });
 })(typeof window !== "undefined" ? window : globalThis);

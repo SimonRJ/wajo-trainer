@@ -1,5 +1,6 @@
-import { displayTime, examSeconds, gradePaper, questionGaps, remaining } from './exam-rules.mjs?v=all-years';
-import { createExamStore, fieldLimits } from './exam-store.mjs?v=all-years';
+import { checkAnswer, displayTime, examSeconds, gradePaper, questionGaps, remaining } from './exam-rules.mjs?v=all-years';
+import { createExamStore, fieldLimits } from './exam-store.mjs?v=training';
+import { examInsights, retryQuestions, studyTopics } from './exam-training.mjs';
 import { mountKeypad, renderArchiveMath, workingPreview } from './exam-math.mjs?v=notation-2';
 import { mountSketch, paintSketch } from './exam-sketch.mjs';
 
@@ -7,6 +8,7 @@ const BANK = './data/wajo/';
 const markText = marks => `${marks} mark${marks === 1 ? '' : 's'}`;
 const sittingLink = run => `#/exam/${run.paperId}`;
 const reportLink = run => `#/exam-result/${run.id}`;
+const retryLink = run => `#/exam-retry/${run.id}`;
 const dateText = time => new Intl.DateTimeFormat('en-AU', { dateStyle: 'medium' }).format(new Date(time));
 const responseStatus = {
   correct: 'Final answer correct',
@@ -80,6 +82,77 @@ function editorGuide(question) {
   }
 }
 
+function responseMarkup(question, saved, retry = false) {
+  const integer = question.answerFormat === 'integer';
+  return `<section class="exam-response" aria-label="Your response">
+          <div class="exam-answer-wrap">
+            <label for="exam-answer">Your answer</label>
+            <input class="ans" id="exam-answer" type="text" inputmode="${integer && (question.integerMin ?? 1) >= 0 ? 'numeric' : 'text'}"
+              autocomplete="off" spellcheck="false" autocapitalize="off"
+              maxlength="${fieldLimits.answer}" aria-describedby="exam-answer-help" aria-errormessage="exam-answer-error" placeholder="${integer ? `Enter a whole number from ${question.integerMin ?? 1} to ${question.integerMax ?? 999}` : 'Enter your answer'}">
+            <small id="exam-answer-help">${editorGuide(question)}</small>
+            <small class="exam-error" id="exam-answer-error" role="status" hidden>Check that your answer is a whole number in the range shown.</small>
+          </div>
+          <details class="exam-practice-tools"${question.workingRequired || saved.working || saved.sketch?.length ? ' open' : ''}>
+            <summary>Working and maths tools</summary>
+            <label for="exam-working">Working out <small>${question.workingRequired && question.marks !== null && !retry ? 'Required for full marks' : 'Saved for review'}</small></label>
+            <textarea id="exam-working" rows="5" maxlength="${fieldLimits.working}"${retry ? ' aria-errormessage="exam-answer-error"' : ''}
+              placeholder="Write your steps or explain your reasoning…" spellcheck="false"></textarea>
+            <details class="exam-keypad">
+              <summary>Maths keypad</summary>
+              <div class="exam-keypad-inner">
+                <div class="exam-keypad-head"><span>Inserting into <strong data-keypad-target>Working out</strong></span><label>Category <select data-keypad-category aria-label="Maths keypad category"></select></label></div>
+                <div class="exam-keypad-grid" data-keypad-keys></div>
+                <small>Templates include example values. Replace them with your own and check the preview.</small>
+              </div>
+            </details>
+            <div class="exam-working-preview" data-working-wrap hidden>
+              <span>Working preview</span><div class="exam-maths" data-working-preview></div>
+            </div>
+            <details class="exam-sketch"${saved.sketch?.length ? ' open' : ''}>
+              <summary>Sketch or draw</summary>
+              <div class="exam-sketch-inner">
+                <canvas width="720" height="420" aria-label="Sketch area for this question"></canvas>
+                <div class="row"><button class="btn small ghost" type="button" data-sketch-undo>Undo</button>
+                  <button class="btn small ghost" type="button" data-sketch-clear>Clear</button>
+                  <span data-sketch-status role="status"></span></div>
+              </div>
+            </details>
+          </details>
+        </section>`;
+}
+
+function solutionMarkup(paper, question, key) {
+  const label = labelFor(paper, question.number).toLowerCase();
+  return `<details class="exam-model-solution"><summary>Worked solution</summary>
+    <div class="exam-maths">${key.pages ? paperPages(paper.solutionFile, key.pages, 'Worked solution') :
+      key.solution + (key.images || []).map((source, index) =>
+        questionFigure(source, `Worked solution diagram ${index + 1} for ${label}`)).join('')}</div>
+  </details>`;
+}
+
+function connectResponse(root, question, saved, plainMath, saveSketch) {
+  const answer = root.querySelector('#exam-answer');
+  const working = root.querySelector('#exam-working');
+  const preview = root.querySelector('[data-working-preview]');
+  const previewWrapper = root.querySelector('[data-working-wrap]');
+  let previewTimer;
+  answer.value = saved.answer || '';
+  working.value = saved.working || '';
+  function previewWorking() {
+    previewWrapper.hidden = !working.value.trim();
+    if (!previewWrapper.hidden) workingPreview(preview, working.value, plainMath);
+  }
+  working.addEventListener('input', () => {
+    clearTimeout(previewTimer);
+    previewTimer = setTimeout(previewWorking, 100);
+  });
+  mountKeypad(root, answer, working, ['integer', 'text'].includes(question.answerFormat));
+  mountSketch(root.querySelector('.exam-sketch'), saved.sketch || [], saveSketch);
+  previewWorking();
+  return { answer, working, previewWorking };
+}
+
 function activate(paper, root) {
   if (!paper.mock) renderArchiveMath(root);
   root.querySelectorAll('img.wajo-diagram').forEach(image => {
@@ -121,7 +194,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
     mock: true, repeatable: true,
     content: paper.qs.map((q, index) => ({
       id: `mock-q${index + 1}`, number: String(index + 1), marks: Math.floor(index / 4) + 1,
-      answerFormat: 'integer', workingRequired: false, prompt: q.q,
+      answerFormat: 'integer', workingRequired: false, prompt: q.q, topic: q.topic,
     })),
     solutions: Object.fromEntries(paper.qs.map((q, index) => [`mock-q${index + 1}`, { answer: q.a, solution: q.s }])),
   }));
@@ -133,7 +206,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
 
   async function loadJson(path) {
     if (!cache.has(path)) {
-      cache.set(path, fetch(`${BANK}${path}?v=all-years`).then(response => {
+      cache.set(path, fetch(`${BANK}${path}?v=training`).then(response => {
         if (!response.ok) throw new Error('Could not load this paper. Check your connection and try again.');
         return response.json();
       }).catch(error => {
@@ -323,43 +396,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
         ${paper.referencePages ? `<details class="exam-model-solution"><summary>Full team paper and any answer sheets</summary>
           <div class="exam-maths">${paperPages(paper.questionFile, paper.referencePages, 'Team paper')}</div></details>` : ''}
         ${mathMarkup(question, paper)}
-        <section class="exam-response" aria-label="Your response">
-          <div class="exam-answer-wrap">
-            <label for="exam-answer">Your answer</label>
-            <input class="ans" id="exam-answer" type="text" inputmode="${integer && (question.integerMin ?? 1) >= 0 ? 'numeric' : 'text'}"
-              autocomplete="off" spellcheck="false" autocapitalize="off"
-              maxlength="${fieldLimits.answer}" aria-describedby="exam-answer-help exam-answer-error" placeholder="${integer ? `Enter a whole number from ${question.integerMin ?? 1} to ${question.integerMax ?? 999}` : 'Enter your answer'}">
-            <small id="exam-answer-help">${editorGuide(question)}</small>
-            <small class="exam-error" id="exam-answer-error" role="status" hidden>Check that your answer is a whole number in the range shown.</small>
-          </div>
-          <details class="exam-practice-tools"${question.workingRequired || saved.working || saved.sketch?.length ? ' open' : ''}>
-            <summary>Working and maths tools</summary>
-          <label for="exam-working">Working out <small>${question.workingRequired ?
-            (question.marks === null ? 'Saved for review' : 'Required for full marks') : 'Saved for review'}</small></label>
-          <textarea id="exam-working" rows="5" maxlength="${fieldLimits.working}"
-            placeholder="Write your steps or explain your reasoning…" spellcheck="false"></textarea>
-          <details class="exam-keypad">
-            <summary>Maths keypad</summary>
-            <div class="exam-keypad-inner">
-              <div class="exam-keypad-head"><span>Inserting into <strong data-keypad-target>Working out</strong></span><label>Category <select data-keypad-category aria-label="Maths keypad category"></select></label></div>
-              <div class="exam-keypad-grid" data-keypad-keys></div>
-              <small>Templates include example values. Replace them with your own and check the preview.</small>
-            </div>
-          </details>
-          <div class="exam-working-preview" data-working-wrap hidden>
-            <span>Working preview</span><div class="exam-maths" data-working-preview></div>
-          </div>
-          <details class="exam-sketch"${saved.sketch?.length ? ' open' : ''}>
-            <summary>Sketch or draw</summary>
-            <div class="exam-sketch-inner">
-              <canvas width="720" height="420" aria-label="Sketch area for this question"></canvas>
-              <div class="row"><button class="btn small ghost" type="button" data-sketch-undo>Undo</button>
-                <button class="btn small ghost" type="button" data-sketch-clear>Clear</button>
-                <span data-sketch-status role="status"></span></div>
-            </div>
-          </details>
-          </details>
-        </section>
+        ${responseMarkup(question, saved)}
         <nav class="exam-navigator" aria-label="${paper.team ? 'Parts' : 'Questions'}">${questions.map((item, index) =>
           `<button type="button" data-question-index="${index}"${index === currentIndex ? ' aria-current="step"' : ''}>${item.number}</button>`).join('')}</nav>
         <div class="exam-question-controls">
@@ -375,30 +412,18 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
       <dialog class="exam-dialog" aria-labelledby="exam-submit-title"></dialog>
     </div>`);
     const root = app.querySelector('.exam-sitting');
-    const answer = root.querySelector('#exam-answer');
-    const working = root.querySelector('#exam-working');
+    const { answer, working, previewWorking } = connectResponse(root, question, saved, plainMath,
+      sketch => write({ sketch }));
     const timer = root.querySelector('[data-exam-clock]');
     const saveText = root.querySelector('[data-exam-save]');
     const flag = root.querySelector('[data-flag]');
     const nav = [...root.querySelectorAll('[data-question-index]')];
     const dialog = root.querySelector('dialog');
-    const preview = root.querySelector('[data-working-preview]');
-    const previewWrapper = root.querySelector('[data-working-wrap]');
-    let previewTimer;
-
-    answer.value = saved.answer || '';
-    working.value = saved.working || '';
     activate(paper, root.querySelector('.exam-stem'));
     loadPaperPages(root.querySelector('.exam-stem'));
     const reference = root.querySelector('.exam-question-card > details');
     reference?.addEventListener('toggle', () => { if (reference.open) loadPaperPages(reference); }, { once: true });
-    mountKeypad(root, answer, working, ['integer', 'text'].includes(question.answerFormat));
     hiddenSync = updateClock;
-    function previewWorking() {
-      previewWrapper.hidden = !working.value.trim();
-      if (!previewWrapper.hidden) workingPreview(preview, working.value, plainMath);
-    }
-    previewWorking();
 
     function updateNavigation() {
       let answered = 0;
@@ -454,13 +479,8 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
     }
 
     answer.addEventListener('input', saveFields);
-    working.addEventListener('input', () => {
-      saveFields();
-      clearTimeout(previewTimer);
-      previewTimer = setTimeout(previewWorking, 100);
-    });
+    working.addEventListener('input', saveFields);
     flag.onclick = () => write({ flag: !run.responses[question.id]?.flag });
-    mountSketch(root.querySelector('.exam-sketch'), saved.sketch || [], sketch => write({ sketch }));
     updateNavigation();
 
     function move(index) {
@@ -571,11 +591,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
             ${response.sketch?.length ? '<canvas class="exam-result-sketch" width="720" height="420" aria-label="Submitted sketch"></canvas>' : ''}` :
             '<p class="sub">No working recorded.</p>'}
         </section>
-        <details class="exam-model-solution"><summary>Worked solution</summary>
-          <div class="exam-maths">${key.pages ? paperPages(paper.solutionFile, key.pages, 'Worked solution') :
-            key.solution + (key.images || []).map((source, index) =>
-              questionFigure(source, `Worked solution diagram ${index + 1} for ${label.toLowerCase()}`)).join('')}</div>
-        </details>
+        ${solutionMarkup(paper, question, key)}
         <form class="exam-review-form">
           <h3>Review the working</h3>
           ${manuallyScored ? `<label>Marks after reviewing the response
@@ -598,6 +614,169 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
 
   function summarize(grade) {
     return { score: grade.score, max: grade.max, pending: grade.pending };
+  }
+
+  function showRetry(paper, questions, solutions, result) {
+    const grade = gradePaper(questions, result.responses, solutions, result.reviews);
+    const targets = retryQuestions(grade.rows, result.reviews);
+    if (!targets.length) {
+      show(`<div class="exam-centre"><h1>Retry missed questions</h1>
+        <p>There are no graded misses or skipped questions to retry for this sitting.</p>
+        <a class="btn" href="${reportLink(result)}">Back to results</a></div>`);
+      return;
+    }
+
+    function draw(index, focus = false) {
+      const { question, key } = targets[index];
+      const saved = result.retries?.[question.id] || {};
+      const done = targets.filter(row => result.retries?.[row.question.id]?.checked).length;
+      const checked = saved.checked;
+      const status = checked ? checkAnswer(question, saved.answer, key.answer) : '';
+      const feedback = status === 'correct' && question.workingRequired ?
+        'Final answer correct. Compare your reasoning with the worked solution.' :
+        question.answerFormat === 'written' || status === 'review' ?
+        'Compare your reasoning with the worked solution.' :
+        status === 'correct' ? 'Correct on this retry.' : 'Review your approach and compare it with the solution.';
+      show(`<div class="exam-centre exam-retry">
+        <a class="crumb" href="${reportLink(result)}">← Exam results</a>
+        <h1>Retry missed questions</h1>
+        <p class="sub">${escapeHtml(paper.title)} · ${done} of ${targets.length} checked · untimed practice</p>
+        <article class="card exam-question-card" aria-labelledby="retry-question">
+          <h2 id="retry-question" tabindex="-1">${labelFor(paper, question.number)}</h2>
+          ${paper.referencePages ? `<details class="exam-model-solution" data-retry-reference><summary>Full team question paper</summary>
+            <div class="exam-maths">${paperPages(paper.questionFile, paper.referencePages, 'Team paper')}</div></details>` : ''}
+          ${mathMarkup(question, paper)}
+          ${checked ? `<section class="exam-retry-feedback" aria-labelledby="retry-feedback">
+            <h3 id="retry-feedback" tabindex="-1">${feedback}</h3>
+            <div class="exam-answer-comparison">
+              <div><span>Your retry answer</span><div class="exam-maths" data-retry-answer></div></div>
+              ${key.answer == null ? '' : '<div><span>Answer key</span><div class="exam-maths" data-retry-key></div></div>'}
+            </div>
+            ${saved.working || saved.sketch?.length ? `<details><summary>Your retry working</summary>
+              <div class="exam-maths exam-recorded-work" data-retry-working></div>
+              ${saved.sketch?.length ? '<canvas class="exam-result-sketch" width="720" height="420" aria-label="Retry sketch"></canvas>' : ''}</details>` : ''}
+            ${solutionMarkup(paper, question, key)}
+            <button class="btn ghost small" type="button" data-retry-again>Try this question again</button>
+          </section>` : `<form data-retry-form>
+            ${responseMarkup(question, saved, true)}
+            <button class="btn" type="submit">${question.answerFormat === 'written' ? 'Compare my working' : 'Check answer'}</button>
+          </form>`}
+          <p class="exam-save" data-retry-save role="status"></p>
+        </article>
+        <nav class="exam-navigator" aria-label="Questions to retry">${targets.map(({ question: q }, i) =>
+          `<button type="button" data-retry-index="${i}"${i === index ? ' aria-current="step"' : ''}
+            class="${result.retries?.[q.id]?.checked ? 'is-answered' : ''}" aria-label="${labelFor(paper, q.number)}${result.retries?.[q.id]?.checked ? ', checked' : ''}">${q.number}</button>`).join('')}</nav>
+        <div class="exam-question-controls">
+          <button class="btn ghost" type="button" data-retry-prev${!index ? ' disabled' : ''}>Previous</button>
+          ${index + 1 === targets.length ? `<a class="btn ghost" href="${reportLink(result)}">Back to results</a>` :
+            '<button class="btn ghost" type="button" data-retry-next>Next question</button>'}
+        </div>
+      </div>`);
+      const root = app.querySelector('.exam-retry');
+      const stem = root.querySelector('.exam-stem');
+      activate(paper, stem);
+      loadPaperPages(stem);
+      for (const details of root.querySelectorAll('[data-retry-reference], .exam-retry-feedback .exam-model-solution')) {
+        details.addEventListener('toggle', () => {
+          if (!details.open) return;
+          activate(paper, details);
+          loadPaperPages(details);
+        }, { once: true });
+      }
+      function save(patch) {
+        const note = root.querySelector('[data-retry-save]');
+        try {
+          const updated = store.saveRetry(result.id, question.id, patch);
+          if (!updated) throw new Error('Sitting unavailable');
+          result = updated;
+          note.textContent = 'Retry saved on this device.';
+          return true;
+        } catch {
+          note.textContent = 'Retry could not be saved. Try again before leaving.';
+          return false;
+        }
+      }
+      if (checked) {
+        workingPreview(root.querySelector('[data-retry-answer]'), saved.answer?.trim() || 'Working submitted', plainMath);
+        const answerKey = root.querySelector('[data-retry-key]');
+        if (answerKey) workingPreview(answerKey, String(key.answer), plainMath);
+        const working = root.querySelector('[data-retry-working]');
+        if (working) workingPreview(working, saved.working || '', plainMath);
+        const sketch = root.querySelector('canvas.exam-result-sketch');
+        if (sketch) paintSketch(sketch, saved.sketch);
+        root.querySelector('[data-retry-again]').onclick = () => {
+          if (save({ answer: '', working: '', sketch: [], checked: false })) draw(index, true);
+        };
+      } else {
+        const { answer, working } = connectResponse(root, question, saved, plainMath, sketch => save({ sketch }));
+        const fields = () => ({ answer: answer.value, working: working.value });
+        const message = root.querySelector('#exam-answer-error');
+        const saveFields = () => {
+          message.hidden = true;
+          answer.removeAttribute('aria-invalid');
+          working.removeAttribute('aria-invalid');
+          save(fields());
+        };
+        answer.addEventListener('input', saveFields);
+        working.addEventListener('input', saveFields);
+        root.querySelector('[data-retry-form]').onsubmit = event => {
+          event.preventDefault();
+          const response = fields();
+          const hasWorking = response.working.trim() || result.retries?.[question.id]?.sketch?.length;
+          const value = checkAnswer(question, response.answer, key.answer);
+          const missingAnswer = value === 'blank' && question.answerFormat !== 'written';
+          const missingWorking = question.workingRequired && !hasWorking;
+          if (value === 'invalid' || missingAnswer || missingWorking) {
+            const field = value === 'invalid' || missingAnswer ? answer : working;
+            message.textContent = value === 'invalid' ? editorGuide(question) : missingAnswer ?
+              'Enter your answer before checking.' : 'Write or sketch your reasoning before checking.';
+            field.setAttribute('aria-invalid', 'true');
+            message.hidden = false;
+            if (field === working) working.closest('details').open = true;
+            field.focus();
+            return;
+          }
+          if (!save({ ...response, checked: true })) return;
+          onExamActivity();
+          draw(index, true);
+        };
+      }
+      root.querySelector('[data-retry-prev]').onclick = () => draw(index - 1, true);
+      const next = root.querySelector('[data-retry-next]');
+      if (next) next.onclick = () => draw(index + 1, true);
+      root.querySelectorAll('[data-retry-index]').forEach(button => {
+        button.onclick = () => draw(Number(button.dataset.retryIndex), true);
+      });
+      if (focus) root.querySelector(checked ? '#retry-feedback' : '#retry-question').focus();
+    }
+    const next = targets.findIndex(row => !result.retries?.[row.question.id]?.checked);
+    draw(Math.max(0, next));
+  }
+
+  function practiceSummary(grade, result, paper) {
+    const targets = retryQuestions(grade.rows, result.reviews);
+    const checked = targets.filter(row => result.retries?.[row.question.id]?.checked).length;
+    const { topics, markBands, untagged } = examInsights(grade.rows);
+    const priority = topics.find(topic => topic.earned < topic.max);
+    return `<h2 id="exam-next-practice">Next practice</h2>
+      <div class="row">
+        ${targets.length ? `<a class="btn" href="${retryLink(result)}">Retry missed questions (${targets.length})</a>` : ''}
+        ${priority ? `<a class="btn ghost" href="#/practice/topic/${priority.key}">Practise ${studyTopics[priority.key].label.toLowerCase()}</a>` : ''}
+        ${paper.team ? '<a class="btn ghost" href="#/m/teamskills">Practise team explanations</a>' : ''}
+      </div>
+      ${targets.length ? `<p class="sub">${checked} of ${targets.length} retries checked. Retry work is saved separately from the exam score.</p>` :
+        `<p class="sub">${grade.pending ? 'Review the pending responses to identify questions to retry.' : 'There are no graded misses or skips in this sitting.'}</p>`}
+      ${topics.length ? `<table class="exam-insight-table"><caption>Marks by topic</caption>
+        <thead><tr><th scope="col">Topic</th><th scope="col">Marks</th><th scope="col">Full marks</th></tr></thead>
+        <tbody>${topics.map(item => `<tr><th scope="row"><a href="#/practice/topic/${item.key}">${studyTopics[item.key].label}</a></th>
+          <td>${item.earned}/${item.max}</td><td>${item.full}/${item.questions} questions</td></tr>`).join('')}</tbody></table>
+        <p class="sub">Based on this sitting.${grade.pending ? ' Pending reviews are excluded.' : ''}
+          ${untagged ? `${untagged} graded archive ${untagged === 1 ? 'item is' : 'items are'} included only in the marks breakdown below.` : ''}</p>` : ''}
+      ${markBands.length > 1 ? `<details class="exam-mark-bands"><summary>Marks by question value</summary>
+        <table class="exam-insight-table"><thead><tr><th scope="col">Question value</th><th scope="col">Marks</th><th scope="col">Full marks</th></tr></thead>
+        <tbody>${markBands.map(item => `<tr><th scope="row">${markText(item.key)}</th>
+          <td>${item.earned}/${item.max}</td><td>${item.full}/${item.questions} questions</td></tr>`).join('')}</tbody></table>
+      </details>` : ''}`;
   }
 
   function showReport(paper, questions, solutions, result) {
@@ -623,9 +802,11 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
           <p class="sub" data-exam-report-note></p>
         </div>
       </div>
+      <section class="card exam-next-practice" data-practice-summary aria-labelledby="exam-next-practice"></section>
       <div class="exam-report-tools"><label>Show <select data-filter-results>
         <option value="all">${paper.team ? 'All parts' : 'All questions'}</option>
         <option value="attention">${grade.max ? 'Missed or pending' : 'Unreviewed'}</option>
+        <option value="missed">Missed or skipped</option>
         <option value="correct">${grade.max ? 'Full marks' : 'Reviewed'}</option>
       </select></label><button type="button" class="btn small ghost" data-print-exam>Print / save PDF</button></div>
       <section class="exam-result-list" aria-label="Question results">${grade.rows.map(row => reviewRow(paper, row, result)).join('')}</section>
@@ -636,9 +817,12 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
     </div>`);
     const root = app.querySelector('.exam-report');
     const filter = root.querySelector('[data-filter-results]');
+    const practice = root.querySelector('[data-practice-summary]');
     const resultRows = [...root.querySelectorAll('.exam-result-row')];
 
     function refresh() {
+      practice.innerHTML = practiceSummary(grade, result, paper);
+      const misses = new Set(retryQuestions(grade.rows, result.reviews).map(row => row.question.id));
       const reviewed = grade.rows.filter(row => row.reviewed).length;
       root.querySelector('[data-exam-score]').textContent = grade.max ? `${grade.score} / ${grade.max}` : `${reviewed} / ${questions.length}`;
       const unit = paper.team ? 'part' : 'question';
@@ -654,7 +838,8 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
         status.className = `exam-result-status ${tone}`;
         status.textContent = resultMark(row);
         element.querySelector('[data-result-status]').textContent = reviewStatus(row);
-        element.hidden = filter.value === 'attention' ? tone === 'correct' : filter.value === 'correct' && tone !== 'correct';
+        element.hidden = (filter.value === 'attention' && tone === 'correct') ||
+          (filter.value === 'correct' && tone !== 'correct') || (filter.value === 'missed' && !misses.has(row.question.id));
         if (!element.hidden) visible++;
       }
       root.querySelector('[data-empty-filter]').hidden = visible > 0;
@@ -736,13 +921,16 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
         await listPapers(version, kind === 'mocks');
         return;
       }
-      if (kind === 'exam-result') {
+      if (kind === 'exam-result' || kind === 'exam-retry') {
         const result = store.current().attempts.find(run => run.id === id);
         if (!result) throw new Error('This sitting is saved on the browser where it was taken.');
         const paper = await findPaper(result.paperId);
         if (!paper) throw new Error('This paper could not be found.');
         const [questions, solutions] = await Promise.all([questionsFor(paper), solutionsFor(paper)]);
-        if (version === renderVersion) showReport(paper, questions, solutions, result);
+        if (version === renderVersion) {
+          if (kind === 'exam-retry') showRetry(paper, questions, solutions, result);
+          else showReport(paper, questions, solutions, result);
+        }
         return;
       }
       const paper = await findPaper(id);

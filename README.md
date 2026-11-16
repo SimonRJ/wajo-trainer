@@ -22,13 +22,15 @@ The practice sitting follows the layout of the [official WAJO competition quiz](
 - Each question has a final answer field, a working area, a notation keypad and a finger or mouse sketchpad. The keypad inserts notation without evaluating it. Results keep the learner’s final answer and working with the corresponding key and worked solution.
 - Integer-answer marks are automatic. The written items in the 2000–2019 papers use the submitted working and model solution for manual marking. Team parts are reviewed against the original worked solutions. A numerical team score is available where the source gives a per-part mark scale.
 - Past papers have one sitting per browser. The three existing original mock papers support repeat attempts and retain untimed practice.
-- Exam attempts, working, sketches and reviews are saved in this browser and included in the Progress backup. GitHub Pages serves the problem bank as static files. The exam interface reveals solutions after submission.
+- The results show marks by topic and question value. Topic guidance uses the primary technique per question and links to related drills. Pending written reviews are excluded.
+- Retry missed or skipped questions from a blank response area. The original sitting keeps its score, answers and working. Retries show the key and worked solution after the student checks a response.
+- Exam attempts, working, sketches, reviews and retries are saved in this browser and included in the Progress backup. GitHub Pages serves the problem bank as static files. The exam interface reveals solutions after submission.
 
 ## Course and content
 
-- 14 lessons, 130 practice problems and three team investigations
+- 15 lessons, 136 practice problems and three team investigations
 - Year-by-year past-paper catalogue and score tracker
-- Daily Five, review list, progress and backup
+- Daily Five, topic and level practice, review list, progress and backup
 - Lessons: `data/number.js`, `data/algebra.js` and `data/geometry.js`
 - Original papers and team investigations: `data/mocks.js` and `data/team.js`
 - Past-paper prompts, keys and worked solutions: `data/wajo/`
@@ -53,3 +55,5 @@ The [approved narration profile](tools/narration/) is the default for every new 
 python -m http.server 8000
 node tools/check-exams.mjs
 ```
+
+GitHub Pages publishes from `gh-pages`. Move that branch to the tested release to publish it. The Pages workflow checks the papers, marking and practice data before requesting the build.
