@@ -328,8 +328,9 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
             <label for="exam-answer">Your answer</label>
             <input class="ans" id="exam-answer" type="text" inputmode="${integer && (question.integerMin ?? 1) >= 0 ? 'numeric' : 'text'}"
               autocomplete="off" spellcheck="false" autocapitalize="off"
-              maxlength="${fieldLimits.answer}" aria-describedby="exam-answer-help" placeholder="${integer ? `Enter a whole number from ${question.integerMin ?? 1} to ${question.integerMax ?? 999}` : 'Enter your answer'}">
+              maxlength="${fieldLimits.answer}" aria-describedby="exam-answer-help exam-answer-error" placeholder="${integer ? `Enter a whole number from ${question.integerMin ?? 1} to ${question.integerMax ?? 999}` : 'Enter your answer'}">
             <small id="exam-answer-help">${editorGuide(question)}</small>
+            <small class="exam-error" id="exam-answer-error" role="status" hidden>Check that your answer is a whole number in the range shown.</small>
           </div>
           <details class="exam-practice-tools"${question.workingRequired || saved.working || saved.sketch?.length ? ' open' : ''}>
             <summary>Working and maths tools</summary>
@@ -422,6 +423,7 @@ export function createExamCentre({ app, show, mocks, onMockResult, onExamActivit
       root.querySelector('[data-flag-count]').textContent = flagged ? `${flagged} flagged` : '';
       const invalid = integer && questionGaps([question], run.responses).invalid.length > 0;
       answer.setAttribute('aria-invalid', String(invalid));
+      root.querySelector('#exam-answer-error').hidden = !invalid;
       root.querySelector('[data-next]').disabled = integer &&
         (invalid || !run.responses[question.id]?.answer?.trim());
       const isFlagged = Boolean(run.responses[question.id]?.flag);
